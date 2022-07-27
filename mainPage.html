@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Jonathan Maier</title>
+</head>
+<body>
+    <section>
+        <div class="navContainer">
+            <div class="navInnerContainer">
+                <div class="logo">
+                    <image class ="logoImage"src="logo.png"></image>
+                </div>
+                <div class="navElements">
+                    <ul>
+                        <li class="navList center">Home</li>
+                        <li class="navList center">About Me</li>
+                        <li class="navList center">Projects</li>
+                        <li class="navList center">Contact</li>
+                    </ul>
+                </div>
+                <div class="dropDown">
+                    <button class="dropDownButton">
+                        <image class="dropDownButtonImage" src="dropDownButton.png"></image>
+                    </button>
+                    <div class="dropDownContent">
+                        <a href="">Home</a>
+                        <a href="">About me</a>
+                        <a href="">Projects</a>
+                        <a href="">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="navScript.js"></script>
+    <section class="bigMainSection">
+        <div class="imageContainer">
+            <div class="startContainer">
+                <h1 class="startContainerHeader">Maier<br />Jonathan</h1>
+                <p class="startContainerText">Welcome to my own personal Webpage</p>
+                <button class="startContainerButton">Start</button>
+            </div>
+        </div>
+    </section>
+    <section class="mainSection">
+        <div class="backgroundContainer">
+            <div class="aboutMeContainer">
+                <div class="textContainer">
+                    <div>
+                        <h1 class="noMarginPadding aboutMeHeader">About me</h1>
+                        <p class="aboutMeText">
+                            As you might know my Name is Jonathan Maier and I am a Software Developer. Im born on 18th of November in 2002, thus almost 20 years old and currently studying
+                            "Software Engeneering and Managment" at the Technical University Graz.<br /><br /> I attented an heavily sience based High School where contradictly my interst in Software Engeeniring was enlightend.
+                            However, my School did not have great possibilities to get into that topic, so im proceeding to learn about it since I am 15. I quickly realised how incomprehensible large the field of Computer Science was
+                            and I had a truly tough time to get into it.<br /><br /> As the years passed however, I was lucky to meet awesome People who shared their interests and knowledge with me,
+                            so I could get a hunch of what was going on in the amzing Aria of Computer Science. Till this day I continue to learn und try new Things. Im still at the beginning of my journy!
+                        </p>
+                       <button onclick="goToAboutMePage()" class="aboutMeButton">Learn more...</button>
+                       <script>
+                           function goToAboutMePage() {
+                               window.location.href = "aboutMePage.html";
+                           }
+                       </script>
+                    </div>
+                </div>
+                <div class="aboutMePictureContainer">
+                    <canvas id="canvas" width="900px" height="600px"></canvas>
+                </div>
+            </div>
+        </div>
+        <!--Hier goes the script...-->
+        <script src="canvasScript.js"></script>
+        <script src="sizeAdapterScript.js"></script>
+    </section>
+    <section class="mainSection">
+        <!--Hier soll dann ein Slider mit Lebenslauf und entscheidenden Projekten kommen-->
+        <div class="projectsContainer">
+            <div class="projectsHeaderContainer">
+                <h1 id ="sliderHeader" class="noMarginPadding">Happenings and Projects</h1>
+            </div>
+            <div class="buttonAndSliderContainer">
+                <div class="buttonContainer">
+                    <a class="previousSliderElementButton" id="prevButton"><i class="arrow left"></i></a>
+                </div>
+                <div class="sliderContainer">
+                    <!-- SliderElement-->
+                    <div class="sliderElement">
+                        <div class="imageContainerSlider">
+                            <image class="projectPicture" src="sliderSample.jpg" alt="A coding Person" width="100%"></image>
+                        </div>
+                        <div class="textContainerSlider">
+                            <h3 class="projectHeader">First Slider</h3>
+                            <p class="projectContent">Hier schreibe ich dann über meine einschneidenden und lehrreichen Moment in meinem Leben oder ich berichte über ein bestimmtes Projekt, bei dem ich viel neues dazu lernen konnte.</p>
+                        </div>
+                    </div>
+
+                    <!-- SliderElement-->
+                    <div class="sliderElement">
+                        <div class="imageContainerSlider">
+                            <image class="projectPicture" src="sliderSample.jpg" alt="A coding Person" width="100%"></image>
+                        </div>
+                        <div class="textContainerSlider">
+                            <h3 class="projectHeader">Second Slider</h3>
+                            <p class="projectContent">Hier schreibe ich dann über meine einschneidenden und lehrreichen Moment in meinem Leben oder ich berichte über ein bestimmtes Projekt, bei dem ich viel neues dazu lernen konnte.</p>
+                        </div>
+                    </div>
+
+                    <!-- SliderElement-->
+                    <div class="sliderElement">
+                        <div class="imageContainerSlider">
+                            <image class="projectPicture" src="sliderSample.jpg" alt="A coding Person" width="100%"></image>
+                        </div>
+                        <div class="textContainerSlider">
+                            <h3 class="projectHeader">Third Slider</h3>
+                            <p class="projectContent">Hier schreibe ich dann über meine einschneidenden und lehrreichen Moment in meinem Leben oder ich berichte über ein bestimmtes Projekt, bei dem ich viel neues dazu lernen konnte.</p>
+                        </div>
+                    </div>
+
+                    <!-- SliderElement-->
+                    <div class="sliderElement">
+                        <div class="imageContainerSlider">
+                            <image class="projectPicture" src="sliderSample.jpg" alt="A coding Person" width="100%"></image>
+                        </div>
+                        <div class="textContainerSlider">
+                            <h3 class="projectHeader">Fourth Slider</h3>
+                            <p class="projectContent">Hier schreibe ich dann über meine einschneidenden und lehrreichen Moment in meinem Leben oder ich berichte über ein bestimmtes Projekt, bei dem ich viel neues dazu lernen konnte.</p>
+                        </div>
+                    </div>
+
+                    <!-- SliderElement-->
+                    <div class="sliderElement">
+                        <div class="imageContainerSlider">
+                            <image class="projectPicture" src="sliderSample.jpg" alt="A coding Person" width="100%"></image>
+                        </div>
+                        <div class="textContainerSlider">
+                            <h3 class="projectHeader">Fifth Slider</h3>
+                            <p class="projectContent">Hier schreibe ich dann über meine einschneidenden und lehrreichen Moment in meinem Leben oder ich berichte über ein bestimmtes Projekt, bei dem ich viel neues dazu lernen konnte.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="buttonContainer">
+                    <a class="nextSliderElementButton" id="nextButton"><i class="arrow right"></i></a>
+                </div>
+                <div class="horizontalButtonContainer">
+                    <a class="previousSliderElementButton" id="secondPrevButton"><i class="arrow left"></i></a>
+                    <a class="nextSliderElementButton" id="secondNextButton"><i class="arrow right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!--Hier goes the script...-->
+        <script src="sliderScript.js"></script>
+    </section>
+    <section>
+        <footer>
+            <div class="footerContainer">
+                <div class="upperFooter">
+                    <div class="footerSmallSection"  id="firstFooterLine">
+                        <h3 class="footerHeader">Contact</h3>
+                        <h6>Jonathan Elias Maier</h6>
+                        <h6>Email: maier.jonathanelias@gmail.com</h6>
+                        <h6> Tel.: +43 664 88524186</h6>
+                    </div>
+                    <div class="footerSmallSection"  id="secondFooterLine">
+                        <h3 class="footerSmallHeader"> Follow me:</h3>
+                        <a href="#" class="fa fa-google"></a>
+                        <a href="#" class="fa fa-instagram"></a>
+                        <a href="#" class="fa fa-linkedin"></a>
+                        <a href="#" class="fa fa-snapchat"></a>
+                        <h6></h6>
+                        <label id="emailInputLabel">Sign up for news:</label>
+                        <input id="emailInput" type="email" />
+                        <button id="emailSubmitButton">Submit</button>
+                    </div>
+                    <div class="footerSmallSection" id="thirdFooterLine">
+                        <h3 class="footerSmallHeader">Pagecontent:</h3>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">About me</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">First Slider</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Second Slider</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Third Slider</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Fourth Slider</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Fifth Slider</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Datenschutzerklärung</h6></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+    <script src="textAppearanceSrcript.js"></script>
+</body>
+</html>

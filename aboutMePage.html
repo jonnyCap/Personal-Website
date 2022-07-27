@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>About Me</title>
+</head>
+<body>
+    <section>
+        <div class="navContainer">
+            <div class="navInnerContainer">
+                <div class="logo">
+                    <image class="logoImage" src="logo.png"></image>
+                </div>
+                <div class="navElements">
+                    <ul>
+                        <li class="navList center">Home</li>
+                        <li class="navList center">About Me</li>
+                        <li class="navList center">Services</li>
+                        <li class="navList center">Contact</li>
+                    </ul>
+                </div>
+                <div class="dropDown">
+                    <button class="dropDownButton">
+                        <image class="dropDownButtonImage" src="dropDownButton.png"></image>
+                    </button>
+                    <div class="dropDownContent">
+                        <a href="">Home</a>
+                        <a href="">About Me</a>
+                        <a href="">Services</a>
+                        <a href="">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="secondaryLowerContainer">
+                <div class="secondaryInnerNavContainer">
+                    <ul class="secondaryUl">
+                        <li class="secondaryNavList center">About me</li>
+                        <li class="secondaryNavList center">Project 1</li>
+                        <li class="secondaryNavList center">Project 2</li>
+                        <li class="secondaryNavList center">Project 3</li>
+                        <li class="secondaryNavList center">Datenschutzerklärung</li>
+                    </ul>
+                    <div id="moveableBackground"> </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="navScript.js"></script>
+    <section>
+        <div class="secondaryBackgroundContainer">
+            <div class="secondaryStartSection">
+                <canvas id="secondaryCanvas" width="1200px" height="900px"></canvas><!--Background Canvas-->
+                <script src="secondaryCanvasScript.js"></script>
+                <div class="alignStartSectionParts">
+                    <div class="secondaryHeaderContainer">
+                        <h1 class="secondaryHeader">About me</h1>
+                    </div>
+                    <button class="scrollButton down">
+                        <image class="scrollDownButtonImage imageDown" src="scrollDownButtonImage.png" width="40%" height="auto"></image>
+                        <canvas id="clickAnimationCanvas" width="200px" height="250px"></canvas>
+                    </button>
+                </div>
+                <script src="scrollDownButtonScript.js"></script>
+            </div>
+            <script src="resizeDivScript.js"></script>
+            <div class="secondaryContentSection">
+                <div class="secondaryContentContainer">
+                    <div class="secondaryContentHeaderContainer">
+                        <h1 class="secondaryContentHeader">About me</h1>
+                    </div>
+                    <div class="secondaryContentText">
+                        <p>
+                            As you might know my Name is Jonathan Maier and I am a Software Developer. Im born on 18th of November in 2002, thus almost 20 years old and currently studying
+                            "Software Engeneering and Managment" at the Technical University Graz.<br /><br /> I attented an heavily sience based High School where contradictly my interst in Software Engeeniring was enlightend.
+                            However, my School did not have great possibilities to get into that topic, so im proceeding to learn about it since I am 15. I quickly realised how incomprehensible large the field of Computer Science was
+                            and I had a truly tough time to get into it.<br /><br /> As the years passed however, I was lucky to meet awesome People who shared their interests and knowledge with me,
+                            so I could get a hunch of what was going on in the amzing Aria of Computer Science. Till this day I continue to learn und try new Things. Im still at the beginning of my journy!
+                        </p>
+                    </div>
+                </div>
+                <button class="scrollButton up">
+                    <image class="scrollDownButtonImage imageUp" src="scrollDownButtonImage.png" width="40%" height="auto"></image>
+                    <canvas id="clickAnimationCanvasUp" width="300px" height="300px"></canvas>
+                </button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <footer>
+            <div class="footerContainer">
+                <div class="upperFooter">
+                    <div class="footerSmallSection" id="firstFooterLine">
+                        <h3 class="footerHeader">Contact</h3>
+                        <h6>Jonathan Elias Maier</h6>
+                        <h6>Email: maier.jonathanelias@gmail.com</h6>
+                        <h6> Tel.: +43 664 88524186</h6>
+                    </div>
+                    <div class="footerSmallSection" id="thirdFooterLine">
+                        <h3 class="footerSmallHeader"> Follow me:</h3>
+                        <a href="#" class="fa fa-google"></a>
+                        <a href="#" class="fa fa-instagram"></a>
+                        <a href="#" class="fa fa-linkedin"></a>
+                        <a href="#" class="fa fa-snapchat"></a>
+                        <h6></h6>
+                        <label id="emailInputLabel">Sign up for knews:</label>
+                        <input id="emailInput" type="email" />
+                        <button id="emailSubmitButton">Submit</button>
+                    </div>
+                    <div class="footerSmallSection" id="thirdFooterLine">
+                        <h3 class="footerSmallHeader">Pagecontent:</h3>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">About me</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">First Slider</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Second Slider</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Third Slider</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Fourth Slider</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Fifth Slider</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Datenschutzerklärung</h6></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+    <script src="SAPScript.js"></script>
+</body>
+</html>
