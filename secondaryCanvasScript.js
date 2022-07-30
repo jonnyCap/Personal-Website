@@ -21,26 +21,26 @@ const secondaryCanvas = {
     drawnObjectsCounter: 30,
     addedObjects: [],
     removedObjects: [],
-    mainX: 900,
-    mainY: 500,
+    mainX: 1000,
+    mainY: 600,
     rotationVelocity: 0.02,
     createAll: function () {
         // secondaryCanvas.relocateMainPoints();
         for (let i = 0; i < 20; i++) {
             let x = c.getRandomNumber(100, 500);
-            let y = c.getRandomNumber(100, 500);
+            let y = c.getRandomNumber(100, 800);
             let circle = new circleLine(x, y, x, y);
             secondaryCanvas.drawnObjects.push(circle);
         }
         for (let i = 0; i < 20; i++) {
-            let x = c.getRandomNumber(500, 900);
-            let y = c.getRandomNumber(50, 500);
+            let x = c.getRandomNumber(500,1000);
+            let y = c.getRandomNumber(100, 800);
             let circle = new circleLine(x, y, x, y);
             secondaryCanvas.drawnObjects.push(circle);
         }
         for (let i = 0; i < 20; i++) {
-            let x = c.getRandomNumber(900, 1200);
-            let y = c.getRandomNumber(50, 500);
+            let x = c.getRandomNumber(1000, 1300);
+            let y = c.getRandomNumber(100, 800);
             let circle = new circleLine(x, y, x, y);
             secondaryCanvas.drawnObjects.push(circle);
         }
@@ -158,7 +158,7 @@ class circleLine {
         ctx.strokeStyle = grad2;
         ctx.fillStyle = grad2;
         ctx.beginPath();
-        ctx.arc(x, y, 0.01 * (1000 - (scaleFactor * 1000)), 0, Math.PI * 2, false);
+        ctx.arc(x, y, (1.5 - (scaleFactor ))* 6, 0, Math.PI * 2, false);
         ctx.fill();
         ctx.stroke();
     }
@@ -217,8 +217,8 @@ let can = document.getElementById("secondaryCanvas");
 can.addEventListener("click", (event) => {
     let x = event.clientX;
     let y = event.clientY;
-    const section = document.getElementsByTagName("secondaryCanvas");
-    let bounds = section[0].getBoundingClientRect();
+    const section = document.getElementsByTagName("section");
+    let bounds = section[1].getBoundingClientRect();
     let realX = x - bounds.left;
     let realY = y - bounds.top;
     secondaryCanvas.addAnimatedObject(realX, realY);

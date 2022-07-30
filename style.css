@@ -817,8 +817,9 @@ h6.pageContentHolder{
     position: relative;
     overflow: hidden;
     z-index: 99;
+    background: #e6f5ff;
 }
-#secondaryCanvas{
+#secondaryCanvas {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
@@ -840,15 +841,17 @@ h6.pageContentHolder{
 .secondaryHeaderContainer {
     width: 1200px;
     height: auto;
+    top: 200px;
     left: 50%;
     transform: translate(-50%, 0);
     text-align: center;
     position: absolute;
 }
 .secondaryHeader {
-    font-size: 120px;
-    color:white; /*#549bcf*/
+    font-size: 200px;
+    color: #549bcf; /*#549bcf*/
     margin: 0;
+    text-shadow: 5px 2px white;
 }
 .scrollButton {
     position: absolute;
@@ -866,7 +869,7 @@ h6.pageContentHolder{
 }
 .down {
     left: 900px;
-    top: 490px;
+    top: 590px;
     transform: translate(-50%, -50%); /* Stimmt so nicht muss immer an den punkt von canvas angepasst werden !!!!!!!!!!!!!!!!*/
 }
 .up {

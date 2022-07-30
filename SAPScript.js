@@ -111,9 +111,10 @@ const SAP = {
     lessenFontSize: function () {
         const header = document.getElementsByClassName("secondaryHeader");
         console.log(header.length);
-        let fontSizeLong = header[0].style.fontSize;
-        let fontSize = fontSizeLong.replaceAll("px", "");
+        var style = window.getComputedStyle(header[0], null).getPropertyValue('font-size');
+        var fontSize = parseFloat(style);
         let originalFontSize = fontSize;
+        console.log(style);
         let lessenFontSizeInterval = setInterval(function () {
             if (fontSize < originalFontSize * 0.5) {
                 clearInterval(lessenFontSizeInterval);
@@ -126,8 +127,7 @@ const SAP = {
     },
     removeOldHeader: function () {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
-        let left = headerContainer[0].offsetTop;
-        let height = headerContainer[0].style.height;
+        let left = headerContainer[0].offsetLeft;
         let removeOldHeaderInterval = setInterval(function () {
             if (left < -600) {
                 clearInterval(removeOldHeaderInterval);
