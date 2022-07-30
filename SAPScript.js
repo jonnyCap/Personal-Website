@@ -5,6 +5,12 @@ const SAP = {
     headerChangeAnimationDone: true,
     moveableDivTimeOut: null,
     finalMoveableDivDestination: 0,
+    resizeStartSection: function () {
+        document.addEventListener('DOMContentLoaded', function () {
+            const element = document.getElementsByClassName("secondaryStartSection");
+            element[0].style.height = window.innerHeight + "px";
+        });
+    },
     setEventListener: function () {
         const navElements = document.getElementsByClassName("secondaryNavList");
         for (let i = 0; i < navElements.length; i++) {
@@ -49,6 +55,9 @@ const SAP = {
                 element.style.top = currentDestination + "px";
             }
         }, 1);
+    },
+    setUpContent: function () {
+        text.setContent(SAP.currentPage);
     },
     setUpMoveableDiv: function () {
         
@@ -142,6 +151,7 @@ const SAP = {
         const header= document.getElementsByClassName("secondaryHeader");
         header[0].innerHTML = text.header[SAP.currentPage];
        //hier muss dann auch noch der Content gewechselt werden! 
+        text.setContent(SAP.currentPage);
         SAP.addNewHeader();
     },
     addNewHeader: function () {
@@ -185,14 +195,24 @@ const text = {
     project2Txt: "",
     project3Txt: "",
     Datenschutzerklearung: "",
-    setContent: function () {
-        //funktioniert so nicht
-        text.content.push(text.aboutMeTxt, text.project1Txt, text.project2Txt, text.project3Txt, text.Datenschutzerklearung);
+    setContent: function (index) {
+        const content = document.getElementsByClassName("secondaryContentContainer");
+        for (let i = 0; i < text.header.length; i++) {
+            if (i == index) {
+                content[i].style.display = "block";
+            }
+            else {
+                content[i].style.display = "none";
+            }
+        }
     }
 };
 
 
 //Eventlistener
+
+SAP.resizeStartSection();
 SAP.setEventListener();
+SAP.setUpContent();
 SAP.setUpMoveableDiv();
 SAP.moveMoveableDiv();
