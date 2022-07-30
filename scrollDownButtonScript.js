@@ -8,13 +8,11 @@ const sDButton = {
         if (sDButton.cooledDown == true) {
             switch (sDButton.clicked) {
                 case true:
-                    console.log("clicked = true");
                     sDButton.scrollDown();
                     sDButton.clicked = false;
                     sDButton.cooledDown = false;
                     break;
                 case false:
-                    console.log("clicked = false");
                     sDButton.scrollUp();
                     sDButton.clicked = true;
                     sDButton.cooledDown = false;
@@ -31,16 +29,12 @@ const sDButton = {
         
     },
     scrollUp: function () {
-        let contentSection = document.getElementsByClassName("secondaryContentSection");
-        contentSection[0].style.marginBottom = "0";
         window.scrollTo(0, 0);
         if (sDButton.disappeared == false) {
             sDButton.disappear();
         }
     },
     scrollDown: function () {
-        let contentSection = document.getElementsByClassName("secondaryContentSection");
-        contentSection[0].style.marginBottom = "150px";
         window.scrollTo(0, 600);
         sDButton.turnButton();
         if (sDButton.appeared == false) {
@@ -53,10 +47,10 @@ const sDButton = {
     },
     appear: function () {
         //set display to block
-        console.log("appearing");
         const elements = document.getElementsByClassName("secondaryContentSection");
         elements[0].style.display = "block";
         elements[0].style.height = "auto";
+        
         //interval
         let opacity = 0;
         sDButton.appeared = true;       
@@ -68,6 +62,7 @@ const sDButton = {
             elements[0].style.opacity = opacity;
             opacity += 0.01;
         }, 10);
+        
     },
     disappear: function () {
         //interval first
@@ -75,6 +70,7 @@ const sDButton = {
         sDButton.disappeared = true;
         let opacity = 1;
         const elements = document.getElementsByClassName("secondaryContentSection");
+        
         let height = elements[0].offsetHeight;
         let interval = setInterval(function () {
             if (opacity <= 0) {
@@ -103,14 +99,24 @@ const sDButton = {
 const buttonCanvas = {
     circleFractures: [],
     downArrows: [],
+    upArrows: [],
     centerX: 100,
     centerY: 75,
-    color: "#549bcf", //"#549bcf"
-    gC: function () {
-        let secondaryCanvas = document.getElementById("clickAnimationCanvas");
-        return secondaryCanvas.getContext("2d");
+    colorUp: "#549bcf",
+    colorDown: "#549bcf",//"#549bcf"
+    gC: function (index) {
+        switch (index) {
+            case 0:
+                let secondaryCanvas = document.getElementById("clickAnimationCanvas");
+                return secondaryCanvas.getContext("2d");
+                break;
+            case 1:
+                let secondaryCanvasUp = document.getElementById("clickAnimationCanvasUp");
+                return secondaryCanvasUp.getContext("2d");
+                break;
+        }
     },
-    createFractures: function () {
+    createFractures: function (index) {
         //circles
         let circle0 = new circleFracture(25, 0.4, 60, 1);
         buttonCanvas.circleFractures.push(circle0);
@@ -130,37 +136,47 @@ const buttonCanvas = {
         let circle4 = new circleFracture(55, 0.7, 40, 1);
         buttonCanvas.circleFractures.push(circle4);
 
-        buttonCanvas.drawArrowDown();
-        buttonCanvas.animate();
+        buttonCanvas.createArrow();
+
     },
-    drawArrowDown: function() {
-        let arrow1 = new downArrow(140);
+    createArrow: function() {
+        let arrow1 = new Arrow(140);
         buttonCanvas.downArrows.push(arrow1);
 
-        let arrow2 = new downArrow(160);
+        let arrow2 = new Arrow(160);
         buttonCanvas.downArrows.push(arrow2);
     },
     animate: function () {
         //clear Canvas
-        let ctx = buttonCanvas.gC();
+        let ctxUp = buttonCanvas.gC(0);
+        let ctxDown = buttonCanvas.gC(1);
         //draw Elements
         let interval = setInterval(function () {
-            ctx.clearRect(0, 0, 300,300);
+            ctxUp.clearRect(0, 0, 200, 250);
+            ctxDown.clearRect(0, 0, 200, 250);
             for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
-                buttonCanvas.circleFractures[i].draw();
+                buttonCanvas.circleFractures[i].draw(0);
             }
             for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
-                buttonCanvas.downArrows[i].draw();
+                buttonCanvas.downArrows[i].draw(0);
+            }
+            for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
+                buttonCanvas.circleFractures[i].draw(1);
+            }
+            for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
+                buttonCanvas.downArrows[i].draw(1);
             }
         }, 10);
     },
-    changeColor(index) {
+    changeColor(color, index) {
         switch (index) {
             case 0:
-                buttonCanvas.color = "white";
+                buttonCanvas.colorUp = color;
+                console.log("changed upp to " + color);
                 break;
             case 1:
-                buttonCanvas.color = "#549bcf";
+                buttonCanvas.colorDown = color;
+                break;
         }
     },
     expandRadius: function () {
@@ -184,6 +200,19 @@ const buttonCanvas = {
         for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
             buttonCanvas.downArrows[i].height -= 30;
         }
+    },
+    finalButtonAdaption(outIN, color, index) {
+        switch (outIN) {
+            case 0:
+                buttonCanvas.expandRadius();
+                buttonCanvas.pushArrowDown();
+                break;
+            case 1:
+                buttonCanvas.diminishRadius();
+                buttonCanvas.pushArrowUp();
+                break;
+        }
+        buttonCanvas.changeColor(color, index);
     }
 }
 
@@ -194,9 +223,8 @@ class circleFracture {
         this.rotation = rotation;
         this.speed = speed;
     }
-    draw() {
-        console.log("drawing");
-        let context = buttonCanvas.gC();
+    draw(index) {
+        let context = buttonCanvas.gC(index);
         //increase Values
         this.rotation += this.speed;
         let rad = this.rotation * Math.PI / 180;
@@ -204,7 +232,14 @@ class circleFracture {
         context.translate(buttonCanvas.centerX, buttonCanvas.centerY);
         context.rotate(rad);
         //draw Element
-        context.strokeStyle = buttonCanvas.color;
+        switch (index) {
+            case 0:
+                context.strokeStyle = buttonCanvas.colorUp;
+                break;
+            case 1:
+                context.strokeStyle = buttonCanvas.colorDown;
+                break;
+        }
 
         context.beginPath();
         context.arc(0, 0, this.radius, 0, this.length * Math.PI, false);
@@ -214,13 +249,20 @@ class circleFracture {
         context.restore();
     }
 }
-class downArrow {
+class Arrow {
     constructor(height) {
         this.height = height;
     }
-    draw() {
-        let ctx = buttonCanvas.gC();
-        ctx.strokeStyle = buttonCanvas.color;
+    draw(index) {
+        let ctx = buttonCanvas.gC(index);
+        switch (index) {
+            case 0:
+                ctx.strokeStyle = buttonCanvas.colorUp;
+                break;
+            case 1:
+                ctx.strokeStyle = buttonCanvas.colorDown;
+                break;
+        }
         ctx.lineWidth = 5;
         ctx.beginPath();
         ctx.lineTo(buttonCanvas.centerX - 15, this.height);
@@ -230,21 +272,31 @@ class downArrow {
     }
 }
 
-
 //buttonListener
-let scrollButton = document.getElementsByClassName("scrollButton");
+const scrollButton = document.getElementsByClassName("scrollButton");
+
 scrollButton[0].addEventListener("click", sDButton.work);
 scrollButton[0].addEventListener("mouseover", function () {
-    buttonCanvas.expandRadius();
-    buttonCanvas.changeColor(0);
-    buttonCanvas.pushArrowDown();
+    buttonCanvas.finalButtonAdaption(0, "white", 0);
 });
 scrollButton[0].addEventListener("mouseout", function () {
-    buttonCanvas.diminishRadius();
-    buttonCanvas.changeColor(1);
-    buttonCanvas.pushArrowUp();
-})
+    buttonCanvas.finalButtonAdaption(1, "#549bcf", 0);
+});
 
-document.addEventListener('DOMContentLoaded', buttonCanvas.createFractures);
+scrollButton[1].addEventListener("click", sDButton.work);
+scrollButton[1].addEventListener("mouseover", function () {
+    buttonCanvas.finalButtonAdaption(0, "lightBlue", 1);
+});
+scrollButton[1].addEventListener("mouseout", function () {
+    buttonCanvas.finalButtonAdaption(1, "#549bcf", 1);
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    buttonCanvas.createFractures(0);
+    buttonCanvas.createFractures(1);
+    buttonCanvas.animate();
+});
+
 
 

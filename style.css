@@ -861,8 +861,9 @@ h6.pageContentHolder{
     transform: translate(-50%, -50%); /* Stimmt so nicht muss immer an den punkt von canvas angepasst werden !!!!!!!!!!!!!!!!*/
 }
 .up {
-    bottom: -100px;
+    bottom: 50px;
     left: 50%;
+    background: lightBlue;
 }
 .imageUp {
     transform: translate(-50%, 0) rotate(-90deg);
@@ -890,14 +891,15 @@ h6.pageContentHolder{
     z-index: 0;
     background: none;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0) rotate(180deg);
     bottom: -25px;
 }
 .secondaryContentSection {
     width: 100%;
     height: auto;
-    margin-top: 50px;
+    
     display: none;
+    overflow: hidden;
 }
 .secondaryContentContainer {
     width: 1000px;
@@ -905,6 +907,8 @@ h6.pageContentHolder{
     margin: auto;
     transition: height 2s all;
     overflow: hidden;
+    padding-top: 50px;
+    padding-bottom: 250px;
 }
 .secondaryContentHeaderContainer{
     width: 100%;
