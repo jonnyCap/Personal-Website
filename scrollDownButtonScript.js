@@ -172,7 +172,6 @@ const buttonCanvas = {
         switch (index) {
             case 0:
                 buttonCanvas.colorUp = color;
-                console.log("changed upp to " + color);
                 break;
             case 1:
                 buttonCanvas.colorDown = color;

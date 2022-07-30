@@ -23,8 +23,6 @@
         if (lineHeight.animating == false) {
             setLineHeight();
         }
-        //on aboutMePage dont display secondary nav
-        setSecondaryNav("none");
     } else {
         navBar[0].classList.remove("sticky");
         navBarContainer[0].classList.remove("sticky");
@@ -40,17 +38,8 @@
         if (lineHeight.animating == false) {
             setLineHeight();
         }
-        //on aboutMePage dont display secondary nav
-        setSecondaryNav("block");
     }
 
-}
-function setSecondaryNav(display) {
-    const secondaryNav = document.getElementsByClassName("secondaryLowerContainer");
-    if (secondaryNav.length > 0) {
-        console.log("yes");
-        secondaryNav[0].style.display = display;
-    }
 }
 function adaptToWidth() {
     const elem = document.getElementsByClassName("navContainer");

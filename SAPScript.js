@@ -1,88 +1,108 @@
 const SAP = {
     currentPage: 0,
-    lastPage: 0,
+    lastPage: null,
     movingDivInterval: null,
     headerChangeAnimationDone: true,
+    moveableDivTimeOut: null,
     finalMoveableDivDestination: 0,
     setEventListener: function () {
         const navElements = document.getElementsByClassName("secondaryNavList");
         for (let i = 0; i < navElements.length; i++) {
             navElements[i].addEventListener("click", function () {
-                if (SAP.headerChangeAnimationDone == true) {
-                    SAP.setPage(i);
-                    SAP.headerChangeAnimationDone = false;
+                if (i != SAP.currentPage) {
+                    if (SAP.headerChangeAnimationDone == true) {
+                        SAP.headerChangeAnimationDone = false;
+                        SAP.setPage(i);
+                    }
                 }
             });
         }
     },
     moveMoveableDiv: function () {
         console.log("function called");
+        SAP.modifyButtonStyles();
         clearInterval(SAP.movingDivInterval);
         const element = document.getElementById("moveableBackground");
         const navElements = document.getElementsByClassName("secondaryNavList");
 
-        let finalDestination = navElements[SAP.finalMoveableDivDestination].offsetLeft;
-        let currentDestination = element.offsetLeft;
+        let finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop + 5;
+        let currentDestination = element.offsetTop;
         let movingVektor;
-        if (finalDestination > currentDestination) {
-            movingVektor = 1;
-        } else {
-            movingVektor = -1;
-        }
-
-        let currentWidth = element.offsetWidth;
-        let finalWidth = navElements[SAP.finalMoveableDivDestination].offsetWidth;
-        let widthVektor;
-        if (currentWidth > finalWidth) {
-            widthVektor = -0.7;
-        } else {
-            widthVektor = 0.7;
-        }
+        
+        // set Color
+        //SAP.colorSelectedNavElement(SAP.finalMoveableDivDestination);
         SAP.movingDivInterval = setInterval(function () {
+            finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop + 5;
+            currentDestination = element.offsetTop;
+            //movingVektor
+            if (finalDestination > currentDestination) {
+                movingVektor = 1;
+            } else {
+                movingVektor = -1;
+            }
+            finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop + 5;
             console.log("moving");
             if (Math.abs(finalDestination - currentDestination) < 1) {
-                //safty first make moveable div as long as navLi element
-                element.style.width = finalWidth + "px";
-
-                clearInterval(SAP.movingDivInterval);
-                if (SAP.finalMoveableDivDestination != SAP.currentPage) {
-                    SAP.finalMoveableDivDestination = SAP.currentPage;
-                    setTimeout(SAP.moveMoveableDiv, 1200);
-                }
-            }
-            currentDestination += movingVektor;
-            element.style.left = currentDestination + "px";
-            console.log(currentWidth);
-            if (Math.abs(currentWidth - finalWidth) > 5) {
-                currentWidth += widthVektor;
-                element.style.width = currentWidth + "px";
+                currentDestination = finalDestination;
             } else {
-                element.style.width = finalWidth + "px";
+                currentDestination += movingVektor;
+                element.style.top = currentDestination + "px";
             }
         }, 1);
     },
     setUpMoveableDiv: function () {
+        
         const secondaryNav = document.getElementsByClassName("secondaryNavList");
         for (let i = 0; i < secondaryNav.length; i++) {
             secondaryNav[i].addEventListener("mouseover", function () {
-                SAP.finalMoveableDivDestination = i;
-                SAP.moveMoveableDiv();
+                if (i != SAP.currentPage) {
+                    if (SAP.headerChangeAnimationDone == true) {
+                        secondaryNav[i].style.marginLeft = "30px";
+                        SAP.finalMoveableDivDestination = i;
+                    }
+                }
             });
         }
-        SAP.moveMoveableDiv();
+        for (let i = 0; i < secondaryNav.length; i++) {
+            secondaryNav[i].addEventListener("mouseout", function () {
+                if (i != SAP.currentPage) {
+                    if (SAP.headerChangeAnimationDone == true) {
+                        secondaryNav[i].style.marginLeft = "20px";
+                        SAP.finalMoveableDivDestination = SAP.currentPage;
+                    }
+                }
+            });
+        }
+       
+    },
+    modifyButtonStyles: function (index) {
+        const navElements = document.getElementsByClassName("secondaryNavList");
+            //modify Styles of buttons
+            navElements[SAP.currentPage].style.background = "white";
+            navElements[SAP.currentPage].style.color = "#549bcf";
+            navElements[SAP.currentPage].style.marginLeft = "30px";
+            if (SAP.lastPage != null) {
+                navElements[SAP.lastPage].style.background = "#549bcf";
+                navElements[SAP.lastPage].style.color = "white";
+                navElements[SAP.lastPage].style.marginLeft = "20px";
+            }     
     },
     setPage: function (index) {
         this.lastPage = this.currentPage;
         this.currentPage = index;
+        SAP.finalMoveableDivDestination = SAP.currentPage;
+        //make it visuall that Button is pressed
+        this.modifyButtonStyles();
+        //animate Properties
         console.log(sDButton.clicked);
         if (sDButton.clicked == false) {
-            console.log("closing content");
+            //Closing Content Section
             sDButton.scrollUp();
             sDButton.clicked = true;
             sDButton.cooledDown = false;
             sDButton.coolDown();
         }
-        setTimeout(this.animatePage, 500);
+        setTimeout(SAP.animatePage, 500);
     },
     animatePage: function () {
         SAP.lessenFontSize();
@@ -106,8 +126,8 @@ const SAP = {
     },
     removeOldHeader: function () {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
-        let left = headerContainer[0].offsetLeft;
-        let width = headerContainer[0].style.width;
+        let left = headerContainer[0].offsetTop;
+        let height = headerContainer[0].style.height;
         let removeOldHeaderInterval = setInterval(function () {
             if (left < -600) {
                 clearInterval(removeOldHeaderInterval);
@@ -172,11 +192,7 @@ const text = {
 };
 
 
-
-
-
 //Eventlistener
 SAP.setEventListener();
 SAP.setUpMoveableDiv();
-
-
+SAP.moveMoveableDiv();
