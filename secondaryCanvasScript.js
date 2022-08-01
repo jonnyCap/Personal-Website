@@ -10,8 +10,8 @@ const c = {
         return Math.random() * (max - min) + min;
     },
     getScaleFactor: function (a, b, c, d) {
-        let gK = Math.abs(a - c);
-        let aK = Math.abs(b - d);
+        let gK = c - a;
+        let aK = d - b;
         let solution = (Math.sqrt((gK * gK) + (aK * aK))) / 1000;
         return solution;
     }
@@ -21,8 +21,8 @@ const secondaryCanvas = {
     drawnObjectsCounter: 30,
     addedObjects: [],
     removedObjects: [],
-    mainX: 1000,
-    mainY: 600,
+    mainX: 1100,
+    mainY: 475,
     rotationVelocity: 0.02,
     createAll: function () {
         // secondaryCanvas.relocateMainPoints();
@@ -32,15 +32,27 @@ const secondaryCanvas = {
             let circle = new circleLine(x, y, x, y);
             secondaryCanvas.drawnObjects.push(circle);
         }
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 8; i++) {
             let x = c.getRandomNumber(500,1000);
-            let y = c.getRandomNumber(100, 800);
+            let y = c.getRandomNumber(100, 400);
             let circle = new circleLine(x, y, x, y);
             secondaryCanvas.drawnObjects.push(circle);
         }
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 8; i++) {
+            let x = c.getRandomNumber(500, 1000);
+            let y = c.getRandomNumber(500, 800);
+            let circle = new circleLine(x, y, x, y);
+            secondaryCanvas.drawnObjects.push(circle);
+        }
+        for (let i = 0; i < 9; i++) {
             let x = c.getRandomNumber(1000, 1300);
-            let y = c.getRandomNumber(100, 800);
+            let y = c.getRandomNumber(100, 400);
+            let circle = new circleLine(x, y, x, y);
+            secondaryCanvas.drawnObjects.push(circle);
+        }
+        for (let i = 0; i < 6; i++) {
+            let x = c.getRandomNumber(1000, 1300);
+            let y = c.getRandomNumber(600, 800);
             let circle = new circleLine(x, y, x, y);
             secondaryCanvas.drawnObjects.push(circle);
         }
@@ -50,7 +62,7 @@ const secondaryCanvas = {
         for (let i = 0; i < secondaryCanvas.drawnObjects.length; i++) {
             for (let j = index; j < secondaryCanvas.drawnObjects.length; j++) {
                 if (i != j) {
-                    if (Math.abs(secondaryCanvas.drawnObjects[i].currentX - secondaryCanvas.drawnObjects[j].currentX) < 70 && Math.abs(secondaryCanvas.drawnObjects[i].currentY - secondaryCanvas.drawnObjects[j].currentY) < 70) {
+                   if (Math.abs(secondaryCanvas.drawnObjects[i].currentX - secondaryCanvas.drawnObjects[j].currentX) < 70 && Math.abs(secondaryCanvas.drawnObjects[i].currentY - secondaryCanvas.drawnObjects[j].currentY) < 70) {
                         secondaryCanvas.drawLine(secondaryCanvas.drawnObjects[i].currentX, secondaryCanvas.drawnObjects[i].currentY, secondaryCanvas.drawnObjects[j].currentX, secondaryCanvas.drawnObjects[j].currentY);
                     }
                 }
@@ -112,7 +124,7 @@ const secondaryCanvas = {
 
         ctx.save();
 
-        ctx.strokeStyle = "#33ccff";
+        ctx.strokeStyle = "#d7e8f4";
         ctx.globalAlpha = opacity;
 
         ctx.beginPath();
@@ -139,9 +151,9 @@ class circleLine {
         //Line
         ctx.lineWidth = 2;
 
-        let grad = ctx.createRadialGradient(secondaryCanvas.mainX, secondaryCanvas.mainY, 300, secondaryCanvas.mainX, secondaryCanvas.mainY, 200);
-        grad.addColorStop(0, "#80ccff");//außen
-        grad.addColorStop(1, "#66c2ff");//innen
+        let grad = ctx.createRadialGradient(secondaryCanvas.mainX, secondaryCanvas.mainY, 200, secondaryCanvas.mainX, secondaryCanvas.mainY, 100);
+        grad.addColorStop(0, "#98c6e6");//außen
+        grad.addColorStop(1, "#98c6e6");//innen
         ctx.strokeStyle = grad;
 
         ctx.beginPath();
@@ -151,14 +163,14 @@ class circleLine {
         ctx.stroke();
 
         //Endcircle
-        let grad2 = ctx.createRadialGradient(secondaryCanvas.mainX, secondaryCanvas.mainY, 300, secondaryCanvas.mainX, secondaryCanvas.mainY, 200);
-        grad2.addColorStop(0, "#4da9ff");//außen
-        grad2.addColorStop(1, "#0080ff"); //innen
+        let grad2 = ctx.createRadialGradient(secondaryCanvas.mainX, secondaryCanvas.mainY, 600, secondaryCanvas.mainX, secondaryCanvas.mainY, 400);
+        grad2.addColorStop(0, "#d6e8f5");//außen #4da9ff
+        grad2.addColorStop(1, "#eaf4fa"); //innen #0080ff
 
         ctx.strokeStyle = grad2;
         ctx.fillStyle = grad2;
         ctx.beginPath();
-        ctx.arc(x, y, (1.5 - (scaleFactor ))* 6, 0, Math.PI * 2, false);
+        ctx.arc(x, y, (3 - (scaleFactor * 2))* 6, 0, Math.PI * 2, false);
         ctx.fill();
         ctx.stroke();
     }
@@ -215,6 +227,7 @@ window.onload = setTimeout(secondaryCanvas.createAll, 100);
 
 let can = document.getElementById("secondaryCanvas");
 can.addEventListener("click", (event) => {
+    console.log("clicked");
     let x = event.clientX;
     let y = event.clientY;
     const section = document.getElementsByTagName("section");

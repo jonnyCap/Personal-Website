@@ -38,7 +38,7 @@ const SAP = {
         // set Color
         //SAP.colorSelectedNavElement(SAP.finalMoveableDivDestination);
         SAP.movingDivInterval = setInterval(function () {
-            finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop + 5;
+            finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop;
             currentDestination = element.offsetTop;
             //movingVektor
             if (finalDestination > currentDestination) {
@@ -46,7 +46,6 @@ const SAP = {
             } else {
                 movingVektor = -1;
             }
-            finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop + 5;
             console.log("moving");
             if (Math.abs(finalDestination - currentDestination) < 1) {
                 currentDestination = finalDestination;
@@ -87,7 +86,7 @@ const SAP = {
     modifyButtonStyles: function (index) {
         const navElements = document.getElementsByClassName("secondaryNavList");
             //modify Styles of buttons
-            navElements[SAP.currentPage].style.background = "white";
+        navElements[SAP.currentPage].style.background = "#e6faff";
             navElements[SAP.currentPage].style.color = "#549bcf";
             navElements[SAP.currentPage].style.marginLeft = "30px";
             if (SAP.lastPage != null) {
@@ -148,16 +147,19 @@ const SAP = {
         }, 10);
     },
     changeInnerHtml: function () {
-        const header= document.getElementsByClassName("secondaryHeader");
+        const header = document.getElementsByClassName("secondaryHeader");
         header[0].innerHTML = text.header[SAP.currentPage];
+
+        const lowerHeader = document.getElementsByClassName("lowerHeader");
+        lowerHeader[0].innerHTML = text.lowerHeader[SAP.currentPage];
        //hier muss dann auch noch der Content gewechselt werden! 
         text.setContent(SAP.currentPage);
         SAP.addNewHeader();
     },
     addNewHeader: function () {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
-        headerContainer[0].style.left = "100%";
-        let percent = 100;
+        headerContainer[0].style.left = "180%";
+        let percent = 180;
         let addNewHeaderInterval = setInterval(function () {
             if (percent <= 50) {
                 clearInterval(addNewHeaderInterval);
@@ -188,7 +190,8 @@ const SAP = {
 };
 
 const text = {
-    header: ["About me", "Project 1", "Project 2", "Project 3", "Datenschutzerklearung"],
+    header: ["About me", "Project 1", "Project 2", "Project 3", "Privacy</br>Policy"],
+    lowerHeader: ["About me", "Project 1", "Project 2", "Project 3", "Datenschutzerklearung"],
     content: [],
     aboutMeTxt: "",
     project1Txt: "",

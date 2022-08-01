@@ -153,7 +153,7 @@ a{
     font-weight: 700;
     justify-content: center;
     line-height: 1.5rem;
-    padding: 6px 10px;
+    padding: 12px 10px;
     position: relative;
     text-align: center;
     text-decoration: none #000000 solid;
@@ -815,7 +815,8 @@ h6.pageContentHolder{
     border-color: lightblue;
     position: fixed;
     left: 0;
-    top:300px;
+    top: 50%;
+    transform: translate(0, -50%);
     z-index: 100;
 }
 
@@ -826,15 +827,22 @@ h6.pageContentHolder{
 }
 .secondaryNavList {
     display: block;
-    width: 30px;
-    margin-bottom: 20px;
+    width: 110px;
+    margin-bottom: 30px;
     color: white;
     background: #549bcf;
-    padding: 10px 40px 10px 20px;
-    height: 40px;
+    padding: 12px 10px;
+    height: 45px;
     margin-left: 20px;
-    box-shadow: 10px 10px 0 rgba(255, 255, 255, 0.4);
+    box-shadow: 10px 10px 0 rgb(230, 250, 255, 0.4);
     font-weight: bold;
+    text-align: left;
+}
+.secondaryNavList:after {
+    border: 1px solid #327db3;
+}
+.twoLiner{
+    padding: 2px 10px;
 }
 .secondaryNavList:hover {
     cursor: pointer;
@@ -843,16 +851,15 @@ h6.pageContentHolder{
 }
 @keyframes change-color {
     to {
-        background: #99ebff;
+        background: #b3f0ff;
     }
 }
 
 #moveableBackground {
     position: absolute;
-    left: 125px;
+    left: 150px;
     width: 50px;
     height: 50px;
-    color: #549bcf;
     z-index: 0;
     opacity: 1;
     border-radius: 2px;
@@ -864,17 +871,17 @@ h6.pageContentHolder{
     background:white;
 }
 .secondaryStartSection {
-    background: lightBlue;
+    background: #88badd; /*#e6f5ff #549bcf*/
     width: 100%;
     position: relative;
     overflow: hidden;
-    z-index: 99;
-    background: #e6f5ff;
 }
 #secondaryCanvas {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
+    z-index: 90;
+    opacity: 0.6;
 }
 .alignStartSectionParts{
     position: relative;
@@ -893,17 +900,25 @@ h6.pageContentHolder{
 .secondaryHeaderContainer {
     width: 1200px;
     height: auto;
-    top: 200px;
-    left: 50%;
+    left: 50%;  
+    top: 350px;
     transform: translate(-50%, 0);
-    text-align: center;
+    text-align: left;
     position: absolute;
+    z-index:92;
 }
 .secondaryHeader {
-    font-size: 200px;
-    color: #549bcf; /*#549bcf*/
+    font-size: 170px;
+    color: white; /*#549bcf*/
     margin: 0;
-    text-shadow: 5px 2px white;
+    padding-left: 50px;
+    text-shadow: 10px 10px #9bc5e4;
+}
+.lowerHeader {
+    color: white;
+    font-size: 25px;
+    padding-left: 50px;
+    margin: 0;
 }
 .scrollButton {
     position: absolute;
@@ -913,15 +928,15 @@ h6.pageContentHolder{
     border-radius: 50%;
     border: none;
     background: white;
-    z-index: 10;
+    z-index: 94;
     transform: translate(-50%, 0);
 }
 .scrollButton:hover{
     cursor: pointer;
 }
 .down {
-    left: 900px;
-    top: 590px;
+    left: 1000px;
+    top: 475px;
     transform: translate(-50%, -50%); /* Stimmt so nicht muss immer an den punkt von canvas angepasst werden !!!!!!!!!!!!!!!!*/
 }
 .up {
@@ -946,7 +961,7 @@ h6.pageContentHolder{
     position: absolute;
     z-index: 0;
     background: none;
-    top: -25px;
+    top: -50px;
     left: 50%;
     transform: translate(-50%, 0);
 }
@@ -956,7 +971,7 @@ h6.pageContentHolder{
     background: none;
     left: 50%;
     transform: translate(-50%, 0) rotate(180deg);
-    bottom: -25px;
+    bottom: -50px;
 }
 .secondaryContentSection {
     width: 100%;

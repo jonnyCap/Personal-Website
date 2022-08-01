@@ -3,7 +3,7 @@
     const navBar = document.getElementsByClassName("navInnerContainer");
     const section = document.getElementsByTagName("section");
     const logoContainer = document.getElementsByClassName("logo");
-    const dropDownButton = document.getElementsByClassName("dropDown");
+    const navButtons = document.getElementsByClassName("button-53");
 
     let sticky = section[0].offsetTop + 1;
 
@@ -16,6 +16,10 @@
 
         //to avoid this little jump the start section gets a margin-top while navbar is sticky
         section[1].style.paddingTop = "50px";
+
+        for (let i = 0; i < 4; i++) {
+            navButtons[i].style.padding = "6px 10px";
+        }
 
         lineHeight.upDownFactor = -1;
         lineHeight.targetPosition = 24;
@@ -30,6 +34,14 @@
         logoContainer[0].style.transition = "";
 
         section[1].style.paddingTop = "0";
+        for (let i = 0; i < 4; i++) {
+            setTimeout(function () { navButtons[i].style.padding = "7px 10px" }, 100);
+            setTimeout(function () { navButtons[i].style.padding = "8px 10px" }, 200);
+            setTimeout(function () { navButtons[i].style.padding = "9px 10px" }, 300);
+            setTimeout(function () { navButtons[i].style.padding = "10px 10px" }, 400);
+            setTimeout(function () { navButtons[i].style.padding = "11px 10px" }, 500);
+            setTimeout(function () { navButtons[i].style.padding = "12px 10px" }, 600);
+        }
 
         lineHeight.upDownFactor = 0.2;
         lineHeight.targetPosition = 60;

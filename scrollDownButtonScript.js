@@ -101,9 +101,9 @@ const buttonCanvas = {
     downArrows: [],
     upArrows: [],
     centerX: 100,
-    centerY: 75,
-    colorUp: "#549bcf",
-    colorDown: "#549bcf",//"#549bcf"
+    centerY: 100,
+    colorUp: "white",
+    colorDown: "lightBlue",//"#549bcf"
     gC: function (index) {
         switch (index) {
             case 0:
@@ -140,10 +140,10 @@ const buttonCanvas = {
 
     },
     createArrow: function() {
-        let arrow1 = new Arrow(140);
+        let arrow1 = new Arrow(165);
         buttonCanvas.downArrows.push(arrow1);
 
-        let arrow2 = new Arrow(160);
+        let arrow2 = new Arrow(185);
         buttonCanvas.downArrows.push(arrow2);
     },
     animate: function () {
@@ -279,7 +279,7 @@ scrollButton[0].addEventListener("mouseover", function () {
     buttonCanvas.finalButtonAdaption(0, "white", 0);
 });
 scrollButton[0].addEventListener("mouseout", function () {
-    buttonCanvas.finalButtonAdaption(1, "#549bcf", 0);
+    buttonCanvas.finalButtonAdaption(1, "white", 0);
 });
 
 scrollButton[1].addEventListener("click", sDButton.work);
@@ -287,7 +287,7 @@ scrollButton[1].addEventListener("mouseover", function () {
     buttonCanvas.finalButtonAdaption(0, "lightBlue", 1);
 });
 scrollButton[1].addEventListener("mouseout", function () {
-    buttonCanvas.finalButtonAdaption(1, "#549bcf", 1);
+    buttonCanvas.finalButtonAdaption(1, "lightBlue", 1);
 });
 
 
