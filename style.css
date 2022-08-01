@@ -34,12 +34,9 @@ section {
     background: white;
     color: #549bcf;
     z-index: 100;
-    transition: height 1s;
-    -moz-transition: height 0.5s linear;
-    -webkit-transition: height 0.5s linear;
-    -o-transition: height 0.5s linear;
     border-color: lightblue;
     border-bottom: solid 2px;
+    transition: height 1.3s ease;
 }
 .navInnerContainer {
     height: 90px;
@@ -48,14 +45,18 @@ section {
     display: flex;
     justify-content: space-between;
     position: relative;
+    transition: height 1.3s ease;
 }
 .sticky {
     height: 50px;
     position: fixed;
     top: 0;
     left: 50%;
-    transform: translate(-50%, 0);
-    transition: height 0.5s;
+    transform: translate(-50%, 0);  
+}
+.stickyOuter {
+    position: fixed;
+    min-height: 50px;
 }
 .center{
     text-align:center;
@@ -67,18 +68,18 @@ section {
     text-align: right;
     width: 100px;
 }
-    .dropDown .dropDownButton {
-        width: 100px;
-        font-size: 16px;
-        text-align: center;
-        border: none;
-        color: #549bcf;
-        background-color: inherit;
-        padding-top: 30px;
-        padding-bottom: 25px;
-        margin: 0;
-        transform: scale(1);
-        transition: height 0.5s ease;
+.dropDown .dropDownButton {
+    width: 100px;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    color: #549bcf;
+    background-color: inherit;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    margin: 0;
+    transform: scale(1);
+    transition: height 1.3s ease;
     }
 .dropDownButtonImage {
     width: 30px;
@@ -94,7 +95,7 @@ section {
     background-color: white;
     min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 1000;
 }
 .dropDownContent a {
     float: none;
@@ -121,27 +122,78 @@ section {
 .logo {
     width: 200px;
     order: 0;
-    transition: width 0.5s;
+    transition: width 1.5s ease;
 }
-.navElements{
+.navElements {
     order: 1;
 }
 ul {
     display: inline-block;
     text-decoration: none;
+    text-align:right;
     line-height: 60px;
+    max-height: 90px;
+    min-width: 600px;
 }
 li.navList {
-    display: inline;
-    width: 50px;
-    padding: 20px;
-    font-weight: bold;
-    font-size: 15px;
+    display: inline-block;
+    margin-right: 10px;
 }
-li.navList:hover {
+a{
+    text-decoration: inherit;
+    color: inherit;
+}
+.button-53 {
+    background-color: #549bcf;
+    border: 0 solid #E5E7EB;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.5rem;
+    padding: 6px 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none #000000 solid;
+    text-decoration-thickness: auto;
+    width: 100%;
+    max-width: 110px;
+    position: relative;
     cursor: pointer;
-    background: #ccf2ff;
+    transform: rotate(-3deg);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
+.big {
+    margin-top: 25px;
+    min-width: 160px;
+    padding: 10px 15px;
+    background: white;
+    color: #549bcf;
+    transform: rotate(-2deg);
+}
+
+    .button-53:focus {
+        outline: 0;
+    }
+
+    .button-53:after {
+        content: '';
+        position: absolute;
+        border: 1px solid #000000;
+        bottom: 4px;
+        left: 4px;
+        width: calc(100% - 1px);
+        height: calc(100% - 1px);
+    }
+
+    .button-53:hover:after {
+        bottom: 2px;
+        left: 2px;
+    }
 
 .imageContainer {
     height: 800px;
@@ -763,7 +815,7 @@ h6.pageContentHolder{
     border-color: lightblue;
     position: fixed;
     left: 0;
-    transform: translate(0, 50%);
+    top:300px;
     z-index: 100;
 }
 

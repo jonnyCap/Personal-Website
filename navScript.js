@@ -3,40 +3,38 @@
     const navBar = document.getElementsByClassName("navInnerContainer");
     const section = document.getElementsByTagName("section");
     const logoContainer = document.getElementsByClassName("logo");
-    const dropDownButton = document.getElementsByClassName("dropDownButton");
+    const dropDownButton = document.getElementsByClassName("dropDown");
 
     let sticky = section[0].offsetTop + 1;
 
     if (window.pageYOffset >= sticky) {
         navBar[0].classList.add("sticky");
-        navBarContainer[0].classList.add("sticky");
-
+        navBarContainer[0].classList.add("stickyOuter");
+        //adapt the transition of logo
+        logoContainer[0].style.transition = "width 0.1s ease";
         logoContainer[0].style.width = "100px";
-        logoContainer[0].style.transition = "width 0.5s";
 
-        //dropDownButton[0].style.paddingTop = "10px";
-        //dropDownButton[0].style.paddingBottom = "6px";
-        
+        //to avoid this little jump the start section gets a margin-top while navbar is sticky
+        section[1].style.paddingTop = "50px";
 
         lineHeight.upDownFactor = -1;
-        lineHeight.targetPosition = 20;
+        lineHeight.targetPosition = 24;
         if (lineHeight.animating == false) {
             setLineHeight();
         }
     } else {
         navBar[0].classList.remove("sticky");
-        navBarContainer[0].classList.remove("sticky");
+        navBarContainer[0].classList.remove("stickyOuter");
 
         logoContainer[0].style.width = "200px";
-        logoContainer[0].style.transition = "width 1s";
+        logoContainer[0].style.transition = "";
 
-        //dropDownButton[0].style.paddingTop = "30px";
-        //dropDownButton[0].style.paddingBottom = "25px";
+        section[1].style.paddingTop = "0";
 
-        lineHeight.upDownFactor = 0.4;
+        lineHeight.upDownFactor = 0.2;
         lineHeight.targetPosition = 60;
         if (lineHeight.animating == false) {
-            setLineHeight();
+                setLineHeight();
         }
     }
 
@@ -61,7 +59,7 @@ const lineHeight = {
 function setLineHeight() {    
     let position = lineHeight.currentUlPosition;
     let interval = setInterval(function () {
-        if (lineHeight.targetPosition == 20) {
+        if (lineHeight.targetPosition == 24) {
             if (position <= lineHeight.targetPosition) {
                 clearInterval(interval);
                 lineHeight.animating = false;
@@ -92,7 +90,7 @@ function adaptLineHeight(position) {
 function setButtonHeightLower() {
     const button = document.getElementsByClassName("dropDownButton");
     if (lineHeight.buttonBottom >= 6) {
-        lineHeight.buttonBottom -= 0.5;
+        lineHeight.buttonBottom -= 2;
         button[0].style.paddingBottom = lineHeight.buttonBottom + "px";
     }
     if (lineHeight.buttonTop >= 10) {
