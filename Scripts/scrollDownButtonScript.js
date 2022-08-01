@@ -35,7 +35,8 @@ const sDButton = {
         }
     },
     scrollDown: function () {
-        window.scrollTo(0, 600);
+        //activate journyCanvas
+        window.scrollTo(0, 800);
         sDButton.turnButton();
         if (sDButton.appeared == false) {
             sDButton.appear();
@@ -66,7 +67,6 @@ const sDButton = {
     },
     disappear: function () {
         //interval first
-        console.log("disappearing");
         sDButton.disappeared = true;
         let opacity = 1;
         const elements = document.getElementsByClassName("secondaryContentSection");

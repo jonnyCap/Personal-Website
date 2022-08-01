@@ -1,6 +1,7 @@
 const SAP = {
     currentPage: 0,
     lastPage: null,
+    savedLastPages: [],
     movingDivInterval: null,
     headerChangeAnimationDone: true,
     moveableDivTimeOut: null,
@@ -25,7 +26,6 @@ const SAP = {
         }
     },
     moveMoveableDiv: function () {
-        console.log("function called");
         SAP.modifyButtonStyles();
         clearInterval(SAP.movingDivInterval);
         const element = document.getElementById("moveableBackground");
@@ -34,8 +34,7 @@ const SAP = {
         let finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop + 5;
         let currentDestination = element.offsetTop;
         let movingVektor;
-        
-        // set Color
+
         //SAP.colorSelectedNavElement(SAP.finalMoveableDivDestination);
         SAP.movingDivInterval = setInterval(function () {
             finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop;
@@ -46,7 +45,6 @@ const SAP = {
             } else {
                 movingVektor = -1;
             }
-            console.log("moving");
             if (Math.abs(finalDestination - currentDestination) < 1) {
                 currentDestination = finalDestination;
             } else {
@@ -56,7 +54,16 @@ const SAP = {
         }, 1);
     },
     setUpContent: function () {
-        text.setContent(SAP.currentPage);
+        SAP.changeContent();
+        //Change inner Html Content
+        const header = document.getElementsByClassName("secondaryHeader");
+        header[0].innerHTML = text.header[SAP.currentPage];
+
+        const lowerHeader = document.getElementsByClassName("lowerHeader");
+        lowerHeader[0].innerHTML = text.lowerHeader[SAP.currentPage];
+        //Set final Destination for movable Div
+        SAP.finalMoveableDivDestination = SAP.currentPage;
+        //set Canvas
     },
     setUpMoveableDiv: function () {
         
@@ -83,10 +90,12 @@ const SAP = {
         }
        
     },
-    modifyButtonStyles: function (index) {
+    modifyButtonStyles: function () {
         const navElements = document.getElementsByClassName("secondaryNavList");
             //modify Styles of buttons
-        navElements[SAP.currentPage].style.background = "#e6faff";
+        console.log("button " + SAP.currentPage + "is currently on");
+
+            navElements[SAP.currentPage].style.background = "#e6faff";
             navElements[SAP.currentPage].style.color = "#549bcf";
             navElements[SAP.currentPage].style.marginLeft = "30px";
             if (SAP.lastPage != null) {
@@ -96,13 +105,16 @@ const SAP = {
             }     
     },
     setPage: function (index) {
+        //save currentPage in local Browser
+        browserStorage.savePage(index);
+        //save last page so you can go back
         this.lastPage = this.currentPage;
+        this.savedLastPages.push(this.lastPage);
         this.currentPage = index;
         SAP.finalMoveableDivDestination = SAP.currentPage;
         //make it visuall that Button is pressed
         this.modifyButtonStyles();
         //animate Properties
-        console.log(sDButton.clicked);
         if (sDButton.clicked == false) {
             //Closing Content Section
             sDButton.scrollUp();
@@ -113,16 +125,19 @@ const SAP = {
         setTimeout(SAP.animatePage, 500);
     },
     animatePage: function () {
+        SAP.changeContent();
         SAP.lessenFontSize();
         //chain Functions
     },
+    changeContent: function () {
+        //hier muss dann auch noch der Content gewechselt werden! 
+        text.setContent(SAP.currentPage);
+    },
     lessenFontSize: function () {
         const header = document.getElementsByClassName("secondaryHeader");
-        console.log(header.length);
         var style = window.getComputedStyle(header[0], null).getPropertyValue('font-size');
         var fontSize = parseFloat(style);
         let originalFontSize = fontSize;
-        console.log(style);
         let lessenFontSizeInterval = setInterval(function () {
             if (fontSize < originalFontSize * 0.5) {
                 clearInterval(lessenFontSizeInterval);
@@ -152,8 +167,6 @@ const SAP = {
 
         const lowerHeader = document.getElementsByClassName("lowerHeader");
         lowerHeader[0].innerHTML = text.lowerHeader[SAP.currentPage];
-       //hier muss dann auch noch der Content gewechselt werden! 
-        text.setContent(SAP.currentPage);
         SAP.addNewHeader();
     },
     addNewHeader: function () {
@@ -172,7 +185,6 @@ const SAP = {
     },
     enlargeFontSize: function () {
         const header = document.getElementsByClassName("secondaryHeader");
-        console.log(header.length);
         let fontSizeLong = header[0].style.fontSize;
         let fontSize = fontSizeLong.replaceAll("px", "");
         let originalFontSize = fontSize;
@@ -190,18 +202,15 @@ const SAP = {
 };
 
 const text = {
-    header: ["About me", "Project 1", "Project 2", "Project 3", "Privacy</br>Policy"],
-    lowerHeader: ["About me", "Project 1", "Project 2", "Project 3", "Datenschutzerklearung"],
-    content: [],
-    aboutMeTxt: "",
-    project1Txt: "",
-    project2Txt: "",
-    project3Txt: "",
+    header: ["About me", "Team-</br>Selector App", "Personal</br>Website", "Documents","Contact", "Privacy</br>Policy"],
+    lowerHeader: ["My Experience so far...", "Android Studio, Team-Selector", "My own Webpage with pure HTML, CSS and Javascript", "CV and Higher School Certificate","Feel free to contact me all the time!", "Everything about your Data!"],
     Datenschutzerklearung: "",
     setContent: function (index) {
         const content = document.getElementsByClassName("secondaryContentContainer");
         for (let i = 0; i < text.header.length; i++) {
             if (i == index) {
+                console.log("index is" + index);
+                journyCanvas.chooseCanvas(index);
                 content[i].style.display = "block";
             }
             else {
@@ -210,12 +219,44 @@ const text = {
         }
     }
 };
-
+const browserStorage = {
+    savedPage: 0,
+    savePage: function (currentPage) {
+        sessionStorage.setItem('currentPage', currentPage);
+        console.log(sessionStorage.getItem('currentPage'));
+    },
+    setPage: function () {
+        SAP.currentPage = sessionStorage.getItem('currentPage');
+        console.log(sessionStorage.getItem('currentPage'));
+    }
+};
 
 //Eventlistener
+addEventListener('popstate', (event) => {
+    //not working so far
+    let x = SAP.savedLastPages.length;
+    if (x > 0) {
+        preventDefault();
+    }   
+    let currentPage = SAP.savedLastPages[x - 1];
+    SAP.currentPage = currentPage;
+    browserStorage.savedPage(currentPage);
+    //do animation
+    SAP.animatePage();
+});
 
-SAP.resizeStartSection();
-SAP.setEventListener();
-SAP.setUpContent();
-SAP.setUpMoveableDiv();
-SAP.moveMoveableDiv();
+document.addEventListener('DOMContentLoaded', function () {
+    //Übergangslösung bis alle Links funktionieren und dann die "currentPage" angeben
+    //browserStorage.savedPage(0);
+
+    //Show right content
+    browserStorage.setPage();
+    SAP.setUpContent();
+
+    //Do the rest
+    SAP.resizeStartSection();
+    SAP.setEventListener();
+    SAP.setUpMoveableDiv();
+    SAP.moveMoveableDiv();
+    SAP.modifyButtonStyles(); 
+});

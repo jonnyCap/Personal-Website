@@ -176,29 +176,29 @@ a{
     transform: rotate(-2deg);
 }
 
-    .button-53:focus {
-        outline: 0;
-    }
+.button-53:focus {
+    outline: 0;
+}
 
-    .button-53:after {
-        content: '';
-        position: absolute;
-        border: 1px solid #000000;
-        bottom: 4px;
-        left: 4px;
-        width: calc(100% - 1px);
-        height: calc(100% - 1px);
-    }
+.button-53:after {
+    content: '';
+    position: absolute;
+    border: 1px solid #000000;
+    bottom: 4px;
+    left: 4px;
+     width: calc(100% - 1px);
+    height: calc(100% - 1px);
+}
 
-    .button-53:hover:after {
-        bottom: 2px;
-        left: 2px;
-    }
+.button-53:hover:after {
+    bottom: 2px;
+    left: 2px;
+}
 
 .imageContainer {
     height: 800px;
     position: relative;
-    background-image: url("blueBackground.jpg");
+    background-image: url("Bilder/blueBackground.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -824,6 +824,8 @@ h6.pageContentHolder{
     padding: 0;
     margin: 0;
     line-height: 18px;
+    min-width: 0;
+    height: auto;
 }
 .secondaryNavList {
     display: block;
@@ -1000,10 +1002,25 @@ h6.pageContentHolder{
     text-decoration: underline lightBlue;
     color: #549bcf;
     margin: 0;
-    margin-left: 10px;
+}
+.secondaryContentLowerHeader {
+    font-size: 20px;
+    color: #549bcf;
+    margin: 10px 0px;
 }
 .secondaryContentText {
     font-size: 22px;
     color: #549bcf;
+    margin-top: 30px;
+}
+.secondaryContentTextHeader{
+
+}
+.withJournyCanvas {
+    width: 900px;
+    float: right;  
+}
+.journyCanvas {
+    margin-top: 30px;
 }
 

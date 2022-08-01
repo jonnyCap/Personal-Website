@@ -12,7 +12,7 @@
         <div class="navContainer">
             <div class="navInnerContainer">
                 <div class="logo">
-                    <image class="logoImage" src="logo.png"></image>
+                    <image class="logoImage" src="Bilder\logo.png"></image>
                 </div>
                 <div class="navElements">
                     <ul>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="dropDown">
                     <button class="dropDownButton">
-                        <image class="dropDownButtonImage" src="dropDownButton.png"></image>
+                        <image class="dropDownButtonImage" src="Bilder\dropDownButton.png"></image>
                     </button>
                     <div class="dropDownContent">
                         <a href="mainPage.html">Home</a>
@@ -36,31 +36,32 @@
             </div>
         </div>
         <div class="secondaryLowerContainer">
-                <ul class="secondaryUl">
-                    <li class="secondaryNavList button-53">About me</li>
-                    <li class="secondaryNavList button-53">Project 1</li>
-                    <li class="secondaryNavList button-53">Project 2</li>
-                    <li class="secondaryNavList button-53">Project 3</li>
-                    <li class="secondaryNavList button-53 twoLiner">Privacy<br />Policy</li>
-                </ul>
+            <ul class="secondaryUl">
+                <li class="secondaryNavList button-53">About me</li>
+                <li class="secondaryNavList button-53 twoLiner">Team-Selector App</li>
+                <li class="secondaryNavList button-53 twoLiner">Personal</br>Website</li>
+                <li class="secondaryNavList button-53">Documents</li>
+                <li class="secondaryNavList button-53">Contact</li>
+                <li class="secondaryNavList button-53 twoLiner">Privacy<br />Policy</li>
+            </ul>
                 <div id="moveableBackground">
-                    <image src="scrollDownButtonImage.png" width="50px" height="auto"></image>
+                    <image src="Bilder\scrollDownButtonImage.png" width="50px" height="auto"></image>
                 </div>
         </div>
     </section>
-    <script src="navScript.js"></script>
+    <script src="Scripts\navScript.js"></script>
     <section>
         <div class="secondaryBackgroundContainer">
             <div class="secondaryStartSection">
                 <canvas id="secondaryCanvas" width="1400px" height="900px"></canvas><!--Background Canvas-->
-                <script src="secondaryCanvasScript.js"></script>
+                <script src="Scripts\secondaryCanvasScript.js"></script>
                 <div class="alignStartSectionParts">
                     <div class="secondaryHeaderContainer">
                         <h1 class="secondaryHeader">About me</h1>
-                        <h2 class="lowerHeader"> - My traits, Resume and CV</h2>
+                        <h2 class="lowerHeader">- My traits, Resume and CV</h2>
                     </div>
                     <button class="scrollButton down">
-                        <image class="scrollDownButtonImage imageDown" src="scrollDownButtonImage.png" width="40%" height="auto"></image>
+                        <image class="scrollDownButtonImage imageDown" src="Bilder\scrollDownButtonImage.png" width="40%" height="auto"></image>
                         <canvas id="clickAnimationCanvas" width="200px" height="250px"></canvas>
                     </button>
                 </div>
@@ -69,30 +70,88 @@
                 <!--ContentContainer 1-->
                 <div class="secondaryContentContainer">
                     <div class="secondaryContentHeaderContainer">
-                        <h1 class="secondaryContentHeader">About me</h1>
+                        <h1 class="secondaryContentHeader">Hello!</h1>
+                        <h2 class="secondaryContentLowerHeader">
+                            I'm Jonathan, a future Softwaredeveloper!</br>
+                            I want to show you my rather short Coding journy so far and tell you a bit about my self...
+                        </h2>
                     </div>
-                    <div class="secondaryContentText">
+                    <!-- canvas index = canvas0-->
+                    <canvas class="journyCanvas" id="canvas0" width="100px" height="1200px"></canvas>
+                    <div class="secondaryContentText withJournyCanvas">
+                        <h3 class="secondaryContentTextHeader">Highscool</h3>
                         <p>
-                            As you might know my Name is Jonathan Maier and I am a Software Developer. Im born on 18th of November in 2002, thus almost 20 years old and currently studying
-                            "Software Engeneering and Managment" at the Technical University Graz.<br /><br /> I attented an heavily sience based High School where contradictly my interst in Software Engeeniring was enlightend.
-                            However, my School did not have great possibilities to get into that topic, so im proceeding to learn about it since I am 15. I quickly realised how incomprehensible large the field of Computer Science was
-                            and I had a truly tough time to get into it.<br /><br /> As the years passed however, I was lucky to meet awesome People who shared their interests and knowledge with me,
-                            so I could get a hunch of what was going on in the amzing Aria of Computer Science. Till this day I continue to learn und try new Things. Im still at the beginning of my journy!
+                            I originally attended a high school specialising in natural sciences based in Austria, Graz.
+                            Fortunatly we had a few opportunity adjust our school timetable and from the 5th grade on I could focus on Informatics.
+                            We could choose specific courses, allthough some were not voluntary. However, that's were i got my
+                            first insights into Webdevelopment, ECDL, Game-Programming, Network-technologie as well as Software- and Hardware
+                            technologie.
+                        </p>
+                        <h3 class="secondaryContentTextHeader">Transition to Armed Forces</h3>
+                        <p>
+                            I apllied for a special IT-Eduction at the Armed Forces where only very few people got accepted.
+                            Thankfully i got accepted but since i head only little experience I felt like I had to prepare myself.
+                            In the course of my preperation I wanted to start learning how to code properly. So far I only programmed in
+                            a Programming-Language called "Programming" which is a JavaScript-API and wanted try out something quit different.
+                            So I got into Java, learned basic as well as advanced concepts and from there on I just programmed as much as
+                            possible to improve my Skills.
+                        </p>
+                        <h3 class="secondaryContentTextHeader">Austrian Armed Forces</h3>
+                        <p>
+                            With my solid 19 years I had to join the Austrian Armed Forces to complete my basic military service.
+                            As mentioned before, I was selected to be one of the few austrian "Cyber-Soldiers". At first we got special education
+                            which took 2 Month. During this time we firstly learned a lot about the military, its morals, traditions and so on. And secondly
+                            we got insights into subjects like Cryptography or the safe-military-network. Afterwards we were spread all over Austria again und
+                            worked practically for 4 Month. In that time I worked a lot on Websites and Databases, which helped me a lot on improving
+                            my Javascript and SQL Skills.
+
+                        </p>
+                        <h3 class="secondaryContentTextHeader">Transition to studying</h3>
+                        <p>
+                            Now I had a really good grasp of what I want to do in the future and where to start if I wanted to make
+                            further progress. I started a couple projects, like my first personal App or this Website. Not the mention the
+                            many ones who I did not finish or make public. I also was were interested in learning a lower level programing
+                            language like C++ or C, but since I was also doing an internship at the time I could only scratch on the surface of
+                            these subjects.
+                        </p>
+                        <h3 class="secondaryContentTextHeader">Softwareengineering and Managment - Bachelor Degree</h3>
+                        <p>
+                            My studies have not started yet but I cant wait for it. The last years I have invested a lot
+                            of time to learn by myself and hopefully guided lessons and a mentor will help my to answer the questions i could not answer myself.
+                            I also made an apllication for an internship at my university but i havent got an awnswer yet, so wish me luck!
                         </p>
                     </div>
                 </div>
                 <!--ContentContainer 1-->
                 <div class="secondaryContentContainer">
                     <div class="secondaryContentHeaderContainer">
-                        <h1 class="secondaryContentHeader">Project 1</h1>
+                        <h1 class="secondaryContentHeader">Team Selector</h1>
+                        <h2 class="secondaryContentLowerHeader">
+                            I created an App with Android Studio and Java,</br> which allows you to create fair Teams!
+                        </h2>
                     </div>
-                    <div class="secondaryContentText">
+                    <!-- canvas index = canvas1-->
+                    <canvas class="journyCanvas" id="canvas1" width="100px" height="1200px"></canvas>
+                    <div class="secondaryContentText withJournyCanvas">
+                        <h3 class="secondaryContentTextHeader">Project Idea</h3>
                         <p>
-                            As you might know my Name is Jonathan Maier and I am a Software Developer. Im born on 18th of November in 2002, thus almost 20 years old and currently studying
-                            "Software Engeneering and Managment" at the Technical University Graz.<br /><br /> I attented an heavily sience based High School where contradictly my interst in Software Engeeniring was enlightend.
-                            However, my School did not have great possibilities to get into that topic, so im proceeding to learn about it since I am 15. I quickly realised how incomprehensible large the field of Computer Science was
-                            and I had a truly tough time to get into it.<br /><br /> As the years passed however, I was lucky to meet awesome People who shared their interests and knowledge with me,
-                            so I could get a hunch of what was going on in the amzing Aria of Computer Science. Till this day I continue to learn und try new Things. Im still at the beginning of my journy!
+
+                        </p>
+                        <h3 class="secondaryContentTextHeader">Planning</h3>
+                        <p>
+
+                        </p>
+                        <h3 class="secondaryContentTextHeader">Learning Android Studio</h3>
+                        <p>
+
+                        </p>
+                        <h3 class="secondaryContentTextHeader">Finishing the App</h3>
+                        <p>
+
+                        </p>
+                        <h3 class="secondaryContentTextHeader">Publishing it in Google Store</h3>
+                        <p>
+
                         </p>
                     </div>
                 </div>
@@ -141,11 +200,27 @@
                         </p>
                     </div>
                 </div>
+                <!--ContentContainer 1-->
+                <div class="secondaryContentContainer">
+                    <div class="secondaryContentHeaderContainer">
+                        <h1 class="secondaryContentHeader">Privacy Policy</h1>
+                    </div>
+                    <div class="secondaryContentText">
+                        <p>
+                            As you might know my Name is Jonathan Maier and I am a Software Developer. Im born on 18th of November in 2002, thus almost 20 years old and currently studying
+                            "Software Engeneering and Managment" at the Technical University Graz.<br /><br /> I attented an heavily sience based High School where contradictly my interst in Software Engeeniring was enlightend.
+                            However, my School did not have great possibilities to get into that topic, so im proceeding to learn about it since I am 15. I quickly realised how incomprehensible large the field of Computer Science was
+                            and I had a truly tough time to get into it.<br /><br /> As the years passed however, I was lucky to meet awesome People who shared their interests and knowledge with me,
+                            so I could get a hunch of what was going on in the amzing Aria of Computer Science. Till this day I continue to learn und try new Things. Im still at the beginning of my journy!
+                        </p>
+                    </div>
+                </div>
                 <button class="scrollButton up">
-                    <image class="scrollDownButtonImage imageUp" src="scrollDownButtonImage.png" width="40%" height="auto"></image>
+                    <image class="scrollDownButtonImage imageUp" src="Bilder\scrollDownButtonImage.png" width="40%" height="auto"></image>
                     <canvas id="clickAnimationCanvasUp" width="200px" height="250px"></canvas>
                 </button>
-                <script src="scrollDownButtonScript.js"></script>
+                <script src="Scripts\scrollDownButtonScript.js"></script>
+                <script src="Scripts\journyCanvasScript.js"></script> <!--main Function in this script is getting called in scrollDownButtonScript-->
             </div>
         </div>
     </section>
@@ -184,6 +259,6 @@
             </div>
         </footer>
     </section>
-    <script src="SAPScript.js"></script>
+    <script src="Scripts\SAPScript.js"></script>
 </body>
 </html>
