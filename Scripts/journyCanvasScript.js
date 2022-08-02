@@ -11,6 +11,15 @@ const journyCanvas = {
                 break;
             case 1:
                 secondaryCanvas = document.getElementById("canvas1");
+                break;
+            case 2:
+                secondaryCanvas = document.getElementById("canvas2");
+                break;
+            case 3:
+                secondaryCanvas = document.getElementById("canvas3");
+                break;
+            default:
+                break;
         }
         return secondaryCanvas.getContext("2d");
     },
@@ -19,22 +28,39 @@ const journyCanvas = {
         switch (index) {
             case 0:
                 journyCanvas.setUpJournyCanvas();
-                console.log("journy");
                 break;
             case 1:
                 journyCanvas.setUpAppCanvas();
-                console.log("app");
+                break;
+            case 2:
+                journyCanvas.setUpWebsiteCanvas();
+                break;
+            case 3:
+                journyCanvas.setUpMiniGamesCanvas();
+                break;
             case "0":
                 journyCanvas.setUpJournyCanvas();
-                console.log("journy");
                 break;
             case "1":
                 journyCanvas.setUpAppCanvas();
-                console.log("app");
+                break;
+            case "2":
+                journyCanvas.setUpWebsiteCanvas();
+                break;
+            case "3":
+                journyCanvas.setUpMiniGamesCanvas();
+                break;
             default:
                 console.log("falscher INdex!!!!!!!!!!!");
                 break;
         }
+    },
+    setUpJournyCanvas: function () {
+        journyCanvas.drawCircleLine(0, journyCanvas.startX, journyCanvas.startY, 260);
+        journyCanvas.drawCircleLine(0, journyCanvas.startX, 290, 285);
+        journyCanvas.drawCircleLine(0, journyCanvas.startX, 575, 310);
+        journyCanvas.drawCircleLine(0, journyCanvas.startX, 885, 260);
+        journyCanvas.drawCircleLine(0, journyCanvas.startX, 1145, 0);
     },
     setUpAppCanvas: function () {
         journyCanvas.drawCircleLine(1, journyCanvas.startX, journyCanvas.startY, 260);
@@ -43,13 +69,19 @@ const journyCanvas = {
         journyCanvas.drawCircleLine(1, journyCanvas.startX, 885, 260);
         journyCanvas.drawCircleLine(1, journyCanvas.startX, 1145, 0);
     },
-    setUpJournyCanvas: function () {
-        journyCanvas.drawCircleLine(0,journyCanvas.startX, journyCanvas.startY, 260);
-        journyCanvas.drawCircleLine(0,journyCanvas.startX, 290, 285);
-        journyCanvas.drawCircleLine(0,journyCanvas.startX, 575, 310);
-        journyCanvas.drawCircleLine(0,journyCanvas.startX, 885, 260);
-        journyCanvas.drawCircleLine(0,journyCanvas.startX, 1145, 0);
-
+    setUpWebsiteCanvas: function () {
+        journyCanvas.drawCircleLine(2, journyCanvas.startX, journyCanvas.startY, 260);
+        journyCanvas.drawCircleLine(2, journyCanvas.startX, 290, 285);
+        journyCanvas.drawCircleLine(2, journyCanvas.startX, 575, 310);
+        journyCanvas.drawCircleLine(2, journyCanvas.startX, 885, 260);
+        journyCanvas.drawCircleLine(2, journyCanvas.startX, 1145, 0);
+    },
+    setUpMiniGamesCanvas: function () {
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, journyCanvas.startY, 260);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 290, 285);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 575, 310);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 885, 260);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 1145, 0);
     },
     //function gets called when scrollDownButton is called to push performance
     drawCircleLine: function (index,x, y, length) {
@@ -70,7 +102,8 @@ const journyCanvas = {
             ctx.stroke();
         }
     },
-    drawActiveCircle: function () {
+    drawActiveCircle: function (index) {
+
 
     }
 }

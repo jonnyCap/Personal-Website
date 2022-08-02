@@ -926,6 +926,7 @@ h6.pageContentHolder{
     position: absolute;
     width: 100px;
     height: 100px;
+    transform-origin: center 50px;
     font-size: 30px;
     border-radius: 50%;
     border: none;
@@ -978,7 +979,6 @@ h6.pageContentHolder{
 .secondaryContentSection {
     width: 100%;
     height: auto;
-    
     display: none;
     overflow: hidden;
 }
@@ -1023,4 +1023,40 @@ h6.pageContentHolder{
 .journyCanvas {
     margin-top: 30px;
 }
+#emailInput {
+    height: 30px;
+    width: 800px;
+    display: block;
+    background: #d7e8f4;
+    border: 4px solid #549bcf;
+    border-radius: 4px
+}
+#textInput {
+    width: 800px;
+    height: 300px;
+    background: #d7e8f4;
+    border: 4px solid #549bcf;
+    border-radius: 4px;
+    outline: none;
+    resize: none;
+    color: #549bcf;
+    font-size: 20px;
+    font-weight: 400;
+}
+#emailSendButtonContainer{
+    position: absolute;
+    right: 300px;
+    top: 1400px;
+    width: 100px;
+    height: 100px;
+}
+#emailSendButton {
+    font-size: 30px;
+    transform: rotate(3deg);
+    max-width: 200px;
+    padding: 30px 70px;
+    box-shadow: 10px 10px lightBlue;
+}
+
+
 

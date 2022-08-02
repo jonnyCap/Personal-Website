@@ -30,21 +30,47 @@ const sDButton = {
     },
     scrollUp: function () {
         window.scrollTo(0, 0);
+        sDButton.turnButton(0, -50);
+
         if (sDButton.disappeared == false) {
             sDButton.disappear();
         }
     },
     scrollDown: function () {
-        //activate journyCanvas
         window.scrollTo(0, 800);
-        sDButton.turnButton();
+        sDButton.turnButton(180, 50);
         if (sDButton.appeared == false) {
             sDButton.appear();
         }
     },
-    turnButton: function () {
+    turnButton: function (rotation, translation,) {
         let button = document.getElementsByClassName("scrollButton");
-        button[0].style.transform = "translate(180 %, 0)";
+        let currentRotation, currentTranslation;
+        if (rotation == 0) {
+            currentRotation = 180;
+            currentTranslation = 50;
+        } else {
+            currentRotation = 0;
+            currentTranslation = -50;
+        }
+        let rotationInterval = setInterval(function () {
+            if (rotation == 180 && currentRotation >= rotation) {
+                clearInterval(rotationInterval);
+                button[0].style.transform = "rotate(" + rotation + "deg) translate(" + translation + "%," + translation + "%)";
+            }else if (rotation == 0 && currentRotation <= rotation) {
+                clearInterval(rotationInterval);
+                button[0].style.transform = "rotate(" + rotation + "deg) translate(" + translation + "%," + translation + "%)";
+            }else {
+                button[0].style.transform = "rotate(" + currentRotation + "deg) translate(" + currentTranslation + "%," + currentTranslation + "%)";
+                if (rotation == 180) {
+                    currentTranslation+=8;
+                    currentRotation += 12.8;
+                } else {
+                    currentTranslation-=8;
+                    currentRotation -= 12.8;
+                }
+            }
+        }, 10);
     },
     appear: function () {
         //set display to block
@@ -73,10 +99,10 @@ const sDButton = {
         
         let height = elements[0].offsetHeight;
         let interval = setInterval(function () {
-            if (opacity <= 0) {
+            if (opacity <= 0 && height <= 0) {
                 clearInterval(interval);
+                elements[0].style.display = "none";
                 sDButton.disappeared = false;
-                
             }
             elements[0].style.height = height + "px";
             elements[0].style.opacity = opacity;       
@@ -85,7 +111,7 @@ const sDButton = {
                 height -= 20;
             } else {
                 height = 0;
-                elements[0].style.display = "none"
+                elements[0].style.display = "none";
             }
             
         }, 10);

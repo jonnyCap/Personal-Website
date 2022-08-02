@@ -64,6 +64,16 @@ const SAP = {
         //Set final Destination for movable Div
         SAP.finalMoveableDivDestination = SAP.currentPage;
         //set Canvas
+
+        //set Header Height
+        const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
+        if (text.header[SAP.currentPage].includes("</br>")) {
+            headerContainer[0].style.top = "250px";
+            headerContainer[0].style.lineHeight = "160px";
+        } else {
+            headerContainer[0].style.top = "350px";
+            headerContainer[0].style.lineHeight = "";
+        }
     },
     setUpMoveableDiv: function () {
         
@@ -167,6 +177,17 @@ const SAP = {
 
         const lowerHeader = document.getElementsByClassName("lowerHeader");
         lowerHeader[0].innerHTML = text.lowerHeader[SAP.currentPage];
+        SAP.setNewTop();
+    },
+    setNewTop: function () {
+        const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
+        if (text.header[SAP.currentPage].includes("</br>")) {
+            headerContainer[0].style.top = "250px";
+            headerContainer[0].style.lineHeight = "160px";
+        } else {
+            headerContainer[0].style.top = "350px";
+            headerContainer[0].style.lineHeight = "";
+        }
         SAP.addNewHeader();
     },
     addNewHeader: function () {
@@ -202,8 +223,8 @@ const SAP = {
 };
 
 const text = {
-    header: ["About me", "Team-</br>Selector App", "Personal</br>Website", "Documents","Contact", "Privacy</br>Policy"],
-    lowerHeader: ["My Experience so far...", "Android Studio, Team-Selector", "My own Webpage with pure HTML, CSS and Javascript", "CV and Higher School Certificate","Feel free to contact me all the time!", "Everything about your Data!"],
+    header: ["About me", "TeamCreator</br>App", "Personal</br>Website", "JS Mini-</br>Games","Contact", "Privacy</br>Policy"],
+    lowerHeader: ["My Experience so far...", "Android Studio und Java", "My own Webpage with pure HTML, CSS and Javascript", "Small crappy Games, no one wants to play...","Feel free to contact me all the time!", "Everything about your Data!"],
     Datenschutzerklearung: "",
     setContent: function (index) {
         const content = document.getElementsByClassName("secondaryContentContainer");
@@ -226,8 +247,11 @@ const browserStorage = {
         console.log(sessionStorage.getItem('currentPage'));
     },
     setPage: function () {
+        if (sessionStorage.getItem('currentPage') == undefined) {
+            sessionStorage.setItem('currentPage', 0);
+        }
         SAP.currentPage = sessionStorage.getItem('currentPage');
-        console.log(sessionStorage.getItem('currentPage'));
+        
     }
 };
 
