@@ -68,7 +68,7 @@ const SAP = {
         //set Header Height
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
         if (text.header[SAP.currentPage].includes("</br>")) {
-            headerContainer[0].style.top = "250px";
+            headerContainer[0].style.top = "230px";
             headerContainer[0].style.lineHeight = "160px";
         } else {
             headerContainer[0].style.top = "350px";
@@ -161,12 +161,14 @@ const SAP = {
     removeOldHeader: function () {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
         let left = headerContainer[0].offsetLeft;
+        let acceleration = 1;
         let removeOldHeaderInterval = setInterval(function () {
             if (left < -600) {
                 clearInterval(removeOldHeaderInterval);
                 SAP.changeInnerHtml();
             } else {
-                left -= 10;
+                left -= 10 + acceleration;
+                acceleration++;
                 headerContainer[0].style.left = left + "px";
             }
         }, 10);
@@ -182,7 +184,7 @@ const SAP = {
     setNewTop: function () {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
         if (text.header[SAP.currentPage].includes("</br>")) {
-            headerContainer[0].style.top = "250px";
+            headerContainer[0].style.top = "230px";
             headerContainer[0].style.lineHeight = "160px";
         } else {
             headerContainer[0].style.top = "350px";
@@ -194,12 +196,16 @@ const SAP = {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
         headerContainer[0].style.left = "180%";
         let percent = 180;
+        let acceleration = 2;
         let addNewHeaderInterval = setInterval(function () {
             if (percent <= 50) {
                 clearInterval(addNewHeaderInterval);
                 SAP.enlargeFontSize();
             } else {
-                percent--;
+                percent -= 1 + acceleration;
+                if (acceleration > 0) {
+                    acceleration-= 0.03;
+                }
                 headerContainer[0].style.left = percent + "%";
             }
         }, 10);

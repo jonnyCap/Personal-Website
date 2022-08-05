@@ -900,26 +900,25 @@ h6.pageContentHolder{
     position: relative;
 }
 .secondaryHeaderContainer {
-    width: 1200px;
+    width: 1300px;
     height: auto;
-    left: 50%;  
+    left: 50%;
     top: 350px;
+    padding-left: 50px;
     transform: translate(-50%, 0);
     text-align: left;
     position: absolute;
-    z-index:92;
+    z-index: 92;
 }
 .secondaryHeader {
     font-size: 170px;
     color: white; /*#549bcf*/
     margin: 0;
-    padding-left: 50px;
     text-shadow: 10px 10px #9bc5e4;
 }
 .lowerHeader {
     color: white;
     font-size: 25px;
-    padding-left: 50px;
     margin: 0;
 }
 .scrollButton {

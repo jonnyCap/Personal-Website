@@ -29,7 +29,9 @@ const sDButton = {
         
     },
     scrollUp: function () {
-        window.scrollTo(0, 0);
+        setTimeout(function () {
+            window.scrollTo(0, 0);
+        }, 1);
         sDButton.turnButton(0, -50);
 
         if (sDButton.disappeared == false) {
@@ -37,7 +39,9 @@ const sDButton = {
         }
     },
     scrollDown: function () {
-        window.scrollTo(0, 800);
+        setTimeout(function () {
+            window.scrollTo(0, 900);
+        }, 100);
         sDButton.turnButton(180, 50);
         if (sDButton.appeared == false) {
             sDButton.appear();
