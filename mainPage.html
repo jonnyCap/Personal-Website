@@ -18,7 +18,7 @@
                     <ul>
                         <a href="mainPage.html"><li class="button-53 navList">Home</li></a>
                         <a href="aboutMePage.html"><li class="button-53 navList">About Me</li></a>
-                        <a href="aboutMePage.html"><li class="button-53 navList">Services</li></a>
+                        <a href="aboutMePage.html"><li class="button-53 navList">Content</li></a>
                         <a href="aboutMePage.html"><li class="button-53 navList">Contact</li></a>
                     </ul>
                 </div>
@@ -80,7 +80,7 @@
         <!--Hier soll dann ein Slider mit Lebenslauf und entscheidenden Projekten kommen-->
         <div class="projectsContainer">
             <div class="projectsHeaderContainer">
-                <h1 id ="sliderHeader" class="noMarginPadding">Happenings and Projects</h1>
+                <h1 id ="sliderHeader" class="noMarginPadding">Projects/Content</h1>
             </div>
             <div class="buttonAndSliderContainer">
                 <div class="buttonContainer">
@@ -93,7 +93,7 @@
                             <image class="projectPicture" src="Bilder\sliderSample.jpg" alt="A coding Person" width="100%"></image>
                         </div>
                         <div class="textContainerSlider">
-                            <h3 class="projectHeader">First Slider</h3>
+                            <h3 class="projectHeader">About Me</h3>
                             <p class="projectContent">Hier schreibe ich dann über meine einschneidenden und lehrreichen Moment in meinem Leben oder ich berichte über ein bestimmtes Projekt, bei dem ich viel neues dazu lernen konnte.</p>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                             <image class="projectPicture" src="Bilder\sliderSample.jpg" alt="A coding Person" width="100%"></image>
                         </div>
                         <div class="textContainerSlider">
-                            <h3 class="projectHeader">Second Slider</h3>
+                            <h3 class="projectHeader">Team Creator</h3>
                             <p class="projectContent">Hier schreibe ich dann über meine einschneidenden und lehrreichen Moment in meinem Leben oder ich berichte über ein bestimmtes Projekt, bei dem ich viel neues dazu lernen konnte.</p>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                             <image class="projectPicture" src="Bilder\sliderSample.jpg" alt="A coding Person" width="100%"></image>
                         </div>
                         <div class="textContainerSlider">
-                            <h3 class="projectHeader">Third Slider</h3>
+                            <h3 class="projectHeader">This Website</h3>
                             <p class="projectContent">Hier schreibe ich dann über meine einschneidenden und lehrreichen Moment in meinem Leben oder ich berichte über ein bestimmtes Projekt, bei dem ich viel neues dazu lernen konnte.</p>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                             <image class="projectPicture" src="Bilder\sliderSample.jpg" alt="A coding Person" width="100%"></image>
                         </div>
                         <div class="textContainerSlider">
-                            <h3 class="projectHeader">Fourth Slider</h3>
+                            <h3 class="projectHeader">JS Mini-Games</h3>
                             <p class="projectContent">Hier schreibe ich dann über meine einschneidenden und lehrreichen Moment in meinem Leben oder ich berichte über ein bestimmtes Projekt, bei dem ich viel neues dazu lernen konnte.</p>
                         </div>
                     </div>
@@ -137,7 +137,18 @@
                             <image class="projectPicture" src="Bilder\sliderSample.jpg" alt="A coding Person" width="100%"></image>
                         </div>
                         <div class="textContainerSlider">
-                            <h3 class="projectHeader">Fifth Slider</h3>
+                            <h3 class="projectHeader">Contact</h3>
+                            <p class="projectContent">Hier schreibe ich dann über meine einschneidenden und lehrreichen Moment in meinem Leben oder ich berichte über ein bestimmtes Projekt, bei dem ich viel neues dazu lernen konnte.</p>
+                        </div>
+                    </div>
+
+                    <!-- SliderElement-->
+                    <div class="sliderElement">
+                        <div class="imageContainerSlider">
+                            <image class="projectPicture" src="Bilder\sliderSample.jpg" alt="A coding Person" width="100%"></image>
+                        </div>
+                        <div class="textContainerSlider">
+                            <h3 class="projectHeader">Privacy Policy</h3>
                             <p class="projectContent">Hier schreibe ich dann über meine einschneidenden und lehrreichen Moment in meinem Leben oder ich berichte über ein bestimmtes Projekt, bei dem ich viel neues dazu lernen konnte.</p>
                         </div>
                     </div>
@@ -159,32 +170,34 @@
         <footer>
             <div class="footerContainer">
                 <div class="upperFooter">
-                    <div class="footerSmallSection"  id="firstFooterLine">
+                    <div class="footerSmallSection" id="firstFooterLine">
                         <h3 class="footerHeader">Contact</h3>
                         <h6>Jonathan Elias Maier</h6>
                         <h6>Email: maier.jonathanelias@gmail.com</h6>
                         <h6> Tel.: +43 664 88524186</h6>
                     </div>
-                    <div class="footerSmallSection"  id="secondFooterLine">
+                    <div class="footerSmallSection" id="thirdFooterLine">
                         <h3 class="footerSmallHeader"> Follow me:</h3>
                         <a href="#" class="fa fa-google"></a>
                         <a href="#" class="fa fa-instagram"></a>
                         <a href="#" class="fa fa-linkedin"></a>
                         <a href="#" class="fa fa-snapchat"></a>
                         <h6></h6>
-                        <label id="emailInputLabel">Sign up for news:</label>
-                        <input id="emailInput" type="email" />
-                        <button id="emailSubmitButton">Submit</button>
+                        <form method="post" id="subscriptionForm" action="Scripts\emailSubmissionScript.php">
+                            <label id="emailInputLabel">Sign up for news:</label>
+                            <input id="emailInputFooter" type="email" name="subscriptionEmail" />
+                        </form>
+                        <button form="subscriptionForm" id="emailSubmitButton" name="subscribeButton" onclick="email.clickEmailSubscription()">Submit</button>
+                        <h6 class="confirmationText">Signed up succesfully!</h6>
                     </div>
                     <div class="footerSmallSection" id="thirdFooterLine">
-                        <h3 class="footerSmallHeader">Pagecontent:</h3>
+                        <h3 class="footerSmallHeader">Page-content:</h3>
                         <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">About me</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">First Slider</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Second Slider</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Third Slider</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Fourth Slider</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Fifth Slider</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Datenschutzerklärung</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">TeamCreator App</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Personal Website</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">JS Mini-Games</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Contact</h6></a>
+                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Privacy Policy</h6></a>
                     </div>
                 </div>
             </div>

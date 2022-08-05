@@ -63,25 +63,24 @@ const journyCanvas = {
         journyCanvas.drawCircleLine(0, journyCanvas.startX, 1145, 0);
     },
     setUpAppCanvas: function () {
-        journyCanvas.drawCircleLine(1, journyCanvas.startX, journyCanvas.startY, 260);
-        journyCanvas.drawCircleLine(1, journyCanvas.startX, 290, 285);
-        journyCanvas.drawCircleLine(1, journyCanvas.startX, 575, 310);
-        journyCanvas.drawCircleLine(1, journyCanvas.startX, 885, 260);
-        journyCanvas.drawCircleLine(1, journyCanvas.startX, 1145, 0);
+        journyCanvas.drawCircleLine(1, journyCanvas.startX, journyCanvas.startY, 210);
+        journyCanvas.drawCircleLine(1, journyCanvas.startX, 240, 310);
+        journyCanvas.drawCircleLine(1, journyCanvas.startX, 550, 800);
+        journyCanvas.drawCircleLine(1, journyCanvas.startX, 1350, 210);
+        journyCanvas.drawCircleLine(1, journyCanvas.startX, 1560, 750);
+        journyCanvas.drawCircleLine(1, journyCanvas.startX, 2310, 0);
     },
     setUpWebsiteCanvas: function () {
-        journyCanvas.drawCircleLine(2, journyCanvas.startX, journyCanvas.startY, 260);
-        journyCanvas.drawCircleLine(2, journyCanvas.startX, 290, 285);
-        journyCanvas.drawCircleLine(2, journyCanvas.startX, 575, 310);
-        journyCanvas.drawCircleLine(2, journyCanvas.startX, 885, 260);
-        journyCanvas.drawCircleLine(2, journyCanvas.startX, 1145, 0);
+        journyCanvas.drawCircleLine(2, journyCanvas.startX, journyCanvas.startY, 880);
+        journyCanvas.drawCircleLine(2, journyCanvas.startX, 910, 660);
+        journyCanvas.drawCircleLine(2, journyCanvas.startX, 1570, 0);
     },
     setUpMiniGamesCanvas: function () {
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, journyCanvas.startY, 260);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 290, 285);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 575, 310);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 885, 260);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 1145, 0);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, journyCanvas.startY, 990);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 1020, 810);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 1830, 210);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 2040, 240);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 2280, 0);
     },
     //function gets called when scrollDownButton is called to push performance
     drawCircleLine: function (index,x, y, length) {

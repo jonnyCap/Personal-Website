@@ -246,6 +246,32 @@ const text = {
         }
     }
 };
+const email = {
+    messageDisplayCounter: 0,
+    confirmationTimeout: null,
+    messageTimeout: null,
+    clickEmailSubscription: function () {
+        //clear Input Field
+        let input = document.getElementById("emailInputFooter");
+        input.value = "";
+        //reset TImer
+        clearTimeout(email.confirmationTimeout);
+        let confirmationText = document.getElementsByClassName("confirmationText");
+        confirmationText[0].style.display = "inline";
+        email.confirmationTimeout = setTimeout(function () {
+            confirmationText[0].style.display = "";
+        }, 3000);
+    },
+    sendMessage: function (e) {
+        let contactSection = document.getElementsByClassName("contactSection");
+        contactSection[0].style.display = "none";
+        contactSection[1].style.display = "block";
+        email.messageTimeout = setTimeout(function () {
+            contactSection[0].style.display = "block";
+            contactSection[1].style.display = "none";
+        }, 3000);  
+    }
+};
 const browserStorage = {
     savedPage: 0,
     savePage: function (currentPage) {
@@ -266,8 +292,9 @@ addEventListener('popstate', (event) => {
     //not working so far
     let x = SAP.savedLastPages.length;
     if (x > 0) {
-        preventDefault();
-    }   
+        event.preventDefault();
+    }
+    SAP.savedLastPages.pop();
     let currentPage = SAP.savedLastPages[x - 1];
     SAP.currentPage = currentPage;
     browserStorage.savedPage(currentPage);
@@ -276,9 +303,14 @@ addEventListener('popstate', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+
     //Übergangslösung bis alle Links funktionieren und dann die "currentPage" angeben
     //browserStorage.savedPage(0);
-
+    let buttonasd = document.getElementById("emailSendButton");
+    buttonasd.addEventListener("click", function (event) {
+        event.preventDefault();
+        email.sendMessage();
+    })
     //Show right content
     browserStorage.setPage();
     SAP.setUpContent();
