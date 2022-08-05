@@ -932,15 +932,14 @@ h6.pageContentHolder{
     border: none;
     background: white;
     z-index: 94;
-    transform: translate(-50%, 0);
 }
 .scrollButton:hover{
     cursor: pointer;
 }
 .down {
-    left: 1000px;
-    top: 475px;
-    transform: translate(-50%, -50%); /* Stimmt so nicht muss immer an den punkt von canvas angepasst werden !!!!!!!!!!!!!!!!*/
+    left: 950px;
+    top: 425px;
+    /* Stimmt so nicht muss immer an den punkt von canvas angepasst werden !!!!!!!!!!!!!!!!*/
 }
 .up {
     bottom: 50px;

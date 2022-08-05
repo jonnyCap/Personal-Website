@@ -48,26 +48,22 @@ const sDButton = {
         let currentRotation, currentTranslation;
         if (rotation == 0) {
             currentRotation = 180;
-            currentTranslation = 50;
         } else {
             currentRotation = 0;
-            currentTranslation = -50;
         }
         let rotationInterval = setInterval(function () {
             if (rotation == 180 && currentRotation >= rotation) {
                 clearInterval(rotationInterval);
-                button[0].style.transform = "rotate(" + rotation + "deg) translate(" + translation + "%," + translation + "%)";
+                button[0].style.transform = "rotate(" + rotation + "deg)";
             }else if (rotation == 0 && currentRotation <= rotation) {
                 clearInterval(rotationInterval);
-                button[0].style.transform = "rotate(" + rotation + "deg) translate(" + translation + "%," + translation + "%)";
+                button[0].style.transform = "rotate(" + rotation + "deg)";
             }else {
-                button[0].style.transform = "rotate(" + currentRotation + "deg) translate(" + currentTranslation + "%," + currentTranslation + "%)";
+                button[0].style.transform = "rotate(" + currentRotation + "deg)";
                 if (rotation == 180) {
-                    currentTranslation+=8;
-                    currentRotation += 12.8;
+                    currentRotation += 2;
                 } else {
-                    currentTranslation-=8;
-                    currentRotation -= 12.8;
+                    currentRotation -= 2;
                 }
             }
         }, 10);
