@@ -18,47 +18,26 @@ const slider = {
     },
     showSlides: function () {
         //Responsive Layout - Wenn letzte Slides ausgewählt ist soll der index zurücksprigen wenn das Fenster wieder vergrößert wird
-        if (slider.slideIndex == 4 && slider.showSliderIndex == 2) {
-            slider.slideIndex = 3;
-            slider.reposition(3);
+
+        if (slider.slideIndex == slider.sliderElements.length - 1 && slider.showSliderIndex == 2) {
+            slider.slideIndex = slider.sliderElements.length - 2;
+            slider.reposition(slider.sliderElements.length - 2);
         }
-        else if (slider.slideIndex == 4 && slider.showSliderIndex == 3) {
-            slider.slideIndex = 2;
-            slider.reposition(2);
+        else if (slider.slideIndex == slider.sliderElements.length - 1 && slider.showSliderIndex == 3) {
+            slider.slideIndex = slider.sliderElements.length - 3;
+            slider.reposition(slider.sliderElements.length - 3);
         }
-        else if (slider.slideIndex == 3 && slider.showSliderIndex == 2) {
-            slider.slideIndex = 3;
-            slider.reposition(3);
+        else if (slider.slideIndex == slider.sliderElements.length - 2 && slider.showSliderIndex == 2) {
+            slider.slideIndex = slider.sliderElements.length - 2;
+            slider.reposition(slider.sliderElements.length - 2);
         }
-        else if (slider.slideIndex == 3 && slider.showSliderIndex == 3) {
-            slider.slideIndex = 2;
-            slider.reposition(2);
+        else if (slider.slideIndex == slider.sliderElements.length - 2 && slider.showSliderIndex == 3) {
+            slider.slideIndex = slider.sliderElements.length - 3;
+            slider.reposition(slider.sliderElements.length - 3);
+        } else {
+            slider.reposition(slider.slideIndex);
         }
-        else if (slider.slideIndex == 2 && slider.showSliderIndex == 2) {
-            slider.slideIndex = 2;
-            slider.reposition(2);
-        }
-        else if (slider.slideIndex == 2 && slider.showSliderIndex == 3) {
-            slider.slideIndex = 2;
-            slider.reposition(2);
-        }
-        else if (slider.slideIndex == 1 && slider.showSliderIndex == 2) {
-            slider.slideIndex = 1;
-            slider.reposition(1);
-        }
-        else if (slider.slideIndex == 1 && slider.showSliderIndex == 3) {
-            slider.slideIndex = 1;
-            slider.reposition(1);
-        }
-        else if (slider.slideIndex == 0 && slider.showSliderIndex == 2) {
-            slider.slideIndex = 0;
-            slider.reposition(0);
-        }
-        else if (slider.slideIndex == 0 && slider.showSliderIndex == 3) {
-            slider.slideIndex = 0;
-            slider.reposition(0);
-        }
-      
+
         for (let i = 0; i < slider.sliderElements.length; i++) {
             if (i == slider.slideIndex) {
                 for (let j = i; j < i + slider.showSliderIndex - 1; j++) {

@@ -345,6 +345,12 @@ div.aboutMeContainer {
     display: none;
     border: solid 1px lightGray;
 }
+.sliderLink {
+    color: #549bcf;
+    font-weight: bold;
+    position: absolute;
+    bottom: 20px;
+}
 .imageContainerSlider{
     width: 200px;
     height: 200px;
