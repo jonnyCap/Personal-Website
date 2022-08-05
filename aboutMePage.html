@@ -287,7 +287,7 @@
                             Feel free to contact me all the time!
                         </h2>
                     </div>
-                    <form method="post"> <!-- action=" Scripts\emailSubmissionScript.php" -->
+                    <form method="post" action=" Scripts\emailSubmissionScript.php">
                         <div class="secondaryContentText contactSection">
                             <label>Your Email:</label>
                             <input id="emailInput" type="email" name="email" />
@@ -295,7 +295,7 @@
                             <label>Tell me whatever you want, I will answer you as soon as possible!</label>
                             <textarea id="textInput" type="text" name="Message"></textarea>
                             <div id="emailSendButtonContainer">
-                                <button id="emailSendButton" class="button-53" name="emailSendButton" onlick="email.sendMessage(event)">Send</button>
+                                <button id="emailSendButton" class="button-53" name="emailSendButton" onlick="email.sendMessage()">Send</button>
                             </div>
                         </div>
                         <div class="contactSection confirmationDiv">

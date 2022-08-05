@@ -306,11 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //Übergangslösung bis alle Links funktionieren und dann die "currentPage" angeben
     //browserStorage.savedPage(0);
-    let buttonasd = document.getElementById("emailSendButton");
-    buttonasd.addEventListener("click", function (event) {
-        event.preventDefault();
-        email.sendMessage();
-    })
+    
     //Show right content
     browserStorage.setPage();
     SAP.setUpContent();
