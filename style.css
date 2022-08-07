@@ -356,11 +356,19 @@ div.aboutMeContainer {
     bottom: 20px;
     cursor: pointer;
 }
-.imageContainerSlider{
+.imageContainerSlider {
     width: 200px;
     height: 200px;
     margin: auto;
     margin-top: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+.projectPicture {
+    object-fit: cover;
 }
 .textContainerSlider{
     width:200px;
@@ -486,8 +494,8 @@ input[type=email]:focus {
    opacity: 0.7;
 }
 
-.fa-google {
-    background: #dd4b39;
+.fa-github {
+    background: lightBlue;
     color: white;
 }
 

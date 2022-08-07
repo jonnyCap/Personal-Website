@@ -53,7 +53,7 @@ const SAP = {
     },
     setUpContent: function () {
         SAP.changeContent();
-        //Change inner Html Content
+        //Change inner HTML Content
         const header = document.getElementsByClassName("secondaryHeader");
         header[0].innerHTML = text.header[SAP.currentPage];
 
@@ -120,7 +120,7 @@ const SAP = {
         this.savedLastPages.push(this.lastPage);
         this.currentPage = index;
         SAP.finalMoveableDivDestination = SAP.currentPage;
-        //make it visuall that Button is pressed
+        //make it visual that Button is pressed
         this.modifyButtonStyles();
         //animate Properties
         if (sDButton.clicked == false) {
@@ -226,8 +226,8 @@ const SAP = {
 };
 
 const text = {
-    header: ["About me", "TeamCreator</br>App", "Personal</br>Website", "JS Mini-</br>Games","Contact", "Privacy</br>Policy"],
-    lowerHeader: ["My Experience so far...", "Android Studio und Java", "My own Webpage with pure HTML, CSS and Javascript", "Small crappy Games, no one wants to play...","Feel free to contact me all the time!", "Everything about your Data!"],
+    header: ["About me", "Team Creator</br>App", "Personal</br>Website", "JS Mini-</br>Games","Contact", "Privacy</br>Policy"],
+    lowerHeader: ["My Experience so far...", "Android Studio and Java", "My own Web-page with pure HTML, CSS and JavaScript", "Small crappy Games, no one wants to play...","Feel free to contact me at all times!", "Everything about your Data!"],
     Datenschutzerklearung: "",
     setContent: function (index) {
         const content = document.getElementsByClassName("secondaryContentContainer");
