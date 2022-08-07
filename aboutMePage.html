@@ -16,10 +16,10 @@
                 </div>
                 <div class="navElements">
                     <ul>
-                        <a href="mainPage.html"><li class="button-53 navList">Home</li></a>
-                        <a href="aboutMePage.html"><li class="button-53 navList">About Me</li></a>
-                        <a href="aboutMePage.html"><li class="button-53 navList">Content</li></a>
-                        <a href="aboutMePage.html"><li class="button-53 navList">Contact</li></a>
+                        <li onclick="Links.goToPage(0,0,0)" class="button-53 navList">Home</li>
+                        <li onclick="Links.goToPage(1,0,0)" class="button-53 navList">About Me</li>
+                        <li onclick="Links.goToPage(0,0,1600)" class="button-53 navList">Content</li>
+                        <li onclick="Links.goToPage(1,4,0)" class="button-53 navList">Contact</li>
                     </ul>
                 </div>
                 <div class="dropDown">
@@ -27,10 +27,10 @@
                         <image class="dropDownButtonImage" src="Bilder\dropDownButton.png"></image>
                     </button>
                     <div class="dropDownContent">
-                        <a href="mainPage.html">Home</a>
-                        <a href="">About Me</a>
-                        <a href="">Services</a>
-                        <a href="">Contact</a>
+                        <a onclick="Links.goToPage(0,0,0)">Home</a>
+                        <a onclick="Links.goToPage(1,0,0)">About Me</a>
+                        <a onclick="Links.goToPage(0,0,1600)">Services</a>
+                        <a onclick="Links.goToPage(1,4,0)">Contact</a>
                     </div>
                 </div>
             </div>
@@ -44,9 +44,9 @@
                 <li class="secondaryNavList button-53">Contact</li>
                 <li class="secondaryNavList button-53 twoLiner">Privacy<br />Policy</li>
             </ul>
-                <div id="moveableBackground">
-                    <image src="Bilder\scrollDownButtonImage.png" width="50px" height="auto"></image>
-                </div>
+            <div id="moveableBackground">
+                <image src="Bilder\scrollDownButtonImage.png" width="50px" height="auto"></image>
+            </div>
         </div>
     </section>
     <script src="Scripts\navScript.js"></script>
@@ -373,7 +373,7 @@
                         <a href="#" class="fa fa-instagram"></a>
                         <a href="#" class="fa fa-linkedin"></a>
                         <a href="#" class="fa fa-snapchat"></a>
-                        <h6></h6>
+                        </br>
                         <form method="post" id="subscriptionForm" action="Scripts\emailSubmissionScript.php">
                             <label id="emailInputLabel">Sign up for news:</label>
                             <input id="emailInputFooter" type="email" name="subscriptionEmail" />
@@ -383,17 +383,19 @@
                     </div>
                     <div class="footerSmallSection" id="thirdFooterLine">
                         <h3 class="footerSmallHeader">Page-content:</h3>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">About me</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">TeamCreator App</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Personal Website</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">JS Mini-Games</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Contact</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Privacy Policy</h6></a>
+                        <a onclick="Links.goToPage(0,0,0)" class="pageContentHolder"><h6 class="pageContentHolder">Home</h6></a>
+                        <a onclick="Links.goToPage(1,0,0)" class="pageContentHolder"><h6 class="pageContentHolder">About me</h6></a>
+                        <a onclick="Links.goToPage(1,1,0)" class="pageContentHolder"><h6 class="pageContentHolder">TeamCreator App</h6></a>
+                        <a onclick="Links.goToPage(1,2,0)" class="pageContentHolder"><h6 class="pageContentHolder">Personal Website</h6></a>
+                        <a onclick="Links.goToPage(1,3,0)" class="pageContentHolder"><h6 class="pageContentHolder">JS Mini-Games</h6></a>
+                        <a onclick="Links.goToPage(1,4,0)" class="pageContentHolder"><h6 class="pageContentHolder">Contact</h6></a>
+                        <a onclick="Links.goToPage(1,5,0)" class="pageContentHolder"><h6 class="pageContentHolder">Privacy Policy</h6></a>
                     </div>
                 </div>
             </div>
         </footer>
     </section>
+    <script src="Scripts\handlerScript.js"></script>
     <script src="Scripts\SAPScript.js"></script>
 </body>
 </html>

@@ -135,12 +135,11 @@ const SAP = {
         setTimeout(SAP.animatePage, 500);
     },
     animatePage: function () {
-        SAP.changeContent();
+        setTimeout(SAP.changeContent, 1000);
         SAP.lessenFontSize();
         //chain Functions
     },
     changeContent: function () {
-        //hier muss dann auch noch der Content gewechselt werden! 
         text.setContent(SAP.currentPage);
     },
     lessenFontSize: function () {
@@ -246,46 +245,7 @@ const text = {
         }
     }
 };
-const email = {
-    messageDisplayCounter: 0,
-    confirmationTimeout: null,
-    messageTimeout: null,
-    clickEmailSubscription: function () {
-        //clear Input Field
-        let input = document.getElementById("emailInputFooter");
-        input.value = "";
-        //reset TImer
-        clearTimeout(email.confirmationTimeout);
-        let confirmationText = document.getElementsByClassName("confirmationText");
-        confirmationText[0].style.display = "inline";
-        email.confirmationTimeout = setTimeout(function () {
-            confirmationText[0].style.display = "";
-        }, 3000);
-    },
-    sendMessage: function (e) {
-        let contactSection = document.getElementsByClassName("contactSection");
-        contactSection[0].style.display = "none";
-        contactSection[1].style.display = "block";
-        email.messageTimeout = setTimeout(function () {
-            contactSection[0].style.display = "block";
-            contactSection[1].style.display = "none";
-        }, 3000);  
-    }
-};
-const browserStorage = {
-    savedPage: 0,
-    savePage: function (currentPage) {
-        sessionStorage.setItem('currentPage', currentPage);
-        console.log(sessionStorage.getItem('currentPage'));
-    },
-    setPage: function () {
-        if (sessionStorage.getItem('currentPage') == undefined) {
-            sessionStorage.setItem('currentPage', 0);
-        }
-        SAP.currentPage = sessionStorage.getItem('currentPage');
-        
-    }
-};
+
 
 //Eventlistener
 addEventListener('popstate', (event) => {

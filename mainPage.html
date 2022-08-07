@@ -16,10 +16,10 @@
                 </div>
                 <div class="navElements">
                     <ul>
-                        <a href="mainPage.html"><li class="button-53 navList">Home</li></a>
-                        <a href="aboutMePage.html"><li class="button-53 navList">About Me</li></a>
-                        <a href="aboutMePage.html"><li class="button-53 navList">Content</li></a>
-                        <a href="aboutMePage.html"><li class="button-53 navList">Contact</li></a>
+                        <li onclick="Links.goToPage(0,0,0)" class="button-53 navList">Home</li>
+                        <li onclick="Links.goToPage(1,0,0)" class="button-53 navList">About Me</li>
+                        <li onclick="Links.goToPage(0,0,1600)" class="button-53 navList">Content</li>
+                        <li onclick="Links.goToPage(1,4,0)" class="button-53 navList">Contact</li>
                     </ul>
                 </div>
                 <div class="dropDown">
@@ -27,22 +27,22 @@
                         <image class="dropDownButtonImage" src="Bilder\dropDownButton.png"></image>
                     </button>
                     <div class="dropDownContent">
-                        <a href="mainPage.html">Home</a>
-                        <a href="">About Me</a>
-                        <a href="">Services</a>
-                        <a href="">Contact</a>
+                        <a onclick="Links.goToPage(0,0,0)">Home</a>
+                        <a onclick="Links.goToPage(1,0,0)">About Me</a>
+                        <a onclick="Links.goToPage(0,0,1600)">Services</a>
+                        <a onclick="Links.goToPage(1,4,0)">Contact</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <script src="Scripts\navScript.js"></script>
-    <section class="bigMainSection">
+    <section class="bigMainSection" id="">
         <div class="imageContainer">
             <div class="startContainer">
                 <h1 class="startContainerHeader">Maier<br />Jonathan</h1>
-                <p class="startContainerText">Welcome to my own personal Webpage</p>
-                <button class="startContainerButton">Start</button>
+                <p class="startContainerText">Welcome to my own personal Web-page</p>
+                <button onclick="Links.goToPage(0,0,750)" class="startContainerButton">Start</button>
             </div>
         </div>
     </section>
@@ -59,12 +59,7 @@
                             and I had a truly tough time to get into it.<br /><br /> As the years passed however, I was lucky to meet awesome People who shared their interests and knowledge with me,
                             so I could get a hunch of what was going on in the amzing Aria of Computer Science. Till this day I continue to learn und try new Things. Im still at the beginning of my journy!
                         </p>
-                       <button onclick="goToAboutMePage()" class="button-53 big">Learn more...</button>
-                       <script>
-                           function goToAboutMePage() {
-                               window.location.href = "aboutMePage.html";
-                           }
-                       </script>
+                        <button onclick="Links.goToPage(1,0,0)" class="button-53 big">Learn more...</button>
                     </div>
                 </div>
                 <div class="aboutMePictureContainer">
@@ -80,7 +75,7 @@
         <!--Hier soll dann ein Slider mit Lebenslauf und entscheidenden Projekten kommen-->
         <div class="projectsContainer">
             <div class="projectsHeaderContainer">
-                <h1 id ="sliderHeader" class="noMarginPadding">Projects/Content</h1>
+                <h1 id="sliderHeader" class="noMarginPadding">Projects/Content</h1>
             </div>
             <div class="buttonAndSliderContainer">
                 <div class="buttonContainer">
@@ -95,7 +90,7 @@
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">About Me</h3>
                             <p class="projectContent">As you might have read above my Name is Jonathan Maier and I am an upcoming Software Developer.</p>
-                            <a href="" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,0,0)" class="sliderLink">Read more ></a>
                         </div>
                     </div>
 
@@ -107,7 +102,7 @@
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">Team Creator</h3>
                             <p class="projectContent">Team Creator is the first App I have ever developed! It creates fair Teams for every Game and was created with Java and Android Studio.</p>
-                            <a href="" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,1,0)" class="sliderLink">Read more ></a>
                         </div>
                     </div>
 
@@ -119,7 +114,7 @@
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">This Website</h3>
                             <p class="projectContent">At this Moment your are looking at my new Homepage. Interested in the progress and how it was done? Just click the Link...</p>
-                            <a href="" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,2,0)" class="sliderLink">Read more ></a>
                         </div>
                     </div>
 
@@ -131,7 +126,7 @@
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">JS Mini-Games</h3>
                             <p class="projectContent">During my Time at the Austrian Armed Forces I started working with Javascript and learned mainly by programming Mini-Games.</p>
-                            <a href="" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,3,0)" class="sliderLink">Read more ></a>
                         </div>
                     </div>
 
@@ -143,7 +138,7 @@
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">Contact</h3>
                             <p class="projectContent">If you have any Suggestions for my App, Website or future Projects or just want to say "Hello" - feel free to do so!</p>
-                            <a href="" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,4,0)" class="sliderLink">Read more ></a>
                         </div>
                     </div>
 
@@ -155,7 +150,7 @@
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">Privacy Policy</h3>
                             <p class="projectContent">Dont worry, your Data is in good hands! If you are curious about what were are using your Data for and which Data we collect, just click the link.</p>
-                            <a href="" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,5,0)" class="sliderLink">Read more ></a>
                         </div>
                     </div>
 
@@ -198,17 +193,19 @@
                     </div>
                     <div class="footerSmallSection" id="thirdFooterLine">
                         <h3 class="footerSmallHeader">Page-content:</h3>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">About me</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">TeamCreator App</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Personal Website</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">JS Mini-Games</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Contact</h6></a>
-                        <a href="#" class="pageContentHolder"><h6 class="pageContentHolder">Privacy Policy</h6></a>
+                        <a onclick="Links.goToPage(0,0,0)" class="pageContentHolder"><h6 class="pageContentHolder">Home</h6></a>
+                        <a onclick="Links.goToPage(1,0,0)" class="pageContentHolder"><h6 class="pageContentHolder">About me</h6></a>
+                        <a onclick="Links.goToPage(1,1,0)" class="pageContentHolder"><h6 class="pageContentHolder">TeamCreator App</h6></a>
+                        <a onclick="Links.goToPage(1,2,0)" class="pageContentHolder"><h6 class="pageContentHolder">Personal Website</h6></a>
+                        <a onclick="Links.goToPage(1,3,0)" class="pageContentHolder"><h6 class="pageContentHolder">JS Mini-Games</h6></a>
+                        <a onclick="Links.goToPage(1,4,0)" class="pageContentHolder"><h6 class="pageContentHolder">Contact</h6></a>
+                        <a onclick="Links.goToPage(1,5,0)" class="pageContentHolder"><h6 class="pageContentHolder">Privacy Policy</h6></a>
                     </div>
                 </div>
             </div>
         </footer>
     </section>
     <script src="Scripts\textAppearanceSrcript.js"></script>
+    <script src="Scripts\handlerScript.js"></script>
 </body>
 </html>
