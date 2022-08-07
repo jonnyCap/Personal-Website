@@ -940,11 +940,13 @@ h6.pageContentHolder{
     color: white; /*#549bcf*/
     margin: 0;
     text-shadow: 10px 10px #9bc5e4;
+    opacity: 0;
 }
 .lowerHeader {
     color: white;
     font-size: 25px;
     margin: 0;
+    opacity: 0;
 }
 .scrollButton {
     position: absolute;
@@ -956,6 +958,7 @@ h6.pageContentHolder{
     border: none;
     background: white;
     z-index: 94;
+    opacity: 0;
 }
 .scrollButton:hover{
     cursor: pointer;
@@ -963,12 +966,12 @@ h6.pageContentHolder{
 .down {
     left: 950px;
     top: 425px;
-    /* Stimmt so nicht muss immer an den punkt von canvas angepasst werden !!!!!!!!!!!!!!!!*/
 }
 .up {
     bottom: 50px;
     left: 50%;
     background: lightBlue;
+    opacity: 100;
 }
 .imageUp {
     transform: translate(-50%, 0) rotate(-90deg);

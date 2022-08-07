@@ -7,10 +7,8 @@ const SAP = {
     moveableDivTimeOut: null,
     finalMoveableDivDestination: 0,
     resizeStartSection: function () {
-        document.addEventListener('DOMContentLoaded', function () {
-            const element = document.getElementsByClassName("secondaryStartSection");
-            element[0].style.height = window.innerHeight + "px";
-        });
+        const element = document.getElementsByClassName("secondaryStartSection");
+        element[0].style.height = window.innerHeight + "px";
     },
     setEventListener: function () {
         const navElements = document.getElementsByClassName("secondaryNavList");
@@ -261,20 +259,13 @@ addEventListener('popstate', (event) => {
     //do animation
     SAP.animatePage();
 });
+//Setup Page
+browserStorage.setPage();
+SAP.setUpContent();
 
-document.addEventListener('DOMContentLoaded', function () {
-
-    //Übergangslösung bis alle Links funktionieren und dann die "currentPage" angeben
-    //browserStorage.savedPage(0);
-    
-    //Show right content
-    browserStorage.setPage();
-    SAP.setUpContent();
-
-    //Do the rest
-    SAP.resizeStartSection();
-    SAP.setEventListener();
-    SAP.setUpMoveableDiv();
-    SAP.moveMoveableDiv();
-    SAP.modifyButtonStyles(); 
-});
+//Do the rest
+SAP.resizeStartSection();
+SAP.setEventListener();
+SAP.setUpMoveableDiv();
+SAP.moveMoveableDiv();
+SAP.modifyButtonStyles();

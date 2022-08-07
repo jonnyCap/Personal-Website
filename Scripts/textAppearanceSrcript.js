@@ -18,21 +18,32 @@ const animatedText = {
     aboutMeContainerAnimating: false,
     sliderContainer: false,
     sliderContainerAnimating: false,
+    secondaryHeaderAnimating: false,
     animate: function () {
         checkPageHeight();
+        let url = window.location.href;
+        if (url.includes("mainPage.html")) {
+            if (animatedText.mainHeader == true && animatedText.mainHeaderAnimating == false) {
+                animatedText.mainHeaderAnimating = true;
+                animatedText.setSpecificInterval("startContainer");
+            }
+            if (animatedText.aboutMeContainer == true && animatedText.aboutMeContainerAnimating == false) {
+                animatedText.aboutMeContainerAnimating = true;
+                animatedText.setSpecificInterval("aboutMeContainer");
+            }
+            if (animatedText.sliderContainer == true && animatedText.sliderContainerAnimating == false) {
+                animatedText.sliderContainerAnimating = true;
+                animatedText.setSpecificInterval("projectsContainer");
+            }
+        } else if (url.includes("aboutMePage.html")) {
+            if (animatedText.secondaryHeaderAnimating == false) {
+                animatedText.secondaryHeaderAnimating = true;
+                animatedText.setSpecificInterval("secondaryHeader");
+                animatedText.setSpecificInterval("lowerHeader");
+                animatedText.setSpecificInterval("scrollButton"); 
+            }
+        }
         
-        if (animatedText.mainHeader == true && animatedText.mainHeaderAnimating == false) {
-            animatedText.mainHeaderAnimating = true;
-            animatedText.setSpecificInterval("startContainer");
-        }
-        if (animatedText.aboutMeContainer == true && animatedText.aboutMeContainerAnimating == false) {
-            animatedText.aboutMeContainerAnimating = true;
-            animatedText.setSpecificInterval("aboutMeContainer");
-        }
-        if (animatedText.sliderContainer == true && animatedText.sliderContainerAnimating == false) {
-            animatedText.sliderContainerAnimating = true;
-            animatedText.setSpecificInterval("projectsContainer");
-        }
     },
     setSpecificInterval: function (element) {
         let opacity = 0;

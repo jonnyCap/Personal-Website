@@ -7,14 +7,16 @@ const Links = {
                     window.scrollTo(0, Height);
                 } else {
                     window.location.href = "mainPage.html";
-                    window.scrollTo(0, Height);
+                    setTimeout(function () {
+                        window.scrollTo(0, Height);
+                    }, 200);
                 }
-                
                 break;
             case 1:
                 if (url.includes("aboutMePage.html")) {
                     if (PageIndex != SAP.currentPage) {
                         if (SAP.headerChangeAnimationDone == true) {
+                            window.scrollTo(0, 0);
                             SAP.headerChangeAnimationDone = false;
                             SAP.setPage(PageIndex);
                         }
