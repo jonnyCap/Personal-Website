@@ -1,0 +1,292 @@
+﻿.secondaryLowerContainer {
+    width: 100px;
+    height: auto;
+    border-color: lightblue;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 100;
+}
+
+.secondaryUl {
+    padding: 0;
+    margin: 0;
+    line-height: 18px;
+    min-width: 0;
+    height: auto;
+}
+
+.secondaryNavList {
+    display: block;
+    width: 110px;
+    margin-bottom: 30px;
+    color: white;
+    background: #549bcf;
+    padding: 12px 10px;
+    height: 45px;
+    margin-left: 20px;
+    box-shadow: 10px 10px 0 rgb(230, 250, 255, 0.4);
+    font-weight: bold;
+    text-align: left;
+}
+
+    .secondaryNavList:after {
+        border: 1px solid #327db3;
+    }
+
+.twoLiner {
+    padding: 2px 10px;
+}
+
+.secondaryNavList:hover {
+    cursor: pointer;
+    font-weight: bold;
+    animation: change-color 1s forwards;
+}
+
+@keyframes change-color {
+    to {
+        background: #b3f0ff;
+    }
+}
+
+#moveableBackground {
+    position: absolute;
+    left: 150px;
+    width: 50px;
+    height: 50px;
+    z-index: 0;
+    opacity: 1;
+    border-radius: 2px;
+    transform: rotate(180deg);
+}
+
+.secondaryBackgroundContainer {
+    width: 100%;
+    height: auto;
+    background: white;
+}
+
+.secondaryStartSection {
+    background: #88badd; /*#e6f5ff #549bcf*/
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#secondaryCanvas {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 90;
+    opacity: 0.6;
+}
+
+.alignStartSectionParts {
+    position: relative;
+    width: 1200px;
+    height: 900px;
+    margin: auto;
+}
+
+.middleContainer {
+    width: 1000px;
+    height: auto;
+    margin: auto;
+    padding: 200px 0;
+    position: relative;
+}
+
+.secondaryHeaderContainer {
+    width: 1300px;
+    height: auto;
+    left: 50%;
+    top: 350px;
+    padding-left: 50px;
+    transform: translate(-50%, 0);
+    text-align: left;
+    position: absolute;
+    z-index: 92;
+}
+
+.secondaryHeader {
+    font-size: 170px;
+    color: white; /*#549bcf*/
+    margin: 0;
+    text-shadow: 10px 10px #9bc5e4;
+    opacity: 0;
+}
+
+.lowerHeader {
+    color: white;
+    font-size: 25px;
+    margin: 0;
+    opacity: 0;
+}
+.scrollButtonWrapper{
+    position: absolute;
+    left: 50%;
+    transform: translate(50%, 0);
+    bottom: 50px;
+    width: 100px;
+    height: auto;
+}
+.scrollButton {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    font-size: 30px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    z-index: 94;
+    opacity: 0;
+}
+
+    .scrollButton:hover {
+        cursor: pointer;
+    }
+
+.down {
+    left: 950px;
+    top: 425px;
+}
+
+.up {
+   position: relative;
+    background: lightBlue;
+    opacity: 100;
+}
+
+.imageUp {
+    transform: translate(-50%, 0) rotate(-90deg);
+}
+
+.imageDown {
+    transform: translate(-50%, 0) rotate(90deg);
+}
+
+.scrollDownButtonImage {
+    position: absolute;
+    width: 50px;
+    top: 25px;
+    height: auto;
+    left: 50%;
+}
+
+#clickAnimationCanvas {
+    position: absolute;
+    z-index: 0;
+    background: none;
+    top: -50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#clickAnimationCanvasUp {
+    position: absolute;
+    z-index: 0;
+    background: none;
+    left: 50%;
+    transform: translate(-50%, 0) rotate(180deg);
+    bottom: -50px;
+}
+
+.secondaryContentSection {
+    width: 100%;
+    height: auto;
+    display: none;
+    overflow: hidden;
+    position:relative;
+}
+
+.secondaryContentContainer {
+    width: 1000px;
+    height: auto;
+    margin: auto;
+    transition: height 2s all;
+    overflow: hidden;
+    padding-top: 50px;
+    padding-bottom: 250px;
+}
+
+.secondaryContentHeaderContainer {
+    width: 100%;
+    height: 150px;
+    margin: auto;
+}
+
+.secondaryContentHeader {
+    font-size: 80px;
+    text-align: left;
+    text-decoration: underline lightBlue;
+    color: #549bcf;
+    margin: 0;
+}
+
+.secondaryContentLowerHeader {
+    font-size: 20px;
+    color: #549bcf;
+    margin: 10px 0px;
+}
+
+.secondaryContentText {
+    font-size: 22px;
+    color: #549bcf;
+    margin-top: 30px;
+}
+
+.secondaryContentTextHeader {
+}
+
+.withJournyCanvas {
+    width: 900px;
+    float: right;
+}
+
+.journyCanvas {
+    margin-top: 30px;
+}
+
+#emailInput {
+    height: 30px;
+    width: 800px;
+    display: block;
+    background: #d7e8f4;
+    border: 4px solid #549bcf;
+    border-radius: 4px;
+    color: inherit;
+    font-size: 20px;
+    font-weight: 400;
+    font: inherit;
+}
+
+#textInput {
+    width: 800px;
+    height: 300px;
+    background: #d7e8f4;
+    border: 4px solid #549bcf;
+    border-radius: 4px;
+    outline: none;
+    resize: none;
+    color: #549bcf;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#emailSendButtonContainer {
+    position: absolute;
+    right: 300px;
+    top: 1400px;
+    width: 100px;
+    height: 100px;
+}
+
+#emailSendButton {
+    font-size: 30px;
+    transform: rotate(3deg);
+    max-width: 200px;
+    padding: 30px 70px;
+    box-shadow: 10px 10px lightBlue;
+}

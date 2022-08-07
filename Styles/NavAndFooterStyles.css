@@ -1,0 +1,326 @@
+﻿html {
+    scroll-behavior: smooth;
+    font-family: monospace;
+}
+
+body {
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
+}
+section {
+    width: 100%;
+    position: relative;
+}
+.noMarginPadding {
+    padding: 0;
+    margin: 0;
+}
+.center {
+    text-align: center;
+}
+/*Main-Button Layout*/
+.button-53 {
+    background-color: #549bcf;
+    border: 0 solid #E5E7EB;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.5rem;
+    padding: 12px 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none #000000 solid;
+    text-decoration-thickness: auto;
+    width: 100%;
+    max-width: 110px;
+    position: relative;
+    cursor: pointer;
+    transform: rotate(-3deg);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.big {
+    margin-top: 25px;
+    min-width: 160px;
+    padding: 10px 15px;
+    background: white;
+    color: #549bcf;
+    transform: rotate(-2deg);
+}
+
+.button-53:focus {
+    outline: 0;
+}
+
+.button-53:after {
+    content: '';
+    position: absolute;
+    border: 1px solid #000000;
+    bottom: 4px;
+    left: 4px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+}
+
+.button-53:hover:after {
+    bottom: 2px;
+    left: 2px;
+}
+/*Nav*/
+.navContainer {
+    height: auto;
+    width: 100%;
+    background: white;
+    color: #549bcf;
+    z-index: 100;
+    border-color: lightblue;
+    border-bottom: solid 2px;
+    transition: height 1.3s ease;
+}
+
+.navInnerContainer {
+    height: 90px;
+    margin: auto;
+    width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    transition: height 1.3s ease;
+}
+
+.sticky {
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.stickyOuter {
+    position: fixed;
+    min-height: 50px;
+}
+
+/*dropDown Menu*/
+.dropDown {
+    display: none;
+    overflow: hidden;
+    text-align: right;
+    width: 100px;
+}
+
+    .dropDown .dropDownButton {
+        width: 100px;
+        font-size: 16px;
+        text-align: center;
+        border: none;
+        color: #549bcf;
+        background-color: inherit;
+        padding-top: 30px;
+        padding-bottom: 25px;
+        margin: 0;
+        transform: scale(1);
+        transition: height 1.3s ease;
+    }
+
+.dropDownButtonImage {
+    width: 30px;
+    height: auto;
+    margin: auto;
+}
+
+.dropDownButton:hover {
+    background: #ccf2ff;
+}
+
+.dropDownContent {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+    .dropDownContent a {
+        float: none;
+        color: #549bcf;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+    }
+
+        .dropDownContent a:hover {
+            background-color: #ccf2ff;
+        }
+
+/* Show the dropdown menu on hover */
+.dropDown:hover .dropDownContent {
+    display: block;
+}
+
+/*DropDown menu End*/
+.logoImage {
+    max-width: 100%;
+    height: auto;
+}
+
+.logo {
+    width: 200px;
+    order: 0;
+    transition: width 1.5s ease;
+}
+
+.navElements {
+    order: 1;
+}
+
+ul {
+    display: inline-block;
+    text-decoration: none;
+    text-align: right;
+    line-height: 60px;
+    max-height: 90px;
+    min-width: 600px;
+}
+
+li.navList {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+/*Footer*/
+footer {
+    background: #549bcf;
+}
+
+.footerContainer {
+    width: 1200px;
+    height: 250px;
+    margin: auto;
+}
+
+.upperFooter {
+    width: 1200px;
+    height: 250px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footerHeader {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.footerSmallHeader {
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 40px;
+}
+
+.footerSmallSection {
+    width: 250px;
+    height: 200px;
+    color: white;
+}
+
+input[type=email] {
+    border: 0;
+    height: 25px;
+    width: 220px;
+    margin-top: 10px;
+    outline: none;
+    border-radius: 4px;
+}
+
+    input[type=email]:focus {
+        border: 2px solid lightBlue;
+        height: 21px;
+        border-radius: 4px;
+    }
+
+.confirmationDiv {
+    display: none;
+    color: #549bcf;
+    font-size: 30px;
+    width: 100%;
+    min-height: 200px;
+    padding-top: 150px;
+    text-align: center;
+}
+
+.confirmationText {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+#emailSubmitButton {
+    background: white;
+    width: 50px;
+    height: 25px;
+    color: #549bcf;
+    border: 0;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 10px;
+}
+
+.fa {
+    padding: 10px;
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+}
+
+    .fa:hover {
+        opacity: 0.7;
+    }
+
+.fa-github {
+    background: lightBlue;
+    color: white;
+}
+
+.fa-instagram {
+    background: #125688;
+    color: white;
+}
+
+.fa-linkedin {
+    background: #007bb5;
+    color: white;
+}
+
+.fa-snapchat {
+    background: #e6e600;
+    color: white;
+}
+
+a.pageContentHolder {
+    text-decoration: none;
+    color: white;
+}
+
+h6.pageContentHolder {
+    margin: 6px 0;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+h6.pageContentHolder:hover {
+    cursor: pointer;
+}
