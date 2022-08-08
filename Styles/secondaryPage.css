@@ -6,7 +6,7 @@
     left: 0;
     top: 50%;
     transform: translate(0, -50%);
-    z-index: 100;
+    z-index: 95;
 }
 
 .secondaryUl {
@@ -127,7 +127,7 @@
 .scrollButtonWrapper{
     position: absolute;
     left: 50%;
-    transform: translate(50%, 0);
+    transform: translate(-50%, 0);
     bottom: 50px;
     width: 100px;
     height: auto;
@@ -290,3 +290,191 @@
     padding: 30px 70px;
     box-shadow: 10px 10px lightBlue;
 }
+@media only screen and (max-width: 1700px) {
+    .secondaryHeaderContainer{
+        width: 1000px;
+    }
+}
+@media only screen and (max-width: 1400px) {
+
+    .secondaryHeaderContainer {
+        width: 650px;
+        padding:0;
+    }
+    .secondaryHeaderContainer {
+        height: auto;
+        width: 100%;
+        position: relative;
+        text-align: center;
+    }
+    .lowerHeader {
+        text-align:center;
+    }
+    .alignStartSectionParts {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    .down {
+        position: absolute;
+        left: 48%;
+        top: 70%;
+    }
+    .secondaryLowerContainer {
+        order: 1;
+        height: auto;
+        position: relative;
+        width: 100%;
+        top: 80px;
+    }
+
+    .secondaryUl {
+        width: 100%;
+        display: inline;
+        justify-content: center;
+        display: flex;
+    }
+
+    .secondaryNavList {
+        display: inline-block;
+    }
+
+    #moveableBackground {
+        transform: rotate(-90deg);
+        bottom: -30px;
+    }
+
+}
+
+@media only screen and (max-width: 1200px) {
+
+    /*Content*/
+    .secondaryContentHeaderContainer {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .secondaryContentHeader {
+        text-align: inherit;
+    }    
+    .centerAlignForm .contactSection{
+        text-align:center;
+    }
+    #emailInput{
+        margin: auto;
+    }
+} 
+
+@media only screen and (max-width: 1000px) {
+    .algignSecondaryContent {
+       justify-content:space-evenly;
+    }
+    .secondaryContentText {
+        text-align: center;
+        width: 100%;
+        margin:auto;
+        float:initial;
+    }
+    .secondaryContentContainer {
+        width: 100%;
+    }
+    #canvas0{
+        display:none;
+    }
+    #canvas1 {
+        display: none;
+    }
+    #canvas2 {
+        display: none;
+    }
+    #canvas3 {
+        display: none;
+    }   
+}
+@media only screen and (max-width: 900px) {
+    #emailInput, #textInput{
+        width: 100%;
+        padding: 0;
+        margin-left: -3px;
+    }
+    
+}
+@media only screen and (max-width: 800px) {
+    /*start section*/
+    .secondaryHeader{
+        line-height: 100px;
+    }
+    .lowerHeader {
+        line-height: 40px;
+        margin-top: 30px;
+    }
+    /*ScrollButton*/
+    .down {
+        width: 50px;
+        height: 50px;
+        top: 55%;
+    }
+
+    .imageDown {
+        width: 45px;
+        height: auto;
+        top: 2.5px;
+    }
+
+    #clickAnimationCanvas {
+        top: -75px;
+    }
+    /*Start Screen*/
+    .secondaryUl {
+        flex-wrap: wrap;
+    }
+
+    .secondaryLowerContainer {
+        top: 30px;
+    }
+}
+@media only screen and (max-width: 420px) {
+    /*Start Screen*/
+    .secondaryLowerContainer {
+        top: -50px;
+    }
+    .secondaryHeader{
+        line-height: 70px;
+    }
+    #moveableBackground{
+        display:none;
+    }
+
+}
+@media only screen and (max-width: 350px) {
+    .secondaryContentHeader {
+        font-size: 40px;
+    }
+    .secondaryUl {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+    .down {
+        top: 47%;
+    }
+    .secondaryNavList{
+        left: 25%;
+    }
+
+}
+@media only screen and (max-width: 300px) {
+    .secondaryNavList {
+        left: 20%;
+    }
+}
+@media only screen and (max-width: 200px) {
+    .secondaryNavList {
+        left: 0;
+    }
+}
+

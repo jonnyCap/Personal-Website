@@ -126,6 +126,10 @@ const buttonCanvas = {
     circleFractures: [],
     downArrows: [],
     upArrows: [],
+    expansionRadiusUpper: 0,
+    expansionRadiusLower: 0,
+    arrowExpansionUpper: 0,
+    arrowExpansionLower: 0,
     centerX: 100,
     centerY: 100,
     colorUp: "white",
@@ -181,11 +185,18 @@ const buttonCanvas = {
             ctxUp.clearRect(0, 0, 200, 250);
             ctxDown.clearRect(0, 0, 200, 250);
             for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
-                buttonCanvas.circleFractures[i].draw(0);
+                if (MediaRes.size800 == false && i < 2) {
+                    buttonCanvas.colorUp = "#e6f5ff";
+                }else{
+                    buttonCanvas.circleFractures[i].draw(0);
+                }
             }
-            for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
-                buttonCanvas.downArrows[i].draw(0);
+            if (MediaRes.size800 == true) {
+                for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
+                    buttonCanvas.downArrows[i].draw(0);
+                }
             }
+            
             for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
                 buttonCanvas.circleFractures[i].draw(1);
             }
@@ -197,24 +208,40 @@ const buttonCanvas = {
     changeColor(color, index) {
         switch (index) {
             case 0:
-                buttonCanvas.colorUp = color;
+                if (MediaRes.size800 == false) {
+                    buttonCanvas.colorUp = "#e6f5ff";
+                } else { 
+                    buttonCanvas.colorUp = color;
+                }
                 break;
             case 1:
                 buttonCanvas.colorDown = color;
                 break;
         }
     },
-    expandRadius: function () {
-        for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
-            buttonCanvas.circleFractures[i].radius += 30;
-            buttonCanvas.circleFractures[i].speed -= 2 * buttonCanvas.circleFractures[i].speed;
-        }
+    expandRadius: function (index) {
+        switch (index) {
+            case 0:
+                if (MediaRes.size800 == true) {
+                    buttonCanvas.expansionRadiusUpper = 30;
+                } else {
+                    buttonCanvas.expansionRadiusUpper = 10;
+                }
+                break;
+            case 1:
+                buttonCanvas.expansionRadiusLower = 30;
+                break;
+        } 
     },
-    diminishRadius: function () {
-        for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
-            buttonCanvas.circleFractures[i].radius -= 30;
-            buttonCanvas.circleFractures[i].speed -= 2 * buttonCanvas.circleFractures[i].speed;
-        }
+    diminishRadius: function (index) {
+        switch (index) {
+            case 0:
+                buttonCanvas.expansionRadiusUpper = 0;
+                break;
+            case 1:
+                buttonCanvas.expansionRadiusLower = 0;
+                break;
+        } 
     },
     pushArrowDown: function () {
         for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
@@ -229,11 +256,11 @@ const buttonCanvas = {
     finalButtonAdaption(outIN, color, index) {
         switch (outIN) {
             case 0:
-                buttonCanvas.expandRadius();
+                buttonCanvas.expandRadius(index);
                 buttonCanvas.pushArrowDown();
                 break;
             case 1:
-                buttonCanvas.diminishRadius();
+                buttonCanvas.diminishRadius(index);
                 buttonCanvas.pushArrowUp();
                 break;
         }
@@ -257,17 +284,20 @@ class circleFracture {
         context.translate(buttonCanvas.centerX, buttonCanvas.centerY);
         context.rotate(rad);
         //draw Element
+        let expansion;
         switch (index) {
             case 0:
                 context.strokeStyle = buttonCanvas.colorUp;
+                expansion = buttonCanvas.expansionRadiusUpper;
                 break;
             case 1:
                 context.strokeStyle = buttonCanvas.colorDown;
+                expansion = buttonCanvas.expansionRadiusLower;
                 break;
         }
 
         context.beginPath();
-        context.arc(0, 0, this.radius, 0, this.length * Math.PI, false);
+        context.arc(0, 0, this.radius + expansion, 0, this.length * Math.PI, false);
         context.lineWidth = 3;
         context.stroke();
 
@@ -280,19 +310,22 @@ class Arrow {
     }
     draw(index) {
         let ctx = buttonCanvas.gC(index);
+        let expansion;
         switch (index) {
             case 0:
+                expansion = buttonCanvas.arrowExpansionUpper;
                 ctx.strokeStyle = buttonCanvas.colorUp;
                 break;
             case 1:
+                expansion = buttonCanvas.arrowExpansionLower;
                 ctx.strokeStyle = buttonCanvas.colorDown;
                 break;
         }
         ctx.lineWidth = 5;
         ctx.beginPath();
-        ctx.lineTo(buttonCanvas.centerX - 15, this.height);
-        ctx.lineTo(buttonCanvas.centerX, this.height + 10);
-        ctx.lineTo(buttonCanvas.centerX + 15, this.height);
+        ctx.lineTo(buttonCanvas.centerX - 15, this.height + expansion);
+        ctx.lineTo(buttonCanvas.centerX, this.height + 10 + expansion);
+        ctx.lineTo(buttonCanvas.centerX + 15, this.height + expansion);
         ctx.stroke();
     }
 }
@@ -319,7 +352,6 @@ scrollButton[1].addEventListener("mouseout", function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     buttonCanvas.createFractures(0);
-    buttonCanvas.createFractures(1);
     buttonCanvas.animate();
 });
 

@@ -73,11 +73,11 @@ const journyCanvas = {
         journyCanvas.drawCircleLine(2, journyCanvas.startX, 1570, 0);
     },
     setUpMiniGamesCanvas: function () {
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, journyCanvas.startY, 990);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 1020, 810);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 1830, 210);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 2040, 240);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 2280, 0);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, journyCanvas.startY, 1015);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 1045, 815);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 1860, 235);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 2095, 240);
+        journyCanvas.drawCircleLine(3, journyCanvas.startX, 2335, 0);
     },
     //function gets called when scrollDownButton is called to push performance
     drawCircleLine: function (index,x, y, length) {

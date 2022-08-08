@@ -73,3 +73,71 @@ const email = {
         }, 3000);
     }
 };
+const MediaRes = {
+    size1400: true,
+    size1200: true,
+    size1000: true,
+    size1800: true,
+   size400: true,
+}
+const sizeAdapter = {
+    adaptComponents: function () {
+        let width = window.innerWidth;
+        console.log(width);
+        if (width > 1400) {
+            MediaRes.size1400 = true;
+            MediaRes.size1200 = true;
+            MediaRes.size1000 = true;
+            MediaRes.size800 = true;
+            MediaRes.size400 = true;
+        }
+        if (width < 1400 && width > 1200) {
+            MediaRes.size1400 = false;
+            MediaRes.size1200 = true;
+            MediaRes.size1000 = true;
+            MediaRes.size800 = true;
+            MediaRes.size400 = true;
+        }
+        if (width < 1200 && width > 1000) {
+            MediaRes.size1400 = false;
+            MediaRes.size1200 = false;
+            MediaRes.size1000 = true;
+            MediaRes.size800 = true;
+            MediaRes.size400 = true;
+        }
+        if (width < 1000 && width > 800) {
+            MediaRes.size1400 = false;
+            MediaRes.size1200 = false;
+            MediaRes.size1000 = false;
+            MediaRes.size800 = true;
+            MediaRes.size400 = true;
+        }
+        if (width < 800 && width > 400) {
+            MediaRes.size1400 = false;
+            MediaRes.size1200 = false;
+            MediaRes.size1000 = false;
+            MediaRes.size800 = false;
+            MediaRes.size400 = true;
+        }
+        if (width < 420) {
+            MediaRes.size1400 = false;
+            MediaRes.size1200 = false;
+            MediaRes.size1000 = false;
+            MediaRes.size800 = false;
+            MediaRes.size400 = false;
+        }
+    }
+};
+//EventListener
+window.onresize = function () {
+    sizeAdapter.adaptComponents();
+    SAP.setUpContent();
+    SAP.resetMoveableDivPosition();
+    SAP.adaptFontSizeOnStart();
+};
+document.addEventListener("DOMContentLoaded", function () {
+    sizeAdapter.adaptComponents();
+    SAP.setUpContent();
+    SAP.resetMoveableDivPosition();
+    SAP.adaptFontSizeOnStart();
+});

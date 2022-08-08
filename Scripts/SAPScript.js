@@ -28,15 +28,25 @@ const SAP = {
         clearInterval(SAP.movingDivInterval);
         const element = document.getElementById("moveableBackground");
         const navElements = document.getElementsByClassName("secondaryNavList");
-
-        let finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop + 5;
-        let currentDestination = element.offsetTop;
+        let finalDestination;
+        let currentDestination;
         let movingVektor;
+        if (MediaRes.size1400 == true) {
+            currentDestination = element.offsetTop;
+        } else {
+            currentDestination = element.offsetLeft;
+        }
 
         //SAP.colorSelectedNavElement(SAP.finalMoveableDivDestination);
         SAP.movingDivInterval = setInterval(function () {
-            finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop;
-            currentDestination = element.offsetTop;
+
+            if (MediaRes.size1400 == true) {
+                currentDestination = element.offsetTop;
+                finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop;
+            } else {
+                currentDestination = element.offsetLeft;
+                finalDestination = navElements[SAP.finalMoveableDivDestination].offsetLeft + 30;
+            }
             //movingVektor
             if (finalDestination > currentDestination) {
                 movingVektor = 1;
@@ -47,7 +57,11 @@ const SAP = {
                 currentDestination = finalDestination;
             } else {
                 currentDestination += movingVektor;
-                element.style.top = currentDestination + "px";
+                if (MediaRes.size1400 == true) {
+                    element.style.top = currentDestination + "px";
+                } else {
+                    element.style.left = currentDestination + "px";
+                }
             }
         }, 1);
     },
@@ -61,26 +75,21 @@ const SAP = {
         lowerHeader[0].innerHTML = text.lowerHeader[SAP.currentPage];
         //Set final Destination for movable Div
         SAP.finalMoveableDivDestination = SAP.currentPage;
-        //set Canvas
 
         //set Header Height
-        const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
-        if (text.header[SAP.currentPage].includes("</br>")) {
-            headerContainer[0].style.top = "230px";
-            headerContainer[0].style.lineHeight = "160px";
-        } else {
-            headerContainer[0].style.top = "350px";
-            headerContainer[0].style.lineHeight = "";
-        }
+        SAP.setNewTop(false);
     },
     setUpMoveableDiv: function () {
-        
         const secondaryNav = document.getElementsByClassName("secondaryNavList");
         for (let i = 0; i < secondaryNav.length; i++) {
             secondaryNav[i].addEventListener("mouseover", function () {
                 if (i != SAP.currentPage) {
                     if (SAP.headerChangeAnimationDone == true) {
-                        secondaryNav[i].style.marginLeft = "30px";
+                        if (MediaRes.size1400 == true) {
+                            secondaryNav[i].style.marginLeft = "30px";
+                        } else {
+                            secondaryNav[i].style.bottom = "6px";
+                        }
                         SAP.finalMoveableDivDestination = i;
                     }
                 }
@@ -90,27 +99,69 @@ const SAP = {
             secondaryNav[i].addEventListener("mouseout", function () {
                 if (i != SAP.currentPage) {
                     if (SAP.headerChangeAnimationDone == true) {
-                        secondaryNav[i].style.marginLeft = "20px";
+                        if (MediaRes.size1400 == true) {
+                            secondaryNav[i].style.marginLeft = "20px";
+                        } else {
+                            secondaryNav[i].style.bottom = "0px";
+                        }
                         SAP.finalMoveableDivDestination = SAP.currentPage;
                     }
                 }
             });
         }
-       
+
     },
     modifyButtonStyles: function () {
         const navElements = document.getElementsByClassName("secondaryNavList");
-            //modify Styles of buttons
+        //modify Styles of buttons
         console.log("button " + SAP.currentPage + "is currently on");
 
-            navElements[SAP.currentPage].style.background = "#e6faff";
-            navElements[SAP.currentPage].style.color = "#549bcf";
+        navElements[SAP.currentPage].style.background = "#e6faff";
+        navElements[SAP.currentPage].style.color = "#549bcf";
+        if (MediaRes.size1400 == true) {
+            navElements[SAP.currentPage].style.bottom = "";
             navElements[SAP.currentPage].style.marginLeft = "30px";
-            if (SAP.lastPage != null) {
-                navElements[SAP.lastPage].style.background = "#549bcf";
-                navElements[SAP.lastPage].style.color = "white";
+        } else {
+            navElements[SAP.currentPage].style.bottom = "6px";
+            navElements[SAP.currentPage].style.marginLeft = "20px";
+        }
+        if (SAP.lastPage != null) {
+            navElements[SAP.lastPage].style.background = "#549bcf";
+            navElements[SAP.lastPage].style.color = "white";
+            if (MediaRes.size1400 == true) {
+                navElements[SAP.lastPage].style.bottom = "";
                 navElements[SAP.lastPage].style.marginLeft = "20px";
-            }     
+            } else {
+                navElements[SAP.lastPage].style.bottom = "";
+                navElements[SAP.lastPage].style.marginLeft = "20px";
+            }
+        }
+    },
+    resetMoveableDivPosition: function () {
+        let element = document.getElementById("moveableBackground"); 
+        const navElements = document.getElementsByClassName("secondaryNavList");
+        let finalHeight = (navElements[SAP.currentPage].offsetTop) + "px";
+        let finalWidht = (navElements[SAP.currentPage].offsetLeft + 30) + "px";
+        //1400
+        if (MediaRes.size1400 == true) {
+            element.style.left = "150px";
+            element.style.top = finalHeight;
+            element.style.bottom = "";
+        } else if (MediaRes.size1400 == false && MediaRes.size800 == true) {
+            element.style.left = finalWidht;
+            element.style.bottom = "-30px";
+            element.style.top = "";
+        }
+        //800
+        else if (MediaRes.size800 == false && MediaRes.size400 == true) {
+            element.style.left = finalWidht;
+            element.style.bottom = "-85px";
+            element.style.top = "";
+        } else if (MediaRes.size400 == false) {
+            element.style.left = finalWidht;
+            element.style.bottom = "-160px";
+            element.style.top = "";
+        }
     },
     setPage: function (index) {
         //save currentPage in local Browser
@@ -178,16 +229,28 @@ const SAP = {
         lowerHeader[0].innerHTML = text.lowerHeader[SAP.currentPage];
         SAP.setNewTop();
     },
-    setNewTop: function () {
+    setNewTop: function (index) {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
-        if (text.header[SAP.currentPage].includes("</br>")) {
-            headerContainer[0].style.top = "230px";
-            headerContainer[0].style.lineHeight = "160px";
-        } else {
-            headerContainer[0].style.top = "350px";
-            headerContainer[0].style.lineHeight = "";
+        if (MediaRes.size1400 == true) {
+            if (text.header[SAP.currentPage].includes("</br>")) {
+                headerContainer[0].style.top = "230px";
+                headerContainer[0].style.lineHeight = "160px";
+            } else {
+                headerContainer[0].style.top = "350px";
+                headerContainer[0].style.lineHeight = "";
+            }
+        } else if (MediaRes.size1400 == false) {
+            if (text.header[SAP.currentPage].includes("</br>")) {
+                headerContainer[0].style.top = "50px";
+                headerContainer[0].style.lineHeight = "160px";
+            } else {
+                headerContainer[0].style.top = "200px";
+                headerContainer[0].style.lineHeight = "";
+            }
         }
-        SAP.addNewHeader();
+        if (index != false) {
+            SAP.addNewHeader();
+        }
     },
     addNewHeader: function () {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
@@ -208,12 +271,22 @@ const SAP = {
         }, 10);
     },
     enlargeFontSize: function () {
+       
         const header = document.getElementsByClassName("secondaryHeader");
         let fontSizeLong = header[0].style.fontSize;
         let fontSize = fontSizeLong.replaceAll("px", "");
-        let originalFontSize = fontSize;
+        let originalFontSize;
+        if (MediaRes.size1400 == true) {
+            originalFontSize = 170;
+        } else if (MediaRes.size1000 == true) {
+            originalFontSize = 130;
+        } else if (MediaRes.size400 == true) {
+            originalFontSize = 110;
+        } else {
+            originalFontSize = 60;
+        }
         let enlargeFontSizeInterval = setInterval(function () {
-            if (fontSize > originalFontSize * 2) {
+            if (fontSize > originalFontSize) {
                 clearInterval(enlargeFontSizeInterval);
                 //Hier werden dann animationen wieder möglich
                 SAP.headerChangeAnimationDone = true;
@@ -222,6 +295,20 @@ const SAP = {
                 header[0].style.fontSize = fontSize + "px";
             }
         }, 10);
+    }, 
+    adaptFontSizeOnStart: function () {
+        let originalFontSize;
+        const header = document.getElementsByClassName("secondaryHeader");
+        if (MediaRes.size1400 == true) {
+            originalFontSize = 170;
+        } else if (MediaRes.size1000 == true) {
+            originalFontSize = 130;
+        } else if (MediaRes.size400 == true) {
+            originalFontSize = 110;
+        } else {
+            originalFontSize = 60;
+        }
+        header[0].style.fontSize = originalFontSize + "px";
     }
 };
 
@@ -234,8 +321,8 @@ const text = {
         for (let i = 0; i < text.header.length; i++) {
             if (i == index) {
                 console.log("index is" + index);
-                journyCanvas.chooseCanvas(index);
-                content[i].style.display = "block";
+                journyCanvas.chooseCanvas(index);         
+                content[i].style.display = "block";    
             }
             else {
                 content[i].style.display = "none";
@@ -246,7 +333,7 @@ const text = {
 
 
 //Eventlistener
-addEventListener('popstate', (event) => {
+document.addEventListener('popstate', (event) => {
     //not working so far
     let x = SAP.savedLastPages.length;
     if (x > 0) {

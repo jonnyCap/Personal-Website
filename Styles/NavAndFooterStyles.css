@@ -324,3 +324,145 @@ h6.pageContentHolder {
 h6.pageContentHolder:hover {
     cursor: pointer;
 }
+@media only screen and (max-width: 1400px) {
+    .navInnerContainer {
+        width: 1200px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .navContainer {
+        width: 100%;
+    }
+
+    .navInnerContainer {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 900px) {
+    /*navSection*/
+    .navContainer {
+        width: 100%;
+    }
+
+    .navInnerContainer {
+        width: 100%;
+    }
+
+    .dropDown {
+        display: inline-block;
+    }
+
+    .navElements {
+        display: none;
+    }
+    /*footer*/
+    .footerContainer {
+        width: 500px;
+    }
+
+    .upperFooter {
+        width: 500px;
+    }
+
+    #thirdFooterLine {
+        display: none;
+    }
+
+    .footerSmallSection {
+        width: 250px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    /*nav*/
+    .navContainer {
+        width: 100%;
+        min-height: 50px;
+        transition: height 1s linear;
+    }
+
+    .navInnerContainer {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        transition: height 1s linear;
+    }
+
+    .dropDown {
+        display: inline-block;
+    }
+
+    .navElements {
+        display: none;
+    }
+    /*footer*/
+    .footerContainer {
+        width: 100%;
+        height: auto;
+    }
+
+    .upperFooter {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    #firstFooterLine {
+        order: 1;
+    }
+
+    #secondFooterLine {
+        order: 2;
+    }
+
+    #thirdFooterLine {
+        display: none;
+    }
+
+    .footerSmallHeader {
+        margin-top: 10px;
+    }
+}
+@media only screen and (max-width: 330px) {
+    /*nav*/
+    .navContainer {
+        height: auto;
+        min-height: 50px;
+    }
+
+    .navInnerContainer {
+        height: auto;
+        justify-content: space-around;
+    }
+}
+@media only screen and (max-width: 220px) {
+    /*nav*/
+    .navContainer {
+        min-height: 100px;
+    }
+    /*footer*/
+    .footerSmallSection {
+        width: 100%;
+    }
+
+    .footerContainer .upperFooter {
+        padding-bottom: 30px;
+    }
+
+    .fa {
+        margin-top: 10px;
+    }
+
+    #emailInputLabel {
+        display: none;
+    }
+
+    #emailInputFooter {
+        display: none;
+    }
+
+    #emailSubmitButton {
+        display: none;
+    }
+}
