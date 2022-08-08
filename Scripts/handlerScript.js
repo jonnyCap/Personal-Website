@@ -36,7 +36,6 @@ const browserStorage = {
     savedPage: 0,
     savePage: function (currentPage) {
         sessionStorage.setItem('currentPage', currentPage);
-        console.log(sessionStorage.getItem('currentPage'));
     },
     setPage: function () {
         if (sessionStorage.getItem('currentPage') == undefined) {
@@ -83,7 +82,6 @@ const MediaRes = {
 const sizeAdapter = {
     adaptComponents: function () {
         let width = window.innerWidth;
-        console.log(width);
         if (width > 1400) {
             MediaRes.size1400 = true;
             MediaRes.size1200 = true;

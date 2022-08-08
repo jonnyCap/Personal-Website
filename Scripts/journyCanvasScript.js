@@ -24,7 +24,6 @@ const journyCanvas = {
         return secondaryCanvas.getContext("2d");
     },
     chooseCanvas(index) {
-        console.log("chooseCanvas function has index: " + index);
         switch (index) {
             case 0:
                 journyCanvas.setUpJournyCanvas();

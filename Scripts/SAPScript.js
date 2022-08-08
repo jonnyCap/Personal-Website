@@ -114,7 +114,6 @@ const SAP = {
     modifyButtonStyles: function () {
         const navElements = document.getElementsByClassName("secondaryNavList");
         //modify Styles of buttons
-        console.log("button " + SAP.currentPage + "is currently on");
 
         navElements[SAP.currentPage].style.background = "#e6faff";
         navElements[SAP.currentPage].style.color = "#549bcf";
@@ -320,7 +319,6 @@ const text = {
         const content = document.getElementsByClassName("secondaryContentContainer");
         for (let i = 0; i < text.header.length; i++) {
             if (i == index) {
-                console.log("index is" + index);
                 journyCanvas.chooseCanvas(index);         
                 content[i].style.display = "block";    
             }
