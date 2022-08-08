@@ -130,14 +130,20 @@ const sizeAdapter = {
 };
 //EventListener
 window.onresize = function () {
+    let url = window.location.href;
     sizeAdapter.adaptComponents();
-    SAP.setUpContent();
-    SAP.resetMoveableDivPosition();
-    SAP.adaptFontSizeOnStart();
+    if (url.includes(aboutMePage.html)) {
+        SAP.setUpContent();
+        SAP.resetMoveableDivPosition();
+        SAP.adaptFontSizeOnStart();
+    }
 };
 document.addEventListener("DOMContentLoaded", function () {
+    let url = window.location.href;
     sizeAdapter.adaptComponents();
-    SAP.setUpContent();
-    SAP.resetMoveableDivPosition();
-    SAP.adaptFontSizeOnStart();
+    if (url.includes(aboutMePage.html)) {
+        SAP.setUpContent();
+        SAP.resetMoveableDivPosition();
+        SAP.adaptFontSizeOnStart();
+    }
 });
