@@ -3,7 +3,7 @@ const Links = {
         let url = window.location.href;
         switch (index) {
             case 0:
-                if (url.includes("index.html")) {
+                if (url.includes("aboutMePage.html" == false)) {
                     window.scrollTo(0, Height);
                 } else {
                     window.location.href = "index.html";
