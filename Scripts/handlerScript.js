@@ -132,7 +132,7 @@ const sizeAdapter = {
 window.onresize = function () {
     let url = window.location.href;
     sizeAdapter.adaptComponents();
-    if (url.includes(aboutMePage.html)) {
+    if (url.includes("aboutMePage.html")) {
         SAP.setUpContent();
         SAP.resetMoveableDivPosition();
         SAP.adaptFontSizeOnStart();
@@ -141,7 +141,7 @@ window.onresize = function () {
 document.addEventListener("DOMContentLoaded", function () {
     let url = window.location.href;
     sizeAdapter.adaptComponents();
-    if (url.includes(aboutMePage.html)) {
+    if (url.includes("aboutMePage.html")) {
         SAP.setUpContent();
         SAP.resetMoveableDivPosition();
         SAP.adaptFontSizeOnStart();

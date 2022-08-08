@@ -22,7 +22,7 @@ const animatedText = {
     animate: function () {
         checkPageHeight();
         let url = window.location.href;
-        if (url.includes("mainPage.html")) {
+        if (url.includes("index.html")) {
             if (animatedText.mainHeader == true && animatedText.mainHeaderAnimating == false) {
                 animatedText.mainHeaderAnimating = true;
                 animatedText.setSpecificInterval("startContainer");
