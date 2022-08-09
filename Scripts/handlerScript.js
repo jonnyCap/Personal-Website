@@ -3,8 +3,10 @@ const Links = {
         let url = window.location.href;
         switch (index) {
             case 0:
-                if (url.includes("aboutMePage.html" == false)) {
-                    window.scrollTo(0, Height);
+                if (url.includes("aboutMePage.html") == false) {
+                    setTimeout(function () {
+                        window.scrollTo(0, Height);
+                    }, 200);
                 } else {
                     window.location.href = "index.html";
                     setTimeout(function () {

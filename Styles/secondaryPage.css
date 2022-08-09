@@ -435,12 +435,13 @@
 
     .secondaryLowerContainer {
         top: 30px;
+        left: -10px;
     }
 }
 @media only screen and (max-width: 420px) {
     /*Start Screen*/
     .secondaryLowerContainer {
-        top: -50px;
+        top: -50px;   
     }
     .secondaryHeader{
         line-height: 70px;
@@ -448,8 +449,7 @@
     #moveableBackground{
         display:none;
     }
-
-}
+    
 @media only screen and (max-width: 350px) {
     .secondaryContentHeader {
         font-size: 40px;
