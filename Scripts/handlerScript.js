@@ -52,50 +52,109 @@ const browserStorage = {
     }
 };
 
-const email = {
+const emailHandler = {
     messageDisplayCounter: 0,
     confirmationTimeout: null,
     messageTimeout: null,
+    recipient: "maier.jonathanelias@gmail.com",
     clickEmailSubscription: function (event) {
-        if (event && event.preventDefault) {
-            event.preventDefault();
+        if (event) {
+            if (event.preventDefault) event.preventDefault();
+            if (event.stopPropagation) event.stopPropagation();
         }
         let input = document.getElementById("emailInputFooter");
-        if (input) {
-            input.value = "";
+        let submitBtn = document.getElementById("emailSubmitButton");
+        let emailVal = input ? input.value.trim() : "";
+
+        if (!emailVal) return false;
+
+        if (input) input.value = "";
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerText = "...";
         }
-        clearTimeout(email.confirmationTimeout);
-        let confirmationText = document.getElementsByClassName("confirmationText");
-        if (confirmationText.length > 0) {
-            confirmationText[0].style.display = "inline";
-            email.confirmationTimeout = setTimeout(function () {
-                confirmationText[0].style.display = "";
-            }, 3000);
-        }
+
+        // Asynchronously dispatch newsletter signup via FormSubmit AJAX API
+        fetch("https://formsubmit.co/ajax/" + emailHandler.recipient, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                subscriptionEmail: emailVal,
+                _subject: "New Newsletter Subscriber: " + emailVal
+            })
+        }).catch(function () {}).finally(function () {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Submit";
+            }
+            clearTimeout(emailHandler.confirmationTimeout);
+            let confirmationText = document.getElementsByClassName("confirmationText");
+            if (confirmationText.length > 0) {
+                confirmationText[0].style.display = "inline";
+                emailHandler.confirmationTimeout = setTimeout(function () {
+                    confirmationText[0].style.display = "";
+                }, 4000);
+            }
+        });
+
         return false;
     },
     sendMessage: function (event) {
-        if (event && event.preventDefault) {
-            event.preventDefault();
+        if (event) {
+            if (event.preventDefault) event.preventDefault();
+            if (event.stopPropagation) event.stopPropagation();
         }
-        let contactSection = document.getElementsByClassName("contactSection");
-        if (contactSection.length >= 2) {
-            let emailInput = document.getElementById("emailInput");
-            let textInput = document.getElementById("textInput");
-            if (emailInput) emailInput.value = "";
-            if (textInput) textInput.value = "";
+        let emailInput = document.getElementById("emailInput");
+        let textInput = document.getElementById("textInput");
+        let sendBtn = document.getElementById("emailSendButton");
+        let senderEmail = emailInput ? emailInput.value.trim() : "";
+        let senderMessage = textInput ? textInput.value.trim() : "";
 
-            contactSection[0].style.display = "none";
-            contactSection[1].style.display = "block";
-            clearTimeout(email.messageTimeout);
-            email.messageTimeout = setTimeout(function () {
-                contactSection[0].style.display = "block";
-                contactSection[1].style.display = "none";
-            }, 3000);
+        if (!senderEmail || !senderMessage) return false;
+
+        if (emailInput) emailInput.value = "";
+        if (textInput) textInput.value = "";
+        if (sendBtn) {
+            sendBtn.disabled = true;
+            sendBtn.innerText = "Sending...";
         }
+
+        // Asynchronously dispatch contact form message via FormSubmit AJAX API
+        fetch("https://formsubmit.co/ajax/" + emailHandler.recipient, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                email: senderEmail,
+                message: senderMessage,
+                _subject: "New Message from Portfolio Website: " + senderEmail
+            })
+        }).catch(function () {}).finally(function () {
+            if (sendBtn) {
+                sendBtn.disabled = false;
+                sendBtn.innerText = "Send";
+            }
+            let contactSection = document.getElementsByClassName("contactSection");
+            if (contactSection.length >= 2) {
+                contactSection[0].style.display = "none";
+                contactSection[1].style.display = "block";
+                clearTimeout(emailHandler.messageTimeout);
+                emailHandler.messageTimeout = setTimeout(function () {
+                    contactSection[0].style.display = "block";
+                    contactSection[1].style.display = "none";
+                }, 5000);
+            }
+        });
+
         return false;
     }
 };
+window.emailHandler = emailHandler;
 
 const MediaRes = {
     size1400: true,

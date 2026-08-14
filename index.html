@@ -211,9 +211,9 @@
                         </a>
                         <br />
                         <br />
-                        <form id="subscriptionForm" onsubmit="return email.clickEmailSubscription(event);">
+                        <form id="subscriptionForm" action="javascript:void(0);" method="POST" onsubmit="emailHandler.clickEmailSubscription(event); return false;">
                             <label id="emailInputLabel" for="emailInputFooter">Sign up for news:</label>
-                            <input id="emailInputFooter" type="email" name="subscriptionEmail" />
+                            <input id="emailInputFooter" type="email" name="subscriptionEmail" required />
                             <button id="emailSubmitButton" type="submit" name="subscribeButton">Submit</button>
                         </form>
                         <h6 class="confirmationText">Signed up successfully!</h6>
