@@ -47,74 +47,65 @@ const sDButton = {
             sDButton.appear();
         }
     },
-    turnButton: function (rotation, translation,) {
+    turnButton: function (rotation, translation) {
         let button = document.getElementsByClassName("scrollButton");
-        let currentRotation, currentTranslation;
-        if (rotation == 0) {
-            currentRotation = 180;
-        } else {
-            currentRotation = 0;
-        }
-        let rotationInterval = setInterval(function () {
-            if (rotation == 180 && currentRotation >= rotation) {
-                clearInterval(rotationInterval);
+        if (button.length === 0) return;
+        let currentRotation = (rotation == 0) ? 180 : 0;
+        let stepVal = (rotation == 180) ? 4 : -4;
+        function rotateFrame() {
+            if ((rotation == 180 && currentRotation >= rotation) || (rotation == 0 && currentRotation <= rotation)) {
                 button[0].style.transform = "rotate(" + rotation + "deg)";
-            }else if (rotation == 0 && currentRotation <= rotation) {
-                clearInterval(rotationInterval);
-                button[0].style.transform = "rotate(" + rotation + "deg)";
-            }else {
+            } else {
+                currentRotation += stepVal;
                 button[0].style.transform = "rotate(" + currentRotation + "deg)";
-                if (rotation == 180) {
-                    currentRotation += 2;
-                } else {
-                    currentRotation -= 2;
-                }
+                requestAnimationFrame(rotateFrame);
             }
-        }, 10);
+        }
+        requestAnimationFrame(rotateFrame);
     },
     appear: function () {
-        //set display to block
         const elements = document.getElementsByClassName("secondaryContentSection");
+        if (elements.length === 0) return;
         elements[0].style.display = "block";
         elements[0].style.height = "auto";
-        
-        //interval
         let opacity = 0;
-        sDButton.appeared = true;       
-        let interval = setInterval(function () {
+        sDButton.appeared = true;
+        function step() {
+            opacity += 0.02;
             if (opacity >= 1) {
-                clearInterval(interval);
+                elements[0].style.opacity = "1";
                 sDButton.appeared = false;
+            } else {
+                elements[0].style.opacity = opacity;
+                requestAnimationFrame(step);
             }
-            elements[0].style.opacity = opacity;
-            opacity += 0.01;
-        }, 10);
-        
+        }
+        requestAnimationFrame(step);
     },
     disappear: function () {
-        //interval first
         sDButton.disappeared = true;
         let opacity = 1;
         const elements = document.getElementsByClassName("secondaryContentSection");
-        
+        if (elements.length === 0) return;
         let height = elements[0].offsetHeight;
-        let interval = setInterval(function () {
-            if (opacity <= 0 && height <= 0) {
-                clearInterval(interval);
-                elements[0].style.display = "none";
-                sDButton.disappeared = false;
-            }
-            elements[0].style.height = height + "px";
-            elements[0].style.opacity = opacity;       
-            opacity -= 0.01;
+        function step() {
+            opacity -= 0.02;
             if (height > 0) {
-                height -= 20;
+                height -= 30;
             } else {
                 height = 0;
-                elements[0].style.display = "none";
             }
-            
-        }, 10);
+            if (opacity <= 0 && height <= 0) {
+                elements[0].style.display = "none";
+                elements[0].style.opacity = "0";
+                sDButton.disappeared = false;
+            } else {
+                elements[0].style.height = height + "px";
+                elements[0].style.opacity = opacity;
+                requestAnimationFrame(step);
+            }
+        }
+        requestAnimationFrame(step);
     },
     coolDown: function () {
         setTimeout(function () {
@@ -177,17 +168,23 @@ const buttonCanvas = {
         buttonCanvas.downArrows.push(arrow2);
     },
     animate: function () {
-        //clear Canvas
         let ctxUp = buttonCanvas.gC(0);
         let ctxDown = buttonCanvas.gC(1);
-        //draw Elements
-        let interval = setInterval(function () {
+        let isBtnVisible = true;
+        let isBtnTabVisible = !document.hidden;
+        let btnAnimId = null;
+
+        function renderButtonCanvas() {
+            if (!isBtnVisible || !isBtnTabVisible) {
+                btnAnimId = null;
+                return;
+            }
             ctxUp.clearRect(0, 0, 200, 250);
             ctxDown.clearRect(0, 0, 200, 250);
             for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
                 if (MediaRes.size800 == false && i < 2) {
                     buttonCanvas.colorUp = "#e6f5ff";
-                }else{
+                } else {
                     buttonCanvas.circleFractures[i].draw(0);
                 }
             }
@@ -196,14 +193,53 @@ const buttonCanvas = {
                     buttonCanvas.downArrows[i].draw(0);
                 }
             }
-            
             for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
                 buttonCanvas.circleFractures[i].draw(1);
             }
             for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
                 buttonCanvas.downArrows[i].draw(1);
             }
-        }, 10);
+            btnAnimId = requestAnimationFrame(renderButtonCanvas);
+        }
+
+        function startBtnAnim() {
+            if (!btnAnimId && isBtnVisible && isBtnTabVisible) {
+                btnAnimId = requestAnimationFrame(renderButtonCanvas);
+            }
+        }
+
+        function stopBtnAnim() {
+            if (btnAnimId) {
+                cancelAnimationFrame(btnAnimId);
+                btnAnimId = null;
+            }
+        }
+
+        const btnElem = document.querySelector(".scrollButton");
+        if (btnElem && "IntersectionObserver" in window) {
+            const btnObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    isBtnVisible = entry.isIntersecting;
+                    if (isBtnVisible) {
+                        startBtnAnim();
+                    } else {
+                        stopBtnAnim();
+                    }
+                });
+            });
+            btnObserver.observe(btnElem);
+        }
+
+        document.addEventListener("visibilitychange", () => {
+            isBtnTabVisible = !document.hidden;
+            if (isBtnTabVisible) {
+                startBtnAnim();
+            } else {
+                stopBtnAnim();
+            }
+        });
+
+        startBtnAnim();
     },
     changeColor(color, index) {
         switch (index) {

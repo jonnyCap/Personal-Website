@@ -47,24 +47,36 @@ const animatedText = {
     },
     setSpecificInterval: function (element) {
         let opacity = 0;
-        let interval = setInterval(function () {
-            if (window.pageXOffset < 1200 && element == "aboutMeContainer") {
+        const elements = document.getElementsByClassName(element);
+        if (elements.length === 0) return;
+        function fadeStep() {
+            if (window.innerWidth < 1200 && element == "aboutMeContainer") {
                 if (opacity >= 0.7) {
-                    clearInterval(interval);
+                    elements[0].style.opacity = "0.7";
+                    return;
                 }
             }
             if (opacity >= 1) {
-                clearInterval(interval);
+                elements[0].style.opacity = "1";
+                return;
             }
-            const elements = document.getElementsByClassName(element);
-            if (elements.length > 0) {
-                elements[0].style.opacity = opacity;
-            }
-            opacity += 0.01;
-        }, 10);
+            opacity += 0.02;
+            elements[0].style.opacity = opacity;
+            requestAnimationFrame(fadeStep);
+        }
+        requestAnimationFrame(fadeStep);
     }
 };
 
 // EventListener
 window.addEventListener("load", animatedText.animate);
-window.addEventListener("scroll", animatedText.animate);
+let textScrollTicking = false;
+window.addEventListener("scroll", () => {
+    if (!textScrollTicking) {
+        requestAnimationFrame(() => {
+            animatedText.animate();
+            textScrollTicking = false;
+        });
+        textScrollTicking = true;
+    }
+});

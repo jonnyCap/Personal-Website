@@ -7,21 +7,25 @@ const journyCanvas = {
         let secondaryCanvas;
         switch (index) {
             case 0:
+            case "0":
                 secondaryCanvas = document.getElementById("canvas0");
                 break;
             case 1:
+            case "1":
                 secondaryCanvas = document.getElementById("canvas1");
                 break;
             case 2:
+            case "2":
                 secondaryCanvas = document.getElementById("canvas2");
                 break;
             case 3:
+            case "3":
                 secondaryCanvas = document.getElementById("canvas3");
                 break;
             default:
                 break;
         }
-        return secondaryCanvas.getContext("2d");
+        return secondaryCanvas ? secondaryCanvas.getContext("2d") : null;
     },
     chooseCanvas(index) {
         switch (index) {

@@ -227,19 +227,71 @@ window.addEventListener("load", function () {
     setTimeout(secondaryCanvas.createAll, 100);
 });
 
-let can = document.getElementById("secondaryCanvas");
-can.addEventListener("click", (event) => {
-    console.log("clicked");
-    let x = event.clientX;
-    let y = event.clientY;
-    const section = document.getElementsByTagName("section");
-    let bounds = section[1].getBoundingClientRect();
-    let realX = x - bounds.left;
-    let realY = y - bounds.top;
-    secondaryCanvas.addAnimatedObject(realX, realY);
+let canSec = document.getElementById("secondaryCanvas");
+if (canSec) {
+    canSec.addEventListener("click", (event) => {
+        let x = event.clientX;
+        let y = event.clientY;
+        const section = document.getElementsByTagName("section");
+        if (section.length > 1) {
+            let bounds = section[1].getBoundingClientRect();
+            let realX = x - bounds.left;
+            let realY = y - bounds.top;
+            secondaryCanvas.addAnimatedObject(realX, realY);
+        }
+    });
+}
+
+let isSecCanvasVisible = true;
+let isSecTabVisible = !document.hidden;
+let secCanvasAnimId = null;
+
+function runSecCanvasLoop() {
+    if (isSecCanvasVisible && isSecTabVisible) {
+        secondaryCanvas.animateObjects();
+        secCanvasAnimId = requestAnimationFrame(runSecCanvasLoop);
+    } else {
+        secCanvasAnimId = null;
+    }
+}
+
+function startSecCanvasAnim() {
+    if (!secCanvasAnimId && isSecCanvasVisible && isSecTabVisible) {
+        secCanvasAnimId = requestAnimationFrame(runSecCanvasLoop);
+    }
+}
+
+function stopSecCanvasAnim() {
+    if (secCanvasAnimId) {
+        cancelAnimationFrame(secCanvasAnimId);
+        secCanvasAnimId = null;
+    }
+}
+
+if (canSec && "IntersectionObserver" in window) {
+    const secCanvasObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            isSecCanvasVisible = entry.isIntersecting;
+            if (isSecCanvasVisible) {
+                startSecCanvasAnim();
+            } else {
+                stopSecCanvasAnim();
+            }
+        });
+    });
+    secCanvasObserver.observe(canSec);
+}
+
+document.addEventListener("visibilitychange", () => {
+    isSecTabVisible = !document.hidden;
+    if (isSecTabVisible) {
+        startSecCanvasAnim();
+    } else {
+        stopSecCanvasAnim();
+    }
 });
 
-setInterval(secondaryCanvas.animateObjects, 20);
+startSecCanvasAnim();
 
 
 

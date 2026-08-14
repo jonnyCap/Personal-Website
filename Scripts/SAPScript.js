@@ -25,45 +25,38 @@ const SAP = {
     },
     moveMoveableDiv: function () {
         SAP.modifyButtonStyles();
-        clearInterval(SAP.movingDivInterval);
+        if (SAP.movingDivRaf) {
+            cancelAnimationFrame(SAP.movingDivRaf);
+        }
         const element = document.getElementById("moveableBackground");
         const navElements = document.getElementsByClassName("secondaryNavList");
-        let finalDestination;
-        let currentDestination;
-        let movingVektor;
-        if (MediaRes.size1400 == true) {
-            currentDestination = element.offsetTop;
-        } else {
-            currentDestination = element.offsetLeft;
-        }
+        if (!element || navElements.length === 0 || !navElements[SAP.finalMoveableDivDestination]) return;
 
-        //SAP.colorSelectedNavElement(SAP.finalMoveableDivDestination);
-        SAP.movingDivInterval = setInterval(function () {
+        function step() {
+            let currentDestination = (MediaRes.size1400 == true) ? element.offsetTop : element.offsetLeft;
+            let finalDestination = (MediaRes.size1400 == true) 
+                ? navElements[SAP.finalMoveableDivDestination].offsetTop 
+                : (navElements[SAP.finalMoveableDivDestination].offsetLeft + 30);
 
-            if (MediaRes.size1400 == true) {
-                currentDestination = element.offsetTop;
-                finalDestination = navElements[SAP.finalMoveableDivDestination].offsetTop;
+            let diff = finalDestination - currentDestination;
+            if (Math.abs(diff) < 2) {
+                if (MediaRes.size1400 == true) {
+                    element.style.top = finalDestination + "px";
+                } else {
+                    element.style.left = finalDestination + "px";
+                }
             } else {
-                currentDestination = element.offsetLeft;
-                finalDestination = navElements[SAP.finalMoveableDivDestination].offsetLeft + 30;
-            }
-            //movingVektor
-            if (finalDestination > currentDestination) {
-                movingVektor = 1;
-            } else {
-                movingVektor = -1;
-            }
-            if (Math.abs(finalDestination - currentDestination) < 1) {
-                currentDestination = finalDestination;
-            } else {
-                currentDestination += movingVektor;
+                let speed = (diff > 0) ? Math.min(diff, Math.max(3, diff * 0.15)) : Math.max(diff, Math.min(-3, diff * 0.15));
+                currentDestination += speed;
                 if (MediaRes.size1400 == true) {
                     element.style.top = currentDestination + "px";
                 } else {
                     element.style.left = currentDestination + "px";
                 }
+                SAP.movingDivRaf = requestAnimationFrame(step);
             }
-        }, 1);
+        }
+        SAP.movingDivRaf = requestAnimationFrame(step);
     },
     setUpContent: function () {
         SAP.changeContent();
@@ -192,44 +185,54 @@ const SAP = {
     },
     lessenFontSize: function () {
         const header = document.getElementsByClassName("secondaryHeader");
+        if (header.length === 0) return;
         var style = window.getComputedStyle(header[0], null).getPropertyValue('font-size');
         var fontSize = parseFloat(style);
-        let originalFontSize = fontSize;
-        let lessenFontSizeInterval = setInterval(function () {
-            if (fontSize < originalFontSize * 0.5) {
-                clearInterval(lessenFontSizeInterval);
+        let targetFontSize = fontSize * 0.5;
+        function step() {
+            if (fontSize <= targetFontSize) {
+                header[0].style.fontSize = targetFontSize + "px";
                 SAP.removeOldHeader();
             } else {
-                fontSize = fontSize * 0.99;
+                fontSize = fontSize * 0.96;
                 header[0].style.fontSize = fontSize + "px";
+                requestAnimationFrame(step);
             }
-        }, 10);
+        }
+        requestAnimationFrame(step);
     },
     removeOldHeader: function () {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
+        if (headerContainer.length === 0) return;
         let left = headerContainer[0].offsetLeft;
         let acceleration = 1;
-        let removeOldHeaderInterval = setInterval(function () {
+        function step() {
             if (left < -600) {
-                clearInterval(removeOldHeaderInterval);
                 SAP.changeInnerHtml();
             } else {
-                left -= 10 + acceleration;
-                acceleration++;
+                left -= 12 + acceleration;
+                acceleration += 0.8;
                 headerContainer[0].style.left = left + "px";
+                requestAnimationFrame(step);
             }
-        }, 10);
+        }
+        requestAnimationFrame(step);
     },
     changeInnerHtml: function () {
         const header = document.getElementsByClassName("secondaryHeader");
-        header[0].innerHTML = text.header[SAP.currentPage];
+        if (header.length > 0) {
+            header[0].innerHTML = text.header[SAP.currentPage];
+        }
 
         const lowerHeader = document.getElementsByClassName("lowerHeader");
-        lowerHeader[0].innerHTML = text.lowerHeader[SAP.currentPage];
+        if (lowerHeader.length > 0) {
+            lowerHeader[0].innerHTML = text.lowerHeader[SAP.currentPage];
+        }
         SAP.setNewTop();
     },
     setNewTop: function (index) {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
+        if (headerContainer.length === 0) return;
         if (MediaRes.size1400 == true) {
             if (/<br\s*\/?>/i.test(text.header[SAP.currentPage]) || text.header[SAP.currentPage].includes("</br>")) {
                 headerContainer[0].style.top = "230px";
@@ -253,27 +256,29 @@ const SAP = {
     },
     addNewHeader: function () {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
+        if (headerContainer.length === 0) return;
         headerContainer[0].style.left = "180%";
         let percent = 180;
         let acceleration = 2;
-        let addNewHeaderInterval = setInterval(function () {
+        function step() {
             if (percent <= 50) {
-                clearInterval(addNewHeaderInterval);
+                headerContainer[0].style.left = "50%";
                 SAP.enlargeFontSize();
             } else {
-                percent -= 1 + acceleration;
+                percent -= 2 + acceleration;
                 if (acceleration > 0) {
-                    acceleration-= 0.03;
+                    acceleration -= 0.05;
                 }
                 headerContainer[0].style.left = percent + "%";
+                requestAnimationFrame(step);
             }
-        }, 10);
+        }
+        requestAnimationFrame(step);
     },
     enlargeFontSize: function () {
-       
         const header = document.getElementsByClassName("secondaryHeader");
-        let fontSizeLong = header[0].style.fontSize;
-        let fontSize = fontSizeLong.replaceAll("px", "");
+        if (header.length === 0) return;
+        let fontSize = parseFloat(header[0].style.fontSize) || 40;
         let originalFontSize;
         if (MediaRes.size1400 == true) {
             originalFontSize = 170;
@@ -284,16 +289,17 @@ const SAP = {
         } else {
             originalFontSize = 60;
         }
-        let enlargeFontSizeInterval = setInterval(function () {
-            if (fontSize > originalFontSize) {
-                clearInterval(enlargeFontSizeInterval);
-                //Hier werden dann animationen wieder möglich
+        function step() {
+            if (fontSize >= originalFontSize) {
+                header[0].style.fontSize = originalFontSize + "px";
                 SAP.headerChangeAnimationDone = true;
             } else {
-                fontSize = fontSize * 1.01;
+                fontSize = fontSize * 1.04;
                 header[0].style.fontSize = fontSize + "px";
+                requestAnimationFrame(step);
             }
-        }, 10);
+        }
+        requestAnimationFrame(step);
     }, 
     adaptFontSizeOnStart: function () {
         let originalFontSize;

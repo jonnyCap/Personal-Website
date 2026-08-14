@@ -154,13 +154,20 @@ const sizeAdapter = {
 };
 
 // EventListeners
+let handlerResizeTicking = false;
 window.addEventListener("resize", function () {
-    let url = window.location.href;
-    sizeAdapter.adaptComponents();
-    if (url.includes("aboutMePage.html") && typeof SAP !== "undefined") {
-        SAP.setUpContent();
-        SAP.resetMoveableDivPosition();
-        SAP.adaptFontSizeOnStart();
+    if (!handlerResizeTicking) {
+        requestAnimationFrame(() => {
+            let url = window.location.href;
+            sizeAdapter.adaptComponents();
+            if (url.includes("aboutMePage.html") && typeof SAP !== "undefined") {
+                SAP.setUpContent();
+                SAP.resetMoveableDivPosition();
+                SAP.adaptFontSizeOnStart();
+            }
+            handlerResizeTicking = false;
+        });
+        handlerResizeTicking = true;
     }
 });
 

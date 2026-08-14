@@ -75,22 +75,25 @@ const slider = {
     },
     doAnimation: function(direction) {
         slider.setAllSlidesVisible();
-            let position = 0;
-            let myInterval = setInterval(function () {
-                if (position >= 350) {
-                    slider.slideAnimationPossible = true;
-                    slider.showSlides();
-                    clearInterval(myInterval);                  
-                } else {
-                    for (let i = 0; i < slider.sliderElements.length; i++) {
-                        let left = slider.sliderElements[i].offsetLeft;
-                        let newPosition = left - direction;
-                        slider.sliderElements[i].style.left = newPosition + "px";
-                    }
-                    position += 2;
+        let moved = 0;
+        const totalDistance = 350;
+        const speed = (direction > 0) ? 14 : -14;
+        function slideStep() {
+            if (moved >= totalDistance) {
+                slider.slideAnimationPossible = true;
+                slider.showSlides();
+            } else {
+                let step = Math.min(Math.abs(speed), totalDistance - moved);
+                let dirStep = (direction > 0) ? step : -step;
+                for (let i = 0; i < slider.sliderElements.length; i++) {
+                    let left = slider.sliderElements[i].offsetLeft;
+                    slider.sliderElements[i].style.left = (left - dirStep) + "px";
                 }
-            }, 1);
-       
+                moved += step;
+                requestAnimationFrame(slideStep);
+            }
+        }
+        requestAnimationFrame(slideStep);
     },
     reposition(x) {
         slider.setAllSlidesVisible();
@@ -130,42 +133,37 @@ const slider = {
     checkForShownSliderAmount: function () {
         const width = window.innerWidth;
         let currentStartPosition = slider.startPosition;
-        //set Startposition
         if (width <= 500 && width > 450) {
             slider.startPosition = 100;
-        }else if (width <= 450 && width > 400) {
+        } else if (width <= 450 && width > 400) {
             slider.startPosition = 70;
-        }else if (width <= 400 && width > 350) {
+        } else if (width <= 400 && width > 350) {
             slider.startPosition = 45;
-        }else if (width <= 350 && width > 300) {
+        } else if (width <= 350 && width > 300) {
             slider.startPosition = 30;
-        }else if (width <= 300 && width > 250) {
+        } else if (width <= 300 && width > 250) {
             slider.startPosition = 14;
         } else if (width <= 250 && width > 220) {
             slider.startPosition = 8;
-        }else if (width <= 220) {
+        } else if (width <= 220) {
             slider.startPosition = 0;
-        }else {
+        } else {
             slider.startPosition = 75;
         }
         if (currentStartPosition != slider.startPosition) {
             slider.reposition(slider.slideIndex);
         }
         
-        //set sliderIndex t0 show right amount of SLides
-        
         if (width > 1200) {
             slider.showSliderIndex = 3;
             slider.showSlides();
-        }
-        else if (width <= 1200 && width > 900) {
+        } else if (width <= 1200 && width > 900) {
             slider.showSliderIndex = 2;
             slider.showSlides();
         } else if (width <= 900) {
             slider.showSliderIndex = 1;
             slider.showSlides();
         }
-        
     },
 
     doEndAnimation() {
@@ -173,8 +171,17 @@ const slider = {
     }
 };
 
-//EventListener
-window.addEventListener("resize", slider.checkForShownSliderAmount );
+// EventListener with throttle
+let sliderResizeTicking = false;
+window.addEventListener("resize", () => {
+    if (!sliderResizeTicking) {
+        requestAnimationFrame(() => {
+            slider.checkForShownSliderAmount();
+            sliderResizeTicking = false;
+        });
+        sliderResizeTicking = true;
+    }
+});
 
 document.addEventListener('DOMContentLoaded', function () {
     slider.checkForShownSliderAmount();
@@ -183,19 +190,27 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false);
 
 let nextButton = document.getElementById("nextButton");
-nextButton.addEventListener("click", (event) => {
-    slider.goNextSlide();
-});
+if (nextButton) {
+    nextButton.addEventListener("click", (event) => {
+        slider.goNextSlide();
+    });
+}
 let prevButton = document.getElementById("prevButton");
-prevButton.addEventListener("click", (event) => {
-    slider.goPreviousSlide();
-});
+if (prevButton) {
+    prevButton.addEventListener("click", (event) => {
+        slider.goPreviousSlide();
+    });
+}
 let secondNextButton = document.getElementById("secondNextButton");
-secondNextButton.addEventListener("click", (event) => {
-    slider.goNextSlide();
-});
+if (secondNextButton) {
+    secondNextButton.addEventListener("click", (event) => {
+        slider.goNextSlide();
+    });
+}
 let secondPrevButton = document.getElementById("secondPrevButton");
-secondPrevButton.addEventListener("click", (event) => {
-    slider.goPreviousSlide();
-});
+if (secondPrevButton) {
+    secondPrevButton.addEventListener("click", (event) => {
+        slider.goPreviousSlide();
+    });
+}
 

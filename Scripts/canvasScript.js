@@ -211,20 +211,75 @@ class circleLine {
        
     }
 }
-window.onload = setTimeout(canvas.createAll, 100);
-
-let can = document.getElementById("canvas");
-can.addEventListener("click", (event) => {
-    let x = event.clientX;
-    let y = event.clientY;
-    const section = document.getElementsByTagName("canvas");
-    let bounds = section[0].getBoundingClientRect();
-    let realX = x - bounds.left;
-    let realY = y - bounds.top;
-    canvas.addAnimatedObject(realX, realY);
+window.addEventListener("load", function () {
+    setTimeout(canvas.createAll, 100);
 });
 
-setInterval(canvas.animateObjects, 20);
+let can = document.getElementById("canvas");
+if (can) {
+    can.addEventListener("click", (event) => {
+        let x = event.clientX;
+        let y = event.clientY;
+        const section = document.getElementsByTagName("canvas");
+        if (section.length > 0) {
+            let bounds = section[0].getBoundingClientRect();
+            let realX = x - bounds.left;
+            let realY = y - bounds.top;
+            canvas.addAnimatedObject(realX, realY);
+        }
+    });
+}
+
+let isCanvasVisible = true;
+let isTabVisible = !document.hidden;
+let canvasAnimId = null;
+
+function runCanvasLoop() {
+    if (isCanvasVisible && isTabVisible) {
+        canvas.animateObjects();
+        canvasAnimId = requestAnimationFrame(runCanvasLoop);
+    } else {
+        canvasAnimId = null;
+    }
+}
+
+function startCanvasAnim() {
+    if (!canvasAnimId && isCanvasVisible && isTabVisible) {
+        canvasAnimId = requestAnimationFrame(runCanvasLoop);
+    }
+}
+
+function stopCanvasAnim() {
+    if (canvasAnimId) {
+        cancelAnimationFrame(canvasAnimId);
+        canvasAnimId = null;
+    }
+}
+
+if (can && "IntersectionObserver" in window) {
+    const canvasObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            isCanvasVisible = entry.isIntersecting;
+            if (isCanvasVisible) {
+                startCanvasAnim();
+            } else {
+                stopCanvasAnim();
+            }
+        });
+    });
+    canvasObserver.observe(can);
+}
+
+document.addEventListener("visibilitychange", () => {
+    isTabVisible = !document.hidden;
+    if (isTabVisible) {
+        startCanvasAnim();
+    } else {
+        stopCanvasAnim();
+    }
+});
+
+startCanvasAnim();
 
 
 
