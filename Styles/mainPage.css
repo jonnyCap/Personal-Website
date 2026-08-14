@@ -1,4 +1,4 @@
-﻿
+
 
 
 .mainSection{
@@ -12,7 +12,7 @@
 .imageContainer {
     height: 800px;
     position: relative;
-    background-image: url("../Bilder/blueBackground.jpg");
+    background-image: url("../Bilder/blueBackground.webp");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
