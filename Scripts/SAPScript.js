@@ -231,7 +231,7 @@ const SAP = {
     setNewTop: function (index) {
         const headerContainer = document.getElementsByClassName("secondaryHeaderContainer");
         if (MediaRes.size1400 == true) {
-            if (text.header[SAP.currentPage].includes("</br>")) {
+            if (/<br\s*\/?>/i.test(text.header[SAP.currentPage]) || text.header[SAP.currentPage].includes("</br>")) {
                 headerContainer[0].style.top = "230px";
                 headerContainer[0].style.lineHeight = "160px";
             } else {
@@ -239,7 +239,7 @@ const SAP = {
                 headerContainer[0].style.lineHeight = "";
             }
         } else if (MediaRes.size1400 == false) {
-            if (text.header[SAP.currentPage].includes("</br>")) {
+            if (/<br\s*\/?>/i.test(text.header[SAP.currentPage]) || text.header[SAP.currentPage].includes("</br>")) {
                 headerContainer[0].style.top = "50px";
                 headerContainer[0].style.lineHeight = "160px";
             } else {
@@ -287,7 +287,7 @@ const SAP = {
         let enlargeFontSizeInterval = setInterval(function () {
             if (fontSize > originalFontSize) {
                 clearInterval(enlargeFontSizeInterval);
-                //Hier werden dann animationen wieder möglich
+                //Hier werden dann animationen wieder mÃ¶glich
                 SAP.headerChangeAnimationDone = true;
             } else {
                 fontSize = fontSize * 1.01;
@@ -340,7 +340,7 @@ document.addEventListener('popstate', (event) => {
     SAP.savedLastPages.pop();
     let currentPage = SAP.savedLastPages[x - 1];
     SAP.currentPage = currentPage;
-    browserStorage.savedPage(currentPage);
+    browserStorage.savePage(currentPage);
     //do animation
     SAP.animatePage();
 });

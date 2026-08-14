@@ -126,4 +126,4 @@ function setButtonHeightHigher() {
 
 
 window.addEventListener("scroll", navBarStick);
-//window.addEventListener("resize", adaptToWidth); //muss hier ge‰ndert werde
+//window.addEventListener("resize", adaptToWidth); //muss hier ge√§ndert werde

@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--SAP-->
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=0.7">
-    <link rel="stylesheet" href="Styles\NavAndFooterStyles.css">
-    <link rel="stylesheet" href="Styles\secondaryPage.css">
+    <link rel="stylesheet" href="Styles/NavAndFooterStyles.css">
+    <link rel="stylesheet" href="Styles/secondaryPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>About Me</title>
 </head>
@@ -14,7 +14,7 @@
         <div class="navContainer">
             <div class="navInnerContainer">
                 <div class="logo" onclick="Links.goToPage(0,0,0)">
-                    <image class="logoImage" src="Bilder\logo.png"></image>
+                    <img class="logoImage" src="Bilder/logo.png" alt="Logo">
                 </div>
                 <div class="navElements">
                     <ul>
@@ -26,36 +26,36 @@
                 </div>
                 <div class="dropDown">
                     <button class="dropDownButton">
-                        <image class="dropDownButtonImage" src="Bilder\dropDownButton.png"></image>
+                        <img class="dropDownButtonImage" src="Bilder/dropDownButton.png" alt="Menu">
                     </button>
                     <div class="dropDownContent">
-                        <a class ="dropA" onclick="Links.goToPage(0,0,0)">Home</a>
-                        <a class ="dropA" onclick="Links.goToPage(1,0,0)">About Me</a>
-                        <a class ="dropA" onclick="Links.goToPage(0,0,1600)">Content</a>
-                        <a class ="dropA" onclick="Links.goToPage(1,4,0)">Contact</a>
+                        <a class="dropA" onclick="Links.goToPage(0,0,0)">Home</a>
+                        <a class="dropA" onclick="Links.goToPage(1,0,0)">About Me</a>
+                        <a class="dropA" onclick="Links.goToPage(0,0,1600)">Content</a>
+                        <a class="dropA" onclick="Links.goToPage(1,4,0)">Contact</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <script src="Scripts\navScript.js"></script>
+    <script src="Scripts/navScript.js"></script>
     <section>
         <div class="secondaryBackgroundContainer">
             <div class="secondaryStartSection">
                 <canvas id="secondaryCanvas" width="1400px" height="900px"></canvas><!--Background Canvas-->
-                <script src="Scripts\secondaryCanvasScript.js"></script>
+                <script src="Scripts/secondaryCanvasScript.js"></script>
                 <div class="alignStartSectionParts">
                     <div class="secondaryLowerContainer">
                         <ul class="secondaryUl">
                             <li class="secondaryNavList button-53">About me</li>
                             <li class="secondaryNavList button-53 twoLiner">Team Creator App</li>
-                            <li class="secondaryNavList button-53 twoLiner">Personal</br>Website</li>
-                            <li class="secondaryNavList button-53 twoLiner">JS Mini-</br>Games</li>
+                            <li class="secondaryNavList button-53 twoLiner">Personal<br />Website</li>
+                            <li class="secondaryNavList button-53 twoLiner">JS Mini-<br />Games</li>
                             <li class="secondaryNavList button-53">Contact</li>
                             <li class="secondaryNavList button-53 twoLiner">Privacy<br />Policy</li>
                         </ul>
                         <div id="moveableBackground">
-                            <image src="Bilder\scrollDownButtonImage.png" width="50px" height="auto"></image>
+                            <img src="Bilder/scrollDownButtonImage.png" width="50px" height="auto" alt="Selector">
                         </div>
                     </div>
                     <div class="secondaryHeaderContainer">
@@ -63,10 +63,10 @@
                         <h2 class="lowerHeader"></h2>
                     </div>
                     <button class="scrollButton down">
-                        <image class="scrollDownButtonImage imageDown" src="Bilder\scrollDownButtonImage.png" width="40%" height="auto"></image>
+                        <img class="scrollDownButtonImage imageDown" src="Bilder/scrollDownButtonImage.png" width="40%" height="auto" alt="Scroll Down">
                         <canvas id="clickAnimationCanvas" width="200px" height="250px"></canvas>
                     </button>
-                    <script src="Scripts\textAppearanceSrcript.js"></script> <!--Lets Text appear when side is loaded-->
+                    <script src="Scripts/textAppearanceSrcript.js"></script> <!--Lets Text appear when side is loaded-->
                 </div>
             </div>
             <div class="secondaryContentSection">
@@ -75,7 +75,7 @@
                     <div class="secondaryContentHeaderContainer">
                         <h1 class="secondaryContentHeader">Hello!</h1>
                         <h2 class="secondaryContentLowerHeader">
-                            I'm Jonathan, a future Software-developer!</br>
+                            I'm Jonathan, a future Software-developer!<br />
                             I want to show you my rather short Coding journey so far and tell you a bit about my self...
                         </h2>
                     </div>
@@ -132,7 +132,7 @@
                     <div class="secondaryContentHeaderContainer">
                         <h1 class="secondaryContentHeader">Team Creator</h1>
                         <h2 class="secondaryContentLowerHeader">
-                            I created an App with Android Studio and Java,</br> which allows you to create fair Teams!
+                            I created an App with Android Studio and Java,<br /> which allows you to create fair Teams!
                         </h2>
                     </div>
                     <!-- canvas index = canvas1-->
@@ -164,7 +164,7 @@
                                 just doing.
                             </p>
                             <div class="secondaryContentImageContaner">
-                                <image src="Bilder\TeamCreator.PNG" alt="programmingApp.png" width="100%" height="auto"></image>
+                                <img src="Bilder/TeamCreator.PNG" alt="programmingApp.png" style="width:100%; height:auto;">
                             </div>
                             <h3 class="secondaryContentTextHeader">Finishing the App</h3>
                             <p>
@@ -180,7 +180,7 @@
                                 on your web-page. At that time there was no web-page, so I started a new Project - Creating a Personal Website.
                             </p>
                             <div class="secondaryContentImageContaner">
-                                <image src="Bilder\wideVorstellungsbild.png" alt="TeamSelector.png" width="100%" height="auto"></image>
+                                <img src="Bilder/wideVorstellungsbild.png" alt="TeamSelector.png" style="width:100%; height:auto;">
                             </div>
                             <h3 class="secondaryContentTextHeader">Team Creator</h3>
                             <p>
@@ -211,7 +211,7 @@
                                 Web-page instead. It looked somewhat like this:
                             </p>
                             <div class="secondaryContentImageContaner">
-                                <image src="Bilder\editedOldWebsite.PNG" alt="TeamSelector.png" width="100%" height="auto"></image>
+                                <img src="Bilder/editedOldWebsite.PNG" alt="TeamSelector.png" style="width:100%; height:auto;">
                             </div>
                             <p>
                                 Although initially I was quite happy with it, after a while it just looked boring and I
@@ -224,7 +224,7 @@
                                 as Guideline for my Web-page.
                             </p>
                             <div class="secondaryContentImageContaner">
-                                <image src="Bilder\logo.png" alt="TeamCreator.png" width="100%" height="auto"></image>
+                                <img src="Bilder/logo.png" alt="TeamCreator.png" style="width:100%; height:auto;">
                             </div>
                             <h3 class="secondaryContentTextHeader">Outcome</h3>
                             <p>
@@ -241,7 +241,7 @@
                     <div class="secondaryContentHeaderContainer">
                         <h1 class="secondaryContentHeader">JS Mini-Games</h1>
                         <h2 class="secondaryContentLowerHeader">
-                            A little and honestly really crappy JavaScript-Game-Collection!</br>
+                            A little and honestly really crappy JavaScript-Game-Collection!<br />
                             I designed and programmed these Games during my time at the Austrian Armed Forces and they honestly helped my a lot to understand the
                             basics of JS
                         </h2>
@@ -258,7 +258,7 @@
                                 which paints all divs black except the divs reserved for the snakes body which are painted green.
                             </p>
                             <div class="secondaryContentImageContaner">
-                                <image src="Bilder\snakeGameEdited.PNG" alt="TeamSelector.png" width="100%" height="auto"></image>
+                                <img src="Bilder/snakeGameEdited.PNG" alt="TeamSelector.png" style="width:100%; height:auto;">
                             </div>
                             <h3 class="secondaryContentTextHeader">Flappy Birds</h3>
                             <p>
@@ -266,7 +266,7 @@
                                 the gravitation and the graphics felt rather unsatisfying to be honest.
                             </p>
                             <div class="secondaryContentImageContaner">
-                                <image src="Bilder\flappyBirdsGameEdited.PNG" alt="TeamSelector.png" width="100%" height="auto"></image>
+                                <img src="Bilder/flappyBirdsGameEdited.PNG" alt="TeamSelector.png" style="width:100%; height:auto;">
                             </div>
                             <h3 class="secondaryContentTextHeader">Builder</h3>
                             <p>
@@ -299,19 +299,19 @@
                         </h2>
                     </div>
                     <div class="centerAlignForm">
-                        <form method="post" action=" Scripts\emailSubmissionScript.php">
+                        <form id="contactForm" onsubmit="return email.sendMessage(event);">
                             <div class="secondaryContentText contactSection">
-                                <label>Your Email:</label>
-                                <input id="emailInput" type="email" name="email" />
-                                </br>
-                                <label>Tell me whatever you want, I will answer you as soon as possible!</label>
-                                <textarea id="textInput" type="text" name="Message"></textarea>
+                                <label for="emailInput">Your Email:</label>
+                                <input id="emailInput" type="email" name="email" required />
+                                <br />
+                                <label for="textInput">Tell me whatever you want, I will answer you as soon as possible!</label>
+                                <textarea id="textInput" name="Message" required></textarea>
                                 <div id="emailSendButtonContainer">
-                                    <button id="emailSendButton" class="button-53" name="emailSendButton" onlick="email.sendMessage()">Send</button>
+                                    <button id="emailSendButton" class="button-53" type="submit" name="emailSendButton">Send</button>
                                 </div>
                             </div>
                             <div class="contactSection confirmationDiv">
-                                <h1>Your Message has been send!</h1>
+                                <h1>Your Message has been sent!</h1>
                             </div>
                         </form>
                     </div>
@@ -329,7 +329,6 @@
                             <p>
                                 The protection of your Data is especially important to me. In the paragraphs below you will be informed about your personal data that I collect and how I use it. But
                                 from the front there is no sensitive or personal Data, except your Email, collected on this Web-page or my App, Team Creator.
-                            </p>
                             </p>
                             <h3 class="secondaryContentTextHeader">Contact</h3>
                             <p>
@@ -358,21 +357,21 @@
                             </p>
                             <h3 class="secondaryContentTextHeader">Questions?</h3>
                             <p>
-                                Contact me:</br>
-                                maier.jonathanelias@gmail.com</br>
-                                Tel.: +43 66488524186</br>
+                                Contact me:<br />
+                                maier.jonathanelias@gmail.com<br />
+                                Tel.: +43 66488524186<br />
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="scrollButtonWrapper">
                     <button class="scrollButton up">
-                        <image class="scrollDownButtonImage imageUp" src="Bilder\scrollDownButtonImage.png" width="40%" height="auto"></image>
+                        <img class="scrollDownButtonImage imageUp" src="Bilder/scrollDownButtonImage.png" width="40%" height="auto" alt="Scroll Up">
                         <canvas id="clickAnimationCanvasUp" width="200px" height="250px"></canvas>
                     </button>
                 </div>
-                <script src="Scripts\scrollDownButtonScript.js"></script>
-                <script src="Scripts\journyCanvasScript.js"></script> <!--main Function in this script is getting called in scrollDownButtonScript-->
+                <script src="Scripts/scrollDownButtonScript.js"></script>
+                <script src="Scripts/journyCanvasScript.js"></script> <!--main Function in this script is getting called in scrollDownButtonScript-->
             </div>
         </div>
     </section>
@@ -388,17 +387,17 @@
                     </div>
                     <div class="footerSmallSection" id="secondFooterLine">
                         <h3 class="footerSmallHeader"> Follow me:</h3>
-                        <a href="https://github.com/jonnyCap" class="fa fa-github"></a>
-                        <a href="https://www.instagram.com/jonathan._.maier/" class="fa fa-instagram"></a>
-                        <a href="#" class="fa fa-linkedin"></a>
-                        <a href="https://t.snapchat.com/CXsoOf11" class="fa fa-snapchat"></a>
-                        </br>
-                        </br>
-                        <form method="post" id="subscriptionForm" action="Scripts\emailSubmissionScript.php">
-                            <label id="emailInputLabel">Sign up for news:</label>
+                        <a href="https://github.com/jonnyCap" class="fa fa-github" aria-label="GitHub"></a>
+                        <a href="https://www.instagram.com/jonathan._.maier/" class="fa fa-instagram" aria-label="Instagram"></a>
+                        <a href="#" class="fa fa-linkedin" aria-label="LinkedIn"></a>
+                        <a href="https://t.snapchat.com/CXsoOf11" class="fa fa-snapchat" aria-label="Snapchat"></a>
+                        <br />
+                        <br />
+                        <form id="subscriptionForm" onsubmit="return email.clickEmailSubscription(event);">
+                            <label id="emailInputLabel" for="emailInputFooter">Sign up for news:</label>
                             <input id="emailInputFooter" type="email" name="subscriptionEmail" />
+                            <button id="emailSubmitButton" type="submit" name="subscribeButton">Submit</button>
                         </form>
-                        <button form="subscriptionForm" id="emailSubmitButton" name="subscribeButton" onclick="email.clickEmailSubscription()">Submit</button>
                         <h6 class="confirmationText">Signed up successfully!</h6>
                     </div>
                     <div class="footerSmallSection" id="thirdFooterLine">
@@ -415,7 +414,7 @@
             </div>
         </footer>
     </section>
-    <script src="Scripts\handlerScript.js"></script>
-    <script src="Scripts\SAPScript.js"></script>
+    <script src="Scripts/handlerScript.js"></script>
+    <script src="Scripts/SAPScript.js"></script>
 </body>
 </html>

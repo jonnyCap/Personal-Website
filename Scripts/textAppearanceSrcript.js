@@ -57,12 +57,14 @@ const animatedText = {
                 clearInterval(interval);
             }
             const elements = document.getElementsByClassName(element);
-            elements[0].style.opacity = opacity;
+            if (elements.length > 0) {
+                elements[0].style.opacity = opacity;
+            }
             opacity += 0.01;
         }, 10);
     }
 };
 
-//EventListener
-window.onload = animatedText.animate;
-window.onscroll = animatedText.animate;
+// EventListener
+window.addEventListener("load", animatedText.animate);
+window.addEventListener("scroll", animatedText.animate);

@@ -140,7 +140,7 @@ class circleLine {
         ctx.lineWidth = 2;
 
         let grad = ctx.createRadialGradient(canvas.mainX, canvas.mainY,300, canvas.mainX, canvas.mainY, 200); 
-        grad.addColorStop(0, "#80ccff");//auﬂen
+        grad.addColorStop(0, "#80ccff");//au√üen
         grad.addColorStop(1, "#66c2ff");//innen
         ctx.strokeStyle = grad;
   
@@ -152,7 +152,7 @@ class circleLine {
 
         //Endcircle
         let grad2 = ctx.createRadialGradient(canvas.mainX, canvas.mainY, 300, canvas.mainX, canvas.mainY, 200);
-        grad2.addColorStop(0, "#4da9ff");//auﬂen
+        grad2.addColorStop(0, "#4da9ff");//au√üen
         grad2.addColorStop(1, "#0080ff"); //innen
 
         ctx.strokeStyle = grad2;

@@ -1,20 +1,20 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=0.6">
-    <link rel="stylesheet" href="Styles\NavAndFooterStyles.css">
-    <link rel="stylesheet" href="Styles\mainPage.css">
+    <link rel="stylesheet" href="Styles/NavAndFooterStyles.css">
+    <link rel="stylesheet" href="Styles/mainPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Jonathan Maier</title>
 </head>
 <body>
-    <section>
+    <section id="home">
         <div class="navContainer">
             <div class="navInnerContainer">
                 <div class="logo" onclick="Links.goToPage(0,0,0)">
-                    <image class="logoImage" src="Bilder\logo.png"></image>
+                    <img class="logoImage" src="Bilder/logo.png" alt="Logo">
                 </div>
                 <div class="navElements">
                     <ul>
@@ -26,20 +26,20 @@
                 </div>
                 <div class="dropDown">
                     <button class="dropDownButton">
-                        <image class="dropDownButtonImage" src="Bilder\dropDownButton.png"></image>
+                        <img class="dropDownButtonImage" src="Bilder/dropDownButton.png" alt="Menu">
                     </button>
                     <div class="dropDownContent">
-                        <a class ="dropA" onclick="Links.goToPage(0,0,0)">Home</a>
-                        <a class ="dropA" onclick="Links.goToPage(1,0,0)">About Me</a>
-                        <a class ="dropA" onclick="Links.goToPage(0,0,1600)">Content</a>
-                        <a class ="dropA" onclick="Links.goToPage(1,4,0)">Contact</a>
+                        <a class="dropA" onclick="Links.goToPage(0,0,0)">Home</a>
+                        <a class="dropA" onclick="Links.goToPage(1,0,0)">About Me</a>
+                        <a class="dropA" onclick="Links.goToPage(0,0,1600)">Content</a>
+                        <a class="dropA" onclick="Links.goToPage(1,4,0)">Contact</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <script src="Scripts\navScript.js"></script>
-    <section class="bigMainSection" id="">
+    <script src="Scripts/navScript.js"></script>
+    <section class="bigMainSection">
         <div class="imageContainer">
             <div class="startContainer">
                 <h1 class="startContainerHeader">Maier<br />Jonathan</h1>
@@ -48,7 +48,7 @@
             </div>
         </div>
     </section>
-    <section class="mainSection">
+    <section class="mainSection" id="aboutMeSection">
         <div class="backgroundContainer">
             <div class="aboutMeContainer">
                 <div class="textContainer">
@@ -70,10 +70,10 @@
             </div>
         </div>
         <!--Here goes the script...-->
-        <script src="Scripts\canvasScript.js"></script>
-        <script src="Scripts\sizeAdapterScript.js"></script>
+        <script src="Scripts/canvasScript.js"></script>
+        <script src="Scripts/sizeAdapterScript.js"></script>
     </section>
-    <section class="mainSection">
+    <section class="mainSection" id="projectsSection">
         <div class="projectsContainer">
             <div class="projectsHeaderContainer">
                 <h1 id="sliderHeader" class="noMarginPadding">Projects/Content</h1>
@@ -86,72 +86,72 @@
                     <!-- SliderElement-->
                     <div class="sliderElement">
                         <div class="imageContainerSlider">
-                            <image class="projectPicture" src="Bilder\aboutMePicture.png" alt="Programmer" width="50%"></image>
+                            <img class="projectPicture" src="Bilder/aboutMePicture.png" alt="Programmer" style="width:50%;">
                         </div>
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">About Me</h3>
                             <p class="projectContent">As you might have read above, my Name is Jonathan Maier and I am an upcoming Software Developer constantly trying to learn new Skills.</p>
-                            <a onclick="Links.goToPage(1,0,0)" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,0,0)" class="sliderLink">Read more &gt;</a>
                         </div>
                     </div>
 
                     <!-- SliderElement-->
                     <div class="sliderElement">
                         <div class="imageContainerSlider">
-                            <image class="projectPicture" src="Bilder\wideVorstellungsbild.png" alt="Team Creator" width="100%" height="100px"></image>
+                            <img class="projectPicture" src="Bilder/wideVorstellungsbild.png" alt="Team Creator" style="width:100%; height:100px;">
                         </div>
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">Team Creator</h3>
                             <p class="projectContent">Team Creator is the first App I have ever developed! It simply creates fair Teams with the selected algorithm and was created with Java and Android Studio.</p>
-                            <a onclick="Links.goToPage(1,1,0)" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,1,0)" class="sliderLink">Read more &gt;</a>
                         </div>
                     </div>
 
                     <!-- SliderElement-->
                     <div class="sliderElement">
                         <div class="imageContainerSlider">
-                            <image class="projectPicture" src="Bilder\websitePicture.PNG" alt="Personal Website" width="100%"></image>
+                            <img class="projectPicture" src="Bilder/websitePicture.PNG" alt="Personal Website" style="width:100%;">
                         </div>
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">Personal Website</h3>
                             <p class="projectContent">At this Moment your are looking at my new personal Homepage. Interested in the progress and how it was done? Just click the Link...</p>
-                            <a onclick="Links.goToPage(1,2,0)" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,2,0)" class="sliderLink">Read more &gt;</a>
                         </div>
                     </div>
 
                     <!-- SliderElement-->
                     <div class="sliderElement">
                         <div class="imageContainerSlider">
-                            <image class="projectPicture" src="Bilder\miniGamesPicture.png" alt="Minigames" width="100%"></image>
+                            <img class="projectPicture" src="Bilder/miniGamesPicture.png" alt="Minigames" style="width:100%;">
                         </div>
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">JS Mini-Games</h3>
                             <p class="projectContent">During my Time at the Austrian Armed Forces I started learning JavaScript by mainly programming Mini-Games.</p>
-                            <a onclick="Links.goToPage(1,3,0)" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,3,0)" class="sliderLink">Read more &gt;</a>
                         </div>
                     </div>
 
                     <!-- SliderElement-->
                     <div class="sliderElement">
                         <div class="imageContainerSlider">
-                            <image class="projectPicture" src="Bilder\contactPicture.png" alt="Contact" width="70%"></image>
+                            <img class="projectPicture" src="Bilder/contactPicture.png" alt="Contact" style="width:70%;">
                         </div>
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">Contact</h3>
                             <p class="projectContent">If you have any Suggestions for my App, Website or future Projects or just want to say "Hello" - feel free to do so!</p>
-                            <a onclick="Links.goToPage(1,4,0)" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,4,0)" class="sliderLink">Read more &gt;</a>
                         </div>
                     </div>
 
                     <!-- SliderElement-->
                     <div class="sliderElement">
                         <div class="imageContainerSlider">
-                            <image class="projectPicture" src="Bilder\privacyPolicyPicture.png" alt="Privacy Policy" width="70%"></image>
+                            <img class="projectPicture" src="Bilder/privacyPolicyPicture.png" alt="Privacy Policy" style="width:70%;">
                         </div>
                         <div class="textContainerSlider">
                             <h3 class="projectHeader">Privacy Policy</h3>
                             <p class="projectContent">Don't worry, your Data is in good hands! If you are curious about which Data we collect and what we are using it for, just click the link.</p>
-                            <a onclick="Links.goToPage(1,5,0)" class="sliderLink">Read more ></a>
+                            <a onclick="Links.goToPage(1,5,0)" class="sliderLink">Read more &gt;</a>
                         </div>
                     </div>
 
@@ -166,7 +166,7 @@
             </div>
         </div>
         <!--Here goes the script...-->
-        <script src="Scripts\sliderScript.js"></script>
+        <script src="Scripts/sliderScript.js"></script>
     </section>
     <section>
         <footer>
@@ -180,17 +180,17 @@
                     </div>
                     <div class="footerSmallSection" id="secondFooterLine">
                         <h3 class="footerSmallHeader"> Follow me:</h3>
-                        <a href="https://github.com/jonnyCap" class="fa fa-github"></a>
-                        <a href="https://www.instagram.com/jonathan._.maier/" class="fa fa-instagram"></a>
-                        <a href="#" class="fa fa-linkedin"></a>
-                        <a href="https://t.snapchat.com/CXsoOf11" class="fa fa-snapchat"></a>
-                        </br>
-                        </br>
-                        <form method="post" id="subscriptionForm" action="Scripts\emailSubmissionScript.php">
-                            <label id="emailInputLabel">Sign up for news:</label>
+                        <a href="https://github.com/jonnyCap" class="fa fa-github" aria-label="GitHub"></a>
+                        <a href="https://www.instagram.com/jonathan._.maier/" class="fa fa-instagram" aria-label="Instagram"></a>
+                        <a href="#" class="fa fa-linkedin" aria-label="LinkedIn"></a>
+                        <a href="https://t.snapchat.com/CXsoOf11" class="fa fa-snapchat" aria-label="Snapchat"></a>
+                        <br />
+                        <br />
+                        <form id="subscriptionForm" onsubmit="return email.clickEmailSubscription(event);">
+                            <label id="emailInputLabel" for="emailInputFooter">Sign up for news:</label>
                             <input id="emailInputFooter" type="email" name="subscriptionEmail" />
+                            <button id="emailSubmitButton" type="submit" name="subscribeButton">Submit</button>
                         </form>
-                        <button form="subscriptionForm" id="emailSubmitButton" name="subscribeButton" onclick="email.clickEmailSubscription()">Submit</button>
                         <h6 class="confirmationText">Signed up successfully!</h6>
                     </div>
                     <div class="footerSmallSection" id="thirdFooterLine">
@@ -207,7 +207,7 @@
             </div>
         </footer>
     </section>
-    <script src="Scripts\textAppearanceSrcript.js"></script>
-    <script src="Scripts\handlerScript.js"></script>
+    <script src="Scripts/textAppearanceSrcript.js"></script>
+    <script src="Scripts/handlerScript.js"></script>
 </body>
 </html>

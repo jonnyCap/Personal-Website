@@ -152,7 +152,7 @@ class circleLine {
         ctx.lineWidth = 2;
 
         let grad = ctx.createRadialGradient(secondaryCanvas.mainX, secondaryCanvas.mainY, 200, secondaryCanvas.mainX, secondaryCanvas.mainY, 100);
-        grad.addColorStop(0, "#98c6e6");//außen
+        grad.addColorStop(0, "#98c6e6");//auÃŸen
         grad.addColorStop(1, "#98c6e6");//innen
         ctx.strokeStyle = grad;
 
@@ -164,7 +164,7 @@ class circleLine {
 
         //Endcircle
         let grad2 = ctx.createRadialGradient(secondaryCanvas.mainX, secondaryCanvas.mainY, 600, secondaryCanvas.mainX, secondaryCanvas.mainY, 400);
-        grad2.addColorStop(0, "#d6e8f5");//außen #4da9ff
+        grad2.addColorStop(0, "#d6e8f5");//auÃŸen #4da9ff
         grad2.addColorStop(1, "#eaf4fa"); //innen #0080ff
 
         ctx.strokeStyle = grad2;
@@ -223,7 +223,9 @@ class circleLine {
 
     }
 }
-window.onload = setTimeout(secondaryCanvas.createAll, 100);
+window.addEventListener("load", function () {
+    setTimeout(secondaryCanvas.createAll, 100);
+});
 
 let can = document.getElementById("secondaryCanvas");
 can.addEventListener("click", (event) => {

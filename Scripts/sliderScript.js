@@ -17,7 +17,7 @@ const slider = {
         slider.showSlides();
     },
     showSlides: function () {
-        //Responsive Layout - Wenn letzte Slides ausgewählt ist soll der index zurücksprigen wenn das Fenster wieder vergrößert wird
+        //Responsive Layout - Wenn letzte Slides ausgewÃ¤hlt ist soll der index zurÃ¼cksprigen wenn das Fenster wieder vergrÃ¶ÃŸert wird
 
         if (slider.slideIndex == slider.sliderElements.length - 1 && slider.showSliderIndex == 2) {
             slider.slideIndex = slider.sliderElements.length - 2;
