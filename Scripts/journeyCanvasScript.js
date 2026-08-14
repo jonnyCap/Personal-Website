@@ -105,4 +105,6 @@ const journyCanvas = {
 
 
     }
-}
+};
+
+const journeyCanvas = journyCanvas;

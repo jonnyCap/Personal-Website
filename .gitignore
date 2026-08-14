@@ -1,5 +1,6 @@
-# Visual Studio
+# Visual Studio / VS Code
 .vs/
+.vscode/
 *.suo
 *.user
 *.userosscache
@@ -9,5 +10,6 @@
 .DS_Store
 Thumbs.db
 
-# Source / raw assets
-# assets-src/
+# Source / raw assets & working files
+assets-src/
+*.xcf
