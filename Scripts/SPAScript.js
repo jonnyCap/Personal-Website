@@ -3,12 +3,11 @@ const PAGE_HASHES = ["#about", "#projects", "#contact", "#privacy"];
 const SPA = {
     currentPage: 0,
     lastPage: null,
-    isTransitioning: false,
+    renderTimer: null,
 
     init: function () {
         SPA.syncFromUrlOrStorage();
         SPA.setEventListener();
-        SPA.setUpMoveableDiv();
         SPA.updateActiveTabStyles();
         SPA.moveMoveableDiv();
         SPA.renderCurrentPage(false);
@@ -23,7 +22,7 @@ const SPA = {
         } else {
             const saved = sessionStorage.getItem("currentPage");
             SPA.currentPage = saved !== null ? (parseInt(saved, 10) || 0) : 0;
-            if (SPA.currentPage >= PAGE_HASHES.length) {
+            if (SPA.currentPage >= PAGE_HASHES.length || SPA.currentPage < 0) {
                 SPA.currentPage = 0;
             }
         }
@@ -32,10 +31,9 @@ const SPA = {
     setEventListener: function () {
         const navElements = document.querySelectorAll(".secondaryNavList");
         navElements.forEach((btn, index) => {
-            btn.addEventListener("click", () => {
-                if (index !== SPA.currentPage) {
-                    SPA.setPage(index);
-                }
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                SPA.setPage(index);
             });
         });
     },
@@ -43,8 +41,10 @@ const SPA = {
     moveMoveableDiv: function () {
         const pill = document.getElementById("moveableBackground");
         const navElements = document.querySelectorAll(".secondaryNavList");
-        const targetBtn = navElements[SPA.currentPage];
-        if (!pill || !targetBtn) return;
+        if (!pill || navElements.length === 0) return;
+
+        const targetBtn = navElements[SPA.currentPage] || navElements[0];
+        if (!targetBtn) return;
 
         if (MediaRes.size1400) {
             pill.style.top = targetBtn.offsetTop + "px";
@@ -59,45 +59,22 @@ const SPA = {
     },
 
     setUpMoveableDiv: function () {
-        const secondaryNav = document.querySelectorAll(".secondaryNavList");
-        secondaryNav.forEach((btn, i) => {
-            btn.addEventListener("mouseenter", () => {
-                if (i !== SPA.currentPage) {
-                    if (MediaRes.size1400) {
-                        btn.style.marginLeft = "30px";
-                    } else {
-                        btn.style.bottom = "6px";
-                    }
-                }
-            });
-            btn.addEventListener("mouseleave", () => {
-                if (i !== SPA.currentPage) {
-                    btn.style.marginLeft = "20px";
-                    btn.style.bottom = "";
-                }
-            });
-        });
+        // Handled cleanly via CSS .secondaryNavList.active and :hover styles
     },
 
     updateActiveTabStyles: function () {
         const navElements = document.querySelectorAll(".secondaryNavList");
         navElements.forEach((btn, index) => {
-            btn.style.transform = "rotate(-3deg)";
+            // Remove lingering inline styles so CSS rules apply cleanly
+            btn.style.background = "";
+            btn.style.color = "";
+            btn.style.marginLeft = "";
+            btn.style.bottom = "";
+
             if (index === SPA.currentPage) {
-                btn.style.background = "#e6faff";
-                btn.style.color = "#549bcf";
-                if (MediaRes.size1400) {
-                    btn.style.marginLeft = "30px";
-                    btn.style.bottom = "";
-                } else {
-                    btn.style.marginLeft = "20px";
-                    btn.style.bottom = "6px";
-                }
+                btn.classList.add("active");
             } else {
-                btn.style.background = "#549bcf";
-                btn.style.color = "#ffffff";
-                btn.style.marginLeft = "20px";
-                btn.style.bottom = "";
+                btn.classList.remove("active");
             }
         });
     },
@@ -108,6 +85,11 @@ const SPA = {
 
     setPage: function (index, pushHistory = true) {
         if (index < 0 || index >= text.header.length) return;
+
+        if (SPA.renderTimer) {
+            clearTimeout(SPA.renderTimer);
+            SPA.renderTimer = null;
+        }
 
         SPA.lastPage = SPA.currentPage;
         SPA.currentPage = index;
@@ -120,14 +102,6 @@ const SPA = {
         SPA.updateActiveTabStyles();
         SPA.moveMoveableDiv();
 
-        // Close expandable content section if open
-        if (typeof sDButton !== "undefined" && sDButton.clicked === false) {
-            sDButton.scrollUp();
-            sDButton.clicked = true;
-            sDButton.cooledDown = false;
-            sDButton.coolDown();
-        }
-
         SPA.renderCurrentPage(true);
     },
 
@@ -136,11 +110,20 @@ const SPA = {
         const header = document.querySelector(".secondaryHeader");
         const lowerHeader = document.querySelector(".lowerHeader");
 
+        if (SPA.renderTimer) {
+            clearTimeout(SPA.renderTimer);
+            SPA.renderTimer = null;
+        }
+
         if (!animate) {
             if (header) header.innerHTML = text.header[SPA.currentPage];
             if (lowerHeader) lowerHeader.innerHTML = text.lowerHeader[SPA.currentPage];
             text.setContent(SPA.currentPage);
             SPA.adjustHeaderPosition();
+            if (headerContainer) {
+                headerContainer.classList.remove("leaving", "entering");
+                headerContainer.classList.add("active");
+            }
             return;
         }
 
@@ -149,7 +132,7 @@ const SPA = {
             headerContainer.classList.add("leaving");
         }
 
-        setTimeout(() => {
+        SPA.renderTimer = setTimeout(() => {
             if (header) header.innerHTML = text.header[SPA.currentPage];
             if (lowerHeader) lowerHeader.innerHTML = text.lowerHeader[SPA.currentPage];
             text.setContent(SPA.currentPage);
@@ -164,14 +147,15 @@ const SPA = {
                     headerContainer.classList.add("active");
                 });
             }
-        }, 150);
+            SPA.renderTimer = null;
+        }, 120);
     },
 
     adjustHeaderPosition: function () {
         const headerContainer = document.querySelector(".secondaryHeaderContainer");
         if (!headerContainer) return;
 
-        const hasBreak = /<br\s*\/?>/i.test(text.header[SPA.currentPage]);
+        const hasBreak = /<br\s*\/?>/i.test(text.header[SPA.currentPage] || "");
 
         if (MediaRes.size1400) {
             headerContainer.style.top = hasBreak ? "230px" : "340px";
@@ -253,3 +237,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Backward compatibility alias
 const SAP = SPA;
+

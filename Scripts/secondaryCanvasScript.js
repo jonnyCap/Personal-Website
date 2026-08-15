@@ -267,7 +267,7 @@ let secStartSection = document.querySelector(".secondaryStartSection");
 
 function spawnSecondaryObject(event) {
     if (!canSec) return;
-    if (event.target.closest("button") || event.target.closest("a") || event.target.closest(".secondaryNavList")) {
+    if (event.target.closest("button") || event.target.closest("a") || event.target.closest(".secondaryNavList") || event.target.closest(".scrollButton") || event.target.closest("#moveableBackground")) {
         return;
     }
     let bounds = canSec.getBoundingClientRect();

@@ -69,6 +69,7 @@ const browserStorage = {
 
 const emailHandler = {
     messageTimeout: null,
+    isSending: false,
     recipient: "maier.jonathanelias@gmail.com",
     
     sendMessage: function (event) {
@@ -76,6 +77,8 @@ const emailHandler = {
             if (event.preventDefault) event.preventDefault();
             if (event.stopPropagation) event.stopPropagation();
         }
+        if (emailHandler.isSending) return false;
+
         const emailInput = document.getElementById("emailInput");
         const textInput = document.getElementById("textInput");
         const sendBtn = document.getElementById("emailSendButton");
@@ -84,6 +87,7 @@ const emailHandler = {
 
         if (!senderEmail || !senderMessage) return false;
 
+        emailHandler.isSending = true;
         if (emailInput) emailInput.value = "";
         if (textInput) textInput.value = "";
         if (sendBtn) {
@@ -104,6 +108,7 @@ const emailHandler = {
                 _subject: "New Message from Portfolio Website: " + senderEmail
             })
         }).catch(function () {}).finally(function () {
+            emailHandler.isSending = false;
             if (sendBtn) {
                 sendBtn.disabled = false;
                 sendBtn.innerText = "Send";

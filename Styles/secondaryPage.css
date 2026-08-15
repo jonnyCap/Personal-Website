@@ -30,6 +30,10 @@
     box-shadow: 10px 10px 0 rgb(230, 250, 255, 0.4);
     font-weight: bold;
     text-align: left;
+    transform: rotate(-3deg);
+    transition: transform 0.2s ease, background 0.25s ease, color 0.25s ease, margin-left 0.25s ease, bottom 0.25s ease, box-shadow 0.25s ease;
+    user-select: none;
+    position: relative;
 }
 
     .secondaryNavList:after {
@@ -42,13 +46,26 @@
 
 .secondaryNavList:hover {
     cursor: pointer;
-    font-weight: bold;
-    animation: change-color 1s forwards;
+    background: #b3f0ff;
+    color: #2b74a8;
 }
 
-@keyframes change-color {
-    to {
-        background: #b3f0ff;
+.secondaryNavList.active {
+    background: #e6faff !important;
+    color: #549bcf !important;
+}
+
+@media (min-width: 1401px) {
+    .secondaryNavList:hover,
+    .secondaryNavList.active {
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .secondaryNavList:hover,
+    .secondaryNavList.active {
+        bottom: 6px;
     }
 }
 
@@ -61,6 +78,8 @@
     opacity: 1;
     border-radius: 2px;
     transform: rotate(180deg);
+    transition: top 0.25s cubic-bezier(0.25, 1, 0.5, 1), left 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
 }
 
 .secondaryBackgroundContainer {
@@ -158,6 +177,7 @@
     opacity: 0;
     pointer-events: auto;
     cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .scrollButton:hover {

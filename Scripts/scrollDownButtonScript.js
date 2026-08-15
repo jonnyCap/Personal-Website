@@ -1,128 +1,136 @@
 
 const sDButton = {
-    appeared: false,
-    disappeared: false,
-    clicked: true,
-    cooledDown: true,
-    work: function () {
-        if (sDButton.cooledDown == true) {
-            switch (sDButton.clicked) {
-                case true:
-                    sDButton.scrollDown();
-                    sDButton.clicked = false;
-                    sDButton.cooledDown = false;
-                    break;
-                case false:
-                    sDButton.scrollUp();
-                    sDButton.clicked = true;
-                    sDButton.cooledDown = false;
-                    break;
-            }
-            sDButton.coolDown();
-        } else {
-            let button = document.getElementsByClassName("scrollButton");
-            button[0].style.background = "red";
-            setTimeout(function () {
-                button[0].style.background = "white";
-            }, 1000);
-        }
-        
-    },
-    scrollUp: function () {
-        setTimeout(function () {
-            window.scrollTo(0, 0);
-        }, 1);
-        sDButton.turnButton(0, -50);
+    isExpanded: false,
+    scrollAnimTicking: false,
 
-        if (sDButton.disappeared == false) {
-            sDButton.disappear();
+    init: function () {
+        const downBtn = document.querySelector(".scrollButton.down");
+        const upBtn = document.querySelector(".scrollButton.up");
+
+        if (downBtn) {
+            downBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                sDButton.scrollDown();
+            });
+            downBtn.addEventListener("mouseenter", function () {
+                buttonCanvas.finalButtonAdaption(0, "white", 0);
+            });
+            downBtn.addEventListener("mouseleave", function () {
+                buttonCanvas.finalButtonAdaption(1, "white", 0);
+            });
         }
-    },
-    scrollDown: function () {
-        setTimeout(function () {
-            window.scrollTo(0, 900);
-        }, 100);
-        sDButton.turnButton(180, 50);
-        if (sDButton.appeared == false) {
-            sDButton.appear();
+
+        if (upBtn) {
+            upBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                sDButton.scrollUp();
+            });
+            upBtn.addEventListener("mouseenter", function () {
+                buttonCanvas.finalButtonAdaption(0, "lightBlue", 1);
+            });
+            upBtn.addEventListener("mouseleave", function () {
+                buttonCanvas.finalButtonAdaption(1, "lightBlue", 1);
+            });
         }
-    },
-    turnButton: function (rotation, translation) {
-        let button = document.getElementsByClassName("scrollButton");
-        if (button.length === 0) return;
-        let currentRotation = (rotation == 0) ? 180 : 0;
-        let stepVal = (rotation == 180) ? 4 : -4;
-        function rotateFrame() {
-            if ((rotation == 180 && currentRotation >= rotation) || (rotation == 0 && currentRotation <= rotation)) {
-                button[0].style.transform = "rotate(" + rotation + "deg)";
-            } else {
-                currentRotation += stepVal;
-                button[0].style.transform = "rotate(" + currentRotation + "deg)";
-                requestAnimationFrame(rotateFrame);
+
+        // Monitor actual scroll position to keep button rotation in sync
+        window.addEventListener("scroll", () => {
+            if (!sDButton.scrollAnimTicking) {
+                requestAnimationFrame(() => {
+                    sDButton.syncStateFromScroll();
+                    sDButton.scrollAnimTicking = false;
+                });
+                sDButton.scrollAnimTicking = true;
             }
-        }
-        requestAnimationFrame(rotateFrame);
+        }, { passive: true });
     },
-    appear: function () {
-        const elements = document.getElementsByClassName("secondaryContentSection");
-        if (elements.length === 0) return;
-        elements[0].style.display = "block";
-        elements[0].style.height = "auto";
+
+    syncStateFromScroll: function () {
+        const scrollY = window.scrollY || window.pageYOffset || 0;
+        const downBtn = document.querySelector(".scrollButton.down");
+        if (!downBtn) return;
+
+        if (scrollY > 350) {
+            downBtn.style.transform = "rotate(180deg)";
+            sDButton.isExpanded = true;
+        } else if (scrollY < 100) {
+            downBtn.style.transform = "rotate(0deg)";
+        }
+    },
+
+    scrollDown: function () {
+        const section = document.querySelector(".secondaryContentSection");
+        if (section) {
+            section.style.display = "block";
+            section.style.opacity = "1";
+            section.style.height = "auto";
+        }
+
+        sDButton.isExpanded = true;
+        const downBtn = document.querySelector(".scrollButton.down");
+        if (downBtn) {
+            downBtn.style.transform = "rotate(180deg)";
+        }
+
         if (typeof journyCanvas !== "undefined" && typeof journyCanvas.setUpJournyCanvas === "function") {
             journyCanvas.setUpJournyCanvas();
         }
-        let opacity = 0;
-        sDButton.appeared = true;
-        function step() {
-            opacity += 0.02;
-            if (opacity >= 1) {
-                elements[0].style.opacity = "1";
-                sDButton.appeared = false;
-                if (typeof journyCanvas !== "undefined" && typeof journyCanvas.setUpJournyCanvas === "function") {
-                    journyCanvas.setUpJournyCanvas();
-                }
-            } else {
-                elements[0].style.opacity = opacity;
-                requestAnimationFrame(step);
-            }
+
+        if (section) {
+            const navHeight = 70;
+            const targetY = section.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+        } else {
+            window.scrollTo({ top: 900, behavior: "smooth" });
         }
-        requestAnimationFrame(step);
+    },
+
+    scrollUp: function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        const downBtn = document.querySelector(".scrollButton.down");
+        if (downBtn) {
+            downBtn.style.transform = "rotate(0deg)";
+        }
+    },
+
+    toggle: function () {
+        const scrollY = window.scrollY || window.pageYOffset || 0;
+        if (scrollY > 250) {
+            sDButton.scrollUp();
+        } else {
+            sDButton.scrollDown();
+        }
+    },
+
+    // Backward compatibility helpers
+    work: function () {
+        sDButton.toggle();
+    },
+    appear: function () {
+        const elements = document.getElementsByClassName("secondaryContentSection");
+        if (elements.length > 0) {
+            elements[0].style.display = "block";
+            elements[0].style.opacity = "1";
+            elements[0].style.height = "auto";
+        }
     },
     disappear: function () {
-        sDButton.disappeared = true;
-        let opacity = 1;
         const elements = document.getElementsByClassName("secondaryContentSection");
-        if (elements.length === 0) return;
-        let height = elements[0].offsetHeight;
-        function step() {
-            opacity -= 0.02;
-            if (height > 0) {
-                height -= 30;
-            } else {
-                height = 0;
-            }
-            if (opacity <= 0 && height <= 0) {
-                elements[0].style.display = "none";
-                elements[0].style.opacity = "0";
-                sDButton.disappeared = false;
-            } else {
-                elements[0].style.height = height + "px";
-                elements[0].style.opacity = opacity;
-                requestAnimationFrame(step);
-            }
+        if (elements.length > 0) {
+            elements[0].style.display = "none";
+            elements[0].style.opacity = "0";
         }
-        requestAnimationFrame(step);
     },
-    coolDown: function () {
-        setTimeout(function () {
-            sDButton.cooledDown = true;
-        }, 1000);
+    coolDown: function () {},
+    turnButton: function (rotation) {
+        const downBtn = document.querySelector(".scrollButton.down");
+        if (downBtn) downBtn.style.transform = "rotate(" + rotation + "deg)";
     }
 };
+
 const buttonCanvas = {
     circleFractures: [],
     downArrows: [],
-    upArrows: [],
     expansionRadiusUpper: 0,
     expansionRadiusLower: 0,
     arrowExpansionUpper: 0,
@@ -130,52 +138,34 @@ const buttonCanvas = {
     centerX: 100,
     centerY: 100,
     colorUp: "white",
-    colorDown: "lightBlue",//"#549bcf"
+    colorDown: "lightBlue",
+
     gC: function (index) {
-        switch (index) {
-            case 0:
-                let secondaryCanvas = document.getElementById("clickAnimationCanvas");
-                return secondaryCanvas.getContext("2d");
-                break;
-            case 1:
-                let secondaryCanvasUp = document.getElementById("clickAnimationCanvasUp");
-                return secondaryCanvasUp.getContext("2d");
-                break;
+        if (index === 0) {
+            const c = document.getElementById("clickAnimationCanvas");
+            return c ? c.getContext("2d") : null;
+        } else {
+            const c = document.getElementById("clickAnimationCanvasUp");
+            return c ? c.getContext("2d") : null;
         }
     },
-    createFractures: function (index) {
-        //circles
-        let circle0 = new circleFracture(25, 0.4, 60, 1);
-        buttonCanvas.circleFractures.push(circle0);
 
-        let circle = new circleFracture(25, 0.2, 160, 2);
-        buttonCanvas.circleFractures.push(circle);
+    createFractures: function () {
+        buttonCanvas.circleFractures = [];
+        buttonCanvas.downArrows = [];
 
-        let circle1 = new circleFracture(40, 0.7, 120 , 2);
-        buttonCanvas.circleFractures.push(circle1);
+        buttonCanvas.circleFractures.push(new circleFracture(25, 0.4, 60, 1));
+        buttonCanvas.circleFractures.push(new circleFracture(25, 0.2, 160, 2));
+        buttonCanvas.circleFractures.push(new circleFracture(40, 0.7, 120, 2));
+        buttonCanvas.circleFractures.push(new circleFracture(40, 0.5, 300, 1));
+        buttonCanvas.circleFractures.push(new circleFracture(55, 0.4, 190, 2));
+        buttonCanvas.circleFractures.push(new circleFracture(55, 0.7, 40, 1));
 
-        let circle2 = new circleFracture(40, 0.5, 300, 1);
-        buttonCanvas.circleFractures.push(circle2);
-
-        let circle3 = new circleFracture(55, 0.4, 190, 2);
-        buttonCanvas.circleFractures.push(circle3);
-
-        let circle4 = new circleFracture(55, 0.7, 40, 1);
-        buttonCanvas.circleFractures.push(circle4);
-
-        buttonCanvas.createArrow();
-
+        buttonCanvas.downArrows.push(new Arrow(165));
+        buttonCanvas.downArrows.push(new Arrow(185));
     },
-    createArrow: function() {
-        let arrow1 = new Arrow(165);
-        buttonCanvas.downArrows.push(arrow1);
 
-        let arrow2 = new Arrow(185);
-        buttonCanvas.downArrows.push(arrow2);
-    },
     animate: function () {
-        let ctxUp = buttonCanvas.gC(0);
-        let ctxDown = buttonCanvas.gC(1);
         let isBtnVisible = true;
         let isBtnTabVisible = !document.hidden;
         let btnAnimId = null;
@@ -185,26 +175,36 @@ const buttonCanvas = {
                 btnAnimId = null;
                 return;
             }
-            ctxUp.clearRect(0, 0, 200, 250);
-            ctxDown.clearRect(0, 0, 200, 250);
-            for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
-                if (MediaRes.size800 == false && i < 2) {
-                    buttonCanvas.colorUp = "#e6f5ff";
-                } else {
-                    buttonCanvas.circleFractures[i].draw(0);
+
+            const ctxUp = buttonCanvas.gC(0);
+            const ctxDown = buttonCanvas.gC(1);
+
+            if (ctxUp) {
+                ctxUp.clearRect(0, 0, 200, 250);
+                for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
+                    if (MediaRes.size800 === false && i < 2) {
+                        buttonCanvas.colorUp = "#e6f5ff";
+                    } else {
+                        buttonCanvas.circleFractures[i].draw(0);
+                    }
+                }
+                if (MediaRes.size800 === true) {
+                    for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
+                        buttonCanvas.downArrows[i].draw(0);
+                    }
                 }
             }
-            if (MediaRes.size800 == true) {
+
+            if (ctxDown) {
+                ctxDown.clearRect(0, 0, 200, 250);
+                for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
+                    buttonCanvas.circleFractures[i].draw(1);
+                }
                 for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
-                    buttonCanvas.downArrows[i].draw(0);
+                    buttonCanvas.downArrows[i].draw(1);
                 }
             }
-            for (let i = 0; i < buttonCanvas.circleFractures.length; i++) {
-                buttonCanvas.circleFractures[i].draw(1);
-            }
-            for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
-                buttonCanvas.downArrows[i].draw(1);
-            }
+
             btnAnimId = requestAnimationFrame(renderButtonCanvas);
         }
 
@@ -253,68 +253,44 @@ const buttonCanvas = {
 
         startBtnAnim();
     },
-    changeColor(color, index) {
-        switch (index) {
-            case 0:
-                if (MediaRes.size800 == false) {
-                    buttonCanvas.colorUp = "#e6f5ff";
-                } else { 
-                    buttonCanvas.colorUp = color;
-                }
-                break;
-            case 1:
-                buttonCanvas.colorDown = color;
-                break;
+
+    changeColor: function (color, index) {
+        if (index === 0) {
+            buttonCanvas.colorUp = (MediaRes.size800 === false) ? "#e6f5ff" : color;
+        } else {
+            buttonCanvas.colorDown = color;
         }
     },
+
     expandRadius: function (index) {
-        switch (index) {
-            case 0:
-                if (MediaRes.size800 == true) {
-                    buttonCanvas.expansionRadiusUpper = 30;
-                } else {
-                    buttonCanvas.expansionRadiusUpper = 10;
-                }
-                break;
-            case 1:
-                buttonCanvas.expansionRadiusLower = 30;
-                break;
-        } 
+        if (index === 0) {
+            buttonCanvas.expansionRadiusUpper = (MediaRes.size800 ? 30 : 10);
+            buttonCanvas.arrowExpansionUpper = 12;
+        } else {
+            buttonCanvas.expansionRadiusLower = 30;
+            buttonCanvas.arrowExpansionLower = 12;
+        }
     },
+
     diminishRadius: function (index) {
-        switch (index) {
-            case 0:
-                buttonCanvas.expansionRadiusUpper = 0;
-                break;
-            case 1:
-                buttonCanvas.expansionRadiusLower = 0;
-                break;
-        } 
-    },
-    pushArrowDown: function () {
-        for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
-            buttonCanvas.downArrows[i].height += 30;
+        if (index === 0) {
+            buttonCanvas.expansionRadiusUpper = 0;
+            buttonCanvas.arrowExpansionUpper = 0;
+        } else {
+            buttonCanvas.expansionRadiusLower = 0;
+            buttonCanvas.arrowExpansionLower = 0;
         }
     },
-    pushArrowUp: function () {
-        for (let i = 0; i < buttonCanvas.downArrows.length; i++) {
-            buttonCanvas.downArrows[i].height -= 30;
-        }
-    },
-    finalButtonAdaption(outIN, color, index) {
-        switch (outIN) {
-            case 0:
-                buttonCanvas.expandRadius(index);
-                buttonCanvas.pushArrowDown();
-                break;
-            case 1:
-                buttonCanvas.diminishRadius(index);
-                buttonCanvas.pushArrowUp();
-                break;
+
+    finalButtonAdaption: function (outIN, color, index) {
+        if (outIN === 0) {
+            buttonCanvas.expandRadius(index);
+        } else {
+            buttonCanvas.diminishRadius(index);
         }
         buttonCanvas.changeColor(color, index);
     }
-}
+};
 
 class circleFracture {
     constructor(radius, length, rotation, speed) {
@@ -323,83 +299,52 @@ class circleFracture {
         this.rotation = rotation;
         this.speed = speed;
     }
+
     draw(index) {
-        let context = buttonCanvas.gC(index);
-        //increase Values
+        const context = buttonCanvas.gC(index);
+        if (!context) return;
+
         this.rotation += this.speed;
-        let rad = this.rotation * Math.PI / 180;
+        const rad = this.rotation * Math.PI / 180;
         context.save();
         context.translate(buttonCanvas.centerX, buttonCanvas.centerY);
         context.rotate(rad);
-        //draw Element
-        let expansion;
-        switch (index) {
-            case 0:
-                context.strokeStyle = buttonCanvas.colorUp;
-                expansion = buttonCanvas.expansionRadiusUpper;
-                break;
-            case 1:
-                context.strokeStyle = buttonCanvas.colorDown;
-                expansion = buttonCanvas.expansionRadiusLower;
-                break;
-        }
+
+        let expansion = (index === 0) ? buttonCanvas.expansionRadiusUpper : buttonCanvas.expansionRadiusLower;
+        context.strokeStyle = (index === 0) ? buttonCanvas.colorUp : buttonCanvas.colorDown;
 
         context.beginPath();
         context.arc(0, 0, this.radius + expansion, 0, this.length * Math.PI, false);
         context.lineWidth = 3;
         context.stroke();
-
         context.restore();
     }
 }
+
 class Arrow {
     constructor(height) {
         this.height = height;
     }
+
     draw(index) {
-        let ctx = buttonCanvas.gC(index);
-        let expansion;
-        switch (index) {
-            case 0:
-                expansion = buttonCanvas.arrowExpansionUpper;
-                ctx.strokeStyle = buttonCanvas.colorUp;
-                break;
-            case 1:
-                expansion = buttonCanvas.arrowExpansionLower;
-                ctx.strokeStyle = buttonCanvas.colorDown;
-                break;
-        }
+        const ctx = buttonCanvas.gC(index);
+        if (!ctx) return;
+
+        const expansion = (index === 0) ? buttonCanvas.arrowExpansionUpper : buttonCanvas.arrowExpansionLower;
+        ctx.strokeStyle = (index === 0) ? buttonCanvas.colorUp : buttonCanvas.colorDown;
         ctx.lineWidth = 5;
+
         ctx.beginPath();
-        ctx.lineTo(buttonCanvas.centerX - 15, this.height + expansion);
+        ctx.moveTo(buttonCanvas.centerX - 15, this.height + expansion);
         ctx.lineTo(buttonCanvas.centerX, this.height + 10 + expansion);
         ctx.lineTo(buttonCanvas.centerX + 15, this.height + expansion);
         ctx.stroke();
     }
 }
 
-//buttonListener
-const scrollButton = document.getElementsByClassName("scrollButton");
-
-scrollButton[0].addEventListener("click", sDButton.work);
-scrollButton[0].addEventListener("mouseover", function () {
-    buttonCanvas.finalButtonAdaption(0, "white", 0);
-});
-scrollButton[0].addEventListener("mouseout", function () {
-    buttonCanvas.finalButtonAdaption(1, "white", 0);
-});
-
-scrollButton[1].addEventListener("click", sDButton.work);
-scrollButton[1].addEventListener("mouseover", function () {
-    buttonCanvas.finalButtonAdaption(0, "lightBlue", 1);
-});
-scrollButton[1].addEventListener("mouseout", function () {
-    buttonCanvas.finalButtonAdaption(1, "lightBlue", 1);
-});
-
-
 document.addEventListener('DOMContentLoaded', function () {
-    buttonCanvas.createFractures(0);
+    sDButton.init();
+    buttonCanvas.createFractures();
     buttonCanvas.animate();
 });
 
