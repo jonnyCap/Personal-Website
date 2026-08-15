@@ -8,28 +8,50 @@
 
 ---
 
-## 🌟 Overview & Inspiration
+## 🌟 Overview
 
-This project represents my first official personal website. 
-
-My primary motivation was to gain a deep understanding of the inner workings of the web. Rather than relying on modern UI frameworks or template site generators, I chose to build everything from scratch—including implementing a custom Single-Page Application (SPA) architecture in pure, vanilla JavaScript to explore state management, routing, and DOM manipulation under the hood.
-
-### Reworked & Optimized
-Originally created as a learning playground, the project has since been completely reworked and optimized:
-- **Performance First**: Upgraded all visual assets to lightweight WebP format and optimized HTML5 Canvas render loops to minimize CPU and battery usage.
-- **Modern Semantics & SEO**: Modernized HTML5 structure, enhanced accessibility, and added comprehensive Open Graph & Twitter meta tags.
-- **Automated CI/CD**: Automated deployment pipeline using GitHub Actions to push directly to GitHub Pages.
+This project is a personal portfolio built without external UI frameworks or static site generators. It demonstrates core web engineering principles through a custom vanilla JavaScript Single-Page Application (SPA) architecture, interactive HTML5 Canvas visualizers, modular JSON-driven content rendering, and automated GitHub Actions workflows.
 
 ---
 
-## ⚙️ How It Works
+## 🔄 What's Changed Since v1 (2022 → August 15, 2026)
 
-The entire website is built without external frontend frameworks (no React, Angular, or jQuery), relying exclusively on native web standards:
+Since its original release in 2022, the website has been significantly overhauled:
 
-- **Custom Single-Page Application (SPA) Engine** (`SPAScript.js`): Dynamic multi-section routing and fluid tab switching on the deep-dive page (`aboutMePage.html`) without full page reloads.
-- **Interactive HTML5 Canvas Visuals** (`canvasScript.js`, `secondaryCanvasScript.js`, `journeyCanvasScript.js`): Custom particle animations, dynamic responsive backgrounds, and interactive timeline paths.
-- **Custom UI Components** (`sliderScript.js`, `textAppearanceScript.js`, `navScript.js`): Handcrafted touch- and click-friendly project sliders, typewriter text transitions, and responsive mobile navigation.
-- **Form Handling** (`handlerScript.js`): Contact and newsletter subscriptions powered asynchronously through FormSubmit.
+- **GitHub Actions Integration & Automated Sync**: Added an automated GitHub Actions cron workflow that queries the GitHub API to dynamically update public repositories into `data/projects.json`.
+- **JSON-Driven CV & Project Loading**: Replaced hardcoded HTML markup with structured data (`data/cv.json`, `data/projects.json`), dynamically parsed and rendered client-side (`cvRenderer.js`, `projectsRenderer.js`).
+- **Animation & Canvas Optimization**: Refactored particle loops, render cycles, and DPI scaling across all canvas scripts (`sizeAdapterScript.js`) for lower CPU/GPU usage and smoother frame rates.
+- **Frontend & Mobile Layout Fixes**: Fixed responsive layout bugs, viewport height clipping on mobile devices, navbar animations, and touch-friendly interaction states.
+- **Automated CI/CD Pipeline**: Streamlined GitHub Pages deployment via GitHub Actions on every push to `main`.
+
+---
+
+## 🔄 GitHub Actions & Data Flow
+
+```mermaid
+flowchart LR
+    subgraph Automation [GitHub Actions]
+        A[Weekly Cron / Dispatch] -->|Fetch API| B[fetchGitHubRepos.js]
+        B -->|Auto-commit| C[(data/projects.json)]
+        D[Git Push to main] -->|deploy.yml| E[GitHub Pages]
+    end
+
+    subgraph Client [Browser Runtime]
+        C -.->|fetch| F[projectsRenderer.js]
+        G[(data/cv.json)] -.->|fetch| H[cvRenderer.js]
+        F & H --> I[Dynamic DOM Injection]
+    end
+```
+
+---
+
+## ⚙️ Core Architecture & Features
+
+- **Custom SPA Engine** (`SPAScript.js`): Dynamic multi-section routing and fluid tab navigation on the deep-dive page (`aboutMePage.html`) without page reloads.
+- **Dynamic Content Modules** (`cvRenderer.js`, `projectsRenderer.js`): Client-side async rendering from structured JSON data.
+- **Interactive HTML5 Canvases** (`canvasScript.js`, `secondaryCanvasScript.js`, `journeyCanvasScript.js`): Custom particle animations, interactive trajectory milestones, and DPI-responsive backgrounds.
+- **Custom UI Components** (`sliderScript.js`, `navScript.js`, `textAppearanceScript.js`): Touch-enabled carousel, sticky responsive navigation, and typewriter text transitions.
+- **Form Handling** (`handlerScript.js`): Asynchronous contact and newsletter submission powered by FormSubmit.
 
 ---
 
@@ -39,25 +61,33 @@ The entire website is built without external frontend frameworks (no React, Angu
 Personal-Website/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml          # GitHub Actions deployment to Pages
+│       ├── deploy.yml            # Automated deployment to GitHub Pages
+│       └── fetch-repos.yml       # Weekly sync for public GitHub repositories
+├── data/
+│   ├── cv.json                   # Structured resume/CV data
+│   ├── projectConfig.json        # Repository blacklist & custom project metadata
+│   └── projects.json             # Cached repository data fetched from GitHub
 ├── Scripts/
-│   ├── SPAScript.js            # SPA routing & section switcher
-│   ├── canvasScript.js         # Landing page particle canvas
-│   ├── handlerScript.js        # FormSubmit integration & handlers
-│   ├── journeyCanvasScript.js  # Interactive milestone timeline canvas
-│   ├── navScript.js            # Sticky navigation & responsive dropdown
-│   ├── scrollDownButtonScript.js # Animated scroll-down trigger
-│   ├── secondaryCanvasScript.js# Secondary page animated background
-│   ├── sizeAdapterScript.js    # Canvas DPI & viewport resizing
-│   ├── sliderScript.js         # Custom projects carousel
-│   └── textAppearanceScript.js # Dynamic text fade & typewriter effects
+│   ├── SPAScript.js              # SPA routing & section switcher
+│   ├── canvasScript.js           # Landing page particle canvas
+│   ├── cvRenderer.js             # Client-side CV renderer
+│   ├── fetchGitHubRepos.js       # Node.js GitHub API sync script
+│   ├── handlerScript.js          # FormSubmit integration & handlers
+│   ├── journeyCanvasScript.js    # Interactive milestone timeline canvas
+│   ├── navScript.js              # Sticky navigation & responsive dropdown
+│   ├── projectsRenderer.js       # Projects grid renderer
+│   ├── scrollDownButtonScript.js # Animated scroll trigger
+│   ├── secondaryCanvasScript.js  # Secondary page animated background
+│   ├── sizeAdapterScript.js      # Canvas DPI & viewport resizing
+│   ├── sliderScript.js           # Touch/click project slider
+│   └── textAppearanceScript.js   # Dynamic text fade & typewriter effects
 ├── Styles/
-│   ├── NavAndFooterStyles.css  # Global navbar and footer styles
-│   ├── mainPage.css            # Landing page layout & styling
-│   └── secondaryPage.css       # SPA & sub-page styling
-├── images/                     # Optimized WebP assets & icons
-├── index.html                  # Landing page
-├── aboutMePage.html            # Interactive deep-dive portfolio (SPA)
+│   ├── NavAndFooterStyles.css    # Global navbar and footer styles
+│   ├── mainPage.css              # Landing page layout & styling
+│   └── secondaryPage.css         # SPA & sub-page styling
+├── images/                       # Optimized WebP assets & icons
+├── index.html                    # Landing page
+├── aboutMePage.html              # Interactive deep-dive portfolio (SPA)
 └── README.md
 ```
 
@@ -65,16 +95,17 @@ Personal-Website/
 
 ## 🛠️ Tech Stack
 
-- **Core**: HTML5, Vanilla CSS3, Vanilla JavaScript (ES6+)
-- **Graphics**: HTML5 Canvas API (Custom particle and vector rendering)
+- **Frontend**: HTML5, Vanilla CSS3, Vanilla JavaScript (ES6+)
+- **Data & Rendering**: JSON-driven async DOM rendering
+- **Graphics**: HTML5 Canvas API (Custom particle & vector engines)
+- **Automation / CI/CD**: GitHub Actions (repo sync cron + Pages deployment)
 - **Forms**: [FormSubmit](https://formsubmit.co/) API
-- **Deployment**: GitHub Pages via GitHub Actions
 
 ---
 
 ## 🚀 Getting Started
 
-Since the project uses purely static web technologies, no build step or package manager is required.
+No build step or package manager is required for local preview.
 
 ### Local Preview
 
@@ -84,16 +115,15 @@ Since the project uses purely static web technologies, no build step or package 
    cd Personal-Website
    ```
 
-2. **Open in browser:**
-   - Double-click [`index.html`](file:///home/jonathan-maier/Documents/Projects/Personal-Website/index.html) or run a simple local web server:
+2. **Run a local web server:**
    ```bash
    # Using Python 3
    python3 -m http.server 8000
-   
-   # Or using Node.js / npx
+
+   # Or using Node.js
    npx serve .
    ```
-3. Visit `http://localhost:8000` in your web browser.
+3. Open `http://localhost:8000` in your browser.
 
 ---
 
@@ -103,3 +133,4 @@ Since the project uses purely static web technologies, no build step or package 
 - **Portfolio**: [jonnycap.github.io/Personal-Website](https://jonnycap.github.io/Personal-Website/)
 - **GitHub**: [@jonnyCap](https://github.com/jonnyCap)
 - **LinkedIn**: [Jonathan Maier](https://www.linkedin.com/in/jonathan-maier-179836263/)
+
