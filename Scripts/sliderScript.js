@@ -216,10 +216,10 @@ const slider = {
 };
 
 // Resize throttling
-let resizeTimer;
+let sliderResizeTimer;
 window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
+    clearTimeout(sliderResizeTimer);
+    sliderResizeTimer = setTimeout(() => {
         slider.updateDimensions();
         slider.renderDots();
         slider.updateSlidePosition(false);

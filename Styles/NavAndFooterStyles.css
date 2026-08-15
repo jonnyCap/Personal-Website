@@ -16,17 +16,24 @@
 html {
     scroll-behavior: smooth;
     font-family: var(--font-family-mono);
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
     scroll-behavior: smooth;
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 section {
     width: 100%;
+    max-width: 100%;
     position: relative;
+    box-sizing: border-box;
 }
 
 .noMarginPadding {
@@ -165,9 +172,12 @@ section {
     justify-content: center;
     border-radius: 4px;
     margin: 0;
+    box-shadow: 2px 2px 0 var(--color-accent);
     transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
                 padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                background-color 0.2s ease;
+                background-color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
 }
 
 .navContainer.scrolled .dropDownButton,
@@ -176,46 +186,73 @@ section {
     padding: 6px 10px;
 }
 
-.dropDownButton:hover {
+.dropDownButton:hover,
+.dropDownButton.active {
     background-color: var(--color-primary-dark);
 }
 
+.dropDownButton.active {
+    transform: translateY(1px);
+    box-shadow: 1px 1px 0 var(--color-accent);
+}
+
 .hamburgerIcon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     display: block;
     stroke: #ffffff;
     pointer-events: none;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropDownButton.active .hamburgerIcon {
+    transform: rotate(90deg);
 }
 
 .dropDownContent {
-    display: none;
     position: absolute;
-    top: 100%;
-    background-color: #ffffff;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1000;
+    top: calc(100% + 8px);
     right: 0;
-    border-radius: 4px;
+    background-color: #ffffff;
+    min-width: 170px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+    z-index: 1000;
+    border-radius: 6px;
     overflow: hidden;
     border: 1px solid #e2e8f0;
-}
-
-.dropA {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    cursor: pointer;
-}
-
-.dropA:hover {
-    background-color: #f1f1f1;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px) scale(0.96);
+    transform-origin: top right;
+    transition: opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
 }
 
 .dropDownContent.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.dropA {
+    color: #1e293b;
+    padding: 12px 18px;
+    text-decoration: none;
     display: block;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+}
+
+.dropA:hover,
+.dropA:active {
+    background-color: #f0f7fc;
+    color: var(--color-primary);
+    padding-left: 22px;
 }
 
 /*DropDown menu End*/

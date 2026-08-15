@@ -1,21 +1,33 @@
 
 
 
-.mainSection{
-    height:800px;
+.mainSection {
+    height: 800px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 .bigMainSection {
     height: 800px;
     margin-bottom: 50px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .imageContainer {
     height: 800px;
+    width: 100%;
+    max-width: 100%;
     position: relative;
     background-image: url("../images/blueBackground.webp");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 .startContainer {
     opacity: 0;
@@ -60,9 +72,12 @@
 }
 .backgroundContainer{
     width: 100%;
+    max-width: 100%;
     height: 800px;
     display: flex;
     justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 div.aboutMeContainer {
     opacity: 0;
@@ -70,6 +85,8 @@ div.aboutMeContainer {
     width: 100%;
     height: 800px;
     position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 .aboutMePictureContainer {
     position: absolute;
@@ -390,7 +407,9 @@ div.aboutMeContainer {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-top: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .sliderDot {
@@ -445,38 +464,63 @@ div.aboutMeContainer {
         margin: 0;
         height: auto;
     } 
+    .mainSection {
+        height: auto;
+    }
+    .backgroundContainer {
+        height: auto;
+        padding: 40px 16px;
+        position: relative;
+    }
     /*aboutMeSection*/
     .aboutMeContainer {
         display: flex;
+        justify-content: center;
+        align-items: center;
         height: auto;
+        max-width: 700px;
+        width: 100%;
+        position: relative;
+        margin: 0 auto;
     }
     .aboutMePictureContainer {
         width: 100%;
-        height: 800px;
+        height: 100%;
+        position: absolute;
+        inset: 0;
         top: 0;
+        left: 0;
+        transform: none;
         border: 0;
+        background: transparent;
+        overflow: hidden;
+        pointer-events: none;
     }
     #canvas {
-        top: 50%;
-        transform: translateY(-50%);
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
+        opacity: 0.35;
+        transform: none;
+    }
+    .textContainer {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        max-width: 560px;
         height: auto;
-    }
-    .textContainer {
-        top: 150px;
-    }
-    .textContainer {
-        opacity: 0.9;
-        left: 50%;
-        transform: translate(-50%, 0);
-    }
-    .aboutMePictureContainer {
-        left: 50%;
-        transform: translate(-50%, 0);
+        margin: 0 auto;
+        opacity: 1;
+        box-sizing: border-box;
+        box-shadow: 8px 8px 0 var(--color-accent);
     }
     /*slidesSection*/
     .projectsContainer {
-        margin-top: 100px;
+        margin-top: 30px;
     }
 }
 @media only screen and (max-width: 1200px){
@@ -549,22 +593,10 @@ div.aboutMeContainer {
     /*sliderSection*/
     .projectsContainer {
         width: 100%;
-        padding: 0 10px;
-    }
-}
-@media only screen and (max-width: 400px) {
-    .outerSliderContainer {
-        width: calc(100vw - 30px);
-        max-width: calc(100vw - 30px);
-    }
-    .projectCard {
-        flex: 0 0 calc(100vw - 50px);
-        width: calc(100vw - 50px);
-        max-width: calc(100vw - 50px);
+        padding: 24px 12px 50px 12px;
     }
 }
 @media only screen and (max-width: 500px) {
-    
     /*startSection*/
     .startContainerHeader {
         font-size: 60px;
@@ -577,25 +609,45 @@ div.aboutMeContainer {
         margin: 0 auto;
     }
     /*aboutMeSection*/
-    .backgroundContainer{
+    .backgroundContainer {
         height: auto;
+        padding: 30px 14px;
     }
     .textContainer {
-        width:100%;
-        padding: 10px;
-        text-align:center;
+        width: 100%;
+        max-width: 100%;
+        padding: 24px 18px;
+        text-align: center;
+        box-shadow: 6px 6px 0 var(--color-accent);
+    }
+    .aboutMeButton {
+        margin: 15px auto 0 auto;
+        text-align: center;
+        display: block;
     }
     /*sliderSection*/
-    .projectsContainer{
+    .projectsContainer {
+        width: 100%;
+        height: auto;
+        padding: 20px 10px 45px 10px;
+    }
+    .projectsHeaderContainer {
         width: 100%;
         height: auto;
     }
-    .projectsHeaderContainer{
-        width:100%;
-        height: auto;
-    }
-    #sliderHeader{
+    #sliderHeader {
         font-size: 36px;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .outerSliderContainer {
+        width: 100%;
+        max-width: 100%;
+    }
+    .projectCard {
+        flex: 0 0 calc(100% - 10px);
+        width: calc(100% - 10px);
+        max-width: calc(100% - 10px);
     }
 }
 @media only screen and (max-width: 330px) {
@@ -604,25 +656,16 @@ div.aboutMeContainer {
         height: auto;
     }
     /*aboutMeSection*/
-    .backgroundContainer{
-        height:auto;
-    }
-    .aboutMeContainer {
-        display: flex;
+    .backgroundContainer {
         height: auto;
-    }
-    .aboutMePictureContainer {
-        display: none;
+        padding: 20px 10px;
     }
     .textContainer {
-        top: 0px;
-        opacity: 1;
         width: 100%;
         height: auto;
     }
     /*sliderSection*/
-   
-    #sliderHeader{
+    #sliderHeader {
         font-size: 30px;
     }
 }

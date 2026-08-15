@@ -24,23 +24,48 @@ const canvas = {
     mainX: 700,
     mainY: 400,
     rotationVelocity: 0.02,
+
+    resizeCanvas: function () {
+        const can = document.getElementById("canvas");
+        const parent = can ? can.parentElement : null;
+        if (can && parent) {
+            const w = parent.offsetWidth || 900;
+            const h = parent.offsetHeight || 600;
+            if (can.width !== w || can.height !== h) {
+                can.width = w;
+                can.height = h;
+            }
+            canvas.relocateMainPoints();
+        }
+    },
+
+    relocateMainPoints: function () {
+        const can = document.getElementById("canvas");
+        if (can) {
+            if (window.innerWidth > 1400) {
+                canvas.mainX = 700;
+                canvas.mainY = 400;
+            } else {
+                canvas.mainX = can.width * 0.5;
+                canvas.mainY = can.height * 0.5;
+            }
+        } else {
+            canvas.mainX = 700;
+            canvas.mainY = 400;
+        }
+    },
+
     createAll: function () {
-       // canvas.relocateMainPoints();
-        for (let i = 0; i < 20; i++) {
-            let x = c.getRandomNumber(100, 300);
-            let y = c.getRandomNumber(100, 500);
-            let circle = new circleLine(x, y, x, y);
-            canvas.drawnObjects.push(circle);
-        }
-        for (let i = 0; i < 20; i++) {
-            let x = c.getRandomNumber(300, 600);
-            let y = c.getRandomNumber(50, 500);
-            let circle = new circleLine(x, y, x, y);
-            canvas.drawnObjects.push(circle);
-        }
-        for (let i = 0; i < 20; i++) {
-            let x = c.getRandomNumber(600, 800);
-            let y = c.getRandomNumber(50, 500);
+        canvas.resizeCanvas();
+        canvas.drawnObjects = [];
+        const can = document.getElementById("canvas");
+        const w = can ? can.width : 900;
+        const h = can ? can.height : 600;
+
+        const count = window.innerWidth <= 600 ? 30 : 45;
+        for (let i = 0; i < count; i++) {
+            let x = c.getRandomNumber(20, w - 20);
+            let y = c.getRandomNumber(20, h - 20);
             let circle = new circleLine(x, y, x, y);
             canvas.drawnObjects.push(circle);
         }
@@ -215,6 +240,14 @@ class circleLine {
 }
 window.addEventListener("load", function () {
     setTimeout(canvas.createAll, 100);
+});
+
+let canvasResizeTimer = null;
+window.addEventListener("resize", () => {
+    clearTimeout(canvasResizeTimer);
+    canvasResizeTimer = setTimeout(() => {
+        canvas.createAll();
+    }, 150);
 });
 
 let can = document.getElementById("canvas");

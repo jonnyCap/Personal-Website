@@ -4,8 +4,8 @@ function initNavbarScroll() {
     const navInner = document.querySelector(".navInnerContainer");
     if (!navContainer) return;
 
-    const SCROLL_ENTER_THRESHOLD = 60;
-    const SCROLL_EXIT_THRESHOLD = 10;
+    const SCROLL_ENTER_THRESHOLD = 20;
+    const SCROLL_EXIT_THRESHOLD = 8;
     let isCurrentlyScrolled = false;
 
     function handleScroll() {
@@ -43,9 +43,11 @@ function initDropDownToggle() {
     dropDownButtons.forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.stopPropagation();
-            const content = btn.parentElement ? btn.parentElement.querySelector(".dropDownContent") : null;
+            const parent = btn.closest(".dropDown");
+            const content = parent ? parent.querySelector(".dropDownContent") : null;
             if (content) {
-                content.classList.toggle("show");
+                const isShown = content.classList.toggle("show");
+                btn.classList.toggle("active", isShown);
             }
         });
     });
@@ -57,6 +59,9 @@ function initDropDownToggle() {
             document.querySelectorAll(".dropDownContent.show").forEach(menu => {
                 menu.classList.remove("show");
             });
+            document.querySelectorAll(".dropDownButton.active").forEach(btn => {
+                btn.classList.remove("active");
+            });
         });
     });
 
@@ -65,6 +70,9 @@ function initDropDownToggle() {
         if (!e.target.closest(".dropDown")) {
             document.querySelectorAll(".dropDownContent.show").forEach(menu => {
                 menu.classList.remove("show");
+            });
+            document.querySelectorAll(".dropDownButton.active").forEach(btn => {
+                btn.classList.remove("active");
             });
         }
     });

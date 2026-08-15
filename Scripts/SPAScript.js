@@ -175,10 +175,10 @@ const SPA = {
 
         if (MediaRes.size1400) {
             headerContainer.style.top = hasBreak ? "230px" : "340px";
-            headerContainer.style.lineHeight = hasBreak ? "140px" : "";
+            headerContainer.style.lineHeight = "";
         } else {
             headerContainer.style.top = hasBreak ? "60px" : "180px";
-            headerContainer.style.lineHeight = hasBreak ? "120px" : "";
+            headerContainer.style.lineHeight = "";
         }
     },
 
