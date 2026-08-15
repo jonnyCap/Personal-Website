@@ -27,43 +27,41 @@
     <title>About Me | Jonathan Maier</title>
 </head>
 <body>
-    <section>
-        <div class="navContainer">
-            <div class="navInnerContainer">
-                <div class="logo" onclick="Links.goToPage(0,0,0)">
-                    <img class="logoImage" src="images/logo.webp" alt="Logo">
-                </div>
-                <div class="navElements">
-                    <ul>
-                        <li onclick="Links.goToPage(0,0,0)" class="button-53 navList">Home</li>
-                        <li onclick="Links.goToPage(1,0,0)" class="button-53 navList">About Me</li>
-                        <li onclick="Links.goToPage(1,1,0)" class="button-53 navList">Projects</li>
-                        <li onclick="Links.goToPage(1,2,0)" class="button-53 navList">Contact</li>
-                    </ul>
-                </div>
-                <div class="dropDown">
-                    <button class="dropDownButton" aria-label="Toggle navigation menu">
-                        <svg class="hamburgerIcon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round">
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                    </button>
-                    <div class="dropDownContent">
-                        <a class="dropA" onclick="Links.goToPage(0,0,0)">Home</a>
-                        <a class="dropA" onclick="Links.goToPage(1,0,0)">About Me</a>
-                        <a class="dropA" onclick="Links.goToPage(1,1,0)">Projects</a>
-                        <a class="dropA" onclick="Links.goToPage(1,2,0)">Contact</a>
-                    </div>
+    <header class="navContainer">
+        <div class="navInnerContainer">
+            <div class="logo" onclick="Links.goToPage(0,0,0)">
+                <img class="logoImage" src="images/logo.webp" alt="Logo">
+            </div>
+            <div class="navElements">
+                <ul>
+                    <li onclick="Links.goToPage(0,0,0)" class="button-53 navList">Home</li>
+                    <li onclick="Links.goToPage(1,0,0)" class="button-53 navList">About Me</li>
+                    <li onclick="Links.goToPage(1,1,0)" class="button-53 navList">Projects</li>
+                    <li onclick="Links.goToPage(1,2,0)" class="button-53 navList">Contact</li>
+                </ul>
+            </div>
+            <div class="dropDown">
+                <button class="dropDownButton" aria-label="Toggle navigation menu">
+                    <svg class="hamburgerIcon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="dropDownContent">
+                    <a class="dropA" onclick="Links.goToPage(0,0,0)">Home</a>
+                    <a class="dropA" onclick="Links.goToPage(1,0,0)">About Me</a>
+                    <a class="dropA" onclick="Links.goToPage(1,1,0)">Projects</a>
+                    <a class="dropA" onclick="Links.goToPage(1,2,0)">Contact</a>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
     <script src="Scripts/navScript.js"></script>
     <section>
         <div class="secondaryBackgroundContainer">
             <div class="secondaryStartSection">
-                <canvas id="secondaryCanvas" width="1400px" height="900px"></canvas><!--Background Canvas-->
+                <canvas id="secondaryCanvas" width="1400" height="900"></canvas><!--Background Canvas-->
                 <script src="Scripts/secondaryCanvasScript.js"></script>
                 <div class="alignStartSectionParts">
                     <div class="secondaryLowerContainer">

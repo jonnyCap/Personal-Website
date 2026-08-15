@@ -1,10 +1,9 @@
-//secondaryCanvas
+// secondaryCanvas - Responsive Full-Width Background Animation
 
 const c = {
     gC: function () {
         let secondaryCanvas = document.getElementById("secondaryCanvas");
-        return secondaryCanvas.getContext("2d");
-
+        return secondaryCanvas ? secondaryCanvas.getContext("2d") : null;
     },
     getRandomNumber: function (min, max) {
         return Math.random() * (max - min) + min;
@@ -16,61 +15,81 @@ const c = {
         return solution;
     }
 };
+
 const secondaryCanvas = {
     drawnObjects: [],
-    drawnObjectsCounter: 30,
+    drawnObjectsCounter: 50,
     addedObjects: [],
     removedObjects: [],
     mainX: 1100,
     mainY: 475,
     rotationVelocity: 0.02,
+
+    resizeCanvas: function () {
+        const can = document.getElementById("secondaryCanvas");
+        const parent = document.querySelector(".secondaryStartSection");
+        if (can && parent) {
+            const w = parent.offsetWidth || window.innerWidth;
+            const h = parent.offsetHeight || 900;
+            if (can.width !== w || can.height !== h) {
+                can.width = w;
+                can.height = h;
+            }
+            secondaryCanvas.relocateMainPoints();
+        }
+    },
+
+    relocateMainPoints: function () {
+        const btn = document.querySelector(".scrollButton.down");
+        const can = document.getElementById("secondaryCanvas");
+        if (btn && can) {
+            const btnBounds = btn.getBoundingClientRect();
+            const canBounds = can.getBoundingClientRect();
+            secondaryCanvas.mainX = (btnBounds.left + btnBounds.width / 2) - canBounds.left;
+            secondaryCanvas.mainY = (btnBounds.top + btnBounds.height / 2) - canBounds.top;
+        } else {
+            secondaryCanvas.mainX = 1100;
+            secondaryCanvas.mainY = 475;
+        }
+    },
+
     createAll: function () {
-        // secondaryCanvas.relocateMainPoints();
-        for (let i = 0; i < 20; i++) {
-            let x = c.getRandomNumber(100, 500);
-            let y = c.getRandomNumber(100, 800);
-            let circle = new circleLine(x, y, x, y);
-            secondaryCanvas.drawnObjects.push(circle);
-        }
-        for (let i = 0; i < 8; i++) {
-            let x = c.getRandomNumber(500,1000);
-            let y = c.getRandomNumber(100, 400);
-            let circle = new circleLine(x, y, x, y);
-            secondaryCanvas.drawnObjects.push(circle);
-        }
-        for (let i = 0; i < 8; i++) {
-            let x = c.getRandomNumber(500, 1000);
-            let y = c.getRandomNumber(500, 800);
-            let circle = new circleLine(x, y, x, y);
-            secondaryCanvas.drawnObjects.push(circle);
-        }
-        for (let i = 0; i < 9; i++) {
-            let x = c.getRandomNumber(1000, 1300);
-            let y = c.getRandomNumber(100, 400);
-            let circle = new circleLine(x, y, x, y);
-            secondaryCanvas.drawnObjects.push(circle);
-        }
-        for (let i = 0; i < 6; i++) {
-            let x = c.getRandomNumber(1000, 1300);
-            let y = c.getRandomNumber(600, 800);
+        secondaryCanvas.resizeCanvas();
+        secondaryCanvas.drawnObjects = [];
+        const can = document.getElementById("secondaryCanvas");
+        const w = can ? can.width : window.innerWidth;
+        const h = can ? can.height : 900;
+
+        // Populate particles across the entire full width and height of the canvas
+        for (let i = 0; i < 50; i++) {
+            let x = c.getRandomNumber(30, w - 30);
+            let y = c.getRandomNumber(30, h - 30);
             let circle = new circleLine(x, y, x, y);
             secondaryCanvas.drawnObjects.push(circle);
         }
     },
-    checkForCloseObjects() {
+
+    checkForCloseObjects: function () {
         let index = 0;
         for (let i = 0; i < secondaryCanvas.drawnObjects.length; i++) {
             for (let j = index; j < secondaryCanvas.drawnObjects.length; j++) {
-                if (i != j) {
-                   if (Math.abs(secondaryCanvas.drawnObjects[i].currentX - secondaryCanvas.drawnObjects[j].currentX) < 70 && Math.abs(secondaryCanvas.drawnObjects[i].currentY - secondaryCanvas.drawnObjects[j].currentY) < 70) {
-                        secondaryCanvas.drawLine(secondaryCanvas.drawnObjects[i].currentX, secondaryCanvas.drawnObjects[i].currentY, secondaryCanvas.drawnObjects[j].currentX, secondaryCanvas.drawnObjects[j].currentY);
+                if (i !== j) {
+                    if (Math.abs(secondaryCanvas.drawnObjects[i].currentX - secondaryCanvas.drawnObjects[j].currentX) < 70 &&
+                        Math.abs(secondaryCanvas.drawnObjects[i].currentY - secondaryCanvas.drawnObjects[j].currentY) < 70) {
+                        secondaryCanvas.drawLine(
+                            secondaryCanvas.drawnObjects[i].currentX,
+                            secondaryCanvas.drawnObjects[i].currentY,
+                            secondaryCanvas.drawnObjects[j].currentX,
+                            secondaryCanvas.drawnObjects[j].currentY
+                        );
                     }
                 }
             }
             index++;
         }
     },
-    animateObjects() {
+
+    animateObjects: function () {
         secondaryCanvas.clearsecondaryCanvas();
         secondaryCanvas.checkForCloseObjects();
         for (let i = 0; i < secondaryCanvas.drawnObjects.length; i++) {
@@ -78,26 +97,27 @@ const secondaryCanvas = {
         }
         for (let i = 0; i < secondaryCanvas.addedObjects.length; i++) {
             if (secondaryCanvas.addedObjects[i].drawToEndPosition()) {
-                secondaryCanvas.drawnObjects.push(secondaryCanvas.addedObjects[0]);
+                secondaryCanvas.drawnObjects.push(secondaryCanvas.addedObjects[i]);
                 secondaryCanvas.addedObjects.splice(i, 1);
+                i--;
             }
         }
         for (let i = 0; i < secondaryCanvas.removedObjects.length; i++) {
             if (secondaryCanvas.removedObjects[i].drawToStartPosition()) {
                 secondaryCanvas.removedObjects.splice(i, 1);
+                i--;
             }
         }
     },
+
     refreshPage: function () {
         secondaryCanvas.clearsecondaryCanvas();
         secondaryCanvas.animateObjects();
     },
 
     createCircleOnClick: function (x, y) {
-        if (x > 600) {
-            let circle = new circleLine(x, y);
-            secondaryCanvas.drawnObjects.push(circle);
-        }
+        let circle = new circleLine(x, y, secondaryCanvas.mainX, secondaryCanvas.mainY);
+        secondaryCanvas.drawnObjects.push(circle);
     },
 
     removeObject: function () {
@@ -107,35 +127,37 @@ const secondaryCanvas = {
     clearsecondaryCanvas: function () {
         let can = document.getElementById("secondaryCanvas");
         let ctx = c.gC();
-        ctx.clearRect(0, 0, can.width, can.height);
+        if (can && ctx) {
+            ctx.clearRect(0, 0, can.width, can.height);
+        }
     },
 
     addAnimatedObject: function (endX, endY) {
-        circle = new circleLine(endX, endY, secondaryCanvas.mainX, secondaryCanvas.mainY);
+        const circle = new circleLine(endX, endY, secondaryCanvas.mainX, secondaryCanvas.mainY);
         secondaryCanvas.addedObjects.push(circle);
-        secondaryCanvas.removedObjects.push(secondaryCanvas.drawnObjects[0]);
-        secondaryCanvas.drawnObjects.shift();
-
+        if (secondaryCanvas.drawnObjects.length > 0) {
+            secondaryCanvas.removedObjects.push(secondaryCanvas.drawnObjects[0]);
+            secondaryCanvas.drawnObjects.shift();
+        }
     },
+
     drawLine: function (startX, startY, endX, endY) {
         let ctx = c.gC();
+        if (!ctx) return;
         ctx.lineWidth = 2;
         let opacity = 1 - (c.getScaleFactor(startX, startY, endX, endY) * 10);
 
         ctx.save();
-
         ctx.strokeStyle = "#d7e8f4";
-        ctx.globalAlpha = opacity;
-
+        ctx.globalAlpha = Math.max(0, opacity);
         ctx.beginPath();
         ctx.moveTo(startX, startY);
         ctx.lineTo(endX, endY);
-
         ctx.stroke();
-
         ctx.restore();
-    },
+    }
 };
+
 class circleLine {
     constructor(startX, startY, currentX, currentY) {
         this.startX = startX;
@@ -144,36 +166,38 @@ class circleLine {
         this.currentY = currentY;
         this.sinValue = c.getRandomNumber(1, 360);
         this.radians = c.getRandomNumber(1, 100);
+    }
 
-    } draw(x, y) {
+    draw(x, y) {
         let scaleFactor = c.getScaleFactor(x, y, secondaryCanvas.mainX, secondaryCanvas.mainY);
         let ctx = c.gC();
-        //Line
-        ctx.lineWidth = 2;
+        if (!ctx) return;
 
+        // Line to center
+        ctx.lineWidth = 2;
         let grad = ctx.createRadialGradient(secondaryCanvas.mainX, secondaryCanvas.mainY, 200, secondaryCanvas.mainX, secondaryCanvas.mainY, 100);
-        grad.addColorStop(0, "#98c6e6");//außen
-        grad.addColorStop(1, "#98c6e6");//innen
+        grad.addColorStop(0, "#98c6e6");
+        grad.addColorStop(1, "#98c6e6");
         ctx.strokeStyle = grad;
 
         ctx.beginPath();
         ctx.moveTo(x, y);
         ctx.lineTo(secondaryCanvas.mainX, secondaryCanvas.mainY);
-
         ctx.stroke();
 
-        //Endcircle
+        // Endcircle
         let grad2 = ctx.createRadialGradient(secondaryCanvas.mainX, secondaryCanvas.mainY, 600, secondaryCanvas.mainX, secondaryCanvas.mainY, 400);
-        grad2.addColorStop(0, "#d6e8f5");//außen #4da9ff
-        grad2.addColorStop(1, "#eaf4fa"); //innen #0080ff
+        grad2.addColorStop(0, "#d6e8f5");
+        grad2.addColorStop(1, "#eaf4fa");
 
         ctx.strokeStyle = grad2;
         ctx.fillStyle = grad2;
         ctx.beginPath();
-        ctx.arc(x, y, (3 - (scaleFactor * 2))* 6, 0, Math.PI * 2, false);
+        ctx.arc(x, y, Math.max(2, (3 - (scaleFactor * 2)) * 6), 0, Math.PI * 2, false);
         ctx.fill();
         ctx.stroke();
     }
+
     drawRandom() {
         this.sinValue += 1;
         let movingFactor = 0.005 * Math.sin(0.05 * this.sinValue);
@@ -183,14 +207,12 @@ class circleLine {
         this.currentX += finalVektorX * (movingFactor / 2);
         this.currentY += finalVektorY * (movingFactor / 2);
         this.radians += secondaryCanvas.rotationVelocity;
-        this.currentX += Math.cos(this.radians)
-        this.currentY += Math.sin(this.radians)
-
-        //this.currentX = secondaryCanvas.mainX + Math.cos(this.radians)*400 + movingFactor*10000;
-        //this.currentY = secondaryCanvas.mainY + Math.sin(this.radians)*400 + movingFactor*10000;
+        this.currentX += Math.cos(this.radians);
+        this.currentY += Math.sin(this.radians);
 
         this.draw(this.currentX, this.currentY);
     }
+
     drawToEndPosition() {
         let finalVektorX = this.startX - secondaryCanvas.mainX;
         let finalVektorY = this.startY - secondaryCanvas.mainY;
@@ -208,6 +230,7 @@ class circleLine {
             return false;
         }
     }
+
     drawToStartPosition() {
         let finalVektorX = this.startX - secondaryCanvas.mainX;
         let finalVektorY = this.startY - secondaryCanvas.mainY;
@@ -220,26 +243,45 @@ class circleLine {
             this.draw(this.startX, this.startY);
             return false;
         }
-
     }
 }
+
+// Initial setup & resize handling
 window.addEventListener("load", function () {
     setTimeout(secondaryCanvas.createAll, 100);
 });
 
+let secResizeTicking = false;
+window.addEventListener("resize", () => {
+    if (!secResizeTicking) {
+        requestAnimationFrame(() => {
+            secondaryCanvas.resizeCanvas();
+            secResizeTicking = false;
+        });
+        secResizeTicking = true;
+    }
+});
+
 let canSec = document.getElementById("secondaryCanvas");
-if (canSec) {
-    canSec.addEventListener("click", (event) => {
-        let x = event.clientX;
-        let y = event.clientY;
-        const section = document.getElementsByTagName("section");
-        if (section.length > 1) {
-            let bounds = section[1].getBoundingClientRect();
-            let realX = x - bounds.left;
-            let realY = y - bounds.top;
-            secondaryCanvas.addAnimatedObject(realX, realY);
-        }
-    });
+let secStartSection = document.querySelector(".secondaryStartSection");
+
+function spawnSecondaryObject(event) {
+    if (!canSec) return;
+    if (event.target.closest("button") || event.target.closest("a") || event.target.closest(".secondaryNavList")) {
+        return;
+    }
+    let bounds = canSec.getBoundingClientRect();
+    let scaleX = canSec.width / bounds.width;
+    let scaleY = canSec.height / bounds.height;
+    let realX = (event.clientX - bounds.left) * scaleX;
+    let realY = (event.clientY - bounds.top) * scaleY;
+    secondaryCanvas.addAnimatedObject(realX, realY);
+}
+
+if (secStartSection) {
+    secStartSection.addEventListener("click", spawnSecondaryObject);
+} else if (canSec) {
+    canSec.addEventListener("click", spawnSecondaryObject);
 }
 
 let isSecCanvasVisible = true;
@@ -292,7 +334,3 @@ document.addEventListener("visibilitychange", () => {
 });
 
 startSecCanvasAnim();
-
-
-
-

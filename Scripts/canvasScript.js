@@ -66,13 +66,15 @@ const canvas = {
         }
         for (let i = 0; i < canvas.addedObjects.length; i++) {
             if (canvas.addedObjects[i].drawToEndPosition()) {
-                canvas.drawnObjects.push(canvas.addedObjects[0]);
+                canvas.drawnObjects.push(canvas.addedObjects[i]);
                 canvas.addedObjects.splice(i, 1);
+                i--;
             }
         }
         for (let i = 0; i < canvas.removedObjects.length; i++) {
             if (canvas.removedObjects[i].drawToStartPosition()) {
                 canvas.removedObjects.splice(i, 1);
+                i--;
             }
         }
     },
@@ -218,15 +220,12 @@ window.addEventListener("load", function () {
 let can = document.getElementById("canvas");
 if (can) {
     can.addEventListener("click", (event) => {
-        let x = event.clientX;
-        let y = event.clientY;
-        const section = document.getElementsByTagName("canvas");
-        if (section.length > 0) {
-            let bounds = section[0].getBoundingClientRect();
-            let realX = x - bounds.left;
-            let realY = y - bounds.top;
-            canvas.addAnimatedObject(realX, realY);
-        }
+        let bounds = can.getBoundingClientRect();
+        let scaleX = can.width / bounds.width;
+        let scaleY = can.height / bounds.height;
+        let realX = (event.clientX - bounds.left) * scaleX;
+        let realY = (event.clientY - bounds.top) * scaleY;
+        canvas.addAnimatedObject(realX, realY);
     });
 }
 
