@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <!--SPA-->
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn more about Jonathan Maier, his software engineering background, studies at TU Graz, and software projects.">
-    <meta name="keywords" content="About Jonathan Maier, Software Engineer, Java, Python, Go, JavaScript, Portfolio, TU Graz">
+    <meta name="description"
+        content="Learn more about Jonathan Maier, his software engineering background, studies at TU Graz, and software projects.">
+    <meta name="keywords"
+        content="About Jonathan Maier, Software Engineer, Java, Python, Go, JavaScript, Portfolio, TU Graz">
     <meta name="author" content="Jonathan Maier">
-    
+
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="About Jonathan Maier | Software Developer">
-    <meta property="og:description" content="Learn more about Jonathan Maier, his software engineering journey, and projects.">
+    <meta property="og:description"
+        content="Learn more about Jonathan Maier, his software engineering journey, and projects.">
     <meta property="og:image" content="images/aboutMePicture.webp">
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="About Jonathan Maier | Software Developer">
-    <meta name="twitter:description" content="Learn more about Jonathan Maier, his software engineering journey, and projects.">
+    <meta name="twitter:description"
+        content="Learn more about Jonathan Maier, his software engineering journey, and projects.">
     <meta name="twitter:image" content="images/aboutMePicture.webp">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="images/logo.webp">
     <link rel="stylesheet" href="Styles/NavAndFooterStyles.css">
     <link rel="stylesheet" href="Styles/secondaryPage.css">
     <title>About Me | Jonathan Maier</title>
 </head>
+
 <body>
     <header class="navContainer">
         <div class="navInnerContainer">
@@ -42,7 +48,8 @@
             </div>
             <div class="dropDown">
                 <button class="dropDownButton" aria-label="Toggle navigation menu">
-                    <svg class="hamburgerIcon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round">
+                    <svg class="hamburgerIcon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff"
+                        stroke-width="2.5" stroke-linecap="round">
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <line x1="3" y1="12" x2="21" y2="12"></line>
                         <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -80,7 +87,8 @@
                         <h2 class="lowerHeader"></h2>
                     </div>
                     <button class="scrollButton down" aria-label="Scroll to content">
-                        <img class="scrollDownButtonImage imageDown" src="images/scrollDownButtonImage.webp" width="40%" height="auto" alt="Scroll Down">
+                        <img class="scrollDownButtonImage imageDown" src="images/scrollDownButtonImage.webp" width="40%"
+                            height="auto" alt="Scroll Down">
                         <canvas id="clickAnimationCanvas" width="200px" height="250px"></canvas>
                     </button>
                     <script src="Scripts/textAppearanceScript.js"></script> <!--Lets Text appear when side is loaded-->
@@ -93,7 +101,8 @@
                         <h1 class="secondaryContentHeader">Hello!</h1>
                         <h2 class="secondaryContentLowerHeader">
                             I'm Jonathan, a Software Developer!<br />
-                            Here is an overview of my professional experience, internships, and educational background...
+                            Here is an overview of my professional experience, internships, and educational
+                            background...
                         </h2>
                     </div>
                     <div class="cvContainer">
@@ -101,7 +110,8 @@
                         <div class="cvSection">
                             <div class="cvSectionHeader">
                                 <svg class="cvSectionIcon" viewBox="0 0 24 24">
-                                    <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                                    <path
+                                        d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
                                 </svg>
                                 <h2 class="cvSectionHeaderTitle">Work Experience &amp; Internships</h2>
                             </div>
@@ -114,7 +124,8 @@
                         <div class="cvSection">
                             <div class="cvSectionHeader">
                                 <svg class="cvSectionIcon" viewBox="0 0 24 24">
-                                    <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                                    <path
+                                        d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
                                 </svg>
                                 <h2 class="cvSectionHeaderTitle">Education &amp; Academic Background</h2>
                             </div>
@@ -152,15 +163,18 @@
                         </h2>
                     </div>
                     <div class="centerAlignForm">
-                        <form id="contactForm" action="javascript:void(0);" method="POST" onsubmit="emailHandler.sendMessage(event); return false;">
+                        <form id="contactForm" action="javascript:void(0);" method="POST"
+                            onsubmit="emailHandler.sendMessage(event); return false;">
                             <div class="secondaryContentText contactSection">
                                 <label for="emailInput">Your Email:</label>
                                 <input id="emailInput" type="email" name="email" required />
                                 <br />
-                                <label for="textInput">Tell me whatever you want, I will answer you as soon as possible!</label>
+                                <label for="textInput">Tell me whatever you want, I will answer you as soon as
+                                    possible!</label>
                                 <textarea id="textInput" name="Message" required></textarea>
                                 <div id="emailSendButtonContainer">
-                                    <button id="emailSendButton" class="button-53" type="submit" name="emailSendButton">Send</button>
+                                    <button id="emailSendButton" class="button-53" type="submit"
+                                        name="emailSendButton">Send</button>
                                 </div>
                             </div>
                             <div class="contactSection confirmationDiv">
@@ -181,19 +195,24 @@
                     <div class="alignSecondaryContent">
                         <div class="secondaryContentText">
                             <p>
-                                The protection of your personal data is very important to me. This website does not track users or collect sensitive personal information without your explicit action.
+                                The protection of your personal data is very important to me. This website does not
+                                track users or collect sensitive personal information without your explicit action.
                             </p>
                             <h3 class="secondaryContentTextHeader">Contact Form</h3>
                             <p>
-                                When you submit a message via the Contact form, your email address and message are processed solely to send an email notification so I can reply to your inquiry. Your email address is never sold, shared, or stored in any marketing database.
+                                When you submit a message via the Contact form, your email address and message are
+                                processed solely to send an email notification so I can reply to your inquiry. Your
+                                email address is never sold, shared, or stored in any marketing database.
                             </p>
                             <h3 class="secondaryContentTextHeader">Cookies & Analytics</h3>
                             <p>
-                                There are no third-party tracking cookies or invasive analytics scripts active on this website.
+                                There are no third-party tracking cookies or invasive analytics scripts active on this
+                                website.
                             </p>
                             <h3 class="secondaryContentTextHeader">Your Rights</h3>
                             <p>
-                                Under GDPR regulations, you have the right to information, correction, deletion, and restriction of any data you submit.
+                                Under GDPR regulations, you have the right to information, correction, deletion, and
+                                restriction of any data you submit.
                             </p>
                             <h3 class="secondaryContentTextHeader">Questions?</h3>
                             <p>
@@ -207,7 +226,8 @@
 
                 <div class="scrollButtonWrapper">
                     <button class="scrollButton up" aria-label="Scroll to top">
-                        <img class="scrollDownButtonImage imageUp" src="images/scrollDownButtonImage.webp" width="40%" height="auto" alt="Scroll Up">
+                        <img class="scrollDownButtonImage imageUp" src="images/scrollDownButtonImage.webp" width="40%"
+                            height="auto" alt="Scroll Up">
                         <canvas id="clickAnimationCanvasUp" width="200px" height="250px"></canvas>
                     </button>
                 </div>
@@ -228,20 +248,38 @@
                     </div>
                     <div class="footerSmallSection" id="secondFooterLine">
                         <h3 class="footerSmallHeader"> Follow me:</h3>
-                        <a href="https://github.com/jonnyCap" class="social-icon social-github" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        <a href="https://github.com/jonnyCap" class="social-icon social-github" aria-label="GitHub"
+                            target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
                         </a>
-                        <a href="https://www.linkedin.com/in/jonathan-maier-179836263/" class="social-icon social-linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <a href="https://www.linkedin.com/in/jonathan-maier-msc/" class="social-icon social-linkedin"
+                            aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
                         </a>
                     </div>
                     <div class="footerSmallSection" id="thirdFooterLine">
                         <h3 class="footerSmallHeader">Page-content:</h3>
-                        <a onclick="Links.goToPage(0,0,0)" class="pageContentHolder"><h6 class="pageContentHolder">Home</h6></a>
-                        <a onclick="Links.goToPage(1,0,0)" class="pageContentHolder"><h6 class="pageContentHolder">About me</h6></a>
-                        <a onclick="Links.goToPage(1,1,0)" class="pageContentHolder"><h6 class="pageContentHolder">Projects</h6></a>
-                        <a onclick="Links.goToPage(1,2,0)" class="pageContentHolder"><h6 class="pageContentHolder">Contact</h6></a>
-                        <a onclick="Links.goToPage(1,3,0)" class="pageContentHolder"><h6 class="pageContentHolder">Privacy Policy</h6></a>
+                        <a onclick="Links.goToPage(0,0,0)" class="pageContentHolder">
+                            <h6 class="pageContentHolder">Home</h6>
+                        </a>
+                        <a onclick="Links.goToPage(1,0,0)" class="pageContentHolder">
+                            <h6 class="pageContentHolder">About me</h6>
+                        </a>
+                        <a onclick="Links.goToPage(1,1,0)" class="pageContentHolder">
+                            <h6 class="pageContentHolder">Projects</h6>
+                        </a>
+                        <a onclick="Links.goToPage(1,2,0)" class="pageContentHolder">
+                            <h6 class="pageContentHolder">Contact</h6>
+                        </a>
+                        <a onclick="Links.goToPage(1,3,0)" class="pageContentHolder">
+                            <h6 class="pageContentHolder">Privacy Policy</h6>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -252,4 +290,5 @@
     <script src="Scripts/handlerScript.js"></script>
     <script src="Scripts/SPAScript.js"></script>
 </body>
+
 </html>
