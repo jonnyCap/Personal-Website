@@ -71,7 +71,7 @@ function adaptToWidth() {
     }
 }
 
-const lineHeight = {
+var lineHeight = window.lineHeight || {
     currentlyGoingHigher: false,
     animating: false,
     currentUlPosition: 50,

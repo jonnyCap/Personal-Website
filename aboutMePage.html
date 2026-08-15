@@ -95,28 +95,34 @@
                         <h1 class="secondaryContentHeader">Hello!</h1>
                         <h2 class="secondaryContentLowerHeader">
                             I'm Jonathan, a Software Developer!<br />
-                            Here is a brief overview of my engineering journey and background...
+                            Here is an overview of my professional experience, internships, and educational background...
                         </h2>
                     </div>
-                    <!-- canvas index = canvas0-->
-                    <div class="alignSecondaryContent">
-                        <canvas class="journyCanvas" id="canvas0" width="100px" height="600px"></canvas>
-                        <div class="secondaryContentText withJournyCanvas">
-                            <h3 class="secondaryContentTextHeader">High School & First Steps</h3>
-                            <p>
-                                I attended a secondary school specializing in natural sciences in Graz, Austria.
-                                There, I had the opportunity to shift my focus toward Informatics, gaining my first insights into Web development, software fundamentals, and networking.
-                            </p>
-                            <h3 class="secondaryContentTextHeader">Austrian Armed Forces (Cyber Soldier)</h3>
-                            <p>
-                                After graduating, I was selected for a specialized IT education and Cyber-Soldier training with the Austrian Armed Forces.
-                                During this time, I gained hands-on experience in cryptography, secure networking, web application architecture, and database systems.
-                            </p>
-                            <h3 class="secondaryContentTextHeader">Software Engineering & Management (TU Graz)</h3>
-                            <p>
-                                I am currently studying Software Engineering and Management at Graz University of Technology (TU Graz).
-                                My focus lies in distributed systems, network protocols, data analytics, and modern AI/LLM applications.
-                            </p>
+                    <div class="cvContainer">
+                        <!-- Experience & Internships Section -->
+                        <div class="cvSection">
+                            <div class="cvSectionHeader">
+                                <svg class="cvSectionIcon" viewBox="0 0 24 24">
+                                    <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                                </svg>
+                                <h2 class="cvSectionHeaderTitle">Work Experience &amp; Internships</h2>
+                            </div>
+                            <div id="experienceTimeline">
+                                <!-- Populated dynamically by cvRenderer.js -->
+                            </div>
+                        </div>
+
+                        <!-- Education Section -->
+                        <div class="cvSection">
+                            <div class="cvSectionHeader">
+                                <svg class="cvSectionIcon" viewBox="0 0 24 24">
+                                    <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                                </svg>
+                                <h2 class="cvSectionHeaderTitle">Education &amp; Academic Background</h2>
+                            </div>
+                            <div id="educationTimeline">
+                                <!-- Populated dynamically by cvRenderer.js -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -243,8 +249,8 @@
             </div>
         </footer>
     </section>
-    <script src="Scripts/navScript.js"></script>
     <script src="Scripts/projectsRenderer.js"></script>
+    <script src="Scripts/cvRenderer.js"></script>
     <script src="Scripts/handlerScript.js"></script>
     <script src="Scripts/SPAScript.js"></script>
 </body>

@@ -1,0 +1,168 @@
+{
+  "lastUpdated": "2026-08-15",
+  "experience": [
+    {
+      "id": "all-for-one",
+      "title": "Cloud Developer",
+      "company": "All for One",
+      "employmentType": "Full-time",
+      "period": "July 2025 – Present",
+      "duration": "1 year 2 months",
+      "location": "Graz, Austria · On-site",
+      "description": "Designing and building scalable cloud architectures, backend microservices, and modern web solutions with Node.js and TypeScript.",
+      "skills": [
+        "Node.js",
+        "TypeScript",
+        "Cloud Architecture",
+        "REST APIs",
+        "CI/CD",
+        "Docker"
+      ]
+    },
+    {
+      "id": "bearingpoint",
+      "title": "Software Engineer",
+      "company": "BearingPoint",
+      "employmentType": "Full-time",
+      "period": "Aug 2024 – Sept 2024",
+      "duration": "2 months",
+      "location": "Graz, Austria · On-site",
+      "description": "Engineered enterprise backend services and asynchronous messaging pipelines utilizing Java and Apache Kafka for event-driven systems.",
+      "skills": [
+        "Java",
+        "Apache Kafka",
+        "Enterprise Software",
+        "Microservices",
+        "Event-Driven"
+      ]
+    },
+    {
+      "id": "smaxtec",
+      "title": "Frontend Developer",
+      "company": "smaXtec",
+      "employmentType": "Full-time",
+      "period": "July 2023 – Sept 2023",
+      "duration": "3 months",
+      "location": "Graz, Austria · On-site",
+      "description": "Developed interactive, responsive user interfaces and modular client-side features using React.js and modern JavaScript.",
+      "skills": [
+        "React.js",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "UI/UX"
+      ]
+    },
+    {
+      "id": "kwb-it",
+      "title": "IT Intern",
+      "company": "KWB Energiesysteme GmbH",
+      "employmentType": "Full-time",
+      "period": "July 2022 – Oct 2022",
+      "duration": "4 months",
+      "location": "Sankt Margarethen an der Raab, Austria · On-site",
+      "description": "Implemented web applications and backend services using ASP.NET MVC, RESTful APIs, and relational database systems.",
+      "skills": [
+        "ASP.NET MVC",
+        "REST-API",
+        "C#",
+        "SQL Server"
+      ]
+    },
+    {
+      "id": "kwb-corp",
+      "title": "Corporate Development Intern",
+      "company": "KWB Energiesysteme GmbH",
+      "employmentType": "Full-time",
+      "period": "Aug 2021 – Nov 2021",
+      "duration": "4 months",
+      "location": "Sankt Margarethen an der Raab, Austria · On-site",
+      "description": "Assisted strategic corporate development workflows, process digitalization, and internal IT system optimization.",
+      "skills": [
+        "Corporate Development",
+        "Business Process Optimization",
+        "IT Analysis"
+      ]
+    },
+    {
+      "id": "stadt-graz",
+      "title": "Summer Intern – Presidential Department",
+      "company": "Stadt Graz",
+      "employmentType": "Full-time",
+      "period": "June 2019 – July 2019",
+      "duration": "2 months",
+      "location": "City Hall of Graz, Austria · On-site",
+      "description": "Supported public administration processes, digital document workflows, and IT-assisted municipal coordination.",
+      "skills": [
+        "Public Administration",
+        "IT Administration",
+        "Data Management"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "tu-wien",
+      "institution": "Technische Universität Wien (TU Wien)",
+      "degree": "Master of Science - MSc, Business Informatics",
+      "period": "Oct 2025 – Present",
+      "location": "Vienna, Austria",
+      "description": "Master's program focusing on advanced enterprise software architecture, information management, distributed computing, and data analytics.",
+      "skills": [
+        "Business Informatics",
+        "Enterprise Architecture",
+        "Distributed Systems",
+        "Data Analytics"
+      ]
+    },
+    {
+      "id": "tu-graz",
+      "institution": "Technische Universität Graz (TU Graz)",
+      "degree": "Bachelor of Science - BSc, Softwareengineering and Management",
+      "period": "Oct 2022 – July 2025",
+      "location": "Graz, Austria",
+      "grade": "GPA: 1.2",
+      "honors": "CSBME Dean's List",
+      "description": "Rigorous curriculum encompassing algorithms, distributed systems, software engineering methodologies, project management, and machine learning.",
+      "skills": [
+        "Agile Methods",
+        "Java",
+        "C / C++",
+        "Python",
+        "Software Architecture",
+        "Algorithms"
+      ]
+    },
+    {
+      "id": "bundesheer",
+      "institution": "Österreichisches Bundesheer (Austrian Armed Forces)",
+      "degree": "Cyber Soldier IT Specialist Training",
+      "period": "Dec 2021 – May 2022",
+      "location": "Austria",
+      "honors": "Certified Assistant Instructor & Lead Operator",
+      "description": "Specialized military IT service and cyber training covering cryptography, secure communications, CMS web platforms, and operational IT support.",
+      "skills": [
+        "Cyber Security",
+        "Cryptography",
+        "Network Security",
+        "CMS",
+        "IT Operations"
+      ]
+    },
+    {
+      "id": "brg-petersgasse",
+      "institution": "BRG Petersgasse",
+      "degree": "Matura (High School Diploma), Computer Science Focus",
+      "period": "Graduated with Distinction (Ausgezeichneter Erfolg)",
+      "location": "Graz, Austria",
+      "grade": "Passed with Distinction",
+      "description": "Secondary education with in-depth specialization in computer science, software fundamentals, networking, and natural sciences.",
+      "skills": [
+        "Computer Science",
+        "Informatics",
+        "Mathematics",
+        "English"
+      ]
+    }
+  ]
+}

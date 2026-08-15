@@ -217,8 +217,13 @@ const text = {
                 requestAnimationFrame(() => {
                     el.classList.add("active");
                 });
-                if (i === 0 && typeof journeyCanvas !== "undefined" && journeyCanvas.chooseCanvas) {
-                    journeyCanvas.chooseCanvas(0);
+                if (i === 0) {
+                    if (typeof CvRenderer !== "undefined" && typeof CvRenderer.init === "function") {
+                        CvRenderer.init();
+                    }
+                    if (typeof journeyCanvas !== "undefined" && journeyCanvas.chooseCanvas) {
+                        journeyCanvas.chooseCanvas(0);
+                    }
                 }
                 if (i === 1 && typeof ProjectsRenderer !== "undefined" && typeof ProjectsRenderer.init === "function") {
                     ProjectsRenderer.init();
