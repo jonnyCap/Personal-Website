@@ -1,0 +1,44 @@
+name: Weekly GitHub Repositories Sync
+
+on:
+  schedule:
+    # Run every Sunday at midnight UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
+  push:
+    paths:
+      - 'data/projectConfig.json'
+      - 'Scripts/fetchGitHubRepos.js'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-repos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Public GitHub Repositories
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node Scripts/fetchGitHubRepos.js
+
+      - name: Commit and Push Updated Projects Data
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          if git status --porcelain data/projects.json | grep -q "data/projects.json"; then
+            git add data/projects.json
+            git commit -m "chore(data): auto-sync latest public GitHub repositories"
+            git push
+          else
+            console_msg="No changes in public repositories detected."
+            echo "$console_msg"
+          fi

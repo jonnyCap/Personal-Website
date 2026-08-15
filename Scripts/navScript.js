@@ -160,3 +160,43 @@ window.addEventListener("scroll", () => {
         navScrollTicking = true;
     }
 });
+
+// Dropdown click-to-open and click-to-close toggle
+function initDropDownToggle() {
+    const dropDownButtons = document.querySelectorAll(".dropDownButton");
+    dropDownButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const content = btn.parentElement ? btn.parentElement.querySelector(".dropDownContent") : null;
+            if (content) {
+                content.classList.toggle("show");
+            }
+        });
+    });
+
+    // Close when clicking any dropdown navigation item
+    const dropLinks = document.querySelectorAll(".dropA");
+    dropLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            document.querySelectorAll(".dropDownContent.show").forEach(menu => {
+                menu.classList.remove("show");
+            });
+        });
+    });
+
+    // Close when clicking anywhere outside the menu
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(".dropDown")) {
+            document.querySelectorAll(".dropDownContent.show").forEach(menu => {
+                menu.classList.remove("show");
+            });
+        }
+    });
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDropDownToggle);
+} else {
+    initDropDownToggle();
+}
+

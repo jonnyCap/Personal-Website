@@ -1,0 +1,64 @@
+{
+  "username": "jonnyCap",
+  "pinned": [
+    "QueueGo",
+    "Blink",
+    "LLM-based-Assessment-of-Software-Project-Ideas",
+    "AIR-Project",
+    "BI---Data-Analytics",
+    "Personal-Website",
+    "Team-Creator"
+  ],
+  "hide": [],
+  "overrides": {
+    "QueueGo": {
+      "displayTitle": "QueueGo",
+      "subtitle": "High-Performance Pub/Sub Broker",
+      "customDescription": "A lightweight Pub/Sub message broker written in Go over a custom TCP protocol (Blink). Supports persistent queues via BadgerDB and JWT-based authentication.",
+      "tags": ["Go", "Distributed Systems", "TCP", "BadgerDB", "JWT"],
+      "featured": true
+    },
+    "Blink": {
+      "displayTitle": "Blink Protocol",
+      "subtitle": "Lightweight TCP Messaging Protocol",
+      "customDescription": "A lightweight, language-agnostic TCP messaging protocol designed for high-performance publish/subscribe distributed systems with minimal network overhead.",
+      "tags": ["Python", "TCP Protocol", "Pub/Sub", "Networking", "Architecture"],
+      "featured": true
+    },
+    "LLM-based-Assessment-of-Software-Project-Ideas": {
+      "displayTitle": "LLM Assessment of Software Project Ideas",
+      "subtitle": "Bachelor's Thesis Research Project",
+      "customDescription": "An automated evaluation pipeline leveraging Large Language Models (LLMs) to assess and score student project proposals in higher-education software project management courses.",
+      "tags": ["Python", "Jupyter", "LLMs", "NLP", "Prompt Engineering", "Research"],
+      "featured": true
+    },
+    "AIR-Project": {
+      "displayTitle": "Advanced Information Retrieval",
+      "subtitle": "TU Graz Graduate Project",
+      "customDescription": "Information retrieval and ranking pipeline implementation exploring inverted index structures, BM25 scoring, neural dense retrieval, and evaluation metrics.",
+      "tags": ["Python", "Jupyter", "IR", "Search Engines", "NLP", "TU Graz"],
+      "featured": false
+    },
+    "BI---Data-Analytics": {
+      "displayTitle": "Business Intelligence & Data Analytics",
+      "subtitle": "TU Vienna Course Project",
+      "customDescription": "Comprehensive data analytics workflows including data warehouse dimensional modeling, ETL pipelines, clustering, and predictive classification algorithms.",
+      "tags": ["Python", "Jupyter", "Data Analytics", "ETL", "Machine Learning", "TU Vienna"],
+      "featured": false
+    },
+    "Personal-Website": {
+      "displayTitle": "Personal Portfolio & SPA",
+      "subtitle": "Interactive Vanilla Web Architecture",
+      "customDescription": "Modern responsive portfolio website built with pure HTML5, CSS3, dynamic Canvas animations, and automated GitHub repository synchronization workflows.",
+      "tags": ["JavaScript", "HTML5", "CSS3", "Canvas API", "GitHub Actions"],
+      "featured": false
+    },
+    "Team-Creator": {
+      "displayTitle": "Team Creator App",
+      "subtitle": "Android Team Balancing Application",
+      "customDescription": "Native Android mobile application designed to generate balanced sports and game teams with custom player ratings and algorithmic distribution.",
+      "tags": ["Java", "Android Studio", "Mobile Development", "Algorithms"],
+      "featured": false
+    }
+  }
+}

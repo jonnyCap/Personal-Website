@@ -68,6 +68,9 @@ const sDButton = {
         if (elements.length === 0) return;
         elements[0].style.display = "block";
         elements[0].style.height = "auto";
+        if (typeof journyCanvas !== "undefined" && typeof journyCanvas.setUpJournyCanvas === "function") {
+            journyCanvas.setUpJournyCanvas();
+        }
         let opacity = 0;
         sDButton.appeared = true;
         function step() {
@@ -75,6 +78,9 @@ const sDButton = {
             if (opacity >= 1) {
                 elements[0].style.opacity = "1";
                 sDButton.appeared = false;
+                if (typeof journyCanvas !== "undefined" && typeof journyCanvas.setUpJournyCanvas === "function") {
+                    journyCanvas.setUpJournyCanvas();
+                }
             } else {
                 elements[0].style.opacity = opacity;
                 requestAnimationFrame(step);
@@ -215,19 +221,25 @@ const buttonCanvas = {
             }
         }
 
-        const btnElem = document.querySelector(".scrollButton");
-        if (btnElem && "IntersectionObserver" in window) {
+        const btnElems = document.querySelectorAll(".scrollButton");
+        const visibleButtons = new Set();
+        if (btnElems.length > 0 && "IntersectionObserver" in window) {
             const btnObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    isBtnVisible = entry.isIntersecting;
-                    if (isBtnVisible) {
-                        startBtnAnim();
+                    if (entry.isIntersecting) {
+                        visibleButtons.add(entry.target);
                     } else {
-                        stopBtnAnim();
+                        visibleButtons.delete(entry.target);
                     }
                 });
+                isBtnVisible = visibleButtons.size > 0;
+                if (isBtnVisible) {
+                    startBtnAnim();
+                } else {
+                    stopBtnAnim();
+                }
             });
-            btnObserver.observe(btnElem);
+            btnElems.forEach(el => btnObserver.observe(el));
         }
 
         document.addEventListener("visibilitychange", () => {

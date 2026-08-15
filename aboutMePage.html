@@ -4,20 +4,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn more about Jonathan Maier, his software engineering journey, mobile app development (Team Creator), web projects, and JavaScript games.">
-    <meta name="keywords" content="About Jonathan Maier, Software Engineer, Team Creator App, Android Studio, Java, JavaScript, Portfolio">
+    <meta name="description" content="Learn more about Jonathan Maier, his software engineering background, studies at TU Graz, and software projects.">
+    <meta name="keywords" content="About Jonathan Maier, Software Engineer, Java, Python, Go, JavaScript, Portfolio, TU Graz">
     <meta name="author" content="Jonathan Maier">
     
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="About Jonathan Maier | Software Developer">
-    <meta property="og:description" content="Learn more about Jonathan Maier, his software engineering journey, mobile app development (Team Creator), and web projects.">
+    <meta property="og:description" content="Learn more about Jonathan Maier, his software engineering journey, and projects.">
     <meta property="og:image" content="images/aboutMePicture.webp">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="About Jonathan Maier | Software Developer">
-    <meta name="twitter:description" content="Learn more about Jonathan Maier, his software engineering journey, mobile app development (Team Creator), and web projects.">
+    <meta name="twitter:description" content="Learn more about Jonathan Maier, his software engineering journey, and projects.">
     <meta name="twitter:image" content="images/aboutMePicture.webp">
     
     <!-- Favicon -->
@@ -37,19 +37,23 @@
                     <ul>
                         <li onclick="Links.goToPage(0,0,0)" class="button-53 navList">Home</li>
                         <li onclick="Links.goToPage(1,0,0)" class="button-53 navList">About Me</li>
-                        <li onclick="Links.goToPage(0,0,1600)" class="button-53 navList">Content</li>
-                        <li onclick="Links.goToPage(1,4,0)" class="button-53 navList">Contact</li>
+                        <li onclick="Links.goToPage(1,1,0)" class="button-53 navList">Projects</li>
+                        <li onclick="Links.goToPage(1,2,0)" class="button-53 navList">Contact</li>
                     </ul>
                 </div>
                 <div class="dropDown">
-                    <button class="dropDownButton">
-                        <img class="dropDownButtonImage" src="images/dropDownButton.webp" alt="Menu">
+                    <button class="dropDownButton" aria-label="Toggle navigation menu">
+                        <svg class="hamburgerIcon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
                     </button>
                     <div class="dropDownContent">
                         <a class="dropA" onclick="Links.goToPage(0,0,0)">Home</a>
                         <a class="dropA" onclick="Links.goToPage(1,0,0)">About Me</a>
-                        <a class="dropA" onclick="Links.goToPage(0,0,1600)">Content</a>
-                        <a class="dropA" onclick="Links.goToPage(1,4,0)">Contact</a>
+                        <a class="dropA" onclick="Links.goToPage(1,1,0)">Projects</a>
+                        <a class="dropA" onclick="Links.goToPage(1,2,0)">Contact</a>
                     </div>
                 </div>
             </div>
@@ -65,9 +69,7 @@
                     <div class="secondaryLowerContainer">
                         <ul class="secondaryUl">
                             <li class="secondaryNavList button-53">About me</li>
-                            <li class="secondaryNavList button-53 twoLiner">Team Creator App</li>
-                            <li class="secondaryNavList button-53 twoLiner">Personal<br />Website</li>
-                            <li class="secondaryNavList button-53 twoLiner">JS Mini-<br />Games</li>
+                            <li class="secondaryNavList button-53">Projects</li>
                             <li class="secondaryNavList button-53">Contact</li>
                             <li class="secondaryNavList button-53 twoLiner">Privacy<br />Policy</li>
                         </ul>
@@ -92,221 +94,51 @@
                     <div class="secondaryContentHeaderContainer">
                         <h1 class="secondaryContentHeader">Hello!</h1>
                         <h2 class="secondaryContentLowerHeader">
-                            I'm Jonathan, a future Software-developer!<br />
-                            I want to show you my rather short Coding journey so far and tell you a bit about my self...
+                            I'm Jonathan, a Software Developer!<br />
+                            Here is a brief overview of my engineering journey and background...
                         </h2>
                     </div>
                     <!-- canvas index = canvas0-->
-                    <div class="algignSecondaryContent">
-                        <canvas class="journyCanvas" id="canvas0" width="100px" height="1300px"></canvas>
+                    <div class="alignSecondaryContent">
+                        <canvas class="journyCanvas" id="canvas0" width="100px" height="600px"></canvas>
                         <div class="secondaryContentText withJournyCanvas">
-                            <h3 class="secondaryContentTextHeader">High school</h3>
+                            <h3 class="secondaryContentTextHeader">High School & First Steps</h3>
                             <p>
-                                I originally attended a high school specializing in natural sciences based in Austria, Graz.
-                                Fortunately, we had a few opportunities to adjust our school timetable, which allowed me to shift my focus towards Informatics.
-                                We could choose specific courses, although some were not voluntary. However, that's where I got my
-                                first insights into Web development, ECDL, Game-Programming, Network-technologies as well as Software- and Hardware
-                                technology.
+                                I attended a secondary school specializing in natural sciences in Graz, Austria.
+                                There, I had the opportunity to shift my focus toward Informatics, gaining my first insights into Web development, software fundamentals, and networking.
                             </p>
-                            <h3 class="secondaryContentTextHeader">Transition to Armed Forces</h3>
+                            <h3 class="secondaryContentTextHeader">Austrian Armed Forces (Cyber Soldier)</h3>
                             <p>
-                                After high school I applied for a special IT-Eduction at the Armed Forces where only very few people got accepted.
-                                Thankfully, I got given a chance but since I had only little experience I felt like I had to prepare myself.
-                                In the course of my preparation I started learning how to code properly. At that point I only programmed in
-                                in a JavaScript-API and therefore I wanted to try out something different.
-                                So I ended up with Java, learned the basic as well as advanced concepts and from there on I just programmed as much as
-                                possible to get used to the language and its features.
+                                After graduating, I was selected for a specialized IT education and Cyber-Soldier training with the Austrian Armed Forces.
+                                During this time, I gained hands-on experience in cryptography, secure networking, web application architecture, and database systems.
                             </p>
-                            <h3 class="secondaryContentTextHeader">Austrian Armed Forces</h3>
+                            <h3 class="secondaryContentTextHeader">Software Engineering & Management (TU Graz)</h3>
                             <p>
-                                A year after my graduation I had to join the Austrian Armed Forces to complete my basic military service.
-                                As mentioned before, I was selected to be one of the few austrian "Cyber-Soldiers". At first we underwent a special training and schooling
-                                which took 2 Months. During this time we firstly learned a lot about the military, its morals, rules and so on. And secondly
-                                we got insights into more IT-related subjects like Cryptography or the safe-military-network. Afterwards we were spread all over Austria again and
-                                worked practically for 4 Months. In that time I worked a lot on Websites and Databases, which helped me a lot on improving
-                                my JavaScript- and SQL-Skills.
+                                I am currently studying Software Engineering and Management at Graz University of Technology (TU Graz).
+                                My focus lies in distributed systems, network protocols, data analytics, and modern AI/LLM applications.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-                            </p>
-                            <h3 class="secondaryContentTextHeader">Transition to studying</h3>
-                            <p>
-                                Now I had a really good grasp of what to learn and where to start if I wanted to make
-                                further progress. I started a couple projects, like my first personal App or this Website. Not to mention the
-                                many ones which I did not finish or make public. I also was very interested in learning a lower level programing
-                                language like C++ or C, but since I was also doing an internship at the time I could only scratch on the surface of
-                                these languages.
-                            </p>
-                            <h3 class="secondaryContentTextHeader">Software-engineering and Management - Bachelor Degree</h3>
-                            <p>
-                                My studies start at October, 2022. The last years I have invested a lot
-                                of time to learn by myself and hopefully some guided lessons and a curriculum will help my to answer the questions i could not answer myself.
-                                I also made an application for an internship at my university but I haven't received an answer yet, so wish me luck! :D
-                            </p>
+                <!--ContentContainer Projects-->
+                <div class="secondaryContentContainer">
+                    <div class="secondaryContentHeaderContainer">
+                        <h1 class="secondaryContentHeader">Projects</h1>
+                        <h2 class="secondaryContentLowerHeader">
+                            Featured engineering projects & open-source work...<br />
+                            Automatically synced from GitHub with live code metrics and language breakdowns.
+                        </h2>
+                    </div>
+                    <div class="alignSecondaryContent">
+                        <div class="secondaryContentText" style="width: 100%;">
+                            <div id="spaProjectsGrid" class="spaProjectsGrid">
+                                <!-- Dynamically populated by projectsRenderer.js -->
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!--ContentContainer Team Creator App-->
-                <div class="secondaryContentContainer">
-                    <div class="secondaryContentHeaderContainer">
-                        <h1 class="secondaryContentHeader">Team Creator</h1>
-                        <h2 class="secondaryContentLowerHeader">
-                            I created an App with Android Studio and Java,<br /> which allows you to create fair Teams!
-                        </h2>
-                    </div>
-                    <!-- canvas index = canvas1-->
-                    <div class="algignSecondaryContent">
-                        <canvas class="journyCanvas" id="canvas1" width="100px" height="2350px"></canvas>
-                        <div class="secondaryContentText withJournyCanvas">
-                            <h3 class="secondaryContentTextHeader">Project Idea</h3>
-                            <p>
-                                I originally came up with the Idea of programming Games. However, after I started a few attempts
-                                in Unity with C#, I thought that at the time I would probably profit more
-                                from learning Android Studios first. Since I did not have any experience in that field of work I just wanted
-                                to do a simple App and started planning.
-                            </p>
-                            <h3 class="secondaryContentTextHeader">Planning</h3>
-                            <p>
-                                Coming up with an creative and not completely overdone Idea was actually way harder than expected.
-                                Especially rather simple Ideas were to find everywhere and I could not come up with anything new.
-                                However, after a few days it clicked when a friend group of mine was playing
-                                volleyball we had some bad issues making fair teams. No one really wanted to choose who they want to play with
-                                and I thought an App would be optimal to solve that problem for us. So all I wanted was a simple App that creates a specific
-                                amount of fairer Teams. So I started planning and writing down everything on paper first...
-                            </p>
-                            <h3 class="secondaryContentTextHeader">Learning Android Studio</h3>
-                            <p>
-                                The planning stage was done really quickly, since the app was not complex at all and I had a pretty clear
-                                Idea of its design. I decided to use Android Studio in Combination with Java and turn my Idea into reality. I used YouTube as my main source and
-                                for a couple of days I just started creating and developing new app-projects to test out the features and learn the core functions of the IDE. Although
-                                there was still a lot to learn, I decided to get started with the App and continue my learning-journey by
-                                just doing.
-                            </p>
-                            <div class="secondaryContentImageContaner">
-                                <img src="images/TeamCreator.webp" alt="programmingApp.png" style="width:100%; height:auto;">
-                            </div>
-                            <h3 class="secondaryContentTextHeader">Finishing the App</h3>
-                            <p>
-                                Despite the only few functions my app had, it took me quite a while to finish it. Especially at the end a lot of
-                                fine tuning had to be done. However, in the end of the day it was absolutely worth it, since
-                                it was such a satisfaction when I was finally done. Here are some preview pictures of it:
-                            </p>
-                            <h3 class="secondaryContentTextHeader">Publishing it in Google Play Store</h3>
-                            <p>
-                                The final step was to publish my App in the Google Play Store. To be honest I underestimated how
-                                much effort this would be going to require. I setup my Google Player Store Account, payed the fee and uploaded my App. I thought I should be done here but
-                                I had to rework the App additional 5 times because some requirements were not met. When I was finally done, I unfortunately had to postpone my Publication, because you are required to host a Privacy Policy
-                                on your web-page. At that time there was no web-page, so I started a new Project - Creating a Personal Website.
-                            </p>
-                            <div class="secondaryContentImageContaner">
-                                <img src="images/teamCreatorBanner.webp" alt="TeamSelector.png" style="width:100%; height:auto;">
-                            </div>
-                            <h3 class="secondaryContentTextHeader">Team Creator</h3>
-                            <p>
-                                If you can read this, the requirements for the Publication are hopefully met and you can find and download the App here:<br />
-                                <a href="">Go to Google Play Store...</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!--ContentContainer Personal Web page-->
-                <div class="secondaryContentContainer">
-                    <div class="secondaryContentHeaderContainer">
-                        <h1 class="secondaryContentHeader">Personal Website</h1>
-                        <h2 class="secondaryContentLowerHeader">
-                            A Website made to host a Privacy Policy, turned out to be way more...
-                        </h2>
-                    </div>
-                    <div class="algignSecondaryContent">
-                        <!-- canvas index = canvas2-->
-                        <canvas class="journyCanvas" id="canvas2" width="100px" height="1600px"></canvas>
-                        <div class="secondaryContentText withJournyCanvas">
-                            <h3 class="secondaryContentTextHeader">How I started</h3>
-                            <p>
-                                Well the first time I thought about a Web-page was at my time at the Austrian Armed Forces. In that
-                                particular time I was mostly working with JavaScript and overall involved in Web-development. I was tasked
-                                to develop the new intern Website for our department but due to some organizational troubles I never came to
-                                publish it or neither show it to my supervisors. Therefore, I decided to save my written Code, reworked it a little and tried to use it for my personal
-                                Web-page instead. It looked somewhat like this:
-                            </p>
-                            <div class="secondaryContentImageContaner">
-                                <img src="images/editedOldWebsite.webp" alt="TeamSelector.png" style="width:100%; height:auto;">
-                            </div>
-                            <p>
-                                Although initially I was quite happy with it, after a while it just looked boring and I
-                                decided to cancel the project and started from scratch.
-                            </p>
-                            <h3 class="secondaryContentTextHeader">Inspiration</h3>
-                            <p>
-                                My initial inspiration for the Web design came from my Logo, which I just casually created using an online
-                                Logo-Designer. Since I did not want to pay for it tho, I just designed one myself in Gimp, inspired by the one I made previously and used the colors
-                                as Guideline for my Web-page.
-                            </p>
-                            <div class="secondaryContentImageContaner">
-                                <img src="images/logo.webp" alt="TeamCreator.png" style="width:100%; height:auto;">
-                            </div>
-                            <h3 class="secondaryContentTextHeader">Outcome</h3>
-                            <p>
-                                I did not have a clear plan and just started working, which probably weren't the smartest move
-                                but it worked out quite well as I believe! I tried to make a cool interactive Web-page with plain JavaScript,
-                                which was challenging at times. In hindsight I probably should have used this project to learn new Libraries like React or AngularJS
-                                but it still helped me massively improving my Understanding of JavaScript.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!--ContentContainer JS Mini-Games-->
-                <div class="secondaryContentContainer">
-                    <div class="secondaryContentHeaderContainer">
-                        <h1 class="secondaryContentHeader">JS Mini-Games</h1>
-                        <h2 class="secondaryContentLowerHeader">
-                            A little and honestly really crappy JavaScript-Game-Collection!<br />
-                            I designed and programmed these Games during my time at the Austrian Armed Forces and they honestly helped my a lot to understand the
-                            basics of JS
-                        </h2>
-                    </div>
-                    <div class="algignSecondaryContent">
-                        <!-- canvas index = canvas3-->
-                        <canvas class="journyCanvas" id="canvas3" width="100px" height="2400px"></canvas>
-                        <div class="secondaryContentText withJournyCanvas">
-                            <h3 class="secondaryContentTextHeader">Snake</h3>
-                            <p>
-                                Snake was the first Game I programmed with JavaScript. At the time I was completely unfamiliar with the language
-                                and thats the reason why I did not use anything like Canvas or other helping frameworks or libraries. I simply made a grid filled with colored Divs to display
-                                either the background or the snakes Body. Every tail-Div is saved in an array and every few milliseconds a function is called which
-                                which paints all divs black except the divs reserved for the snakes body which are painted green.
-                            </p>
-                            <div class="secondaryContentImageContaner">
-                                <img src="images/snakeGameEdited.webp" alt="TeamSelector.png" style="width:100%; height:auto;">
-                            </div>
-                            <h3 class="secondaryContentTextHeader">Flappy Birds</h3>
-                            <p>
-                                This Game is where I wanted to start experimenting with a randomly created Surrounding, Object-collision and gravity. I did not completely finish this Game and when I stopped working on this game
-                                the gravitation and the graphics felt rather unsatisfying to be honest.
-                            </p>
-                            <div class="secondaryContentImageContaner">
-                                <img src="images/flappyBirdsGameEdited.webp" alt="TeamSelector.png" style="width:100%; height:auto;">
-                            </div>
-                            <h3 class="secondaryContentTextHeader">Builder</h3>
-                            <p>
-                                Builder allows you to place forms, in different shapes and sizes wherever on the screen. Then you could pick them up and replace them
-                                somewhere else. This game helped particularly in getting a sense of the relative locations of each divs and how to combine that with
-                                the mouse-X and mouse-Y position. This was rather a test tho and could not seriously be called a real game.
-                            </p>
-                            <h3 class="secondaryContentTextHeader">World Runner</h3>
-                            <p>
-                                This game is the first game created with HTML-canvas but there is not much I want to share here because there is probably going to be a completely
-                                reworked version of this Game. This is probably the Game I put the most thought and effort into.
-                                The simple Idea: You run around a 2D world, which is extremely minimalistic. Thats all I am going to say so far:).<br/>
-                                If you are interested in the Game you can sign up for News in the Footer!
-                            </p>
-                            <h3 class="secondaryContentTextHeader">Tic Tac Toe</h3>
-                            <p>
-                                Another Game I worked on was Tic Tac Toe. Unfortunately, during the process of saving the files I somehow forgot these ones and thats why I have no access
-                                to the Game no more.
 
-                            </p>
-                        </div>
-                    </div>
-                </div>
                 <!--ContentContainer Contact-->
                 <div class="secondaryContentContainer">
                     <div class="secondaryContentHeaderContainer">
@@ -333,54 +165,42 @@
                         </form>
                     </div>
                 </div>
+
                 <!--ContentContainer Privacy Policy-->
                 <div class="secondaryContentContainer">
                     <div class="secondaryContentHeaderContainer">
                         <h1 class="secondaryContentHeader">Privacy Policy</h1>
                         <h2 class="secondaryContentLowerHeader">
-                            This happens with your Data!
+                            Information about Data Privacy & Security
                         </h2>
                     </div>
-                    <div class="algignSecondaryContent">
+                    <div class="alignSecondaryContent">
                         <div class="secondaryContentText">
                             <p>
-                                The protection of your Data is especially important to me. In the paragraphs below you will be informed about your personal data that I collect and how I use it. But
-                                from the front there is no sensitive or personal Data, except your Email, collected on this Web-page or my App, Team Creator.
+                                The protection of your personal data is very important to me. This website does not track users or collect sensitive personal information without your explicit action.
                             </p>
-                            <h3 class="secondaryContentTextHeader">Contact</h3>
+                            <h3 class="secondaryContentTextHeader">Contact Form</h3>
                             <p>
-                                If you use the Contact-Formula I will NOT save your Email! They way the formula works, is that a Script sends an automated email-message, including your Email and your Message so that I can
-                                come back to you. I than will personally answer you, but not store your Email-address anywhere.
+                                When you submit a message via the Contact form, your email address and message are processed solely to send an email notification so I can reply to your inquiry. Your email address is never sold, shared, or stored in any marketing database.
                             </p>
-                            <h3 class="secondaryContentTextHeader">Newsletter</h3>
+                            <h3 class="secondaryContentTextHeader">Cookies & Analytics</h3>
                             <p>
-                                If you sign up for News in the footer Section you will have to enter your Email-address. You will receive all News via Email and to be able to do so
-                                I will add your Email-address to a distribution-list stored securely in an offline Document located and protected on my personal PC, so that in case News are going to be send out, all signed-up people will receive an email. The email-address will not be stored
-                                elsewhere and it will be removed from the distribution-list after a 5-year period. If you want it to be removed sooner, you can just write a personal email
-                                and I will comply your request as soon as possible.
+                                There are no third-party tracking cookies or invasive analytics scripts active on this website.
                             </p>
-                            <h3 class="secondaryContentTextHeader">Team Creator</h3>
+                            <h3 class="secondaryContentTextHeader">Your Rights</h3>
                             <p>
-                                My App, Team Creator, will collect NO Data at all.
-                            </p>
-                            <h3 class="secondaryContentTextHeader">Cookies</h3>
-                            <p>
-                                There are no cookies active! Neither on this Web-page nor my App, Team Creator.
-                            </p>
-                            <h3 class="secondaryContentTextHeader">Your rights</h3>
-                            <p>
-                                In principle, you have the rights to personal information, correction, deletion, restriction, data portability, revocation and objection. If you believe that the
-                                processing of your data violates data protection law or your data protection claims have otherwise been violated in any way, you can complain to the supervisory authority. In Austria, this is the data protection authority.
+                                Under GDPR regulations, you have the right to information, correction, deletion, and restriction of any data you submit.
                             </p>
                             <h3 class="secondaryContentTextHeader">Questions?</h3>
                             <p>
                                 Contact me:<br />
                                 maier.jonathanelias@gmail.com<br />
-                                Tel.: +43 66488524186<br />
+                                Tel.: +43 664 88524186<br />
                             </p>
                         </div>
                     </div>
                 </div>
+
                 <div class="scrollButtonWrapper">
                     <button class="scrollButton up">
                         <img class="scrollDownButtonImage imageUp" src="images/scrollDownButtonImage.webp" width="40%" height="auto" alt="Scroll Up">
@@ -388,7 +208,7 @@
                     </button>
                 </div>
                 <script src="Scripts/scrollDownButtonScript.js"></script>
-                <script src="Scripts/journeyCanvasScript.js"></script> <!--main Function in this script is getting called in scrollDownButtonScript-->
+                <script src="Scripts/journeyCanvasScript.js"></script>
             </div>
         </div>
     </section>
@@ -407,38 +227,24 @@
                         <a href="https://github.com/jonnyCap" class="social-icon social-github" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                             <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                         </a>
-                        <a href="https://www.instagram.com/jonathan._.maier/" class="social-icon social-instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        </a>
                         <a href="https://www.linkedin.com/in/jonathan-maier-179836263/" class="social-icon social-linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                             <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
-                        <a href="https://t.snapchat.com/CXsoOf11" class="social-icon social-snapchat" aria-label="Snapchat" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24"><path d="M12.001 0C5.372 0 .001 5.373.001 12c0 2.054.517 3.987 1.427 5.682l-.845 2.808c-.147.487.318.951.805.805l2.808-.845C5.891 21.365 7.824 21.882 9.878 21.882c-.085-.494-.131-1.004-.131-1.523 0-4.693 3.805-8.498 8.498-8.498.519 0 1.029.046 1.523.131C19.768 5.373 14.397 0 12.001 0z"/></svg>
-                        </a>
-                        <br />
-                        <br />
-                        <form id="subscriptionForm" action="javascript:void(0);" method="POST" onsubmit="emailHandler.clickEmailSubscription(event); return false;">
-                            <label id="emailInputLabel" for="emailInputFooter">Sign up for news:</label>
-                            <input id="emailInputFooter" type="email" name="subscriptionEmail" required />
-                            <button id="emailSubmitButton" type="submit" name="subscribeButton">Submit</button>
-                        </form>
-                        <h6 class="confirmationText">Signed up successfully!</h6>
                     </div>
                     <div class="footerSmallSection" id="thirdFooterLine">
                         <h3 class="footerSmallHeader">Page-content:</h3>
                         <a onclick="Links.goToPage(0,0,0)" class="pageContentHolder"><h6 class="pageContentHolder">Home</h6></a>
                         <a onclick="Links.goToPage(1,0,0)" class="pageContentHolder"><h6 class="pageContentHolder">About me</h6></a>
-                        <a onclick="Links.goToPage(1,1,0)" class="pageContentHolder"><h6 class="pageContentHolder">Team Creator App</h6></a>
-                        <a onclick="Links.goToPage(1,2,0)" class="pageContentHolder"><h6 class="pageContentHolder">Personal Website</h6></a>
-                        <a onclick="Links.goToPage(1,3,0)" class="pageContentHolder"><h6 class="pageContentHolder">JS Mini-Games</h6></a>
-                        <a onclick="Links.goToPage(1,4,0)" class="pageContentHolder"><h6 class="pageContentHolder">Contact</h6></a>
-                        <a onclick="Links.goToPage(1,5,0)" class="pageContentHolder"><h6 class="pageContentHolder">Privacy Policy</h6></a>
+                        <a onclick="Links.goToPage(1,1,0)" class="pageContentHolder"><h6 class="pageContentHolder">Projects</h6></a>
+                        <a onclick="Links.goToPage(1,2,0)" class="pageContentHolder"><h6 class="pageContentHolder">Contact</h6></a>
+                        <a onclick="Links.goToPage(1,3,0)" class="pageContentHolder"><h6 class="pageContentHolder">Privacy Policy</h6></a>
                     </div>
                 </div>
             </div>
         </footer>
     </section>
+    <script src="Scripts/navScript.js"></script>
+    <script src="Scripts/projectsRenderer.js"></script>
     <script src="Scripts/handlerScript.js"></script>
     <script src="Scripts/SPAScript.js"></script>
 </body>

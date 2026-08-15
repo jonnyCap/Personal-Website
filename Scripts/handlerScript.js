@@ -1,10 +1,23 @@
+const PAGE_HASH_NAMES = ["#about", "#projects", "#contact", "#privacy"];
+
 const Links = {
     goToPage: function (index, PageIndex, Height) {
-        let url = window.location.href;
+        const isAboutMe = window.location.pathname.includes("aboutMePage.html") || window.location.href.includes("aboutMePage.html");
+        
         switch (index) {
-            case 0:
-                if (url.includes("aboutMePage.html") == false) {
-                    window.scrollTo({ top: Height, behavior: "smooth" });
+            case 0: // Home page navigation
+                if (!isAboutMe) {
+                    if (Height === 0) {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                    } else if (Height >= 1400) {
+                        const proj = document.getElementById("projectsSection");
+                        if (proj) proj.scrollIntoView({ behavior: "smooth" });
+                        else window.scrollTo({ top: Height, behavior: "smooth" });
+                    } else {
+                        const about = document.getElementById("aboutMeSection");
+                        if (about) about.scrollIntoView({ behavior: "smooth" });
+                        else window.scrollTo({ top: Height, behavior: "smooth" });
+                    }
                 } else {
                     if (Height > 0) {
                         sessionStorage.setItem("targetScroll", Height);
@@ -12,20 +25,19 @@ const Links = {
                     window.location.href = "index.html";
                 }
                 break;
-            case 1:
-                if (url.includes("aboutMePage.html")) {
-                    if (typeof SPA !== "undefined" && PageIndex != SPA.currentPage) {
-                        if (SPA.headerChangeAnimationDone == true) {
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                            SPA.headerChangeAnimationDone = false;
-                            SPA.setPage(PageIndex);
-                        }
-                    } else {
-                        window.scrollTo({ top: 0, behavior: "smooth" });
+
+            case 1: // About Me / Contact / Privacy navigation
+                const safeIndex = (typeof PageIndex === "number" && PageIndex >= 0 && PageIndex < PAGE_HASH_NAMES.length) ? PageIndex : 0;
+                const targetHash = PAGE_HASH_NAMES[safeIndex] || "#about";
+                
+                if (isAboutMe) {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    if (typeof SPA !== "undefined") {
+                        SPA.setPage(safeIndex);
                     }
                 } else { 
-                    browserStorage.savePage(PageIndex);
-                    window.location.href = "aboutMePage.html";
+                    browserStorage.savePage(safeIndex);
+                    window.location.href = "aboutMePage.html" + targetHash;
                 }
                 break;
         }
@@ -47,71 +59,28 @@ const browserStorage = {
         } else {
             if (typeof SPA !== "undefined") {
                 SPA.currentPage = parseInt(item, 10) || 0;
+                if (SPA.currentPage >= PAGE_HASH_NAMES.length) {
+                    SPA.currentPage = 0;
+                }
             }
         }
     }
 };
 
 const emailHandler = {
-    messageDisplayCounter: 0,
-    confirmationTimeout: null,
     messageTimeout: null,
     recipient: "maier.jonathanelias@gmail.com",
-    clickEmailSubscription: function (event) {
-        if (event) {
-            if (event.preventDefault) event.preventDefault();
-            if (event.stopPropagation) event.stopPropagation();
-        }
-        let input = document.getElementById("emailInputFooter");
-        let submitBtn = document.getElementById("emailSubmitButton");
-        let emailVal = input ? input.value.trim() : "";
-
-        if (!emailVal) return false;
-
-        if (input) input.value = "";
-        if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.innerText = "...";
-        }
-
-        // Asynchronously dispatch newsletter signup via FormSubmit AJAX API
-        fetch("https://formsubmit.co/ajax/" + emailHandler.recipient, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                subscriptionEmail: emailVal,
-                _subject: "New Newsletter Subscriber: " + emailVal
-            })
-        }).catch(function () {}).finally(function () {
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.innerText = "Submit";
-            }
-            clearTimeout(emailHandler.confirmationTimeout);
-            let confirmationText = document.getElementsByClassName("confirmationText");
-            if (confirmationText.length > 0) {
-                confirmationText[0].style.display = "inline";
-                emailHandler.confirmationTimeout = setTimeout(function () {
-                    confirmationText[0].style.display = "";
-                }, 4000);
-            }
-        });
-
-        return false;
-    },
+    
     sendMessage: function (event) {
         if (event) {
             if (event.preventDefault) event.preventDefault();
             if (event.stopPropagation) event.stopPropagation();
         }
-        let emailInput = document.getElementById("emailInput");
-        let textInput = document.getElementById("textInput");
-        let sendBtn = document.getElementById("emailSendButton");
-        let senderEmail = emailInput ? emailInput.value.trim() : "";
-        let senderMessage = textInput ? textInput.value.trim() : "";
+        const emailInput = document.getElementById("emailInput");
+        const textInput = document.getElementById("textInput");
+        const sendBtn = document.getElementById("emailSendButton");
+        const senderEmail = emailInput ? emailInput.value.trim() : "";
+        const senderMessage = textInput ? textInput.value.trim() : "";
 
         if (!senderEmail || !senderMessage) return false;
 
@@ -139,7 +108,7 @@ const emailHandler = {
                 sendBtn.disabled = false;
                 sendBtn.innerText = "Send";
             }
-            let contactSection = document.getElementsByClassName("contactSection");
+            const contactSection = document.getElementsByClassName("contactSection");
             if (contactSection.length >= 2) {
                 contactSection[0].style.display = "none";
                 contactSection[1].style.display = "block";
@@ -174,17 +143,15 @@ const sizeAdapter = {
     }
 };
 
-// EventListeners
+// Responsive Resize & Load Listeners
 let handlerResizeTicking = false;
 window.addEventListener("resize", function () {
     if (!handlerResizeTicking) {
         requestAnimationFrame(() => {
-            let url = window.location.href;
             sizeAdapter.adaptComponents();
-            if (url.includes("aboutMePage.html") && typeof SPA !== "undefined") {
-                SPA.setUpContent();
-                SPA.resetMoveableDivPosition();
-                SPA.adaptFontSizeOnStart();
+            if (typeof SPA !== "undefined" && typeof SPA.moveMoveableDiv === "function") {
+                SPA.moveMoveableDiv();
+                SPA.adjustHeaderPosition();
             }
             handlerResizeTicking = false;
         });
@@ -193,19 +160,24 @@ window.addEventListener("resize", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    let url = window.location.href;
     sizeAdapter.adaptComponents();
-    if (url.includes("aboutMePage.html") && typeof SPA !== "undefined") {
-        SPA.setUpContent();
-        SPA.resetMoveableDivPosition();
-        SPA.adaptFontSizeOnStart();
-    } else {
-        let targetScroll = sessionStorage.getItem("targetScroll");
-        if (targetScroll !== null && targetScroll !== undefined) {
-            sessionStorage.removeItem("targetScroll");
-            setTimeout(function () {
-                window.scrollTo({ top: parseInt(targetScroll, 10), behavior: "smooth" });
-            }, 150);
-        }
+    
+    const targetScroll = sessionStorage.getItem("targetScroll");
+    if (targetScroll !== null && targetScroll !== undefined) {
+        sessionStorage.removeItem("targetScroll");
+        setTimeout(function () {
+            const scrollVal = parseInt(targetScroll, 10);
+            if (scrollVal >= 1400) {
+                const proj = document.getElementById("projectsSection");
+                if (proj) proj.scrollIntoView({ behavior: "smooth" });
+                else window.scrollTo({ top: scrollVal, behavior: "smooth" });
+            } else if (scrollVal > 0) {
+                const about = document.getElementById("aboutMeSection");
+                if (about) about.scrollIntoView({ behavior: "smooth" });
+                else window.scrollTo({ top: scrollVal, behavior: "smooth" });
+            } else {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        }, 150);
     }
 });

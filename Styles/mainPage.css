@@ -38,7 +38,14 @@
 }
 .startContainerText{
     color: var(--color-text-white);
-    font-size: 20px;
+    font-size: 22px;
+    margin: 15px 0 25px 0;
+    font-weight: normal;
+}
+.startContainerButtonContainer {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
 }
 .startContainerButton {
     color: var(--color-text-white);
@@ -114,103 +121,311 @@ div.aboutMeContainer {
  
 }
 .projectsContainer{
-    opacity: 0;
+    opacity: 1;
     max-width: 1200px;
     width: 100%;
-    height: 700px;
+    height: auto;
+    min-height: 600px;
     background: var(--color-text-white);
     position: relative;
     margin: auto;
+    padding: 30px 0 50px 0;
+    box-sizing: border-box;
 }
 .projectsHeaderContainer {
     width: 100%;
-    height: 100px;
+    height: auto;
     text-align: center;
-    font-size: 40px;
     color: var(--color-primary);
+    margin-bottom: 20px;
+}
+#sliderHeader {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+.projectsSubheader {
+    color: var(--color-primary);
+    font-size: 16px;
+    margin: 8px 0 0 0;
+    font-weight: normal;
 }
 .buttonAndSliderContainer {
     width: 100%;
-    height: 600px;
-    display:flex;
-    justify-content: space-evenly;
-}
-.buttonContainer{
-    width: 50px;
-    height: 600px;
-}
-.horizontalButtonContainer{
-    width:100%;
-    min-height: 100px;
-    height: auto;
+    min-height: 520px;
     display: flex;
     justify-content: space-evenly;
-    display:none;
+    align-items: center;
+    position: relative;
+}
+.buttonContainer {
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+.horizontalButtonContainer {
+    width: 100%;
+    min-height: 60px;
+    height: auto;
+    display: none;
+    justify-content: space-evenly;
+    margin-top: 15px;
+}
+
+.outerSliderContainer {
+    width: 1038px;
+    max-width: 1038px;
+    overflow: hidden;
+    padding: 20px 14px 25px 4px;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .sliderContainer {
-    max-width: 1100px;
-    width: 100%;
-    height: 600px;
-    margin: auto;
-    position: relative;
+    display: flex;
+    gap: 30px;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+    width: max-content;
+}
+
+/* Modern Project Card */
+.projectCard {
+    flex: 0 0 320px;
+    width: 320px;
+    max-width: 320px;
+    min-height: 450px;
+    background: #ffffff;
+    border: 1px solid #d4ebf9;
+    box-shadow: 8px 8px 0 #bde3fa;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    user-select: none;
+}
+
+.projectCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 12px 12px 0 var(--color-primary);
+}
+
+.projectCardInner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 24px 20px;
+    box-sizing: border-box;
+}
+
+.projectCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.projectMetaPill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #333333;
+    background: #eef7fd;
+    padding: 4px 10px;
+    border-radius: 12px;
+    border: 1px solid #d5e9f8;
+}
+
+.langDot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.featuredBadge {
+    background: var(--color-primary);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.projectCardBody {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.projectCardTitle {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.projectCardSubtitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0 0 12px 0;
+}
+
+.projectCardDesc {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #4a5568;
+    margin: 0 0 16px 0;
+    flex-grow: 1;
+}
+
+.projectTagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.projectTag {
+    background: #f0f7fc;
+    color: #235c87;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid #d0e4f2;
+}
+
+.langBarWrapper {
+    margin-top: auto;
+    margin-bottom: 14px;
+}
+
+.langBar {
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
     overflow: hidden;
+    background: #e2e8f0;
+    gap: 1px;
 }
-.sliderElement {
-    width: 250px;
-    height: 400px;
-    background: #f5f5f5;
-    position: absolute;
-    left: 50px;
-    top: 50px;
-    box-shadow: 10px 10px 1px lightBlue;
-    display: none;
-    border: solid 1px lightGray;
+
+.langBarSegment {
+    height: 100%;
 }
-.sliderLink {
-    color: #549bcf;
-    font-weight: bold;
-    position: absolute;
-    bottom: 20px;
-    cursor: pointer;
+
+.langBarLegend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 6px;
 }
-.imageContainerSlider {
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    margin-top: 10px;
-    overflow: hidden;
+
+.langLegendItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.projectCardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eef2f5;
+    padding-top: 14px;
+    margin-top: auto;
+}
+
+.projectStats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.statItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.statIcon {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+.projectCardButton {
+    max-width: 90px;
+    padding: 6px 12px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-decoration: none;
+}
+
+.externalIcon {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+}
+
+/* Pagination Dots */
+.sliderDotsContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
-    vertical-align: middle;
+    gap: 8px;
+    margin-top: 15px;
 }
-.projectPicture {
-    object-fit: cover;
+
+.sliderDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #c8e4f8;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
 }
-.textContainerSlider{
-    width:200px;
-    height: 200px;
-    margin:auto;
+
+.sliderDot.active {
+    background: var(--color-primary);
+    transform: scale(1.3);
 }
+
 .previousSliderElementButton, .nextSliderElementButton {
     cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
+    background: none;
+    border: none;
     padding: 16px;
     color: white;
     font-weight: bold;
     font-size: 18px;
-    transition: 0.6s ease;
+    transition: 0.3s ease;
     user-select: none;
 }
+
 .arrow {
-    border: solid lightBlue;
+    border: solid #549bcf;
     border-width: 0 3px 3px 0;
     display: inline-block;
-    padding: 3px;
+    padding: 6px;
 }
 .left {
     transform: rotate(135deg);
@@ -221,15 +436,7 @@ div.aboutMeContainer {
     -webkit-transform: rotate(-45deg);
 }
 .left:hover, .right:hover {
-    border: solid blue;
-    border-width: 0 3px 3px 0;
-}
-.nextSliderElementButton {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
+    border-color: #235c87;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -278,16 +485,22 @@ div.aboutMeContainer {
         width: 500px;
         text-align:center;
     }
+    .startContainerButtonContainer {
+        justify-content: center;
+    }
+    .startContainerButton {
+        margin: 0 auto;
+    }
    
     /*sliderSection*/
-    .projectsContainer{
-        width:800px;
+    .projectsContainer {
+        width: 100%;
+        max-width: 800px;
     }
-    .buttonAndSliderContainer{
-        width: 800px;
-    }
-    .sliderContainer {
-        width: 700px;
+
+    .outerSliderContainer {
+        width: 688px;
+        max-width: 688px;
     }
 }
 @media only screen and (max-width: 900px) {
@@ -301,26 +514,53 @@ div.aboutMeContainer {
         font-size: 60px;
         line-height: 0.9;  
     }
+    .startContainerButtonContainer {
+        justify-content: center;
+    }
+    .startContainerButton {
+        margin: 0 auto;
+    }
    
     /*slidesContainer*/
     .projectsContainer {
-        width: 500px;
+        width: 100%;
+        max-width: 700px;
     }
 
-    .buttonAndSliderContainer {
-        width: 500px;
+    .buttonContainer {
+        display: none;
     }
 
-    .sliderContainer {
-        width: 400px;
+    .horizontalButtonContainer {
+        display: flex;
     }
     
+    .buttonAndSliderContainer {
+        flex-direction: column;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .outerSliderContainer {
+        width: 338px;
+        max-width: 338px;
+    }
 }
 @media only screen and (max-width: 600px) {
     /*sliderSection*/
-    .sliderContainer{
+    .projectsContainer {
         width: 100%;
-        min-width: 100px;
+        padding: 0 10px;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .outerSliderContainer {
+        width: calc(100vw - 30px);
+        max-width: calc(100vw - 30px);
+    }
+    .projectCard {
+        flex: 0 0 calc(100vw - 50px);
+        width: calc(100vw - 50px);
+        max-width: calc(100vw - 50px);
     }
 }
 @media only screen and (max-width: 500px) {
@@ -330,6 +570,12 @@ div.aboutMeContainer {
         font-size: 60px;
         line-height: 0.9;
     }
+    .startContainerButtonContainer {
+        justify-content: center;
+    }
+    .startContainerButton {
+        margin: 0 auto;
+    }
     /*aboutMeSection*/
     .backgroundContainer{
         height: auto;
@@ -338,9 +584,6 @@ div.aboutMeContainer {
         width:100%;
         padding: 10px;
         text-align:center;
-    }
-    .backgroundContainer{
-        height: auto;
     }
     /*sliderSection*/
     .projectsContainer{
@@ -352,35 +595,8 @@ div.aboutMeContainer {
         height: auto;
     }
     #sliderHeader{
-        font-size: 40px;
+        font-size: 36px;
     }
-    .buttonAndSliderContainer{
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-    .sliderContainer{
-        height:500px;
-    }
-    .horizontalButtonContainer{
-         display:flex;
-    }
-    .buttonContainer{
-         display: none;
-    }
-    .previousSliderElementButton, .nextSliderElementButton {
-        cursor: pointer;
-        position: relative;
-        top: 0;
-        margin-top: 0;
-        padding: 16px;
-        color: white;
-        font-weight: bold;
-        font-size: 18px;
-        transition: 0.6s ease;
-        user-select: none;
-    }
-     
 }
 @media only screen and (max-width: 330px) {
     /*sections*/

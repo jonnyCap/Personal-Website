@@ -128,13 +128,14 @@
     margin: 0;
     opacity: 0;
 }
-.scrollButtonWrapper{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    bottom: 50px;
+.scrollButtonWrapper {
+    position: relative;
+    margin: 30px auto 60px auto;
     width: 100px;
-    height: auto;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .scrollButton {
     position: absolute;
@@ -206,19 +207,21 @@
 }
 
 .secondaryContentContainer {
-    width: 1000px;
+    width: 940px;
+    max-width: 92%;
     height: auto;
     margin: auto;
     transition: height 2s all;
     overflow: hidden;
-    padding-top: 50px;
-    padding-bottom: 250px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    box-sizing: border-box;
 }
 
 .secondaryContentHeaderContainer {
     width: 100%;
-    height: 150px;
-    margin: auto;
+    height: auto;
+    margin: 0 0 25px 0;
 }
 
 .secondaryContentHeader {
@@ -235,22 +238,34 @@
     margin: 10px 0px;
 }
 
+.alignSecondaryContent {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+}
+
 .secondaryContentText {
     font-size: 22px;
     color: #549bcf;
-    margin-top: 30px;
+    margin-top: 0;
 }
 
 .secondaryContentTextHeader {
 }
 
 .withJournyCanvas {
-    width: 900px;
-    float: right;
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+    float: none;
+    margin-top: 0;
 }
 
 .journyCanvas {
-    margin-top: 30px;
+    flex: 0 0 100px;
+    width: 100px;
+    margin-top: 0;
 }
 
 #emailInput {
@@ -340,7 +355,8 @@
         height: auto;
         position: relative;
         width: 100%;
-        top: 80px;
+        top: 60px;
+        margin-bottom: 50px;
     }
 
     .secondaryUl {
@@ -364,6 +380,16 @@
 @media only screen and (max-width: 1200px) {
 
     /*Content*/
+    .secondaryContentContainer {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 50px;
+        padding-bottom: 40px;
+        box-sizing: border-box;
+    }
+
     .secondaryContentHeaderContainer {
         width: 100%;
         height: auto;
@@ -395,6 +421,11 @@
     }
     .secondaryContentContainer {
         width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 50px;
+        padding-bottom: 40px;
+        box-sizing: border-box;
     }
     #canvas0{
         display:none;
@@ -410,6 +441,13 @@
     }   
 }
 @media only screen and (max-width: 900px) {
+    .secondaryContentContainer {
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-top: 45px;
+        padding-bottom: 35px;
+        box-sizing: border-box;
+    }
     #emailInput, #textInput {
         width: 100%;
         box-sizing: border-box;
@@ -451,14 +489,26 @@
     }
 
     .secondaryLowerContainer {
-        top: 30px;
-        left: -10px;
+        top: 20px;
+        left: 0;
+        margin-bottom: 40px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .secondaryContentContainer {
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 35px;
+        padding-bottom: 30px;
+        box-sizing: border-box;
     }
 }
 @media only screen and (max-width: 420px) {
     /*Start Screen*/
     .secondaryLowerContainer {
-        top: -50px;   
+        top: 0;
+        left: 0;
+        margin-bottom: 30px;
     }
     .secondaryHeader{
         line-height: 70px;
@@ -466,6 +516,7 @@
     #moveableBackground{
         display:none;
     }
+}
     
 @media only screen and (max-width: 350px) {
     .secondaryContentHeader {
@@ -482,7 +533,6 @@
     .secondaryNavList{
         left: 25%;
     }
-
 }
 @media only screen and (max-width: 300px) {
     .secondaryNavList {
@@ -494,4 +544,210 @@
         left: 0;
     }
 }
+
+/* ==========================================================================
+   SPA Projects Grid & Card Styles
+   ========================================================================== */
+.spaProjectsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 25px;
+    width: 100%;
+    margin-top: 25px;
+    box-sizing: border-box;
+}
+
+.spaCardElement {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    min-height: 440px;
+    background: #ffffff;
+    border: 1px solid #d4ebf9;
+    box-shadow: 8px 8px 0 #bde3fa;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    user-select: none;
+}
+
+.spaCardElement:hover {
+    transform: translateY(-6px);
+    box-shadow: 12px 12px 0 var(--color-primary);
+}
+
+.projectCardInner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 24px 20px;
+    box-sizing: border-box;
+}
+
+.projectCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.projectMetaPill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #333333;
+    background: #eef7fd;
+    padding: 4px 10px;
+    border-radius: 12px;
+    border: 1px solid #d5e9f8;
+}
+
+.langDot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.featuredBadge {
+    background: var(--color-primary);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.projectCardBody {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.projectCardTitle {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.projectCardSubtitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0 0 12px 0;
+}
+
+.projectCardDesc {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #4a5568;
+    margin: 0 0 16px 0;
+    flex-grow: 1;
+}
+
+.projectTagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.projectTag {
+    background: #f0f7fc;
+    color: #235c87;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid #d0e4f2;
+}
+
+.langBarWrapper {
+    margin-top: auto;
+    margin-bottom: 14px;
+}
+
+.langBar {
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #e2e8f0;
+    gap: 1px;
+}
+
+.langBarSegment {
+    height: 100%;
+}
+
+.langBarLegend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 6px;
+}
+
+.langLegendItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.projectCardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eef2f5;
+    padding-top: 14px;
+    margin-top: auto;
+}
+
+.projectStats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.statItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.statIcon {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+.projectCardButton {
+    max-width: 90px;
+    padding: 6px 12px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-decoration: none;
+}
+
+.externalIcon {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+}
+
 

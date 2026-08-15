@@ -37,19 +37,23 @@
                     <ul>
                         <li onclick="Links.goToPage(0,0,0)" class="button-53 navList">Home</li>
                         <li onclick="Links.goToPage(1,0,0)" class="button-53 navList">About Me</li>
-                        <li onclick="Links.goToPage(0,0,1600)" class="button-53 navList">Content</li>
-                        <li onclick="Links.goToPage(1,4,0)" class="button-53 navList">Contact</li>
+                        <li onclick="Links.goToPage(1,1,0)" class="button-53 navList">Projects</li>
+                        <li onclick="Links.goToPage(1,2,0)" class="button-53 navList">Contact</li>
                     </ul>
                 </div>
                 <div class="dropDown">
-                    <button class="dropDownButton">
-                        <img class="dropDownButtonImage" src="images/dropDownButton.webp" alt="Menu">
+                    <button class="dropDownButton" aria-label="Toggle navigation menu">
+                        <svg class="hamburgerIcon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
                     </button>
                     <div class="dropDownContent">
                         <a class="dropA" onclick="Links.goToPage(0,0,0)">Home</a>
                         <a class="dropA" onclick="Links.goToPage(1,0,0)">About Me</a>
-                        <a class="dropA" onclick="Links.goToPage(0,0,1600)">Content</a>
-                        <a class="dropA" onclick="Links.goToPage(1,4,0)">Contact</a>
+                        <a class="dropA" onclick="Links.goToPage(1,1,0)">Projects</a>
+                        <a class="dropA" onclick="Links.goToPage(1,2,0)">Contact</a>
                     </div>
                 </div>
             </div>
@@ -60,130 +64,67 @@
         <div class="imageContainer">
             <div class="startContainer">
                 <h1 class="startContainerHeader">Maier<br />Jonathan</h1>
-                <p class="startContainerText">Welcome to my own personal Web-page</p>
-                <button onclick="Links.goToPage(0,0,750)" class="startContainerButton">Start</button>
+                <p class="startContainerText">Software Developer</p>
+                <div class="startContainerButtonContainer">
+                    <button onclick="Links.goToPage(1,0,0)" class="button-53 startContainerButton">Learn more</button>
+                </div>
             </div>
         </div>
     </section>
-    <section class="mainSection" id="aboutMeSection">
+    <section class="mainSection">
         <div class="backgroundContainer">
             <div class="aboutMeContainer">
-                <div class="textContainer">
-                    <div>
-                        <h1 class="noMarginPadding aboutMeHeader">About me</h1>
-                        <p class="aboutMeText">
-                            My Name is Jonathan Maier and I am a Software Developer. I was born on 18th of November in 2002, thus I am almost 20 years old and currently studying
-                            "Software Engineering and Management" at the Technical University Graz.<br /><br /> I attended an heavily science based High School where contradictorily my interest in Software Engineering was developed.
-                            However, my School did not have great Offerings to get into Informatics, so on may way of self-learning I picked up the basics myself. I quickly realized how incomprehensible large the field of Computer Science was
-                            and I had a truly tough time to get into it. <br/><br/> As the years passed however, I was lucky to meet awesome People who shared their interests and knowledge with me,
-                            so I could get a superficial impression of what was going on in the amazing Aria of Computer Science and till this day I continue to learn and try new Things. However, I am still at the beginning of my journey!
-                        </p>
-                        <button onclick="Links.goToPage(1,0,0)" class="button-53 big">Learn more...</button>
-                    </div>
-                </div>
                 <div class="aboutMePictureContainer">
                     <canvas id="canvas" width="900px" height="600px"></canvas>
+                    <script src="Scripts/canvasScript.js"></script>
+                </div>
+                <div class="textContainer">
+                    <h1 class="aboutMeHeader">About me</h1>
+                    <p class="aboutMeText">
+                        Hey, I'm Jonathan, a passionate software developer specializing in high-performance backend systems, distributed architectures, network protocols, and modern machine learning applications.<br><br>
+                        Explore my engineering journey, technical competencies, and latest projects.
+                    </p>
+                    <button onclick="Links.goToPage(1,0,0)" class="aboutMeButton">&gt; Learn more</button>
                 </div>
             </div>
         </div>
-        <!--Here goes the script...-->
-        <script src="Scripts/canvasScript.js"></script>
-        <script src="Scripts/sizeAdapterScript.js"></script>
     </section>
     <section class="mainSection" id="projectsSection">
         <div class="projectsContainer">
             <div class="projectsHeaderContainer">
-                <h1 id="sliderHeader" class="noMarginPadding">Projects/Content</h1>
+                <h1 id="sliderHeader">Featured Projects</h1>
+                <h3 class="projectsSubheader">Open-source software, distributed systems &amp; machine learning</h3>
             </div>
             <div class="buttonAndSliderContainer">
                 <div class="buttonContainer">
-                    <a class="previousSliderElementButton" id="prevButton"><i class="arrow left"></i></a>
+                    <button class="previousSliderElementButton" id="prevButton" aria-label="Previous Project">
+                        <i class="arrow left"></i>
+                    </button>
                 </div>
-                <div class="sliderContainer">
-                    <!-- SliderElement-->
-                    <div class="sliderElement">
-                        <div class="imageContainerSlider">
-                            <img class="projectPicture" src="images/aboutMePicture.webp" alt="Programmer" style="width:50%;">
-                        </div>
-                        <div class="textContainerSlider">
-                            <h3 class="projectHeader">About Me</h3>
-                            <p class="projectContent">As you might have read above, my Name is Jonathan Maier and I am an upcoming Software Developer constantly trying to learn new Skills.</p>
-                            <a onclick="Links.goToPage(1,0,0)" class="sliderLink">Read more &gt;</a>
-                        </div>
+                <div class="outerSliderContainer" id="outerSliderTrack">
+                    <div class="sliderContainer" id="sliderTrack">
+                        <!-- Dynamic Project Cards will be injected by projectsRenderer.js -->
                     </div>
-
-                    <!-- SliderElement-->
-                    <div class="sliderElement">
-                        <div class="imageContainerSlider">
-                            <img class="projectPicture" src="images/teamCreatorBanner.webp" alt="Team Creator" style="width:100%; height:100px;">
-                        </div>
-                        <div class="textContainerSlider">
-                            <h3 class="projectHeader">Team Creator</h3>
-                            <p class="projectContent">Team Creator is the first App I have ever developed! It simply creates fair Teams with the selected algorithm and was created with Java and Android Studio.</p>
-                            <a onclick="Links.goToPage(1,1,0)" class="sliderLink">Read more &gt;</a>
-                        </div>
-                    </div>
-
-                    <!-- SliderElement-->
-                    <div class="sliderElement">
-                        <div class="imageContainerSlider">
-                            <img class="projectPicture" src="images/websitePicture.webp" alt="Personal Website" style="width:100%;">
-                        </div>
-                        <div class="textContainerSlider">
-                            <h3 class="projectHeader">Personal Website</h3>
-                            <p class="projectContent">At this Moment your are looking at my new personal Homepage. Interested in the progress and how it was done? Just click the Link...</p>
-                            <a onclick="Links.goToPage(1,2,0)" class="sliderLink">Read more &gt;</a>
-                        </div>
-                    </div>
-
-                    <!-- SliderElement-->
-                    <div class="sliderElement">
-                        <div class="imageContainerSlider">
-                            <img class="projectPicture" src="images/miniGamesPicture.webp" alt="Minigames" style="width:100%;">
-                        </div>
-                        <div class="textContainerSlider">
-                            <h3 class="projectHeader">JS Mini-Games</h3>
-                            <p class="projectContent">During my Time at the Austrian Armed Forces I started learning JavaScript by mainly programming Mini-Games.</p>
-                            <a onclick="Links.goToPage(1,3,0)" class="sliderLink">Read more &gt;</a>
-                        </div>
-                    </div>
-
-                    <!-- SliderElement-->
-                    <div class="sliderElement">
-                        <div class="imageContainerSlider">
-                            <img class="projectPicture" src="images/contactPicture.webp" alt="Contact" style="width:70%;">
-                        </div>
-                        <div class="textContainerSlider">
-                            <h3 class="projectHeader">Contact</h3>
-                            <p class="projectContent">If you have any Suggestions for my App, Website or future Projects or just want to say "Hello" - feel free to do so!</p>
-                            <a onclick="Links.goToPage(1,4,0)" class="sliderLink">Read more &gt;</a>
-                        </div>
-                    </div>
-
-                    <!-- SliderElement-->
-                    <div class="sliderElement">
-                        <div class="imageContainerSlider">
-                            <img class="projectPicture" src="images/privacyPolicyPicture.webp" alt="Privacy Policy" style="width:70%;">
-                        </div>
-                        <div class="textContainerSlider">
-                            <h3 class="projectHeader">Privacy Policy</h3>
-                            <p class="projectContent">Don't worry, your Data is in good hands! If you are curious about which Data we collect and what we are using it for, just click the link.</p>
-                            <a onclick="Links.goToPage(1,5,0)" class="sliderLink">Read more &gt;</a>
-                        </div>
-                    </div>
-
                 </div>
                 <div class="buttonContainer">
-                    <a class="nextSliderElementButton" id="nextButton"><i class="arrow right"></i></a>
+                    <button class="nextSliderElementButton" id="nextButton" aria-label="Next Project">
+                        <i class="arrow right"></i>
+                    </button>
                 </div>
                 <div class="horizontalButtonContainer">
-                    <a class="previousSliderElementButton" id="secondPrevButton"><i class="arrow left"></i></a>
-                    <a class="nextSliderElementButton" id="secondNextButton"><i class="arrow right"></i></a>
+                    <button class="previousSliderElementButton" id="secondPrevButton" aria-label="Previous Project">
+                        <i class="arrow left"></i>
+                    </button>
+                    <button class="nextSliderElementButton" id="secondNextButton" aria-label="Next Project">
+                        <i class="arrow right"></i>
+                    </button>
                 </div>
             </div>
+            <!-- Pagination Dots -->
+            <div class="sliderDotsContainer" id="sliderDots"></div>
         </div>
-        <!--Here goes the script...-->
         <script src="Scripts/sliderScript.js"></script>
+        <script src="Scripts/projectsRenderer.js"></script>
     </section>
     <section>
         <footer>
@@ -200,33 +141,17 @@
                         <a href="https://github.com/jonnyCap" class="social-icon social-github" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                             <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                         </a>
-                        <a href="https://www.instagram.com/jonathan._.maier/" class="social-icon social-instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        </a>
                         <a href="https://www.linkedin.com/in/jonathan-maier-179836263/" class="social-icon social-linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                             <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
-                        <a href="https://t.snapchat.com/CXsoOf11" class="social-icon social-snapchat" aria-label="Snapchat" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24"><path d="M12.001 0C5.372 0 .001 5.373.001 12c0 2.054.517 3.987 1.427 5.682l-.845 2.808c-.147.487.318.951.805.805l2.808-.845C5.891 21.365 7.824 21.882 9.878 21.882c-.085-.494-.131-1.004-.131-1.523 0-4.693 3.805-8.498 8.498-8.498.519 0 1.029.046 1.523.131C19.768 5.373 14.397 0 12.001 0z"/></svg>
-                        </a>
-                        <br />
-                        <br />
-                        <form id="subscriptionForm" action="javascript:void(0);" method="POST" onsubmit="emailHandler.clickEmailSubscription(event); return false;">
-                            <label id="emailInputLabel" for="emailInputFooter">Sign up for news:</label>
-                            <input id="emailInputFooter" type="email" name="subscriptionEmail" required />
-                            <button id="emailSubmitButton" type="submit" name="subscribeButton">Submit</button>
-                        </form>
-                        <h6 class="confirmationText">Signed up successfully!</h6>
                     </div>
                     <div class="footerSmallSection" id="thirdFooterLine">
                         <h3 class="footerSmallHeader">Page-content:</h3>
                         <a onclick="Links.goToPage(0,0,0)" class="pageContentHolder"><h6 class="pageContentHolder">Home</h6></a>
                         <a onclick="Links.goToPage(1,0,0)" class="pageContentHolder"><h6 class="pageContentHolder">About me</h6></a>
-                        <a onclick="Links.goToPage(1,1,0)" class="pageContentHolder"><h6 class="pageContentHolder">Team Creator App</h6></a>
-                        <a onclick="Links.goToPage(1,2,0)" class="pageContentHolder"><h6 class="pageContentHolder">Personal Website</h6></a>
-                        <a onclick="Links.goToPage(1,3,0)" class="pageContentHolder"><h6 class="pageContentHolder">JS Mini-Games</h6></a>
-                        <a onclick="Links.goToPage(1,4,0)" class="pageContentHolder"><h6 class="pageContentHolder">Contact</h6></a>
-                        <a onclick="Links.goToPage(1,5,0)" class="pageContentHolder"><h6 class="pageContentHolder">Privacy Policy</h6></a>
+                        <a onclick="Links.goToPage(1,1,0)" class="pageContentHolder"><h6 class="pageContentHolder">Projects</h6></a>
+                        <a onclick="Links.goToPage(1,2,0)" class="pageContentHolder"><h6 class="pageContentHolder">Contact</h6></a>
+                        <a onclick="Links.goToPage(1,3,0)" class="pageContentHolder"><h6 class="pageContentHolder">Privacy Policy</h6></a>
                     </div>
                 </div>
             </div>

@@ -1,110 +1,104 @@
+/**
+ * journeyCanvasScript.js
+ * Draws the connected milestone nodes (dots & vertical line) on the About Me timeline canvas.
+ */
+
 const journyCanvas = {
     startX: 50,
     startY: 30,
     radius: 6,
     distance: 10,
-    gC: function (index) {
-        let secondaryCanvas;
-        switch (index) {
-            case 0:
-            case "0":
-                secondaryCanvas = document.getElementById("canvas0");
-                break;
-            case 1:
-            case "1":
-                secondaryCanvas = document.getElementById("canvas1");
-                break;
-            case 2:
-            case "2":
-                secondaryCanvas = document.getElementById("canvas2");
-                break;
-            case 3:
-            case "3":
-                secondaryCanvas = document.getElementById("canvas3");
-                break;
-            default:
-                break;
-        }
-        return secondaryCanvas ? secondaryCanvas.getContext("2d") : null;
+
+    gC: function (index = 0) {
+        const canvas = document.getElementById("canvas0");
+        return canvas ? canvas.getContext("2d") : null;
     },
-    chooseCanvas(index) {
-        switch (index) {
-            case 0:
-                journyCanvas.setUpJournyCanvas();
-                break;
-            case 1:
-                journyCanvas.setUpAppCanvas();
-                break;
-            case 2:
-                journyCanvas.setUpWebsiteCanvas();
-                break;
-            case 3:
-                journyCanvas.setUpMiniGamesCanvas();
-                break;
-            case "0":
-                journyCanvas.setUpJournyCanvas();
-                break;
-            case "1":
-                journyCanvas.setUpAppCanvas();
-                break;
-            case "2":
-                journyCanvas.setUpWebsiteCanvas();
-                break;
-            case "3":
-                journyCanvas.setUpMiniGamesCanvas();
-                break;
+
+    chooseCanvas: function (index) {
+        if (index === 0 || index === "0") {
+            journyCanvas.setUpJournyCanvas();
         }
     },
+
     setUpJournyCanvas: function () {
-        journyCanvas.drawCircleLine(0, journyCanvas.startX, journyCanvas.startY, 265);
-        journyCanvas.drawCircleLine(0, journyCanvas.startX, 295, 310);
-        journyCanvas.drawCircleLine(0, journyCanvas.startX, 605, 345);
-        journyCanvas.drawCircleLine(0, journyCanvas.startX, 950, 260);
-        journyCanvas.drawCircleLine(0, journyCanvas.startX, 1210, 0);
-    },
-    setUpAppCanvas: function () {
-        journyCanvas.drawCircleLine(1, journyCanvas.startX, journyCanvas.startY, 210);
-        journyCanvas.drawCircleLine(1, journyCanvas.startX, 240, 320);
-        journyCanvas.drawCircleLine(1, journyCanvas.startX, 560, 805);
-        journyCanvas.drawCircleLine(1, journyCanvas.startX, 1365, 210);
-        journyCanvas.drawCircleLine(1, journyCanvas.startX, 1575, 750);
-        journyCanvas.drawCircleLine(1, journyCanvas.startX, 2325, 0);
-    },
-    setUpWebsiteCanvas: function () {
-        journyCanvas.drawCircleLine(2, journyCanvas.startX, journyCanvas.startY, 880);
-        journyCanvas.drawCircleLine(2, journyCanvas.startX, 910, 660);
-        journyCanvas.drawCircleLine(2, journyCanvas.startX, 1570, 0);
-    },
-    setUpMiniGamesCanvas: function () {
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, journyCanvas.startY, 1015);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 1045, 815);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 1860, 235);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 2095, 240);
-        journyCanvas.drawCircleLine(3, journyCanvas.startX, 2335, 0);
-    },
-    //function gets called when scrollDownButton is called to push performance
-    drawCircleLine: function (index,x, y, length) {
-        let ctx = journyCanvas.gC(index);
+        const canvas = document.getElementById("canvas0");
+        if (!canvas) return;
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const container = canvas.closest(".alignSecondaryContent") || document.querySelector(".alignSecondaryContent");
+        if (!container) return;
+
+        // ONLY query headers belonging to this specific About Me section
+        const headers = container.querySelectorAll(".secondaryContentTextHeader");
+        if (headers.length === 0) return;
+
+        const canvasRect = canvas.getBoundingClientRect();
+        const textContainer = container.querySelector(".secondaryContentText");
+        let nodeYs = [];
+
+        // Check if layout is rendered with non-zero dimensions
+        if (canvasRect.height > 50 && headers[0].offsetHeight > 0) {
+            headers.forEach(h => {
+                const hRect = h.getBoundingClientRect();
+                // Exact center alignment relative to canvas top
+                const centerY = (hRect.top - canvasRect.top) + (hRect.height / 2);
+                nodeYs.push(centerY);
+            });
+        } else if (textContainer && headers[0].offsetTop > 0) {
+            headers.forEach(h => {
+                nodeYs.push(h.offsetTop + (h.offsetHeight / 2));
+            });
+        }
+
+        // Fallback to exact pixel positions matching the 3 About Me subheaders
+        if (nodeYs.length !== headers.length || nodeYs.length < 3 || nodeYs[0] === nodeYs[1]) {
+            nodeYs = [28, 235, 480];
+        }
+
+        // Limit strictly to the exact number of headers present in the section (3)
+        nodeYs = nodeYs.slice(0, headers.length);
+
+        if (nodeYs.length === 0) return;
+
+        // Draw connecting vertical lines ONLY between the defined milestone dots
         ctx.strokeStyle = "#549bcf";
         ctx.fillStyle = "#549bcf";
+        ctx.lineWidth = 2;
+
         ctx.beginPath();
-        ctx.arc(x, y + journyCanvas.distance, journyCanvas.radius, 0, Math.PI * 2, false);
-        ctx.fill();
+        for (let i = 0; i < nodeYs.length - 1; i++) {
+            ctx.moveTo(journyCanvas.startX, nodeYs[i] + journyCanvas.radius);
+            ctx.lineTo(journyCanvas.startX, nodeYs[i + 1] - journyCanvas.radius);
+        }
         ctx.stroke();
-        if (length != 0) {
-            ctx.strokeStyle = "#549bcf";
-            ctx.fillStyle = "#549bcf";
+
+        // Draw solid circular milestone dots for each header
+        nodeYs.forEach(y => {
             ctx.beginPath();
-            ctx.moveTo(x, y + (journyCanvas.distance * 2));
-            ctx.lineTo(x, y + length);
+            ctx.arc(journyCanvas.startX, y, journyCanvas.radius, 0, Math.PI * 2, false);
             ctx.fill();
             ctx.stroke();
-        }
+        });
     },
-    drawActiveCircle: function (index) {
 
-
+    drawCircleLine: function (index, x, y, length) {
+        journyCanvas.setUpJournyCanvas();
     }
 };
 
 const journeyCanvas = journyCanvas;
+
+// Initial setup and responsive listeners
+document.addEventListener("DOMContentLoaded", () => {
+    journyCanvas.setUpJournyCanvas();
+    // Re-verify positions once fonts/styles finish rendering
+    setTimeout(() => journyCanvas.setUpJournyCanvas(), 250);
+});
+
+window.addEventListener("resize", () => {
+    journyCanvas.setUpJournyCanvas();
+});
