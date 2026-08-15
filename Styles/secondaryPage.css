@@ -238,9 +238,10 @@
 .secondaryContentSection {
     width: 100%;
     height: auto;
-    display: none;
+    display: block;
     overflow: hidden;
-    position:relative;
+    position: relative;
+    background: var(--color-text-white);
 }
 
 .secondaryContentContainer {

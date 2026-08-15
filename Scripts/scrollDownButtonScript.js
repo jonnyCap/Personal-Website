@@ -1,6 +1,5 @@
 
 const sDButton = {
-    isExpanded: false,
     scrollAnimTicking: false,
 
     init: function () {
@@ -33,7 +32,7 @@ const sDButton = {
             });
         }
 
-        // Monitor actual scroll position to keep button rotation in sync
+        // Monitor scroll position to keep top button rotation indicator in sync
         window.addEventListener("scroll", () => {
             if (!sDButton.scrollAnimTicking) {
                 requestAnimationFrame(() => {
@@ -50,9 +49,8 @@ const sDButton = {
         const downBtn = document.querySelector(".scrollButton.down");
         if (!downBtn) return;
 
-        if (scrollY > 350) {
+        if (scrollY > 300) {
             downBtn.style.transform = "rotate(180deg)";
-            sDButton.isExpanded = true;
         } else if (scrollY < 100) {
             downBtn.style.transform = "rotate(0deg)";
         }
@@ -60,18 +58,6 @@ const sDButton = {
 
     scrollDown: function () {
         const section = document.querySelector(".secondaryContentSection");
-        if (section) {
-            section.style.display = "block";
-            section.style.opacity = "1";
-            section.style.height = "auto";
-        }
-
-        sDButton.isExpanded = true;
-        const downBtn = document.querySelector(".scrollButton.down");
-        if (downBtn) {
-            downBtn.style.transform = "rotate(180deg)";
-        }
-
         if (typeof journyCanvas !== "undefined" && typeof journyCanvas.setUpJournyCanvas === "function") {
             journyCanvas.setUpJournyCanvas();
         }
@@ -87,10 +73,6 @@ const sDButton = {
 
     scrollUp: function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
-        const downBtn = document.querySelector(".scrollButton.down");
-        if (downBtn) {
-            downBtn.style.transform = "rotate(0deg)";
-        }
     },
 
     toggle: function () {
@@ -102,29 +84,9 @@ const sDButton = {
         }
     },
 
-    // Backward compatibility helpers
+    // Backward compatibility helper
     work: function () {
         sDButton.toggle();
-    },
-    appear: function () {
-        const elements = document.getElementsByClassName("secondaryContentSection");
-        if (elements.length > 0) {
-            elements[0].style.display = "block";
-            elements[0].style.opacity = "1";
-            elements[0].style.height = "auto";
-        }
-    },
-    disappear: function () {
-        const elements = document.getElementsByClassName("secondaryContentSection");
-        if (elements.length > 0) {
-            elements[0].style.display = "none";
-            elements[0].style.opacity = "0";
-        }
-    },
-    coolDown: function () {},
-    turnButton: function (rotation) {
-        const downBtn = document.querySelector(".scrollButton.down");
-        if (downBtn) downBtn.style.transform = "rotate(" + rotation + "deg)";
     }
 };
 
