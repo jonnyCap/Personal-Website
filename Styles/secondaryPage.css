@@ -106,6 +106,51 @@
     display: block;
 }
 
+.cloud-fog-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(140px, 16vw, 220px);
+    background: linear-gradient(
+        to bottom,
+        rgba(136, 186, 221, 0) 0%,
+        rgba(255, 255, 255, 0.12) 35%,
+        rgba(255, 255, 255, 0.38) 70%,
+        rgba(255, 255, 255, 0.72) 100%
+    );
+    pointer-events: none;
+    z-index: 91;
+    transform: translateZ(0);
+}
+
+.cloud-divider {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 93;
+    pointer-events: none;
+    transform: translateZ(0);
+}
+
+.cloud-divider svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: clamp(55px, 6.5vw, 105px);
+}
+
+.cloud-layer-back {
+    fill: rgba(255, 255, 255, 0.45);
+}
+
+.cloud-layer-front {
+    fill: var(--color-text-white);
+}
+
 .alignStartSectionParts {
     position: relative;
     max-width: 1200px;
