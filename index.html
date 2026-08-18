@@ -57,36 +57,44 @@
             </div>
         </div>
     </header>
-    <script src="Scripts/navScript.js"></script>
-    <section class="bigMainSection">
-        <div class="imageContainer">
-            <div class="startContainer">
-                <h1 class="startContainerHeader">Maier<br />Jonathan</h1>
-                <p class="startContainerText">Software Developer</p>
-                <div class="startContainerButtonContainer">
-                    <button onclick="Links.goToPage(1,0,0)" class="button-53 startContainerButton">Learn more</button>
+    <div class="heroScrollWrapper" id="heroScrollWrapper">
+        <div class="stickyStage" id="stickyStage">
+            <!-- Background Layer: About Me section fading in in-place -->
+            <section class="aboutMeStageLayer" id="aboutMeSection">
+                <div class="backgroundContainer">
+                    <div class="aboutMeContainer" id="aboutMeContainer">
+                        <div class="aboutMePictureContainer">
+                            <canvas id="canvas" width="900" height="600"></canvas>
+                            <script src="Scripts/canvasScript.js"></script>
+                        </div>
+                        <div class="textContainer">
+                            <h1 class="aboutMeHeader">About me</h1>
+                            <p class="aboutMeText">
+                                Hey, I'm Jonathan, a passionate software developer specializing in high-performance backend systems, distributed architectures, network protocols, and modern machine learning applications.<br><br>
+                                Explore my engineering journey, technical competencies, and latest projects.
+                            </p>
+                            <button onclick="Links.goToPage(1,0,0)" class="aboutMeButton">&gt; Learn more</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- Foreground Layer: Hero section fading out & drifting left -->
+            <section class="bigMainSection" id="heroSection">
+                <div class="imageContainer" id="heroImageContainer">
+                    <div class="heroBackgroundLayer" id="heroBgLayer"></div>
+                    <div class="heroWhiteOverlay" id="heroOverlay"></div>
+                    <div class="startContainer" id="heroTextContainer">
+                        <h1 class="startContainerHeader">Maier<br />Jonathan</h1>
+                        <p class="startContainerText">Software Developer</p>
+                        <div class="startContainerButtonContainer">
+                            <button onclick="Links.goToPage(1,0,0)" class="button-53 startContainerButton">Learn more</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
-    <section class="mainSection">
-        <div class="backgroundContainer">
-            <div class="aboutMeContainer">
-                <div class="aboutMePictureContainer">
-                    <canvas id="canvas" width="900" height="600"></canvas>
-                    <script src="Scripts/canvasScript.js"></script>
-                </div>
-                <div class="textContainer">
-                    <h1 class="aboutMeHeader">About me</h1>
-                    <p class="aboutMeText">
-                        Hey, I'm Jonathan, a passionate software developer specializing in high-performance backend systems, distributed architectures, network protocols, and modern machine learning applications.<br><br>
-                        Explore my engineering journey, technical competencies, and latest projects.
-                    </p>
-                    <button onclick="Links.goToPage(1,0,0)" class="aboutMeButton">&gt; Learn more</button>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
     <section class="mainSection" id="projectsSection">
         <div class="projectsContainer">
             <div class="projectsHeaderContainer">

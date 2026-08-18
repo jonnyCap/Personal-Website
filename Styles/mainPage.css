@@ -8,29 +8,121 @@
     overflow: hidden;
     box-sizing: border-box;
 }
-.bigMainSection {
+.mainSection {
     height: 800px;
-    margin-bottom: 50px;
     width: 100%;
     max-width: 100%;
     overflow: hidden;
     box-sizing: border-box;
 }
 
-.imageContainer {
-    height: 800px;
+.heroScrollWrapper {
+    position: relative;
+    width: 100%;
+    height: 280vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.stickyStage {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    min-height: 650px;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    z-index: 1;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+/* Background Layer: About Me Section positioned in-place */
+.aboutMeStageLayer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    will-change: opacity, transform;
+    transform: scale(0.97);
+}
+
+.aboutMeStageLayer .backgroundContainer {
     width: 100%;
     max-width: 100%;
-    position: relative;
-    background-image: url("../images/blueBackground.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
     box-sizing: border-box;
 }
-.startContainer {
+
+/* Foreground Layer: Hero Section (Clouds + Header Text) */
+.bigMainSection {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    z-index: 2;
+    margin: 0;
+    pointer-events: auto;
+    will-change: opacity;
+}
+
+.imageContainer {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+.heroBackgroundLayer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/blueBackground.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transform-origin: center center;
+    transform: scale(1);
+    will-change: transform, opacity;
+    z-index: 0;
+}
+
+.heroWhiteOverlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
     opacity: 0;
+    pointer-events: none;
+    will-change: opacity;
+    z-index: 1;
+}
+
+.startContainer {
+    opacity: 1;
     max-width: 1000px;
     width: 90%;
     height: 400px;
@@ -40,6 +132,27 @@
     transform: translate(-50%, 0);
     background: none;
     text-align: left;
+    will-change: transform, opacity;
+    z-index: 3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .heroScrollWrapper {
+        height: auto !important;
+    }
+    .stickyStage {
+        position: relative !important;
+        height: auto !important;
+    }
+    .aboutMeStageLayer {
+        position: relative !important;
+        opacity: 1 !important;
+        transform: none !important;
+        pointer-events: auto !important;
+    }
+    .bigMainSection {
+        display: none !important;
+    }
 }
 .startContainerHeader {
     color: var(--color-text-white);
@@ -80,7 +193,7 @@
     box-sizing: border-box;
 }
 div.aboutMeContainer {
-    opacity: 0;
+    opacity: 1;
     max-width: 1400px;
     width: 100%;
     height: 800px;
@@ -460,9 +573,12 @@ div.aboutMeContainer {
 
 @media only screen and (max-width: 1400px) {
     /*sections*/
-    .bigMainSection {
-        margin: 0;
-        height: auto;
+    .heroScrollWrapper {
+        height: 260vh;
+    }
+    .stickyStage {
+        height: 100vh;
+        min-height: 550px;
     } 
     .mainSection {
         height: auto;
@@ -548,7 +664,9 @@ div.aboutMeContainer {
     }
 }
 @media only screen and (max-width: 900px) {
-    
+    .heroScrollWrapper {
+        height: 240vh;
+    }
     /*startSection*/
     .startContainer {
         width: 100%;

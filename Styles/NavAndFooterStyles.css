@@ -16,7 +16,7 @@
 html {
     scroll-behavior: smooth;
     font-family: var(--font-family-mono);
-    overflow-x: hidden;
+    overflow-x: clip;
     width: 100%;
 }
 
@@ -24,7 +24,7 @@ body {
     scroll-behavior: smooth;
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
     width: 100%;
     position: relative;
 }
