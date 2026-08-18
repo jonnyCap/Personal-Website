@@ -458,9 +458,12 @@
         }
 
         draw(ctx, stageProgress) {
+            ctx.save();
             for (let p of this.particles) {
                 p.draw(ctx, stageProgress);
             }
+            ctx.restore();
+            ctx.globalAlpha = 1.0;
         }
     }
 
@@ -1055,9 +1058,12 @@
         },
 
         draw: function (ctx, stageProgress) {
+            ctx.save();
             for (let swarm of this.swarms) {
                 swarm.draw(ctx, stageProgress);
             }
+            ctx.restore();
+            ctx.globalAlpha = 1.0;
         }
     };
 
@@ -1290,6 +1296,7 @@
         // STRICT: Lightning ONLY active in Stage 3 (stageProgress >= 1.35)
         let lightningOp = STATE.stageProgress >= 1.35 ? Math.min(1, (STATE.stageProgress - 1.35) / 0.65) : 0;
 
+        ctx.globalAlpha = 1.0;
         ctx.clearRect(0, 0, width, height);
 
         // =====================================================================
@@ -1335,6 +1342,7 @@
         skyGrad.addColorStop(0.55, `rgb(${curMid[0]}, ${curMid[1]}, ${curMid[2]})`);
         skyGrad.addColorStop(1, `rgb(${curBot[0]}, ${curBot[1]}, ${curBot[2]})`);
 
+        ctx.globalAlpha = 1.0;
         ctx.fillStyle = skyGrad;
         ctx.fillRect(0, 0, width, height);
 

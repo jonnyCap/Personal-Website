@@ -89,7 +89,17 @@
 }
 
 .secondaryStartSection {
-    background: var(--color-accent);
+    background: linear-gradient(
+        90deg,
+        #96cbe9 0%,
+        #82bee3 10%,
+        #5ea6d8 24%,
+        #4c97ce 38%,
+        #4c97ce 62%,
+        #5ea6d8 76%,
+        #82bee3 90%,
+        #96cbe9 100%
+    );
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -189,7 +199,7 @@
     line-height: 1.08;
     color: var(--color-text-white);
     margin: 0;
-    text-shadow: 8px 8px #9bc5e4;
+    text-shadow: 8px 8px rgba(35, 92, 135, 0.45);
     opacity: 0;
     word-break: break-word;
 }
@@ -414,6 +424,19 @@
     }
 }
 @media only screen and (max-width: 1400px) {
+    .secondaryStartSection {
+        background: linear-gradient(
+            180deg,
+            #96cbe9 0%,
+            #82bee3 10%,
+            #5ea6d8 24%,
+            #4c97ce 38%,
+            #4c97ce 62%,
+            #5ea6d8 76%,
+            #82bee3 90%,
+            #96cbe9 100%
+        );
+    }
 
     .secondaryHeaderContainer {
         width: 650px;
@@ -551,7 +574,7 @@
     /*start section*/
     .secondaryHeader {
         line-height: 1.1;
-        text-shadow: 5px 5px #9bc5e4;
+        text-shadow: 5px 5px rgba(35, 92, 135, 0.45);
     }
     .lowerHeader {
         line-height: 1.35;
@@ -587,7 +610,7 @@
 @media only screen and (max-width: 600px) {
     .secondaryHeader {
         line-height: 1.12;
-        text-shadow: 4px 4px #9bc5e4;
+        text-shadow: 4px 4px rgba(35, 92, 135, 0.45);
     }
     .secondaryContentContainer {
         padding-left: 24px;
@@ -606,7 +629,7 @@
     }
     .secondaryHeader {
         line-height: 1.15;
-        text-shadow: 3px 3px #9bc5e4;
+        text-shadow: 3px 3px rgba(35, 92, 135, 0.45);
     }
     #moveableBackground{
         display:none;
