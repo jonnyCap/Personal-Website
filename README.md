@@ -49,7 +49,7 @@ flowchart LR
 
 - **Custom SPA Engine** (`SPAScript.js`): Dynamic multi-section routing and fluid tab navigation on the deep-dive page (`aboutMePage.html`) without page reloads.
 - **Dynamic Content Modules** (`cvRenderer.js`, `projectsRenderer.js`): Client-side async rendering from structured JSON data.
-- **Interactive HTML5 Canvases** (`canvasScript.js`, `secondaryCanvasScript.js`, `journeyCanvasScript.js`): Custom particle animations, interactive trajectory milestones, and DPI-responsive backgrounds.
+- **Interactive HTML5 Canvases** (`canvasScript.js`, `secondaryCanvasScript.js`, `journeyCanvasScript.js`): 3-Stage atmospheric & technical simulation (Cloud Vapor & Isobars, Digital Rain Matrix & Umbrella Shield, Procedural Fractal Lightning), interactive trajectory milestones, and DPI-responsive backgrounds.
 - **Custom UI Components** (`sliderScript.js`, `navScript.js`, `textAppearanceScript.js`): Touch-enabled carousel, sticky responsive navigation, and typewriter text transitions.
 - **Form Handling** (`handlerScript.js`): Asynchronous contact and newsletter submission powered by FormSubmit.
 
@@ -69,7 +69,7 @@ Personal-Website/
 │   └── projects.json             # Cached repository data fetched from GitHub
 ├── Scripts/
 │   ├── SPAScript.js              # SPA routing & section switcher
-│   ├── canvasScript.js           # Landing page particle canvas
+│   ├── canvasScript.js           # 3-Stage atmospheric & digital weather canvas
 │   ├── cvRenderer.js             # Client-side CV renderer
 │   ├── fetchGitHubRepos.js       # Node.js GitHub API sync script
 │   ├── handlerScript.js          # FormSubmit integration & handlers

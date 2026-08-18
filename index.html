@@ -64,10 +64,30 @@
                 <div class="backgroundContainer">
                     <div class="aboutMeContainer" id="aboutMeContainer">
                         <div class="aboutMePictureContainer">
+                            <!-- HUD Stage Selector Pills -->
+                            <div class="algoHudHeader">
+                                <div class="algoStagePills">
+                                    <button class="algoStagePill active" onclick="if(window.algorithmPlayground) window.algorithmPlayground.setStage(0);" aria-label="Switch to Cloud Vapor">01 Cloud Vapor</button>
+                                    <button class="algoStagePill" onclick="if(window.algorithmPlayground) window.algorithmPlayground.setStage(1);" aria-label="Switch to Digital Rain Matrix">02 Rain Matrix</button>
+                                    <button class="algoStagePill" onclick="if(window.algorithmPlayground) window.algorithmPlayground.setStage(2);" aria-label="Switch to Lightning Storm">03 Lightning Storm</button>
+                                </div>
+                            </div>
                             <canvas id="canvas" width="900" height="600"></canvas>
+                            <!-- HUD Status & Telemetry Footer -->
+                            <div class="algoHudFooter">
+                                <div class="algoHudLeft">
+                                    <span class="algoHudLiveDot"></span>
+                                    <span id="algoHudTitle" class="algoHudTitle">01 // CLOUD VAPOR</span>
+                                </div>
+                                <div class="algoHudRight">
+                                    <span id="algoHudBadge" class="algoHudBadge">Vapor Mesh | Wind Vectors</span>
+                                    <span class="algoHudHint">Click &amp; Hover to interact</span>
+                                </div>
+                            </div>
                             <script src="Scripts/canvasScript.js"></script>
                         </div>
                         <div class="textContainer">
+                            <div class="aboutMeSubBadge" id="aboutMeSubBadge">[ Vapor Mesh | Wind Vectors ]</div>
                             <h1 class="aboutMeHeader">About me</h1>
                             <p class="aboutMeText">
                                 Hey, I'm Jonathan, a passionate software developer specializing in high-performance backend systems, distributed architectures, network protocols, and modern machine learning applications.<br><br>
