@@ -90,8 +90,14 @@ Personal-Website/
 │       └── projects-renderer.js     # Projects grid renderer
 ├── scripts/                         # Automation & CI/CD tooling (Node.js)
 │   └── fetch-github-repos.js        # Node.js GitHub API sync script
+├── types/                           # Ambient TypeScript definitions
+│   ├── cv.d.ts                      # CV and resume data contracts
+│   ├── globals.d.ts                 # Global window & browser runtime namespaces
+│   └── projects.d.ts                # GitHub sync & project card contracts
 ├── index.html                       # Landing page
 ├── about.html                       # Interactive deep-dive portfolio (SPA)
+├── jsconfig.json                    # IDE & language server configuration
+├── tsconfig.json                    # Zero-build TypeScript compiler configuration
 └── README.md
 ```
 
@@ -100,6 +106,7 @@ Personal-Website/
 ## 🛠️ Tech Stack
 
 - **Frontend**: HTML5, Vanilla CSS3, Vanilla JavaScript (ES6+)
+- **Type Safety**: Zero-Build TypeScript (JSDoc + Ambient `.d.ts` definitions)
 - **Data & Rendering**: JSON-driven async DOM rendering
 - **Graphics**: HTML5 Canvas API (Custom particle & vector engines)
 - **Automation / CI/CD**: GitHub Actions (repo sync cron + Pages deployment)
@@ -109,7 +116,7 @@ Personal-Website/
 
 ## 🚀 Getting Started
 
-No build step or package manager is required for local preview.
+No build step or package manager is required for local preview or deployment.
 
 ### Local Preview
 
@@ -128,6 +135,16 @@ No build step or package manager is required for local preview.
    npx serve .
    ```
 3. Open `http://localhost:8000` in your browser.
+
+### Type Checking & Repository Sync
+
+```bash
+# Run TypeScript static type checker across all JS modules (Zero-build)
+npm run typecheck
+
+# Sync public GitHub repositories and update data/projects.json
+npm run sync-repos
+```
 
 ---
 

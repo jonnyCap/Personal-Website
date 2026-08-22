@@ -51,7 +51,7 @@ const sDButton = {
     syncStateFromScroll: function () {
         const scrollY = window.scrollY || window.pageYOffset || 0;
         const downBtn = document.querySelector(".scrollButton.down");
-        if (!downBtn) return;
+        if (!(downBtn instanceof HTMLElement)) return;
 
         if (scrollY > 300) {
             downBtn.style.transform = "rotate(180deg)";
@@ -106,13 +106,17 @@ const buttonCanvas = {
     colorUp: "white",
     colorDown: "lightBlue",
 
+    /**
+     * @param {number} index
+     * @returns {CanvasRenderingContext2D | null}
+     */
     gC: function (index) {
         if (index === 0) {
             const c = document.getElementById("clickAnimationCanvas");
-            return c ? c.getContext("2d") : null;
+            return c instanceof HTMLCanvasElement ? c.getContext("2d") : null;
         } else {
             const c = document.getElementById("clickAnimationCanvasUp");
-            return c ? c.getContext("2d") : null;
+            return c instanceof HTMLCanvasElement ? c.getContext("2d") : null;
         }
     },
 

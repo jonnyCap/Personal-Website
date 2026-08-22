@@ -45,6 +45,7 @@ const SPA = {
 
     moveMoveableDiv: function () {
         const pill = document.getElementById("moveableBackground");
+        /** @type {NodeListOf<HTMLElement>} */
         const navElements = document.querySelectorAll(".secondaryNavList");
         if (!pill || navElements.length === 0) return;
 
@@ -68,6 +69,7 @@ const SPA = {
     },
 
     updateActiveTabStyles: function () {
+        /** @type {NodeListOf<HTMLElement>} */
         const navElements = document.querySelectorAll(".secondaryNavList");
         navElements.forEach((btn, index) => {
             // Remove lingering inline styles so CSS rules apply cleanly
@@ -158,7 +160,7 @@ const SPA = {
 
     adjustHeaderPosition: function () {
         const headerContainer = document.querySelector(".secondaryHeaderContainer");
-        if (!headerContainer) return;
+        if (!(headerContainer instanceof HTMLElement)) return;
 
         const hasBreak = /<br\s*\/?>/i.test(text.header[SPA.currentPage] || "");
 
@@ -177,7 +179,7 @@ const SPA = {
 
     resizeStartSection: function () {
         const element = document.querySelector(".secondaryStartSection");
-        if (element) {
+        if (element instanceof HTMLElement) {
             element.style.minHeight = window.innerHeight + "px";
         }
     },
@@ -199,6 +201,7 @@ const text = {
         "Information about Data Privacy & Security"
     ],
     setContent: function (index) {
+        /** @type {NodeListOf<HTMLElement>} */
         const containers = document.querySelectorAll(".secondaryContentContainer");
         containers.forEach((el, i) => {
             if (i === index) {

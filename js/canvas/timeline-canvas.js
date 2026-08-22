@@ -11,7 +11,7 @@ const journyCanvas = {
 
     gC: function (index = 0) {
         const canvas = document.getElementById("canvas0");
-        return canvas ? canvas.getContext("2d") : null;
+        return canvas instanceof HTMLCanvasElement ? canvas.getContext("2d") : null;
     },
 
     chooseCanvas: function (index) {
@@ -22,7 +22,7 @@ const journyCanvas = {
 
     setUpJournyCanvas: function () {
         const canvas = document.getElementById("canvas0");
-        if (!canvas) return;
+        if (!(canvas instanceof HTMLCanvasElement)) return;
 
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
@@ -33,6 +33,7 @@ const journyCanvas = {
         if (!container) return;
 
         // ONLY query headers belonging to this specific About Me section
+        /** @type {NodeListOf<HTMLElement>} */
         const headers = container.querySelectorAll(".secondaryContentTextHeader");
         if (headers.length === 0) return;
 
@@ -40,15 +41,16 @@ const journyCanvas = {
         const textContainer = container.querySelector(".secondaryContentText");
         let nodeYs = [];
 
+        const firstHeader = headers[0];
         // Check if layout is rendered with non-zero dimensions
-        if (canvasRect.height > 50 && headers[0].offsetHeight > 0) {
+        if (canvasRect.height > 50 && firstHeader && firstHeader.offsetHeight > 0) {
             headers.forEach(h => {
                 const hRect = h.getBoundingClientRect();
                 // Exact center alignment relative to canvas top
                 const centerY = (hRect.top - canvasRect.top) + (hRect.height / 2);
                 nodeYs.push(centerY);
             });
-        } else if (textContainer && headers[0].offsetTop > 0) {
+        } else if (textContainer && firstHeader && firstHeader.offsetTop > 0) {
             headers.forEach(h => {
                 nodeYs.push(h.offsetTop + (h.offsetHeight / 2));
             });

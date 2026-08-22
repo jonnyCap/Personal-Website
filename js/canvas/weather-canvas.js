@@ -9,7 +9,7 @@
  */
 
 (function () {
-    const canvas = document.getElementById("canvas");
+    const canvas = /** @type {HTMLCanvasElement | null} */ (document.getElementById("canvas"));
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;

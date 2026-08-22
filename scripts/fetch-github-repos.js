@@ -12,6 +12,7 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 const CONFIG_PATH = path.join(ROOT_DIR, 'data', 'projectConfig.json');
 const OUTPUT_PATH = path.join(ROOT_DIR, 'data', 'projects.json');
 
+/** @type {import('../types/projects').ProjectConfig} */
 const DEFAULT_CONFIG = {
     username: 'jonnyCap',
     pinned: [
@@ -27,6 +28,7 @@ const DEFAULT_CONFIG = {
     overrides: {}
 };
 
+/** @type {Record<string, string>} */
 // Language color mapping for visual language bars
 const LANGUAGE_COLORS = {
     'Go': '#00ADD8',
@@ -43,7 +45,14 @@ const LANGUAGE_COLORS = {
     'Shell': '#89E051'
 };
 
+/**
+ * Helper to fetch and parse JSON with GitHub API headers.
+ * @param {string} url
+ * @param {Record<string, string>} [headers]
+ * @returns {Promise<any>}
+ */
 async function fetchJson(url, headers = {}) {
+    /** @type {Record<string, string>} */
     const defaultHeaders = {
         'User-Agent': 'Personal-Website-Repo-Fetcher',
         'Accept': 'application/vnd.github.v3+json'
@@ -59,6 +68,10 @@ async function fetchJson(url, headers = {}) {
     return response.json();
 }
 
+/**
+ * Main repository fetcher and projects.json generator.
+ * @returns {Promise<void>}
+ */
 async function main() {
     console.log('--- Starting GitHub Repositories Fetch ---');
 

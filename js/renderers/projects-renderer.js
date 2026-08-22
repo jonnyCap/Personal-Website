@@ -1,11 +1,16 @@
 /**
- * projects-renderer.js
- * Dynamically fetches and renders public GitHub repositories into the project slider and SPA grid.
+ * @typedef {import('../../types/projects').Project} Project
+ * @typedef {import('../../types/projects').ProjectsData} ProjectsData
  */
 
 const ProjectsRenderer = {
+    /** @type {ProjectsData | null} */
     projectsData: null,
 
+    /**
+     * Initializes project rendering into the slider and SPA grid.
+     * @returns {Promise<void>}
+     */
     init: async function () {
         const track = document.getElementById("sliderTrack");
         const spaGrid = document.getElementById("spaProjectsGrid");
@@ -48,6 +53,13 @@ const ProjectsRenderer = {
         }
     },
 
+    /**
+     * Renders an array of project items into the target container.
+     * @param {HTMLElement} container
+     * @param {any[]} projects
+     * @param {boolean} [isSlider=true]
+     * @returns {void}
+     */
     renderCards: function (container, projects, isSlider = true) {
         if (!projects || projects.length === 0) {
             container.innerHTML = `<div class="projectEmptyState">No projects available.</div>`;
@@ -59,7 +71,7 @@ const ProjectsRenderer = {
         projects.forEach((proj, idx) => {
             const card = document.createElement("div");
             card.className = isSlider ? "sliderElement projectCard" : "projectCard spaCardElement";
-            card.setAttribute("data-index", idx);
+            card.setAttribute("data-index", String(idx));
 
             const tagsHtml = (proj.tags || []).map(tag => 
                 `<span class="projectTag">${this.escapeHtml(tag)}</span>`

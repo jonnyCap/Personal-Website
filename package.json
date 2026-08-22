@@ -1,0 +1,14 @@
+{
+  "name": "personal-website",
+  "version": "2.0.0",
+  "description": "Personal portfolio website with interactive canvas animations and automated GitHub sync",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "sync-repos": "node scripts/fetch-github-repos.js"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "typescript": "^5.8.2"
+  }
+}

@@ -1,7 +1,7 @@
 // secondaryCanvas - Pure Atmospheric Particle Cloud Swarm & Ultra-Smooth Emergence with Adjusted Minimum Cloud Size
 
 (function () {
-    const canvas = document.getElementById("secondaryCanvas");
+    const canvas = /** @type {HTMLCanvasElement | null} */ (document.getElementById("secondaryCanvas"));
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
@@ -12,6 +12,7 @@
         offCanvas.width = size;
         offCanvas.height = size;
         const offCtx = offCanvas.getContext("2d");
+        if (!offCtx) return offCanvas;
         const center = size / 2;
         const radius = size / 2;
 
@@ -419,8 +420,9 @@
 
         resize: function () {
             const parent = document.querySelector(".secondaryStartSection");
-            const w = parent && parent.offsetWidth > 100 ? parent.offsetWidth : window.innerWidth;
-            const h = parent && parent.offsetHeight > 100 ? parent.offsetHeight : 900;
+            const isParentEl = parent instanceof HTMLElement;
+            const w = isParentEl && parent.offsetWidth > 100 ? parent.offsetWidth : window.innerWidth;
+            const h = isParentEl && parent.offsetHeight > 100 ? parent.offsetHeight : 900;
             if (canvas.width !== w || canvas.height !== h) {
                 canvas.width = w;
                 canvas.height = h;

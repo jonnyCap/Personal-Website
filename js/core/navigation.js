@@ -84,9 +84,9 @@ const emailHandler = {
         }
         if (emailHandler.isSending) return false;
 
-        const emailInput = document.getElementById("emailInput");
-        const textInput = document.getElementById("textInput");
-        const sendBtn = document.getElementById("emailSendButton");
+        const emailInput = /** @type {HTMLInputElement | null} */ (document.getElementById("emailInput"));
+        const textInput = /** @type {HTMLTextAreaElement | HTMLInputElement | null} */ (document.getElementById("textInput"));
+        const sendBtn = /** @type {HTMLButtonElement | null} */ (document.getElementById("emailSendButton"));
         const senderEmail = emailInput ? emailInput.value.trim() : "";
         const senderMessage = textInput ? textInput.value.trim() : "";
 
@@ -120,13 +120,17 @@ const emailHandler = {
             }
             const contactSection = document.getElementsByClassName("contactSection");
             if (contactSection.length >= 2) {
-                contactSection[0].style.display = "none";
-                contactSection[1].style.display = "block";
-                clearTimeout(emailHandler.messageTimeout);
-                emailHandler.messageTimeout = setTimeout(function () {
-                    contactSection[0].style.display = "block";
-                    contactSection[1].style.display = "none";
-                }, 5000);
+                const first = contactSection[0];
+                const second = contactSection[1];
+                if (first instanceof HTMLElement && second instanceof HTMLElement) {
+                    first.style.display = "none";
+                    second.style.display = "block";
+                    clearTimeout(emailHandler.messageTimeout);
+                    emailHandler.messageTimeout = setTimeout(function () {
+                        first.style.display = "block";
+                        second.style.display = "none";
+                    }, 5000);
+                }
             }
         });
 

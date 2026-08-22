@@ -1,11 +1,18 @@
 /**
- * cv-renderer.js
- * Dynamically loads and renders CV data (Experience/Internships & Education) from data/cv.json.
+ * @typedef {import('../../types/cv').CvData} CvData
+ * @typedef {import('../../types/cv').CvItem} CvItem
+ * @typedef {import('../../types/cv').CvExperience} CvExperience
+ * @typedef {import('../../types/cv').CvEducation} CvEducation
  */
 
 const CvRenderer = {
+    /** @type {CvData | null} */
     cvData: null,
 
+    /**
+     * Fetches and renders CV timelines into Experience and Education containers.
+     * @returns {Promise<void>}
+     */
     init: async function () {
         const expContainer = document.getElementById("experienceTimeline");
         const eduContainer = document.getElementById("educationTimeline");
@@ -45,6 +52,13 @@ const CvRenderer = {
         }
     },
 
+    /**
+     * Generates HTML markup and appends timeline nodes into the container.
+     * @param {HTMLElement} container
+     * @param {CvItem[]} items
+     * @param {"experience" | "education"} type
+     * @returns {void}
+     */
     renderTimeline: function (container, items, type) {
         if (!items || items.length === 0) {
             container.innerHTML = `<div class="cvEmptyState">No entries available.</div>`;
@@ -60,7 +74,7 @@ const CvRenderer = {
             const itemElement = document.createElement("div");
             itemElement.className = "cvTimelineItem";
             itemElement.setAttribute("data-type", type);
-            itemElement.setAttribute("data-index", index);
+            itemElement.setAttribute("data-index", String(index));
 
             const isLast = index === items.length - 1;
 
@@ -88,8 +102,8 @@ const CvRenderer = {
                    </span>`
                 : "";
 
-            const headerTitle = type === "experience" ? item.title : item.degree;
-            const subTitle = type === "experience" ? item.company : item.institution;
+            const headerTitle = "title" in item ? item.title : item.degree;
+            const subTitle = "company" in item ? item.company : item.institution;
             const periodText = item.duration ? `${item.period} · ${item.duration}` : item.period;
 
             itemElement.innerHTML = `

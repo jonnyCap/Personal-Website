@@ -71,7 +71,8 @@ function initDropDownToggle() {
 
     // Close when clicking anywhere outside the menu
     document.addEventListener("click", (e) => {
-        if (!e.target.closest(".dropDown")) {
+        const target = e.target instanceof Element ? e.target : null;
+        if (!target || !target.closest(".dropDown")) {
             document.querySelectorAll(".dropDownContent.show").forEach(menu => {
                 menu.classList.remove("show");
             });

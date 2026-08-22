@@ -26,8 +26,11 @@ const slider = {
         return document.getElementById("sliderTrack");
     },
 
+    /**
+     * @returns {NodeListOf<HTMLElement>}
+     */
     getSlides: function () {
-        return document.querySelectorAll(".sliderElement");
+        return /** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll(".sliderElement"));
     },
 
     updateDimensions: function () {
@@ -52,7 +55,7 @@ const slider = {
                 const parsedGap = parseFloat(trackStyle.gap || trackStyle.columnGap);
                 if (!isNaN(parsedGap)) gap = parsedGap;
             }
-            this.cardWidth = firstSlide.offsetWidth + gap;
+            this.cardWidth = (firstSlide ? firstSlide.offsetWidth : 350) + gap;
             if (this.cardWidth <= 0) this.cardWidth = 350;
         }
 
@@ -149,7 +152,9 @@ const slider = {
     },
 
     updateButtonStates: function () {
+        /** @type {NodeListOf<HTMLElement>} */
         const prevBtns = document.querySelectorAll("#prevButton, #secondPrevButton");
+        /** @type {NodeListOf<HTMLElement>} */
         const nextBtns = document.querySelectorAll("#nextButton, #secondNextButton");
 
         prevBtns.forEach(btn => {
@@ -188,18 +193,22 @@ const slider = {
         });
 
         // Touch & Swipe Support
-        if (outer && !outer.dataset.touchAttached) {
+        if (outer instanceof HTMLElement && !outer.dataset.touchAttached) {
             outer.dataset.touchAttached = "true";
 
             outer.addEventListener("touchstart", (e) => {
-                slider.touchStartX = e.touches[0].clientX;
-                slider.touchDeltaX = 0;
-                slider.isDragging = true;
+                if (e.touches && e.touches[0]) {
+                    slider.touchStartX = e.touches[0].clientX;
+                    slider.touchDeltaX = 0;
+                    slider.isDragging = true;
+                }
             }, { passive: true });
 
             outer.addEventListener("touchmove", (e) => {
                 if (!slider.isDragging) return;
-                slider.touchDeltaX = e.touches[0].clientX - slider.touchStartX;
+                if (e.touches && e.touches[0]) {
+                    slider.touchDeltaX = e.touches[0].clientX - slider.touchStartX;
+                }
             }, { passive: true });
 
             outer.addEventListener("touchend", () => {

@@ -11,14 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isSecondaryPage) {
         // Observer for secondary page elements
         if (!("IntersectionObserver" in window)) {
+            /** @type {NodeListOf<HTMLElement>} */
             const targets = document.querySelectorAll(".secondaryHeader, .lowerHeader, .scrollButton");
-            targets.forEach(el => el.style.opacity = "1");
+            targets.forEach(el => { el.style.opacity = "1"; });
             return;
         }
 
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && entry.target instanceof HTMLElement) {
                     entry.target.style.transition = "opacity 0.6s ease, transform 0.6s ease";
                     entry.target.style.opacity = "1";
                     obs.unobserve(entry.target);
@@ -134,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if ("IntersectionObserver" in window) {
         const revealObserver = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && entry.target instanceof HTMLElement) {
                     entry.target.style.transition = "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
                     entry.target.style.opacity = "1";
                     obs.unobserve(entry.target);
@@ -147,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (projectsContainer) revealObserver.observe(projectsContainer);
     } else {
-        if (projectsContainer) {
+        if (projectsContainer instanceof HTMLElement) {
             projectsContainer.style.opacity = "1";
         }
     }
