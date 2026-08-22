@@ -53,7 +53,8 @@
         prevMouseY: -1000,
         mouseVx: 0,
         mouseVy: 0,
-        mouseActive: false
+        mouseActive: false,
+        lastCardStage: -1
     };
 
     const STAGE_META = [
@@ -61,19 +62,67 @@
             title: "01 // CLOUD VAPOR",
             subtitle: "Fair-Weather Cumulus & Isobars",
             badge: "Cumulus Clouds | Wind Flow",
-            desc: "Realistic fair-weather cumulus cloud swarms drifting along aerodynamic isobar streamlines."
+            desc: "Realistic fair-weather cumulus cloud swarms drifting along aerodynamic isobar streamlines.",
+            cardBadge: "[ Software Engineer & Cloud Architecture ]",
+            cardHeader: "About me",
+            cardText: "Hey, I'm Jonathan, a passionate software developer specializing in high-performance backend systems, distributed architectures, network protocols, and modern machine learning applications.<br><br>Currently pursuing my Master's in Business Informatics at TU Wien after graduating with distinction in Software Engineering &amp; Management (BSc) from TU Graz.",
+            cardBtnText: "&gt; Learn more",
+            cardBtnAction: function (e) {
+                if (e) {
+                    if (typeof e.preventDefault === "function") e.preventDefault();
+                    if (typeof e.stopPropagation === "function") e.stopPropagation();
+                }
+                if (typeof Links !== "undefined" && typeof Links.goToPage === "function") {
+                    Links.goToPage(1, 0, 0);
+                } else {
+                    sessionStorage.setItem("currentPage", "0");
+                    window.location.href = "about.html#about";
+                }
+            }
         },
         {
             title: "02 // DIGITAL RAIN",
             subtitle: "Darkening Nimbus & Precipitation",
             badge: "Nimbus Rain | Splash Physics",
-            desc: "Clouds condense into slate nimbus; precipitation falls directly from cloud bases with splash hydrodynamics."
+            desc: "Clouds condense into slate nimbus; precipitation falls directly from cloud bases with splash hydrodynamics.",
+            cardBadge: "[ Cloud Architecture | Microservices & Kafka ]",
+            cardHeader: "Experience &amp; Systems",
+            cardText: "Designing scalable cloud microservices, asynchronous messaging pipelines, and resilient backend architectures.<br><br>Hands-on enterprise experience across cloud platforms, event-driven streaming with Java &amp; Apache Kafka, and modern full-stack web solutions.",
+            cardBtnText: "&gt; View Experience",
+            cardBtnAction: function (e) {
+                if (e) {
+                    if (typeof e.preventDefault === "function") e.preventDefault();
+                    if (typeof e.stopPropagation === "function") e.stopPropagation();
+                }
+                if (typeof Links !== "undefined" && typeof Links.goToPage === "function") {
+                    Links.goToPage(1, 0, 0);
+                } else {
+                    sessionStorage.setItem("currentPage", "0");
+                    window.location.href = "about.html#about";
+                }
+            }
         },
         {
             title: "03 // LIGHTNING STORM",
             subtitle: "Thunderhead Supercell & Tempest Rain",
             badge: "Storm Supercell | Rain & Lightning",
-            desc: "Deep tempest supercells with dielectric breakdown branching lightning alongside torrential precipitation."
+            desc: "Deep tempest supercells with dielectric breakdown branching lightning alongside torrential precipitation.",
+            cardBadge: "[ Bare-Metal K3s | Homelab & Microservices ]",
+            cardHeader: "Projects &amp; Homelab",
+            cardText: "Deploying and orchestrating personal cloud services on a self-hosted bare-metal Raspberry Pi 5 K3s cluster with automated GitOps delivery via ArgoCD and GitHub Container Registry.<br><br>Active creator of live applications including OpScout, SnapDeck, and Pagi.",
+            cardBtnText: "&gt; Explore Projects &amp; Apps",
+            cardBtnAction: function (e) {
+                if (e) {
+                    if (typeof e.preventDefault === "function") e.preventDefault();
+                    if (typeof e.stopPropagation === "function") e.stopPropagation();
+                }
+                if (typeof Links !== "undefined" && typeof Links.goToPage === "function") {
+                    Links.goToPage(1, 1, 0);
+                } else {
+                    sessionStorage.setItem("currentPage", "1");
+                    window.location.href = "about.html#projects";
+                }
+            }
         }
     ];
 
@@ -1158,8 +1207,36 @@
         if (statusBadge) statusBadge.textContent = meta.badge;
 
         const dynamicBadge = document.getElementById("aboutMeSubBadge");
+        const headerEl = document.querySelector(".aboutMeHeader");
+        const textEl = document.querySelector(".aboutMeText");
+        const btnEl = document.querySelector(".aboutMeButton");
+
         if (dynamicBadge) {
-            dynamicBadge.textContent = `[ ${meta.badge} ]`;
+            dynamicBadge.textContent = meta.cardBadge || `[ ${meta.badge} ]`;
+        }
+
+        if (headerEl instanceof HTMLElement && textEl instanceof HTMLElement && STATE.lastCardStage !== stageIdx) {
+            STATE.lastCardStage = stageIdx;
+
+            headerEl.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+            textEl.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+            headerEl.style.opacity = "0";
+            textEl.style.opacity = "0";
+            headerEl.style.transform = "translateY(3px)";
+            textEl.style.transform = "translateY(3px)";
+
+            setTimeout(() => {
+                headerEl.innerHTML = meta.cardHeader;
+                textEl.innerHTML = meta.cardText;
+                if (btnEl instanceof HTMLElement) {
+                    btnEl.innerHTML = meta.cardBtnText;
+                    btnEl.onclick = meta.cardBtnAction;
+                }
+                headerEl.style.opacity = "1";
+                textEl.style.opacity = "1";
+                headerEl.style.transform = "translateY(0)";
+                textEl.style.transform = "translateY(0)";
+            }, 180);
         }
     }
 

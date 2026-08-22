@@ -190,13 +190,13 @@ const SPA = {
 const text = {
     header: [
         "About Me",
-        "Projects",
+        "Projects &<br/>Apps",
         "Contact",
         "Privacy<br/>Policy"
     ],
     lowerHeader: [
         "My Experience so far...",
-        "Featured engineering projects & open-source work",
+        "Featured engineering projects, open-source work & deployed applications",
         "Feel free to contact me at all times!",
         "Information about Data Privacy & Security"
     ],

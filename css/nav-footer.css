@@ -54,17 +54,17 @@ section {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
     line-height: 1.2;
-    padding: 12px 18px;
+    padding: 10px 18px;
     position: relative;
     text-align: center;
     text-decoration: none #000000 solid;
     text-decoration-thickness: auto;
     width: auto;
-    min-width: 105px;
-    max-width: 150px;
+    min-width: 95px;
+    white-space: nowrap;
     cursor: pointer;
     transform: rotate(-3deg);
     user-select: none;
@@ -305,14 +305,20 @@ li.navList {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    height: 44px;
+    padding: 0 16px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    box-sizing: border-box;
     margin: 0;
 }
 
 .navContainer.scrolled .button-53.navList,
 .navContainer.stickyOuter .button-53.navList {
-    padding: 8px 14px;
-    font-size: 0.92rem;
-    min-width: 90px;
+    height: 38px;
+    padding: 0 14px;
+    font-size: 0.90rem;
+    min-width: 85px;
 }
 
 a {

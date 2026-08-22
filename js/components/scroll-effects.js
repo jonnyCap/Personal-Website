@@ -84,13 +84,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 aboutMeStageLayer.style.opacity = aboutProgress.toFixed(3);
                 aboutMeStageLayer.style.transform = `scale(${aboutScale.toFixed(3)})`;
 
-                // 6. Pointer events toggle between layers
-                if (progress >= 0.20) {
+                // 6. Pointer events & stacking context toggle between layers
+                if (progress >= 0.05) {
                     heroSection.style.pointerEvents = "none";
                     aboutMeStageLayer.style.pointerEvents = "auto";
+                    aboutMeStageLayer.style.zIndex = "4";
+                    heroSection.style.zIndex = "1";
                 } else {
                     heroSection.style.pointerEvents = "auto";
                     aboutMeStageLayer.style.pointerEvents = "none";
+                    aboutMeStageLayer.style.zIndex = "1";
+                    heroSection.style.zIndex = "4";
                 }
 
                 // 7. Drive Algorithm Playground 3-Stage Progression across the remaining 85% of scroll

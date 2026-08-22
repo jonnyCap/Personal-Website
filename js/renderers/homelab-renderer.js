@@ -395,7 +395,7 @@
                     <div class="appOpenIdentityMeta">
                         <div class="appOpenLiveStatus">
                             <span class="appOpenLiveDot"></span>
-                            <span class="appOpenLiveText">${escapeHtml(app.status || 'Live on K3s')}</span>
+                            <span class="appOpenLiveText">${escapeHtml(app.status || 'Live')}</span>
                         </div>
                         <h4 class="appOpenName">${escapeHtml(app.name)}</h4>
                         <span class="appOpenCategory">${escapeHtml(app.category)}</span>
