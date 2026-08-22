@@ -1,5 +1,5 @@
 /**
- * cvRenderer.js
+ * cv-renderer.js
  * Dynamically loads and renders CV data (Experience/Internships & Education) from data/cv.json.
  */
 

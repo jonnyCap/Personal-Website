@@ -1,3 +1,8 @@
+/**
+ * router.js
+ * Client-side hash routing, history API synchronization, and section navigation.
+ */
+
 const PAGE_HASHES = ["#about", "#projects", "#contact", "#privacy"];
 
 const SPA = {

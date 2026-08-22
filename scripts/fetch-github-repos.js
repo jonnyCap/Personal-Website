@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * fetchGitHubRepos.js
+ * fetch-github-repos.js
  * Automatically fetches public GitHub repositories and language stats for jonnyCap,
  * merges with data/projectConfig.json, and writes data/projects.json.
  */

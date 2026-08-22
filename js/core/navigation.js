@@ -1,8 +1,13 @@
+/**
+ * navigation.js
+ * Global page transitions, session storage persistence, responsive size adapters, and contact form handling.
+ */
+
 const PAGE_HASH_NAMES = ["#about", "#projects", "#contact", "#privacy"];
 
 const Links = {
     goToPage: function (index, PageIndex, Height) {
-        const isAboutMe = window.location.pathname.includes("aboutMePage.html") || window.location.href.includes("aboutMePage.html");
+        const isAboutMe = window.location.pathname.includes("about.html") || window.location.pathname.includes("aboutMePage.html") || window.location.href.includes("about.html") || window.location.href.includes("aboutMePage.html");
         
         switch (index) {
             case 0: // Home page navigation
@@ -37,7 +42,7 @@ const Links = {
                     }
                 } else { 
                     browserStorage.savePage(safeIndex);
-                    window.location.href = "aboutMePage.html" + targetHash;
+                    window.location.href = "about.html" + targetHash;
                 }
                 break;
         }

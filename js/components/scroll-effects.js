@@ -1,11 +1,11 @@
 /**
- * textAppearanceScript.js
+ * scroll-effects.js
  * In-place pinned crossfade transition and scroll-reveal observer.
  * Features a relaxed, slower transition pace and a generous dwell zone in the About Me section.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-    const isSecondaryPage = window.location.pathname.includes("aboutMePage.html") || window.location.href.includes("aboutMePage.html");
+    const isSecondaryPage = window.location.pathname.includes("about.html") || window.location.pathname.includes("aboutMePage.html") || window.location.href.includes("about.html") || window.location.href.includes("aboutMePage.html");
     const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (isSecondaryPage) {

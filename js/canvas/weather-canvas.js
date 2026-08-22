@@ -1,5 +1,5 @@
 /**
- * canvasScript.js
+ * weather-canvas.js
  * Unified Atmospheric & Digital Weather Engine
  * Blends Realistic Meteorological Clouds across 3 Dynamic Stages:
  *

@@ -1,5 +1,5 @@
 /**
- * sliderScript.js
+ * project-slider.js
  * Hardware-accelerated touch & gesture slider for dynamic project cards.
  */
 

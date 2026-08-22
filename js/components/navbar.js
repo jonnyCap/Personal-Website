@@ -1,4 +1,8 @@
-// Sticky / Scrolled Navbar State Controller
+/**
+ * navbar.js
+ * Sticky navbar scroll detection and responsive mobile dropdown toggle.
+ */
+
 function initNavbarScroll() {
     const navContainer = document.querySelector(".navContainer");
     const navInner = document.querySelector(".navInnerContainer");

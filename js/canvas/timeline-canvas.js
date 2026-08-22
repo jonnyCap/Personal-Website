@@ -1,5 +1,5 @@
 /**
- * journeyCanvasScript.js
+ * timeline-canvas.js
  * Draws the connected milestone nodes (dots & vertical line) on the About Me timeline canvas.
  */
 

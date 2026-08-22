@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-08-16T00:07:18.773Z",
+  "lastUpdated": "2026-08-22T08:38:24.781Z",
   "username": "jonnyCap",
-  "totalProjects": 7,
+  "totalProjects": 8,
   "projects": [
     {
       "id": "QueueGo",
@@ -211,20 +211,20 @@
       "languageStats": [
         {
           "name": "JavaScript",
-          "bytes": 83127,
-          "percentage": 52.9,
+          "bytes": 145395,
+          "percentage": 63.2,
           "color": "#F1E05A"
         },
         {
           "name": "CSS",
-          "bytes": 46664,
-          "percentage": 29.7,
+          "bytes": 54090,
+          "percentage": 23.5,
           "color": "#563D7C"
         },
         {
           "name": "HTML",
-          "bytes": 27346,
-          "percentage": 17.4,
+          "bytes": 30531,
+          "percentage": 13.3,
           "color": "#E34C26"
         }
       ],
@@ -232,7 +232,7 @@
       "forks": 0,
       "openIssues": 0,
       "updatedAt": "Aug 2026",
-      "rawUpdatedAt": "2026-08-15T10:33:27Z",
+      "rawUpdatedAt": "2026-08-18T08:38:39Z",
       "tags": [
         "JavaScript",
         "HTML5",
@@ -272,6 +272,39 @@
         "Mobile Development",
         "Algorithms"
       ],
+      "featured": false,
+      "isArchived": false
+    },
+    {
+      "id": "wearable-imu-pipeline",
+      "name": "wearable-imu-pipeline",
+      "title": "wearable imu pipeline",
+      "subtitle": "Jupyter Notebook",
+      "description": "An end-to-end wearable sensor pipeline that translates raw accelerometer data into real-time step counts and posture recognition.",
+      "githubUrl": "https://github.com/jonnyCap/wearable-imu-pipeline",
+      "homepageUrl": null,
+      "primaryLanguage": "Jupyter Notebook",
+      "primaryLanguageColor": "#DA5B0B",
+      "languageStats": [
+        {
+          "name": "Jupyter Notebook",
+          "bytes": 627310,
+          "percentage": 89.4,
+          "color": "#DA5B0B"
+        },
+        {
+          "name": "C",
+          "bytes": 68116,
+          "percentage": 9.7,
+          "color": "#555555"
+        }
+      ],
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "updatedAt": "Aug 2026",
+      "rawUpdatedAt": "2026-08-19T14:26:41Z",
+      "tags": [],
       "featured": false,
       "isArchived": false
     }

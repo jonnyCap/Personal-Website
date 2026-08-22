@@ -8,7 +8,7 @@ on:
   push:
     paths:
       - 'data/projectConfig.json'
-      - 'Scripts/fetchGitHubRepos.js'
+      - 'scripts/fetch-github-repos.js'
 
 permissions:
   contents: write
@@ -28,7 +28,7 @@ jobs:
       - name: Fetch Public GitHub Repositories
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node Scripts/fetchGitHubRepos.js
+        run: node scripts/fetch-github-repos.js
 
       - name: Commit and Push Updated Projects Data
         run: |

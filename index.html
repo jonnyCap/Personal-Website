@@ -22,8 +22,8 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="images/logo.webp">
-    <link rel="stylesheet" href="Styles/NavAndFooterStyles.css">
-    <link rel="stylesheet" href="Styles/mainPage.css">
+    <link rel="stylesheet" href="css/nav-footer.css">
+    <link rel="stylesheet" href="css/home.css">
     <title>Jonathan Maier | Software Developer</title>
 </head>
 <body>
@@ -57,7 +57,7 @@
             </div>
         </div>
     </header>
-    <script src="Scripts/navScript.js"></script>
+    <script src="js/components/navbar.js"></script>
     <div class="heroScrollWrapper" id="heroScrollWrapper">
         <div class="stickyStage" id="stickyStage">
             <!-- Background Layer: About Me section fading in in-place -->
@@ -85,7 +85,7 @@
                                     <span class="algoHudHint">Click &amp; Hover to interact</span>
                                 </div>
                             </div>
-                            <script src="Scripts/canvasScript.js"></script>
+                            <script src="js/canvas/weather-canvas.js"></script>
                         </div>
                         <div class="textContainer">
                             <div class="aboutMeSubBadge" id="aboutMeSubBadge">[ Vapor Mesh | Wind Vectors ]</div>
@@ -150,8 +150,8 @@
             <!-- Pagination Dots -->
             <div class="sliderDotsContainer" id="sliderDots"></div>
         </div>
-        <script src="Scripts/sliderScript.js"></script>
-        <script src="Scripts/projectsRenderer.js"></script>
+        <script src="js/components/project-slider.js"></script>
+        <script src="js/renderers/projects-renderer.js"></script>
     </section>
     <section>
         <footer>
@@ -184,7 +184,7 @@
             </div>
         </footer>
     </section>
-    <script src="Scripts/textAppearanceScript.js"></script>
-    <script src="Scripts/handlerScript.js"></script>
+    <script src="js/components/scroll-effects.js"></script>
+    <script src="js/core/navigation.js"></script>
 </body>
 </html>

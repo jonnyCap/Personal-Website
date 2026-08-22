@@ -1,3 +1,7 @@
+/**
+ * scroll-button.js
+ * Floating scroll trigger and interactive canvas particle animations.
+ */
 
 const sDButton = {
     scrollAnimTicking: false,

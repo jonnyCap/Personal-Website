@@ -1,5 +1,5 @@
 /**
- * projectsRenderer.js
+ * projects-renderer.js
  * Dynamically fetches and renders public GitHub repositories into the project slider and SPA grid.
  */
 

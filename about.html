@@ -27,8 +27,8 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="images/logo.webp">
-    <link rel="stylesheet" href="Styles/NavAndFooterStyles.css">
-    <link rel="stylesheet" href="Styles/secondaryPage.css">
+    <link rel="stylesheet" href="css/nav-footer.css">
+    <link rel="stylesheet" href="css/about.css">
     <title>About Me | Jonathan Maier</title>
 </head>
 
@@ -64,12 +64,12 @@
             </div>
         </div>
     </header>
-    <script src="Scripts/navScript.js"></script>
+    <script src="js/components/navbar.js"></script>
     <section>
         <div class="secondaryBackgroundContainer">
             <div class="secondaryStartSection">
                 <canvas id="secondaryCanvas" width="1400" height="900"></canvas><!--Background Canvas-->
-                <script src="Scripts/secondaryCanvasScript.js"></script>
+                <script src="js/canvas/cloud-canvas.js"></script>
                 <div class="alignStartSectionParts">
                     <div class="secondaryLowerContainer">
                         <ul class="secondaryUl">
@@ -91,7 +91,7 @@
                             height="auto" alt="Scroll Down">
                         <canvas id="clickAnimationCanvas" width="200px" height="250px"></canvas>
                     </button>
-                    <script src="Scripts/textAppearanceScript.js"></script> <!--Lets Text appear when side is loaded-->
+                    <script src="js/components/scroll-effects.js"></script> <!--Lets Text appear when side is loaded-->
                 </div>
                 <div class="cloud-fog-overlay" aria-hidden="true"></div>
                 <div class="cloud-divider" aria-hidden="true">
@@ -238,8 +238,8 @@
                         <canvas id="clickAnimationCanvasUp" width="200px" height="250px"></canvas>
                     </button>
                 </div>
-                <script src="Scripts/scrollDownButtonScript.js"></script>
-                <script src="Scripts/journeyCanvasScript.js"></script>
+                <script src="js/components/scroll-button.js"></script>
+                <script src="js/canvas/timeline-canvas.js"></script>
             </div>
         </div>
     </section>
@@ -292,10 +292,10 @@
             </div>
         </footer>
     </section>
-    <script src="Scripts/projectsRenderer.js"></script>
-    <script src="Scripts/cvRenderer.js"></script>
-    <script src="Scripts/handlerScript.js"></script>
-    <script src="Scripts/SPAScript.js"></script>
+    <script src="js/renderers/projects-renderer.js"></script>
+    <script src="js/renderers/cv-renderer.js"></script>
+    <script src="js/core/navigation.js"></script>
+    <script src="js/core/router.js"></script>
 </body>
 
 </html>
