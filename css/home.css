@@ -958,3 +958,1132 @@ div.aboutMeContainer {
         height: auto;
     }
 }
+
+/* ==========================================================================
+   HOMELAB & DEPLOYED APPLICATIONS SECTION (K3S RASPBERRY PI 5)
+   ========================================================================== */
+
+/* Creative Section Transition Divider (Projects -> Homelab) */
+.homelabTransitionDivider {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    margin-top: 60px;
+    margin-bottom: -1px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.transitionSvg {
+    width: 100%;
+    height: 90px;
+    display: block;
+}
+
+.transitionConnectorBadge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    color: #1b4d75;
+    border: 1px solid rgba(84, 155, 207, 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), 4px 4px 0 #1b4d75;
+    padding: 7px 22px;
+    border-radius: 20px;
+    font-family: var(--font-family-mono);
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+}
+
+.connectorDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+    display: inline-block;
+    animation: livePulse 2s infinite ease-in-out;
+}
+
+/* Homelab Section - Primary Blue Canvas */
+.homelabSection {
+    width: 100%;
+    height: auto;
+    min-height: 700px;
+    background-color: #174266;
+    background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.14) 1.2px, transparent 1.2px),
+        linear-gradient(180deg, #1b4d75 0%, #174266 30%, #1e537d 70%, #235c87 100%);
+    background-size: 24px 24px, 100% 100%;
+    padding: 30px 0 60px 0;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.homelabContainer {
+    max-width: 1480px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+/* Header & Badges */
+.homelabHeaderContainer {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.homelabBadgeWrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.homelabHudBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-family: var(--font-family-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
+}
+
+.homelabLivePulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    display: inline-block;
+    animation: livePulse 2s infinite ease-in-out;
+}
+
+.homelabStatusPill {
+    background: #10b981;
+    color: #ffffff;
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.homelabHeader {
+    font-size: 40px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+}
+
+.homelabSubheader {
+    max-width: 860px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #d0e8f9;
+    font-family: var(--font-family-mono);
+}
+
+/* Cluster Telemetry Top Bar (Crisp Solid White) */
+.clusterTelemetryBar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 14px 36px rgba(5, 20, 34, 0.35), 7px 7px 0 rgba(7, 25, 42, 0.6);
+    border-radius: 8px;
+    padding: 22px 28px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+}
+
+.telemetryStat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0 10px;
+    border-right: 1px solid #e2e8f0;
+}
+
+.telemetryStat:last-child {
+    border-right: none;
+}
+
+.telemetryLabel {
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    font-weight: 800;
+    color: #1b4d75;
+    letter-spacing: 0.5px;
+}
+
+.telemetryValue {
+    font-family: var(--font-family-mono);
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+/* ==========================================================================
+   N8N-STYLE 3D ISOMETRIC TOPOLOGY GRAPH CANVAS
+   ========================================================================== */
+
+.flowSectionWrapper {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.flowGraphHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.flowGraphTitleGroup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.flowIcon {
+    display: flex;
+    align-items: center;
+    color: #38bdf8;
+}
+
+.flowGraphTitle {
+    font-size: 21px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    font-family: var(--font-family-mono);
+}
+
+.flowLiveIndicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: #6ee7b7;
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid #10b981;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.flowGraphHint {
+    font-family: var(--font-family-mono);
+    font-size: 12.5px;
+    color: #bae6fd;
+}
+
+/* 3D Perspective Stage */
+.flowPerspectiveStage {
+    perspective: 1600px;
+    perspective-origin: 50% 35%;
+    width: 100%;
+    padding: 24px 0 50px 0;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+/* Visual Node Canvas with Isometric 3D Tilt (Top-Left in back, Bottom-Right in front) */
+.flowCanvasWrapper {
+    position: relative;
+    width: 100%;
+    min-height: 560px;
+    background: transparent;
+    transform-style: preserve-3d;
+    transform: rotateX(7deg) rotateY(-7deg) rotateZ(0.8deg);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    padding: 30px 10px;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+/* SVG Connection Layer */
+.flowGraphSvg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+}
+
+.flowWireBase {
+    fill: none;
+    stroke-width: 2.5px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, stroke-width 0.3s ease;
+}
+
+.flowWireStream {
+    fill: none;
+    stroke-width: 3.5px;
+    stroke-linecap: round;
+    stroke-dasharray: 6 32;
+    animation: dataStreamPulse 1.8s linear infinite;
+    filter: drop-shadow(0 0 8px currentColor);
+    opacity: 1;
+    transition: opacity 0.3s ease, stroke-width 0.3s ease, stroke 0.3s ease;
+}
+
+@keyframes dataStreamPulse {
+    from {
+        stroke-dashoffset: 76;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.wireActive {
+    opacity: 1 !important;
+    stroke-width: 4.5px !important;
+    filter: drop-shadow(0 0 12px currentColor) !important;
+}
+
+.wireDimmed {
+    opacity: 0.08 !important;
+}
+
+/* Topology Grid Layout (Spacious 4-Column Layout) */
+.flowGrid {
+    display: grid;
+    grid-template-columns: 240px 300px 270px 240px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    gap: 36px;
+    min-height: 480px;
+    transform-style: preserve-3d;
+}
+
+.flowCol {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.flowColTitle {
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.8px;
+    text-align: center;
+    margin-bottom: 2px;
+    user-select: none;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* n8n Node Card with 3D Spatial Depth (Solid Crisp White) */
+.flowNode {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 14px 32px rgba(5, 20, 34, 0.35), 6px 6px 0 rgba(7, 25, 42, 0.65);
+    padding: 14px 18px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: translateZ(14px);
+    transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.22s ease;
+    outline: none;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.flowNode:hover {
+    transform: translateZ(38px) translateY(-5px) scale(1.03);
+    border-color: #38bdf8;
+    box-shadow: 0 24px 50px rgba(5, 20, 34, 0.5), 8px 8px 0 #07192a, 0 0 24px rgba(56, 189, 248, 0.5);
+    background: #ffffff;
+}
+
+.flowNode.activeNode {
+    background: #ffffff;
+    border-color: #38bdf8;
+    box-shadow: 0 24px 50px rgba(5, 20, 34, 0.5), 8px 8px 0 #07192a, 0 0 24px rgba(56, 189, 248, 0.5);
+    transform: translateZ(38px) translateY(-4px) scale(1.02);
+}
+
+/* Central Master Node */
+.flowNode.centralHub {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    border: 2.5px solid #38bdf8;
+    box-shadow: 0 18px 42px rgba(5, 20, 34, 0.4), 8px 8px 0 rgba(7, 25, 42, 0.75), 0 0 24px rgba(56, 189, 248, 0.35);
+    padding: 18px 20px;
+    transform: translateZ(22px);
+}
+
+.flowNode.centralHub:hover, .flowNode.centralHub.activeNode {
+    box-shadow: 0 28px 56px rgba(5, 20, 34, 0.55), 10px 10px 0 #07192a, 0 0 32px rgba(56, 189, 248, 0.7);
+    transform: translateZ(50px) translateY(-6px) scale(1.04);
+}
+
+/* Connection Pins */
+.flowPin {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2.5px solid #0284c7;
+    z-index: 5;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.flowNode:hover .flowPin, .flowNode.activeNode .flowPin {
+    transform: translateY(-50%) scale(1.35);
+    background: #0284c7;
+}
+
+.flowPinIn {
+    left: -6px;
+}
+
+.flowPinOut {
+    right: -6px;
+}
+
+/* Node Internal Content */
+.flowNodeContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.flowNodeHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.flowNodeIconWrapper {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 6px;
+    background: #f0f8fe;
+    border: 1px solid #d5ebf9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1b4d75;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.flowNodeIconWrapper.hasCustomLogo {
+    background: #ffffff;
+}
+
+.flowNodeLogoImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.flowNodeLogoText {
+    font-family: var(--font-family-mono);
+    font-size: 13px;
+    font-weight: 800;
+    color: #1b4d75;
+}
+
+.flowNodeMeta {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.flowNodeName {
+    font-family: var(--font-family-mono);
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+}
+
+.flowNodeCategory {
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.25;
+}
+
+.flowNodeFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flowNodeBadge {
+    font-family: var(--font-family-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    background: #eef7fd;
+    color: #1b4d75;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.flowNodeLiveDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+}
+
+/* Active Node Telemetry & Dashboard Inspector (Solid Crisp White) */
+.flowInspectorContainer {
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 26px 30px;
+    box-shadow: 0 18px 45px rgba(5, 20, 34, 0.35), 8px 8px 0 rgba(7, 25, 42, 0.65);
+    transition: opacity 0.15s ease;
+    box-sizing: border-box;
+}
+
+.inspectorHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.inspectorLeft {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.inspectorIconWrapper {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    background: #eef7fd;
+    border: 1px solid #d5ebf9;
+    color: #1b4d75;
+    padding: 6px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.inspectorLogoImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.inspectorTitleGroup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.inspectorTitle {
+    font-family: var(--font-family-mono);
+    font-size: 20px;
+    font-weight: 800;
+    color: #1b4d75;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.inspectorCategoryBadge {
+    font-family: var(--font-family-mono);
+    font-size: 11.5px;
+    background: #eef7fd;
+    color: #1b4d75;
+    padding: 3px 9px;
+    border-radius: 4px;
+    border: 1px solid #cce5f8;
+}
+
+.inspectorSub {
+    font-family: var(--font-family-mono);
+    font-size: 12.5px;
+    color: #64748b;
+    margin-top: 3px;
+}
+
+.inspectorRightActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.inspectorAuthBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    color: #b45309;
+    font-family: var(--font-family-mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.inspectorLaunchBtn {
+    padding: 9px 16px;
+    font-size: 13px;
+    gap: 6px;
+    text-decoration: none;
+    background: #1b4d75;
+    color: #ffffff;
+    box-shadow: 4px 4px 0 #0b2234;
+    border-radius: 4px;
+}
+
+.inspectorLaunchBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0 #07192a;
+}
+
+.inspectorDesc {
+    font-family: var(--font-family-mono);
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: #334155;
+    margin: 0;
+}
+
+/* Responsive Styles for Graph Canvas */
+@media only screen and (max-width: 1150px) {
+    .flowPerspectiveStage {
+        perspective: none !important;
+        padding: 10px 0 20px 0;
+    }
+    .flowCanvasWrapper {
+        transform: none !important;
+        transform-style: flat !important;
+        min-height: auto;
+        padding: 10px 0;
+    }
+    .flowGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        transform: none !important;
+        transform-style: flat !important;
+    }
+    .flowCol {
+        transform: none !important;
+        transform-style: flat !important;
+    }
+    .flowColTitle {
+        text-align: left;
+        transform: none !important;
+    }
+    .flowNode {
+        transform: none !important;
+        transform-style: flat !important;
+    }
+    .flowNode.centralHub {
+        transform: none !important;
+        transform-style: flat !important;
+    }
+    .flowNodeContent {
+        transform: none !important;
+    }
+    .flowPin {
+        transform: translateY(-50%) !important;
+    }
+    .flowGraphSvg {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .flowGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .flowCanvasWrapper {
+        padding: 10px 0;
+    }
+}
+
+/* ==========================================================================
+   TRANSITION DIVIDER: HOMELAB TOPOLOGY (BLUE) -> DEPLOYED APPS (WHITE)
+   ========================================================================== */
+
+.appsTransitionDivider {
+    position: relative;
+    width: 100%;
+    height: 85px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 3;
+    background: linear-gradient(180deg, #205781 0%, #235c87 100%);
+    pointer-events: none;
+}
+
+.appsTransitionBadge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    color: #1b4d75;
+    border: 1px solid rgba(84, 155, 207, 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), 4px 4px 0 #1b4d75;
+    padding: 7px 22px;
+    border-radius: 20px;
+    font-family: var(--font-family-mono);
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+    pointer-events: auto;
+}
+
+/* Transition into Blue Footer */
+.footerTransitionDivider {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    z-index: 3;
+    background: #ffffff;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   DEPLOYED APPLICATIONS SHOWCASE (WHITE BACKGROUND & OPEN-SIDED CREATIVE ROWS)
+   ========================================================================== */
+
+.deployedAppsSection {
+    width: 100%;
+    background: #ffffff;
+    padding: 70px 0 110px 0;
+    box-sizing: border-box;
+    position: relative;
+    color: #1e293b;
+}
+
+.deployedAppsContainer {
+    max-width: 1480px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+.appsSectionHeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #edf2f7;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.appsHeaderLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.appsSubBadge {
+    font-family: var(--font-family-mono);
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: 0.5px;
+}
+
+.appsSectionTitle {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.appsDomainLabel {
+    font-family: var(--font-family-mono);
+    font-size: 13px;
+    color: #475569;
+    background: #eef7fd;
+    padding: 7px 18px;
+    border-radius: 20px;
+    border: 1px solid #cce5f7;
+}
+
+/* Open-Sided Creative Stream List (No Enclosing Side Boxes) */
+.appsOpenStreamContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.appOpenRow {
+    display: grid;
+    grid-template-columns: 310px 1fr 200px;
+    gap: 44px;
+    align-items: center;
+    padding: 38px 20px;
+    border-bottom: 1px solid #edf2f7;
+    background: transparent;
+    box-sizing: border-box;
+    position: relative;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                background 0.3s ease, 
+                padding 0.3s ease,
+                opacity 0.6s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.appOpenRow.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.appOpenRow::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 22%;
+    bottom: 22%;
+    width: 4px;
+    border-radius: 4px;
+    background: var(--color-primary);
+    opacity: 0;
+    transform: scaleY(0.4);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.appOpenRow:hover {
+    background: linear-gradient(90deg, rgba(84, 155, 207, 0.07) 0%, rgba(84, 155, 207, 0.01) 100%);
+    padding-left: 32px;
+}
+
+.appOpenRow:hover::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+/* Column 1: Identity & Branding */
+.appOpenColIdentity {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.appOpenLogoWrapper {
+    width: 72px;
+    height: 72px;
+    min-width: 72px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(84, 155, 207, 0.12);
+    border: 1px solid rgba(84, 155, 207, 0.25);
+    overflow: hidden;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.appOpenRow:hover .appOpenLogoWrapper {
+    transform: scale(1.05);
+}
+
+.appOpenLogoImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.appOpenLogoText {
+    font-family: var(--font-family-mono);
+    font-size: 24px;
+    font-weight: 900;
+    color: #1b4d75;
+    letter-spacing: 1px;
+}
+
+.appOpenIdentityMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.appOpenLiveStatus {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.appOpenLiveDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+    animation: livePulse 2s infinite ease-in-out;
+}
+
+.appOpenLiveText {
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: #10b981;
+    text-transform: uppercase;
+}
+
+.appOpenName {
+    font-size: 25px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.appOpenCategory {
+    font-family: var(--font-family-mono);
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 2px;
+}
+
+.appOpenSubdomainLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-family-mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: #1b4d75;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    word-break: break-all;
+}
+
+.appOpenSubdomainLink:hover {
+    color: #0284c7;
+    text-decoration: underline;
+}
+
+/* Column 2: Details & Capabilities (Open & Airy) */
+.appOpenColDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0;
+}
+
+.appOpenDescription {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #334155;
+    margin: 0;
+}
+
+/* Column 3: Action & Pod Box */
+.appOpenColAction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    justify-content: center;
+}
+
+.appOpenPodMetaBox {
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 9px 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.appOpenPodMetaRow {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+}
+
+.metaRowLabel {
+    color: #0284c7;
+    font-weight: 700;
+}
+
+.metaRowVal {
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.appOpenLaunchButton {
+    width: 100%;
+    padding: 11px 16px;
+    font-size: 13px;
+    gap: 6px;
+    text-decoration: none;
+    background: #1b4d75;
+    color: #ffffff;
+    box-shadow: 4px 4px 0 #0b2234;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.appOpenLaunchButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0 #07192a;
+}
+
+/* Responsive Styles for Deployed Applications */
+@media only screen and (max-width: 1200px) {
+    .appOpenRow {
+        grid-template-columns: 260px 1fr 180px;
+        gap: 28px;
+        padding: 30px 16px;
+    }
+    .appOpenHighlightsList {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .appOpenRow {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 28px 16px;
+    }
+    .appOpenColAction {
+        flex-direction: row;
+        width: 100%;
+        gap: 14px;
+    }
+    .appOpenPodMetaBox {
+        width: 55%;
+    }
+    .appOpenLaunchButton {
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .deployedAppsSection {
+        padding: 50px 0 80px 0;
+    }
+    .appsSectionTitle {
+        font-size: 26px;
+    }
+    .appOpenColAction {
+        flex-direction: column;
+    }
+    .appOpenPodMetaBox, .appOpenLaunchButton {
+        width: 100%;
+    }
+    .appsTransitionBadge {
+        font-size: 9.5px;
+        padding: 5px 14px;
+        gap: 6px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .appOpenColIdentity {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .appOpenLogoWrapper {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+    }
+    .appOpenLogoText {
+        font-size: 20px;
+    }
+    .appOpenName {
+        font-size: 22px;
+    }
+    .deployedAppsContainer {
+        padding: 0 16px;
+    }
+}

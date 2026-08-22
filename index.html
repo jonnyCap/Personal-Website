@@ -153,6 +153,48 @@
         <script src="js/components/project-slider.js"></script>
         <script src="js/renderers/projects-renderer.js"></script>
     </section>
+    <!-- Creative Section Transition: Projects (White) -> Homelab Topology (Blue) -->
+    <div class="homelabTransitionDivider" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" class="transitionSvg">
+            <path d="M0,0 C380,85 1060,15 1440,75 L1440,90 L0,90 Z" fill="#1b4d75"></path>
+        </svg>
+        <div class="transitionConnectorBadge">
+            <span class="connectorDot"></span>
+            <span class="connectorText">BARE-METAL K3S INFRASTRUCTURE // LIVE TOPOLOGY</span>
+            <span class="connectorDot"></span>
+        </div>
+    </div>
+
+    <!-- Section 1: Homelab Topology Canvas (Rich Blue) -->
+    <section class="homelabSection" id="homelabSection">
+        <!-- Dynamically rendered by js/renderers/homelab-renderer.js -->
+    </section>
+
+    <!-- Transition: Homelab Topology (Blue) -> Deployed Services (White) -->
+    <div class="appsTransitionDivider" aria-hidden="true">
+        <svg viewBox="0 0 1440 85" preserveAspectRatio="none" class="transitionSvg">
+            <path d="M0,0 C380,75 1060,15 1440,70 L1440,85 L0,85 Z" fill="#ffffff"></path>
+        </svg>
+        <div class="appsTransitionBadge">
+            <span class="connectorDot"></span>
+            <span class="connectorText">LIVE CLUSTER WORKLOADS // MICROSERVICES</span>
+            <span class="connectorDot"></span>
+        </div>
+    </div>
+
+    <!-- Section 2: Deployed Applications Showcase (Clean White & Open-Sided Rows) -->
+    <section class="deployedAppsSection" id="deployedAppsSection">
+        <!-- Dynamically rendered by js/renderers/homelab-renderer.js -->
+    </section>
+
+    <!-- Transition: Deployed Services (White) -> Footer (Blue) -->
+    <div class="footerTransitionDivider" aria-hidden="true">
+        <svg viewBox="0 0 1440 70" preserveAspectRatio="none" class="transitionSvg">
+            <path d="M0,70 L0,15 C420,65 1020,5 1440,55 L1440,70 Z" fill="#549bcf"></path>
+        </svg>
+    </div>
+
+    <script src="js/renderers/homelab-renderer.js"></script>
     <section>
         <footer>
             <div class="footerContainer">

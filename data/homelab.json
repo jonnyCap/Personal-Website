@@ -1,0 +1,211 @@
+{
+  "lastUpdated": "2026-08-22T09:30:00.000Z",
+  "cluster": {
+    "name": "Pi5-K3s-Homelab",
+    "hardware": "Raspberry Pi 5 (8GB RAM)",
+    "cpu": "Broadcom BCM2712 Quad-Core ARM Cortex-A76 @ 2.4GHz",
+    "ram": "8 GB LPDDR4X-4267",
+    "os": "Ubuntu Server 24.04 LTS (ARM64)",
+    "orchestrator": "K3s Lightweight Kubernetes",
+    "domain": "cloud-test.dev",
+    "ingress": "Cloudflare Zero-Trust Tunnel",
+    "gitops": "ArgoCD",
+    "storage": "MinIO S3 Object Storage + Local PV",
+    "database": "Shared PostgreSQL 16 Instance",
+    "telemetry": "Headlamp Kubernetes UI",
+    "status": "Healthy & Synced"
+  },
+  "infrastructure": [
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare Tunnel",
+      "category": "Edge Ingress & Security",
+      "icon": "shield",
+      "badge": "Zero-Trust Ingress",
+      "dashboardUrl": "https://dash.cloudflare.com",
+      "requiresAuth": true,
+      "description": "Secure edge routing and SSL termination for *.cloud-test.dev. Eliminates open inbound ports on the local network router via encrypted Cloudflare Daemon tunnels.",
+      "specs": {
+        "Protocol": "HTTPS / HTTP2 / QUIC",
+        "Security": "Automatic TLS & DDoS Protection",
+        "Routing": "Cloudflare Edge -> cloudflared Pod",
+        "Status": "Active / Tunneled"
+      }
+    },
+    {
+      "id": "k3s-core",
+      "name": "Raspberry Pi 5 K3s Core",
+      "category": "Bare-Metal Cluster Engine",
+      "icon": "server",
+      "badge": "ARM64 8GB Node",
+      "dashboardUrl": "https://headlamp.cloud-test.dev",
+      "requiresAuth": true,
+      "description": "Single-node high-efficiency CNCF Kubernetes cluster running on Raspberry Pi 5 with 8GB RAM, delivering sub-millisecond local container IPC and minimal overhead.",
+      "specs": {
+        "Hardware": "Raspberry Pi 5 (8GB RAM)",
+        "CPU / Arch": "4x Cortex-A76 @ 2.4GHz (aarch64)",
+        "Runtime": "Containerd / K3s Flannel CNI",
+        "Status": "Ready / 1 Node Active"
+      }
+    },
+    {
+      "id": "ghcr",
+      "name": "GHCR Registry",
+      "category": "CI/CD & Container Registry",
+      "icon": "package",
+      "badge": "GitHub Actions CI",
+      "dashboardUrl": "https://github.com/jonathan-maier?tab=packages",
+      "requiresAuth": false,
+      "description": "GitHub Actions CI/CD workflows automatically build, test, and push tagged container images to GitHub Container Registry (ghcr.io). ArgoCD monitors new tags and pulls them into the cluster."
+    },
+    {
+      "id": "argocd",
+      "name": "ArgoCD GitOps",
+      "category": "Continuous Delivery",
+      "icon": "git",
+      "badge": "Declarative GitOps",
+      "dashboardUrl": "https://argocd.cloud-test.dev",
+      "requiresAuth": true,
+      "description": "Declarative GitOps continuous delivery engine. Continuously tracks GitHub repositories and reconciles Kubernetes manifests automatically upon commits.",
+      "specs": {
+        "Sync Policy": "Automated Self-Heal & Prune",
+        "Source": "GitHub Manifests",
+        "Reconciliation": "< 30s Delta Loop",
+        "Status": "Synced & Healthy"
+      }
+    },
+    {
+      "id": "headlamp",
+      "name": "Headlamp Dashboard",
+      "category": "Cluster Telemetry & UI",
+      "icon": "activity",
+      "badge": "K8s Management UI",
+      "dashboardUrl": "https://headlamp.cloud-test.dev",
+      "requiresAuth": true,
+      "description": "User-friendly Kubernetes web interface providing real-time pod inspection, resource utilization graphs, live events, and container log streaming.",
+      "specs": {
+        "Workloads": "Deployments, Pods, Services",
+        "Telemetry": "CPU / Memory Metrics & Events",
+        "Access": "RBAC Authenticated",
+        "Status": "Online"
+      }
+    },
+    {
+      "id": "postgres",
+      "name": "Shared PostgreSQL 16",
+      "category": "Relational Data Tier",
+      "icon": "database",
+      "badge": "Multi-Tenant Database",
+      "dashboardUrl": "https://postgres.cloud-test.dev",
+      "requiresAuth": true,
+      "description": "Centralized, high-performance PostgreSQL instance providing isolated schemas, connection pooling, and automated backups for all microservices in the cluster.",
+      "specs": {
+        "Engine": "PostgreSQL 16 Alpine",
+        "Storage": "Encrypted Persistent Volume Claim",
+        "Isolation": "Per-Service Database & Roles",
+        "Status": "Connected & Healthy"
+      }
+    },
+    {
+      "id": "minio",
+      "name": "MinIO Object Storage",
+      "category": "S3-Compatible Storage",
+      "icon": "layers",
+      "badge": "Distributed S3 Tier",
+      "dashboardUrl": "https://minio.cloud-test.dev",
+      "requiresAuth": true,
+      "description": "High-performance S3-compliant object storage server hosting application assets, document backups, and operational telemetry logs inside the cluster.",
+      "specs": {
+        "API": "AWS S3 Compatible",
+        "Buckets": "App Assets, Backups, Logs",
+        "Performance": "High IOPS Local NVMe / Storage",
+        "Status": "Online"
+      }
+    }
+  ],
+  "applications": [
+    {
+      "id": "snapdeck",
+      "name": "SnapDeck",
+      "subdomain": "snapdeck.cloud-test.dev",
+      "url": "https://snapdeck.cloud-test.dev",
+      "dashboardUrl": "https://snapdeck.cloud-test.dev",
+      "requiresAuth": false,
+      "category": "Visual Anki Card Generator",
+      "status": "Live on K3s",
+      "logoImage": "images/apps/snapdeck.png",
+      "logoText": "SD",
+      "logoBg": "#ffffff",
+      "description": "Image and rectangle-based Anki card generator that allows you to easily create Anki flashcards with visual snippets directly from your documents.",
+      "tags": ["K3s", "PostgreSQL", "MinIO S3", "Cloudflare Tunnel", "Docker", "REST API"],
+      "highlights": [
+        "Zero-Trust Ingress",
+        "Shared Postgres DB",
+        "MinIO S3 Storage",
+        "Auto GitOps Sync"
+      ],
+      "role": "Microservice Pod",
+      "ports": "Port 80 / 443 via Cloudflare"
+    },
+    {
+      "id": "opscout",
+      "name": "OpScout",
+      "subdomain": "opscout.cloud-test.dev",
+      "url": "https://opscout.cloud-test.dev",
+      "dashboardUrl": "https://opscout.cloud-test.dev",
+      "requiresAuth": false,
+      "category": "EUR-Lex Opportunity Intelligence",
+      "status": "Live on K3s",
+      "logoImage": "images/apps/opscout.png",
+      "logoText": "OS",
+      "logoBg": "#ffffff",
+      "description": "Tracks new laws and regulatory changes from EUR-Lex, automatically assessing whether they yield potential for new business opportunities by rating them and notifying users.",
+      "tags": ["K3s", "PostgreSQL", "Docker", "Telemetry"],
+      "highlights": [
+        "Real-time Telemetry",
+        "Postgres DB Storage",
+        "Cluster Health Checks",
+        "Low Overhead"
+      ],
+      "role": "Microservice Pod",
+      "ports": "Port 80 / 443 via Cloudflare"
+    },
+    {
+      "id": "pagi",
+      "name": "Pagi",
+      "subdomain": "pagi.cloud-test.dev",
+      "url": "https://pagi.cloud-test.dev",
+      "dashboardUrl": "https://pagi.cloud-test.dev",
+      "requiresAuth": false,
+      "category": "Document Sharing & Points Ecosystem",
+      "status": "Live on K3s",
+      "logoImage": "images/apps/pagi.svg",
+      "logoText": "PG",
+      "logoBg": "#ffffff",
+      "description": "Document sharing platform with its own ecosystem: earn points whenever users download your uploaded documents, and spend your balance to download documents from others.",
+      "tags": ["K3s", "PostgreSQL", "MinIO S3", "Docker", "FastAPI", "Cloudflare Tunnel"],
+      "highlights": [
+        "Cursor Pagination",
+        "Optimized Query Engine",
+        "PostgreSQL & MinIO S3",
+        "GitOps Deployed"
+      ],
+      "role": "Microservice Pod",
+      "ports": "Port 80 / 443 via Cloudflare"
+    }
+  ],
+  "topologyConnections": [
+    { "from": "cloudflare", "to": "k3s-core", "label": "Zero-Trust Ingress", "color": "#38bdf8" },
+    { "from": "ghcr", "to": "argocd", "label": "OCI Image Push", "color": "#818cf8" },
+    { "from": "argocd", "to": "k3s-core", "label": "GitOps Sync", "color": "#f59e0b" },
+    { "from": "k3s-core", "to": "headlamp", "label": "Telemetry", "color": "#10b981" },
+    { "from": "k3s-core", "to": "snapdeck", "label": "Pod Deployment", "color": "#3b82f6" },
+    { "from": "k3s-core", "to": "opscout", "label": "Pod Deployment", "color": "#10b981" },
+    { "from": "k3s-core", "to": "pagi", "label": "Pod Deployment", "color": "#8b5cf6" },
+    { "from": "snapdeck", "to": "postgres", "label": "SQL Query", "color": "#3485c2" },
+    { "from": "snapdeck", "to": "minio", "label": "S3 Assets", "color": "#f43f5e" },
+    { "from": "opscout", "to": "postgres", "label": "Metrics DB", "color": "#3485c2" },
+    { "from": "pagi", "to": "postgres", "label": "Index DB", "color": "#3485c2" },
+    { "from": "pagi", "to": "minio", "label": "S3 Docs", "color": "#f43f5e" }
+  ]
+}
