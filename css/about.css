@@ -573,12 +573,15 @@
 @media only screen and (max-width: 800px) {
     /*start section*/
     .secondaryHeader {
+        font-size: clamp(2rem, 7vw, 3.4rem);
         line-height: 1.1;
-        text-shadow: 5px 5px rgba(35, 92, 135, 0.45);
+        text-shadow: 4px 4px rgba(35, 92, 135, 0.45);
     }
     .lowerHeader {
-        line-height: 1.35;
-        margin-top: 15px;
+        font-size: clamp(0.95rem, 3.2vw, 1.25rem);
+        line-height: 1.4;
+        margin-top: 12px;
+        padding: 0 16px;
     }
     /*ScrollButton*/
     .down {
@@ -599,25 +602,35 @@
     /*Start Screen*/
     .secondaryUl {
         flex-wrap: wrap;
+        gap: 8px;
     }
 
     .secondaryLowerContainer {
         top: 20px;
         left: 0;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
 }
 @media only screen and (max-width: 600px) {
     .secondaryHeader {
+        font-size: clamp(1.85rem, 6.8vw, 2.8rem);
         line-height: 1.12;
-        text-shadow: 4px 4px rgba(35, 92, 135, 0.45);
+        text-shadow: 3px 3px rgba(35, 92, 135, 0.45);
+        padding: 0 12px;
     }
     .secondaryContentContainer {
-        padding-left: 24px;
-        padding-right: 24px;
-        padding-top: 35px;
-        padding-bottom: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 30px;
+        padding-bottom: 25px;
         box-sizing: border-box;
+    }
+    .secondaryContentHeader {
+        font-size: clamp(22px, 5.5vw, 28px);
+    }
+    .secondaryContentLowerHeader {
+        font-size: 13.5px;
+        line-height: 1.6;
     }
 }
 @media only screen and (max-width: 420px) {
@@ -625,11 +638,22 @@
     .secondaryLowerContainer {
         top: 0;
         left: 0;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
     }
     .secondaryHeader {
+        font-size: clamp(1.65rem, 6.5vw, 2.3rem);
         line-height: 1.15;
-        text-shadow: 3px 3px rgba(35, 92, 135, 0.45);
+        text-shadow: 2.5px 2.5px rgba(35, 92, 135, 0.45);
+    }
+    .secondaryContentContainer {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 24px;
+        padding-bottom: 20px;
+    }
+    .spaProjectsGrid {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
     #moveableBackground{
         display:none;
@@ -774,7 +798,7 @@
     flex: 1 1 auto;
     width: 100%;
     max-width: 100%;
-    min-height: 440px;
+    min-height: 420px;
     background: #ffffff;
     border: 1px solid #d4ebf9;
     box-shadow: 8px 8px 0 #bde3fa;
@@ -784,6 +808,8 @@
     box-sizing: border-box;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     user-select: none;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .spaCardElement:hover {
@@ -798,6 +824,7 @@
     height: 100%;
     padding: 24px 20px;
     box-sizing: border-box;
+    min-height: 100%;
 }
 
 .projectCardHeader {
@@ -842,6 +869,7 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    min-height: auto;
 }
 
 .projectCardTitle {
@@ -850,6 +878,8 @@
     color: #1a1a1a;
     margin: 0 0 4px 0;
     line-height: 1.3;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .projectCardSubtitle {
@@ -857,14 +887,18 @@
     font-weight: 600;
     color: var(--color-primary);
     margin: 0 0 12px 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .projectCardDesc {
     font-size: 13.5px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: #4a5568;
     margin: 0 0 16px 0;
     flex-grow: 1;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .projectTagsContainer {

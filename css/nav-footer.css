@@ -541,11 +541,15 @@ h6.pageContentHolder:hover {
     }
     /*footer*/
     .footerContainer {
-        width: 500px;
+        width: 100%;
+        max-width: 600px;
+        padding: 0 20px;
     }
 
     .upperFooter {
-        width: 500px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
     }
 
     #thirdFooterLine {
@@ -553,7 +557,8 @@ h6.pageContentHolder:hover {
     }
 
     .footerSmallSection {
-        width: 250px;
+        width: 48%;
+        min-height: auto;
     }
 }
 @media only screen and (max-width: 500px) {
@@ -569,7 +574,7 @@ h6.pageContentHolder:hover {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 12px;
+        padding: 0 16px;
         box-sizing: border-box;
     }
 
@@ -623,13 +628,37 @@ h6.pageContentHolder:hover {
     .footerContainer {
         width: 100%;
         height: auto;
+        padding: 20px 18px 35px 18px;
     }
 
     .upperFooter {
         width: 100%;
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 16px;
         height: auto;
+    }
+
+    .footerSmallSection {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .footerHeader {
+        font-size: 22px;
+        margin-top: 10px;
+        margin-bottom: 8px;
+    }
+
+    .footerSmallHeader {
+        font-size: 15px;
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+
+    .pageContentHolder {
+        font-size: 13px;
+        margin: 4px 0;
     }
 
     #firstFooterLine {
@@ -642,10 +671,6 @@ h6.pageContentHolder:hover {
 
     #thirdFooterLine {
         display: none;
-    }
-
-    .footerSmallHeader {
-        margin-top: 10px;
     }
 }
 @media only screen and (max-width: 330px) {

@@ -494,6 +494,8 @@ div.aboutMeContainer {
     box-sizing: border-box;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     user-select: none;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .projectCard:hover {
@@ -508,6 +510,7 @@ div.aboutMeContainer {
     height: 100%;
     padding: 24px 20px;
     box-sizing: border-box;
+    min-height: 100%;
 }
 
 .projectCardHeader {
@@ -552,6 +555,7 @@ div.aboutMeContainer {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    min-height: auto;
 }
 
 .projectCardTitle {
@@ -560,6 +564,8 @@ div.aboutMeContainer {
     color: #1a1a1a;
     margin: 0 0 4px 0;
     line-height: 1.3;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .projectCardSubtitle {
@@ -567,14 +573,18 @@ div.aboutMeContainer {
     font-weight: 600;
     color: var(--color-primary);
     margin: 0 0 12px 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .projectCardDesc {
     font-size: 13.5px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: #4a5568;
     margin: 0 0 16px 0;
     flex-grow: 1;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .projectTagsContainer {
@@ -732,7 +742,7 @@ div.aboutMeContainer {
 @media only screen and (max-width: 1400px) {
     /*sections*/
     .heroScrollWrapper {
-        height: 320vh;
+        height: 480vh;
     }
     .stickyStage {
         height: 100vh;
@@ -742,17 +752,23 @@ div.aboutMeContainer {
         height: auto;
     }
     .backgroundContainer {
-        height: auto;
-        padding: 40px 16px;
+        height: 100%;
+        min-height: 100vh;
+        padding: 40px 20px;
         position: relative;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     /*aboutMeSection*/
     .aboutMeContainer {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: auto;
-        max-width: 700px;
+        height: 100%;
+        min-height: 100%;
+        max-width: 750px;
         width: 100%;
         position: relative;
         margin: 0 auto;
@@ -769,7 +785,7 @@ div.aboutMeContainer {
         box-shadow: none;
         background: transparent;
         overflow: hidden;
-        pointer-events: none;
+        pointer-events: auto;
     }
     .algoHudHeader, .algoHudFooter {
         display: none !important;
@@ -780,21 +796,29 @@ div.aboutMeContainer {
         left: 0;
         width: 100%;
         height: 100%;
-        opacity: 0.35;
+        opacity: 0.95;
         transform: none;
+        display: block;
     }
     .textContainer {
         position: relative;
         top: auto;
         left: auto;
         transform: none;
-        width: 100%;
-        max-width: 560px;
+        width: calc(100% - 40px);
+        max-width: 460px;
         height: auto;
         margin: 0 auto;
         opacity: 1;
         box-sizing: border-box;
-        box-shadow: 8px 8px 0 var(--color-accent);
+        background: rgba(23, 62, 94, 0.88);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 8px;
+        box-shadow: 0 16px 36px rgba(5, 20, 35, 0.4), 6px 6px 0 var(--color-primary-darker);
+        padding: 24px 22px;
+        z-index: 10;
     }
     /*slidesSection*/
     .projectsContainer {
@@ -805,7 +829,7 @@ div.aboutMeContainer {
     /*startSection*/
     .startContainer {
         width: 500px;
-        text-align:center;
+        text-align: center;
     }
     .startContainerButtonContainer {
         justify-content: center;
@@ -822,21 +846,28 @@ div.aboutMeContainer {
 
     .outerSliderContainer {
         width: 688px;
-        max-width: 688px;
+        max-width: calc(100% - 40px);
     }
 }
 @media only screen and (max-width: 900px) {
     .heroScrollWrapper {
-        height: 240vh;
+        height: 440vh;
     }
     /*startSection*/
     .startContainer {
         width: 100%;
+        max-width: 560px;
+        padding: 0 20px;
+        box-sizing: border-box;
         text-align: center;
     }
-    .startContainerHeader{
-        font-size: 60px;
-        line-height: 0.9;  
+    .startContainerHeader {
+        font-size: clamp(38px, 8.5vw, 52px);
+        line-height: 1.1;  
+    }
+    .startContainerText {
+        font-size: 18px;
+        margin: 12px 0 22px 0;
     }
     .startContainerButtonContainer {
         justify-content: center;
@@ -849,6 +880,7 @@ div.aboutMeContainer {
     .projectsContainer {
         width: 100%;
         max-width: 700px;
+        padding: 30px 16px 45px 16px;
     }
 
     .buttonContainer {
@@ -867,68 +899,156 @@ div.aboutMeContainer {
     .outerSliderContainer {
         width: 338px;
         max-width: 338px;
+        padding: 20px 14px 25px 4px;
+        margin: 0 auto;
+    }
+    .sliderContainer {
+        gap: 40px;
+    }
+    .projectCard {
+        flex: 0 0 320px;
+        width: 320px;
+        max-width: 320px;
+        min-height: 400px;
     }
 }
 @media only screen and (max-width: 600px) {
     /*sliderSection*/
     .projectsContainer {
         width: 100%;
-        padding: 24px 12px 50px 12px;
+        padding: 24px 16px 45px 16px;
+    }
+    #sliderHeader {
+        font-size: clamp(26px, 6vw, 32px);
+    }
+    .projectsSubheader {
+        font-size: 14px;
+        padding: 0 10px;
     }
 }
 @media only screen and (max-width: 500px) {
     /*startSection*/
-    .startContainerHeader {
-        font-size: 60px;
-        line-height: 0.9;
+    .startContainer {
+        padding: 0 16px;
+        top: 120px;
     }
-    .startContainerButtonContainer {
-        justify-content: center;
+    .startContainerHeader {
+        font-size: clamp(30px, 8.5vw, 42px);
+        line-height: 1.15;
+        margin-top: 20px;
+    }
+    .startContainerText {
+        font-size: 15px;
+        margin: 8px 0 18px 0;
     }
     .startContainerButton {
-        margin: 0 auto;
+        width: 95px;
+        height: 38px;
+        font-size: 14px;
     }
     /*aboutMeSection*/
     .backgroundContainer {
-        height: auto;
-        padding: 30px 14px;
+        height: 100%;
+        min-height: 100vh;
+        padding: 20px 14px;
     }
     .textContainer {
-        width: 100%;
-        max-width: 100%;
-        padding: 24px 18px;
-        text-align: center;
-        box-shadow: 6px 6px 0 var(--color-accent);
+        width: calc(100% - 24px);
+        max-width: 390px;
+        padding: 20px 18px;
+        text-align: left;
+        box-shadow: 5px 5px 0 var(--color-primary-darker);
+    }
+    .aboutMeSubBadge {
+        font-size: 10px;
+        padding: 3px 8px;
+        margin-bottom: 6px;
+    }
+    .aboutMeHeader {
+        font-size: 24px;
+        margin: 4px 0 10px 0;
+        line-height: 1.2;
+    }
+    .aboutMeText {
+        font-size: 13.5px;
+        line-height: 1.55;
     }
     .aboutMeButton {
         position: static;
-        margin: 20px auto 0 auto;
-        text-align: center;
+        margin: 14px 0 0 0;
+        font-size: 13px;
+        padding: 8px 14px;
         display: inline-flex;
+        align-self: flex-start;
     }
     /*sliderSection*/
     .projectsContainer {
         width: 100%;
         height: auto;
-        padding: 20px 10px 45px 10px;
+        padding: 22px 14px 40px 14px;
     }
     .projectsHeaderContainer {
         width: 100%;
         height: auto;
+        padding: 0 8px;
     }
     #sliderHeader {
-        font-size: 36px;
+        font-size: 25px;
     }
-}
-@media only screen and (max-width: 400px) {
+    .projectsSubheader {
+        font-size: 13px;
+        margin-top: 4px;
+    }
     .outerSliderContainer {
-        width: 100%;
-        max-width: 100%;
+        width: 338px;
+        max-width: calc(100% - 16px);
+        padding: 18px 14px 22px 4px;
     }
     .projectCard {
-        flex: 0 0 calc(100% - 10px);
-        width: calc(100% - 10px);
-        max-width: calc(100% - 10px);
+        flex: 0 0 320px;
+        width: 320px;
+        max-width: 320px;
+        min-height: 380px;
+        box-shadow: 6px 6px 0 #bde3fa;
+    }
+    .projectCardInner {
+        padding: 18px 16px;
+    }
+    .projectCardTitle {
+        font-size: 18px;
+    }
+    .projectCardSubtitle {
+        font-size: 12.5px;
+        margin-bottom: 8px;
+    }
+    .projectCardDesc {
+        font-size: 13px;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+    .projectTag {
+        font-size: 10.5px;
+        padding: 2px 7px;
+    }
+    .horizontalButtonContainer {
+        margin-top: 10px;
+        min-height: 48px;
+    }
+}
+@media only screen and (max-width: 350px) {
+    .outerSliderContainer {
+        width: 294px;
+        max-width: calc(100% - 12px);
+        padding: 16px 10px 20px 4px;
+    }
+    .sliderContainer {
+        gap: 30px;
+    }
+    .projectCard {
+        flex: 0 0 280px;
+        width: 280px;
+        max-width: 280px;
+        min-height: 370px;
     }
 }
 @media only screen and (max-width: 330px) {
@@ -938,41 +1058,24 @@ div.aboutMeContainer {
     }
     /*aboutMeSection*/
     .backgroundContainer {
-        height: auto;
-        padding: 20px 10px;
+        padding: 16px 8px;
     }
     .textContainer {
-        width: 100%;
-        height: auto;
+        width: calc(100% - 12px);
+        padding: 16px 14px;
+    }
+    .aboutMeHeader {
+        font-size: 21px;
+    }
+    .aboutMeText {
+        font-size: 12.5px;
     }
     /*sliderSection*/
     #sliderHeader {
-        font-size: 30px;
+        font-size: 22px;
     }
-}
-@media only screen and (max-width: 220px) {
-    /*startSection*/
-    .startContainerHeader {
-        font-size: 40px;
-        line-height: 0.9;
-    }
-    /*sliderSection*/
-    .sliderElement {
-        width: 100%;
-        height:auto;
-    }
-    .imageContainerSlider{
-        width:100%;
-        margin: 20px 0 10px 0;
-        height: auto;
-    }
-    .projectImage{
-        width:100%;
-        height: auto;
-    }
-    .textContainerSlider{
-        width: 100%;
-        height: auto;
+    .projectsSubheader {
+        font-size: 12px;
     }
 }
 
@@ -1678,12 +1781,86 @@ div.aboutMeContainer {
 }
 
 @media only screen and (max-width: 768px) {
+    .homelabSection {
+        padding: 24px 0 50px 0;
+    }
+    .homelabContainer {
+        padding: 0 18px;
+    }
+    .homelabHeader {
+        font-size: clamp(24px, 6.5vw, 32px);
+        margin-bottom: 12px;
+    }
+    .homelabSubheader {
+        font-size: 13.5px;
+        line-height: 1.6;
+    }
+    .clusterTelemetryBar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        padding: 18px 20px;
+        margin-bottom: 35px;
+    }
+    .telemetryStat {
+        padding: 0 8px;
+    }
+    .telemetryStat:nth-child(2) {
+        border-right: none;
+    }
     .flowGrid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 18px;
     }
     .flowCanvasWrapper {
         padding: 10px 0;
+    }
+    .flowInspectorContainer {
+        padding: 20px 18px;
+    }
+    .inspectorTitle {
+        font-size: 18px;
+    }
+    .inspectorDesc {
+        font-size: 13.5px;
+        line-height: 1.6;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .homelabContainer {
+        padding: 0 16px;
+    }
+    .clusterTelemetryBar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 14px 12px;
+        margin-bottom: 28px;
+    }
+    .telemetryStat {
+        padding: 0 4px;
+        border-right: none;
+    }
+    .telemetryLabel {
+        font-size: 10px;
+    }
+    .telemetryValue {
+        font-size: 12px;
+    }
+    .flowNode {
+        padding: 12px 14px;
+    }
+    .flowNodeName {
+        font-size: 13px;
+    }
+    .flowInspectorContainer {
+        padding: 16px 14px;
+    }
+    .inspectorTitle {
+        font-size: 16px;
+    }
+    .inspectorLaunchBtn {
+        padding: 8px 12px;
+        font-size: 12px;
     }
 }
 
@@ -2066,10 +2243,24 @@ div.aboutMeContainer {
 
 @media only screen and (max-width: 768px) {
     .deployedAppsSection {
-        padding: 50px 0 80px 0;
+        padding: 40px 0 65px 0;
+    }
+    .deployedAppsContainer {
+        padding: 0 18px;
     }
     .appsSectionTitle {
-        font-size: 26px;
+        font-size: clamp(22px, 5.5vw, 26px);
+    }
+    .appOpenRow {
+        padding: 22px 14px;
+        gap: 16px;
+    }
+    .appOpenName {
+        font-size: 20px;
+    }
+    .appOpenDescription {
+        font-size: 13.5px;
+        line-height: 1.6;
     }
     .appOpenColAction {
         flex-direction: column;
@@ -2085,22 +2276,39 @@ div.aboutMeContainer {
 }
 
 @media only screen and (max-width: 500px) {
-    .appOpenColIdentity {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .appOpenLogoWrapper {
-        width: 60px;
-        height: 60px;
-        min-width: 60px;
-    }
-    .appOpenLogoText {
-        font-size: 20px;
-    }
-    .appOpenName {
-        font-size: 22px;
-    }
     .deployedAppsContainer {
         padding: 0 16px;
+    }
+    .appOpenRow {
+        padding: 18px 12px;
+        gap: 14px;
+    }
+    .appOpenColIdentity {
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+    }
+    .appOpenLogoWrapper {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        border-radius: 10px;
+        padding: 6px;
+    }
+    .appOpenLogoText {
+        font-size: 18px;
+    }
+    .appOpenName {
+        font-size: 18px;
+    }
+    .appOpenCategory {
+        font-size: 11px;
+    }
+    .appOpenSubdomainLink {
+        font-size: 12px;
+    }
+    .appOpenLaunchButton {
+        padding: 9px 14px;
+        font-size: 12.5px;
     }
 }

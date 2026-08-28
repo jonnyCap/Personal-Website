@@ -54,38 +54,38 @@ document.addEventListener("DOMContentLoaded", () => {
                 const rawProgress = -rect.top / scrollDistance;
                 const progress = Math.min(1, Math.max(0, rawProgress));
 
-                // 1. Header text moves gently to the LEFT and fades out
-                const textProgress = Math.min(1, progress / 0.16);
+                // 1. Header text moves gently to the LEFT and fades out smoothly (starts after initial dwell)
+                const textProgress = Math.min(1, Math.max(0, (progress - 0.06) / 0.22));
                 const textOpacity = Math.max(0, 1 - textProgress);
-                const textTranslateX = textProgress * 250; // pixels to the LEFT
+                const textTranslateX = textProgress * 220; // pixels to the LEFT
                 heroText.style.opacity = textOpacity.toFixed(3);
                 heroText.style.transform = `translate(calc(-50% - ${textTranslateX.toFixed(1)}px), 0)`;
 
                 // 2. Cloud background zooms in slightly and dissolves out smoothly
-                const zoomProgress = Math.min(1, progress / 0.22);
-                const bgScale = 1 + zoomProgress * 0.15;
-                const bgOpacity = Math.max(0, 1 - Math.min(1, progress / 0.22));
+                const zoomProgress = Math.min(1, Math.max(0, (progress - 0.08) / 0.24));
+                const bgScale = 1 + zoomProgress * 0.12;
+                const bgOpacity = Math.max(0, 1 - zoomProgress);
                 heroBg.style.transform = `scale(${bgScale.toFixed(3)})`;
                 heroBg.style.opacity = bgOpacity.toFixed(3);
 
                 // 3. Soft white overlay fade
                 if (heroOverlay) {
-                    const overlayOpacity = Math.min(1, progress / 0.20);
+                    const overlayOpacity = Math.min(1, Math.max(0, (progress - 0.08) / 0.22));
                     heroOverlay.style.opacity = overlayOpacity.toFixed(3);
                 }
 
                 // 4. Hero section container overall fade out
-                const heroContainerOpacity = Math.max(0, 1 - Math.min(1, (progress - 0.08) / 0.14));
+                const heroContainerOpacity = Math.max(0, 1 - Math.min(1, Math.max(0, (progress - 0.10) / 0.22)));
                 heroSection.style.opacity = heroContainerOpacity.toFixed(3);
 
-                // 5. About Me section fades IN from background (in-place)
-                const aboutProgress = Math.min(1, Math.max(0, (progress - 0.04) / 0.16));
+                // 5. About Me section fades IN gently from background (in-place)
+                const aboutProgress = Math.min(1, Math.max(0, (progress - 0.14) / 0.21));
                 const aboutScale = 0.97 + aboutProgress * 0.03;
                 aboutMeStageLayer.style.opacity = aboutProgress.toFixed(3);
                 aboutMeStageLayer.style.transform = `scale(${aboutScale.toFixed(3)})`;
 
                 // 6. Pointer events & stacking context toggle between layers
-                if (progress >= 0.05) {
+                if (progress >= 0.22) {
                     heroSection.style.pointerEvents = "none";
                     aboutMeStageLayer.style.pointerEvents = "auto";
                     aboutMeStageLayer.style.zIndex = "4";
@@ -97,9 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     heroSection.style.zIndex = "4";
                 }
 
-                // 7. Drive Algorithm Playground 3-Stage Progression across the remaining 85% of scroll
-                if (progress >= 0.15 && window.algorithmPlayground) {
-                    const algoProgress = Math.min(1, Math.max(0, (progress - 0.15) / 0.85));
+                // 7. Drive Algorithm Playground 3-Stage Progression across the remaining scroll
+                if (progress >= 0.30 && window.algorithmPlayground) {
+                    const algoProgress = Math.min(1, Math.max(0, (progress - 0.30) / 0.70));
                     window.algorithmPlayground.setScrollProgress(algoProgress);
                 }
             } else {

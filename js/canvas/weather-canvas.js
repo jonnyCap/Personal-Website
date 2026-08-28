@@ -1142,12 +1142,12 @@
             if (heroWrapper) {
                 const scrollDistance = heroWrapper.offsetHeight - window.innerHeight;
                 if (scrollDistance > 0) {
-                    // Stage 0: 10% progress in About Me (progress ~ 0.235)
-                    // Stage 1: 50% progress in About Me (progress ~ 0.575)
-                    // Stage 2: 85% progress in About Me (progress ~ 0.872)
+                    // Stage 0: 10% progress in About Me (progress ~ 0.37)
+                    // Stage 1: 50% progress in About Me (progress ~ 0.65)
+                    // Stage 2: 85% progress in About Me (progress ~ 0.895)
                     const stageTargets = [0.10, 0.50, 0.85];
                     const targetAlgoProg = stageTargets[index] !== undefined ? stageTargets[index] : 0.50;
-                    const targetOverallProg = 0.15 + targetAlgoProg * 0.85;
+                    const targetOverallProg = 0.30 + targetAlgoProg * 0.70;
                     const targetScrollY = heroWrapper.offsetTop + scrollDistance * targetOverallProg;
 
                     window.scrollTo({

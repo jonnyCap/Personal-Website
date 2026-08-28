@@ -224,13 +224,16 @@ const slider = {
     }
 };
 
-// Resize throttling
+// Resize & orientation change throttling
 let sliderResizeTimer;
-window.addEventListener("resize", () => {
+const onSliderViewportChange = () => {
     clearTimeout(sliderResizeTimer);
     sliderResizeTimer = setTimeout(() => {
         slider.updateDimensions();
         slider.renderDots();
         slider.updateSlidePosition(false);
-    }, 100);
-});
+    }, 80);
+};
+
+window.addEventListener("resize", onSliderViewportChange, { passive: true });
+window.addEventListener("orientationchange", onSliderViewportChange, { passive: true });
