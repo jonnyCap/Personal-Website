@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-23T00:07:46.899Z",
+  "lastUpdated": "2026-08-30T00:15:42.322Z",
   "username": "jonnyCap",
   "totalProjects": 8,
   "projects": [
@@ -211,20 +211,20 @@
       "languageStats": [
         {
           "name": "JavaScript",
-          "bytes": 188373,
-          "percentage": 61.8,
+          "bytes": 188656,
+          "percentage": 60.6,
           "color": "#F1E05A"
         },
         {
           "name": "CSS",
-          "bytes": 80853,
-          "percentage": 26.5,
+          "bytes": 87080,
+          "percentage": 28,
           "color": "#563D7C"
         },
         {
           "name": "HTML",
           "bytes": 35562,
-          "percentage": 11.7,
+          "percentage": 11.4,
           "color": "#E34C26"
         }
       ],
@@ -232,7 +232,7 @@
       "forks": 0,
       "openIssues": 0,
       "updatedAt": "Aug 2026",
-      "rawUpdatedAt": "2026-08-22T10:55:51Z",
+      "rawUpdatedAt": "2026-08-28T13:18:45Z",
       "tags": [
         "JavaScript",
         "HTML5",
