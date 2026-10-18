@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-10-11T00:16:50.027Z",
+  "lastUpdated": "2026-10-18T00:14:12.722Z",
   "username": "jonnyCap",
-  "totalProjects": 8,
+  "totalProjects": 9,
   "projects": [
     {
       "id": "QueueGo",
@@ -232,7 +232,7 @@
       "forks": 0,
       "openIssues": 0,
       "updatedAt": "Oct 2026",
-      "rawUpdatedAt": "2026-10-04T00:57:24Z",
+      "rawUpdatedAt": "2026-10-11T00:16:50Z",
       "tags": [
         "JavaScript",
         "HTML5",
@@ -272,6 +272,69 @@
         "Mobile Development",
         "Algorithms"
       ],
+      "featured": false,
+      "isArchived": false
+    },
+    {
+      "id": "SmartPong",
+      "name": "SmartPong",
+      "title": "SmartPong",
+      "subtitle": "Vue",
+      "description": "An IoT wearable and data analytics platform dedicated to objective, in-depth throw analysis. Features on-device and serverside processing to capture, reconstruct, and evaluate throwing biomechanics.",
+      "githubUrl": "https://github.com/jonnyCap/SmartPong",
+      "homepageUrl": null,
+      "primaryLanguage": "Vue",
+      "primaryLanguageColor": "#549bcf",
+      "languageStats": [
+        {
+          "name": "Vue",
+          "bytes": 72755,
+          "percentage": 34.8,
+          "color": "#88badd"
+        },
+        {
+          "name": "Jupyter Notebook",
+          "bytes": 46872,
+          "percentage": 22.4,
+          "color": "#DA5B0B"
+        },
+        {
+          "name": "C",
+          "bytes": 34388,
+          "percentage": 16.4,
+          "color": "#555555"
+        },
+        {
+          "name": "Python",
+          "bytes": 28268,
+          "percentage": 13.5,
+          "color": "#3572A5"
+        },
+        {
+          "name": "C++",
+          "bytes": 12440,
+          "percentage": 6,
+          "color": "#F34B7D"
+        },
+        {
+          "name": "CSS",
+          "bytes": 6134,
+          "percentage": 2.9,
+          "color": "#563D7C"
+        },
+        {
+          "name": "JavaScript",
+          "bytes": 5194,
+          "percentage": 2.5,
+          "color": "#F1E05A"
+        }
+      ],
+      "stars": 0,
+      "forks": 0,
+      "openIssues": 0,
+      "updatedAt": "Oct 2026",
+      "rawUpdatedAt": "2026-10-16T16:27:35Z",
+      "tags": [],
       "featured": false,
       "isArchived": false
     },
